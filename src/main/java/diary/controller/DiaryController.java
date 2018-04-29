@@ -20,7 +20,7 @@ public class DiaryController {
 	@Autowired
 	private DiaryService diaryService;
 	
-	@RequestMapping(value="/diary/diaryWrite.do")
+	@RequestMapping(value="diaryWrite.do")
 	public ModelAndView diaryWrite(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -60,7 +60,7 @@ public class DiaryController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/diary/diaryIndex.do")
+	@RequestMapping(value="diaryIndex.do")
 	public ModelAndView diaryIndex(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -85,7 +85,7 @@ public class DiaryController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/diary/diaryDelete.do")
+	@RequestMapping(value="diaryDelete.do")
 	public ModelAndView diaryDelete(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -106,7 +106,7 @@ public class DiaryController {
 	}
 	
 	//수정시 기존값 불러오기
-	@RequestMapping(value="/diary/diaryModifyForm.do")
+	@RequestMapping(value="diaryModifyForm.do")
 	public ModelAndView diaryModifyForm(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -129,7 +129,7 @@ public class DiaryController {
 	}
 	
 	//수정한내용 db에 저장
-	@RequestMapping(value="/diary/diaryModify.do")
+	@RequestMapping(value="diaryModify.do")
 	public ModelAndView diaryModify(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -162,7 +162,7 @@ public class DiaryController {
 	}
 	
 	//모아보기
-	@RequestMapping(value="/diary/diaryList.do")
+	@RequestMapping(value="diaryList.do")
 	public ModelAndView diaryList(HttpServletRequest request) {
 	
 		System.out.println("--------------");
