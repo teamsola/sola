@@ -52,7 +52,7 @@ public class MallController {
 		
 		modelAndView.addObject("list2",list2);
 		
-		modelAndView.addObject("content","mallMain.jsp");
+		modelAndView.addObject("content","/mall/mallMain.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -66,7 +66,7 @@ public class MallController {
 		System.out.println("--------------");
 		System.out.println("등록하기form 들어옴");
 		
-		modelAndView.addObject("content","mallInsertForm.jsp");
+		modelAndView.addObject("content","/mall/mallInsertForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -79,11 +79,12 @@ public class MallController {
 		System.out.println("--------------");
 		System.out.println("등록하기 들어옴");
 		
+		HttpSession session=request.getSession();
+		
 		String id="zz";
 		
-		//수정하기처럼 경로바꾸기!!
-		String filePath = "C:/Users/my/Desktop/kgitbank/spring/workspace/sola/src/main/webapp/storage/";
-		
+		String filePath = session.getServletContext().getRealPath("/sola/storage");
+		//C:/Users/my/Desktop/kgitbank/spring/workspace/sola/src/main/webapp/storage/
 		String fileName = img.getOriginalFilename();
 		
 		File file = new File(filePath,fileName);
@@ -114,7 +115,7 @@ public class MallController {
 		
 		modelAndView.addObject("su",su);
 		
-		modelAndView.addObject("content","mallInsert.jsp");
+		modelAndView.addObject("content","/mall/mallInsert.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -136,7 +137,7 @@ public class MallController {
 		
 		modelAndView.addObject("list2",list2);
 		
-		modelAndView.addObject("content","mallDetail.jsp");
+		modelAndView.addObject("content","/mall/mallDetail.jsp");
 		
 		return modelAndView;
 	}
@@ -155,7 +156,7 @@ public class MallController {
 		
 		modelAndView.addObject("list2",list2);
 		
-		modelAndView.addObject("content","mallUpdateBefore.jsp");
+		modelAndView.addObject("content","/mall/mallUpdateBefore.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -178,7 +179,7 @@ public class MallController {
 		modelAndView.addObject("mall_seq",mall_seq);
 		modelAndView.addObject("mallDTO",mallDTO);
 		
-		modelAndView.addObject("content","mallUpdateForm.jsp");
+		modelAndView.addObject("content","/mall/mallUpdateForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -231,7 +232,7 @@ public class MallController {
 		
 		modelAndView.addObject("su",su);
 		
-		modelAndView.addObject("content","mallUpdate.jsp");
+		modelAndView.addObject("content","/mall/mallUpdate.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -252,7 +253,7 @@ public class MallController {
 		
 		modelAndView.addObject("su",su);
 		
-		modelAndView.addObject("content","mallDelete.jsp");
+		modelAndView.addObject("content","/mall/mallDelete.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
