@@ -1,0 +1,218 @@
+#ledger_background {/* 뒷배경 (불투명) */
+	/* display: none;  */position: fixed; left: 0; top: 0;
+	height: 100%; width: 100%; background: black;
+	filter: alpha(opacity=60); opacity: 0.60;
+}
+
+.ledger_body {/* 메인 화면 */
+	/* display: none; */
+	position: fixed;
+	left: 50% ;
+	top: 35% ;
+	margin-left: -325px; 
+	margin-top: -100px; 
+	width: 40% ;
+	height: 50%; 
+	border-radius: 12px; 
+	background-color: white; 
+}
+
+.ledger_body .top {	/* 헤더 (검은 바탕) */
+	
+	background-color: black;
+	width: 100%;
+	height: 13%;
+	border-radius: 12px 12px 0px 0px;
+}
+
+.ledger_body .top .close {	/* 닫기 버튼 */
+	float: right;
+	cursor: pointer;
+	color: #ff8400;
+	font-size: 35px;
+	font-weight: bold;
+	padding-top: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+.ledger_body .top .before {	/* 이전 버튼 */
+	float: right;
+	cursor: pointer;
+	color: #ff8400;
+	font-size: 35px;
+	font-weight: bold;
+	padding-top: 0px;
+	padding-right: 0px;
+	margin-right: 10px;
+	
+}
+
+.ledger_body .top .subject {	/* title */
+	float: left;
+	margin-left: 10px;
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #ff8400;
+	padding-left: 20px;
+}
+
+.ledger_body .bottom {		/* 컨텐츠가 들어갈 곳(중간) */
+
+	width: 100%;
+	height: 87%;
+	vertical-align: middle;
+	
+}
+
+.ledger_body .bottom .view_before{		/* 이전으로 갈 탭 */
+	width: 10%;
+	height: 100%;
+	float: left;
+	/* padding-left: 10px; */
+	background-image: url('../ledgerimg/arrowleft_hover.png');
+	background-repeat: no-repeat;
+	background-position:conter center;
+	background-size:100% 100%;
+	
+}
+
+.ledger_body .bottom .view_center{		/* 중앙에 들어갈 내용 */
+/* border: 1px solid red; */
+	width: 78%;
+	height: 98%;
+	float: left;
+	
+}
+
+.ledger_body .bottom .view_after{		/* 다음으로 갈 탭 */
+
+	width: 10%;
+	height: 100%;
+	float: right;
+	background-image: url('../ledgerimg/arrowright_hover.png');
+	background-repeat: no-repeat;
+	background-position:conter center;
+	background-size:100% 100%;
+}
+
+
+.ledger_body .bottom .view_center .info {	/* 당일 수입 지출 들어갈 곳 */
+	width: 100%;
+	height: 10%;
+	padding: 10px 15px 10px 15px;
+	text-align: center;
+	font-size: 20px;
+}
+
+.ledger_body .bottom .view_center .contents {/* 컨텐츠에 적용 */
+	width: 100%;
+	height: 79%;
+	/* margin: 20px 50px 20px 50px; */
+	text-align: center;
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_top{	/* 날짜  */
+	width: 100%;
+	height: 15%;
+}
+
+.ledger_body .bottom .view_center .contents .contents_center{	/* 항목 */
+	width: 100%;
+	height: 65%;
+}
+
+.ledger_body .bottom .view_center .contents .contents_bottom{	/* 버튼 */
+	width: 100%;
+	height: 20%;
+}
+
+.ledger_body .text_subject {	/* 날짜와 항목 text에 적용 */
+	width: 10%;
+	height: 100%;
+	float: left;
+	font-size: 18px;
+	vertical-align: middle;
+/* 	margin-top: 3px; */
+	font-weight: bold;
+}
+
+.ledger_body .text_desc {	/* 날짜내용 */
+	
+	height: 100%;
+	padding-top: 3px;
+	width: 89%;
+	float: left;
+	font-size: 18px;
+	text-align: left;
+	
+}
+
+.ledger_body .text_desc2 {	/* 항목의 내용 */
+	
+	height: 200px;
+	width: 89%;
+	float: left;
+	font-size: 18px;
+	text-align: left;
+	
+}
+
+.auto {overflow: auto;} 
+
+.ledger_body .text_type1 {	/* 날짜 */
+	height: 100% ;
+	width: 100%;
+	
+}
+
+.ledger_body .view_center .contents .contents_center .text_desc2 .cateinout{	/* 항목 + 수입-지출  */
+	height: 100% ;
+	width: 100%;
+}
+
+.ledger_body .view_center .contents .contents_center .text_desc2 .cateinout .inner{	/* 항목 + 수입-지출 감싸는 div(onclick용)  */
+	height: 15% ;
+	width: 100%;
+	margin-bottom: -30px;
+}
+
+.ledger_body .view_center .contents .contents_center .text_desc2 .cateinout .inner:hover{ /* 항목 + 수입-지출 마우스 hover */
+	background-color: #EAEAEA;
+}
+
+.ledger_body .view_center .contents .contents_center .text_desc2 .cateinout .inner .cate{	/* 항목  */
+	height: 100% ;
+	width: 25%;
+	float: left;
+	
+}
+
+.ledger_body .view_center .contents .contents_center .text_desc2 .cateinout .inner .inout{	/* 수입-지출 */
+	height: 100% ;
+	width: 74%;
+	float: left;
+}
+
+
+.ledger_body .bottom .view_center .contents .ledger_insertform_btn {
+	width: 98%;
+	height: 45px;
+	font-size: 18px;
+	background-color: gray;
+	color: white;
+}
+
+.income{	/* 수입 */
+	font-color:red;
+}
+
+.spand{	/* 지출 */
+	font-color:bule;
+}
+
+
+

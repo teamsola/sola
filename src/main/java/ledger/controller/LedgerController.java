@@ -74,7 +74,7 @@ public class LedgerController {
 		modelAndView.addObject("categoryIn", categoryIn);	// 수입 카테고리
 		modelAndView.addObject("stringDate", stringDate);	// 해당 날짜
 
-		modelAndView.addObject("page", "/ledger/ledgerInsertForm");
+		modelAndView.addObject("content", "/ledger/ledgerInsertForm");
 		//		modelAndView.setViewName("ledgerInsertForm.jsp");
 		return modelAndView;
 	}
@@ -112,7 +112,7 @@ public class LedgerController {
 		modelAndView.addObject("su", su);
 		modelAndView.addObject("stringDate", ledgerDTO.getLogdate());
 		modelAndView.addObject("cmd", "insert");
-		modelAndView.addObject("page", "/ledger/ledgerMessage");
+		modelAndView.addObject("content", "/ledger/ledgerMessage");
 		//		modelAndView.setViewName("ledgerInsert.jsp");
 		return modelAndView;
 	}
@@ -133,7 +133,7 @@ public class LedgerController {
 		ModelAndView modelAndView = new ModelAndView("/WEB-INF/ledger_index.jsp");
 		modelAndView.addObject("stringDate", stringDate);	// 조회한 날짜
 		modelAndView.addObject("ledgerDTO", ledgerDTO);
-		modelAndView.addObject("page", "/ledger/ledgerViewDetail");
+		modelAndView.addObject("content", "/ledger/ledgerViewDetail");
 		
 		return modelAndView;
 	}
@@ -196,7 +196,7 @@ public class LedgerController {
 		modelAndView.addObject("stringDate", stringDate);	// 조회한 날짜
 		modelAndView.addObject("todayList", todayList);
 
-		modelAndView.addObject("page", "/ledger/ledgerViewDay");
+		modelAndView.addObject("content", "/ledger/ledgerViewDay");
 		//		modelAndView.setViewName("ledgerViewDay.jsp");
 
 		return modelAndView;
@@ -244,7 +244,7 @@ public class LedgerController {
 		ModelAndView modelAndView = new ModelAndView("/WEB-INF/ledger_index.jsp");
 		modelAndView.addObject("calendarDTO",calendarDTO );	// 셋팅 날짜 데이터
 		modelAndView.addObject("ledgerList",ledgerList );	// 가계부 리스트
-		modelAndView.addObject("page", "/ledger/ledgerViewAll");
+		modelAndView.addObject("content", "/ledger/ledgerViewAll");
 		return modelAndView;
 	}
 
@@ -297,7 +297,7 @@ public class LedgerController {
 		ModelAndView modelAndView = new ModelAndView("/WEB-INF/ledger_index.jsp");
 		modelAndView.addObject("year", year);
 		modelAndView.addObject("yearMap", yearMap);
-		modelAndView.addObject("page", "/ledger/ledgerViewMonth");
+		modelAndView.addObject("content", "/ledger/ledgerViewMonth");
 		//		modelAndView.setViewName("ledgerViewMonth.jsp");
 
 		return modelAndView;
@@ -354,7 +354,7 @@ public class LedgerController {
 		modelAndView.addObject("ledgerList",ledgerList );	// 가계부 리스트
 		modelAndView.addObject("categoryOut", categoryOut);	// 지출 카테고리
 		modelAndView.addObject("categoryIn", categoryIn);	// 수입 카테고리
-		modelAndView.addObject("page", "/ledger/ledgerViewClosing");
+		modelAndView.addObject("content", "/ledger/ledgerViewClosing");
 		//		modelAndView.setViewName("ledgerViewClosing.jsp");
 
 		return modelAndView;
@@ -535,7 +535,7 @@ public class LedgerController {
 		modelAndView.addObject("categoryOut", categoryOut);	// 지출 카테고리
 		modelAndView.addObject("categoryIn", categoryIn);	// 수입 카테고리
 		modelAndView.addObject("cmd", cmd);					// main, stats
-		modelAndView.addObject("page", "/ledger/ledgerViewStats");
+		modelAndView.addObject("content", "/ledger/ledgerViewStats");
 		//		modelAndView.setViewName("ledgerViewStats.jsp");
 
 		return modelAndView;
@@ -571,7 +571,7 @@ public class LedgerController {
 		modelAndView.addObject("categoryOut", categoryOut);	// 지출 카테고리
 		modelAndView.addObject("categoryIn", categoryIn);	// 수입 카테고리
 		modelAndView.addObject("seq", seq);
-		modelAndView.addObject("page", "/ledger/ledgerModifyForm");
+		modelAndView.addObject("content", "/ledger/ledgerModifyForm");
 		//		modelAndView.setViewName("ledgerModifyForm.jsp");
 
 		return modelAndView;
@@ -603,7 +603,7 @@ public class LedgerController {
 		modelAndView.addObject("su", su);
 		modelAndView.addObject("cmd", "modify");
 		modelAndView.addObject("stringDate", stringDate);
-		modelAndView.addObject("page", "/ledger/ledgerMessage");
+		modelAndView.addObject("content", "/ledger/ledgerMessage");
 		//		modelAndView.setViewName("ledgerModify.jsp");
 		return modelAndView;
 	}
@@ -627,7 +627,7 @@ public class LedgerController {
 		modelAndView.addObject("cmd", "delete");
 		modelAndView.addObject("su", su);
 		modelAndView.addObject("stringDate", stringDate);
-		modelAndView.addObject("page", "/ledger/ledgerMessage");
+		modelAndView.addObject("content", "/ledger/ledgerMessage");
 
 		return modelAndView;
 	}

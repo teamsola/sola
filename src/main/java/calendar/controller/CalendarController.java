@@ -122,7 +122,7 @@ public class CalendarController {
 		modelAndView.addObject("ledgerList", ledgerList);	// 검색날짜에 맞는 가계부 정보 리스트
 		modelAndView.addObject("monthMap", monthMap);		// 해당월-날짜별 가계부 리스트 정보
 		modelAndView.addObject("dayList", dayList);			// 해당 월의 날짜 담은 리스트(yyyy-mm-dd)
-		modelAndView.addObject("page", "/calendar/calendar");
+		modelAndView.addObject("content", "/calendar/calendar");
 		
 //		modelAndView.setViewName("ledger_index.jsp");
 		return modelAndView;
