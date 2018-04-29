@@ -11,6 +11,9 @@
 		<!-- 가계부 -->
 		<typeAlias alias="proinfoDTO" type="proinfo.bean.ProinfoDTO"/>
 		<!-- 전문지식 -->
+		
+		<typeAlias alias="interiorDTO" type="tip.bean.InteriorDTO"/>
+		<typeAlias alias="recipeDTO" type="tip.bean.RecipeDTO"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/member-mapping.xml" />
@@ -21,5 +24,7 @@
 		<!-- 가계부 -->
 		<mapper resource="mybatis/proinfo-mapping.xml"/>
 		<!-- 전문지식 -->
+		
+		<mapper resource="mybatis/tip-mapping.xml"/>
 	</mappers>
 </configuration>
