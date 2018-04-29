@@ -79,7 +79,7 @@ public class DiaryController {
 		
 		modelAndView.addObject("list",list);
 		//System.out.println(list.get(0).getDiary_content());
-		modelAndView.addObject("content","diary/diaryMain.jsp");
+		modelAndView.addObject("content","/diary/diaryMain.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -98,7 +98,8 @@ public class DiaryController {
 		int su=diaryService.diaryDelete(Date.valueOf(diary_date));
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("diaryDelete.jsp");
+		modelAndView.addObject("content","/diary/diaryDelete.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 		
@@ -121,7 +122,8 @@ public class DiaryController {
 		
 		modelAndView.addObject("diary_seq",diary_seq);
 		modelAndView.addObject("diaryDTO",diaryDTO);
-		modelAndView.setViewName("diaryModifyForm.jsp");
+		modelAndView.addObject("content","/diary/diaryModifyForm.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -152,7 +154,9 @@ public class DiaryController {
 		int su=diaryService.diaryModify(diaryDTO);
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("diaryModify.jsp");
+		modelAndView.addObject("content","/diary/diaryModify.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
+		
 		
 		return modelAndView;
 	}
@@ -171,7 +175,9 @@ public class DiaryController {
 		ArrayList<DiaryDTO> list=diaryService.diaryList(id);
 		
 		modelAndView.addObject("list",list);
-		modelAndView.setViewName("diaryList.jsp");
+		modelAndView.addObject("content","/diary/diaryList.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
+		
 		
 		return modelAndView;
 	}
