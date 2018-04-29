@@ -53,6 +53,7 @@ public class MallController {
 		modelAndView.addObject("list2",list2);
 		
 		modelAndView.addObject("content","mallMain.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -66,6 +67,7 @@ public class MallController {
 		System.out.println("등록하기form 들어옴");
 		
 		modelAndView.addObject("content","mallInsertForm.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -111,7 +113,9 @@ public class MallController {
 		int su=mallService.mallInsert(mallDTO);
 		
 		modelAndView.addObject("su",su);
+		
 		modelAndView.addObject("content","mallInsert.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -152,6 +156,7 @@ public class MallController {
 		modelAndView.addObject("list2",list2);
 		
 		modelAndView.addObject("content","mallUpdateBefore.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -174,6 +179,7 @@ public class MallController {
 		modelAndView.addObject("mallDTO",mallDTO);
 		
 		modelAndView.addObject("content","mallUpdateForm.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -226,6 +232,7 @@ public class MallController {
 		modelAndView.addObject("su",su);
 		
 		modelAndView.addObject("content","mallUpdate.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -246,6 +253,7 @@ public class MallController {
 		modelAndView.addObject("su",su);
 		
 		modelAndView.addObject("content","mallDelete.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
