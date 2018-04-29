@@ -134,9 +134,12 @@
 		select count(*) from tip_interior
 	</select>
 	
+<<<<<<< HEAD
+=======
 	<update id="updateFilename" parameterType="String">
 		update tip_recipe
 		set interior_content=#{interior_content} || interior_seq.currval || '.txt'
 		where interior_seq=interior_seq.currval
 	</update>
+>>>>>>> 28c5543ffdc187a79939307895b1629c013c1acb
 </mapper>
