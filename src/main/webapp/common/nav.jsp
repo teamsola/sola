@@ -15,6 +15,7 @@
 			<li><a href="checkPwd.do">회원정보수정</a></li>
 			<li><a href="memberProfile.do">프로필변경</a></li>
 			<li><a href="memberWithdrawalForm.do">회원탈퇴</a></li>
+			<li><a href="diaryIndex.do">일기</a></li>
 		</ul>
 		<ul class="lv2-list" id="tipLv2" rel="tip">
 			<li class="nav-item"><a href="/sola/tip/place.do" class="nav-link">혼밥혼술</a></li>
