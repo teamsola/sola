@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.diaryMapper">
+
+	<select id="diaryView" parameterType="java.sql.Date" resultType="diary.bean.DiaryDTO">
+		select * from diary where diary_date=#{diary_date}
+	</select>
+	
+	 <select id="diaryList" parameterType="string" resultType="diary.bean.DiaryDTO">
+		select * from diary where id=#{id} order by diary_date desc
+	</select> 
+
+	<insert id="diaryWrite" parameterType="diary.bean.DiaryDTO" >
+		insert into diary values(diary_seq.nextval,#{id},#{diary_date},#{diary_content})
+	</insert>
+
+	<delete id="diaryDelete" parameterType="java.sql.Date">
+		delete from diary where diary_date=#{diary_date}
+	</delete>
+	
+	<update id="diaryModify" parameterType="diary.bean.DiaryDTO">
+		update diary set diary_content=#{diary_content} where diary_date=#{diary_date}
+	</update>
+</mapper>

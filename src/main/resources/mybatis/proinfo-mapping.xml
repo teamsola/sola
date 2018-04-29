@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.proinfoMapper">
+
+	<!-- 전문지식 입력 -->
+	<insert id="insertProinfo" parameterType="proinfoDTO">
+		insert into proinfo values 
+		(seq_proinfo.nextval, #{category}, #{subject}, #{contents}, #{imgFile})
+	</insert>
+	
+	
+	<!-- 전문지식 보기 -->
+	<select id="viewProinfo" resultType="proinfoDTO">
+		 select * from proinfo where seq=#{seq}
+	</select>
+	
+	
+	
+	<!-- 전문지식 수정 -->
+	<update id="modifyProinfo" parameterType="proinfoDTO">
+		 update proinfo set category=#{category}, subject=#{subject}, 
+		 		contents=#{contents}, imgfile=#{imgFile} where seq=#{seq}
+	</update>
+	
+	<!-- 전문지식 삭제 -->
+	<delete id="deleteProinfo">
+		delete from proinfo where seq=#{seq}
+	</delete>
+	
+	<!-- 전문지식 검색 (검색창) -->
+	<select id="searchProinfo" parameterType="java.util.Map" resultType="proinfoDTO">
+         <![CDATA[
+            select * from(select rownum rn, tt.* from
+            (select * from proinfo WHERE ${searchOp} like #{keyword} order by seq) tt)
+            where rn>=#{startNum} and rn<=#{endNum}
+         ]]>
+   </select>
+   
+   <!-- 전문지식 검색 (카테고리) -->
+   <select id="search_cProinfo" parameterType="java.util.Map" resultType="proinfoDTO">
+      select * from proinfo where category like #{keyword_c}
+   </select>
+   
+   
+   <!-- 전문지식 갯수 -->
+   <select id="getTotalSProinfo" parameterType="java.util.Map" resultType="int">
+      select count(*) from proinfo where ${searchOp} like #{keyword}
+   </select>
+	
+	
+</mapper>

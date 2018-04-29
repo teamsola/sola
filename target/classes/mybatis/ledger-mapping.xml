@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.ledgerMapper">
+
+	<!-- 가계부 등록 -->
+	<insert id="insertLedger" parameterType="ledgerDTO">
+		insert into ledger values 
+		(seq_ledger.nextval, #{id}, #{inOut}, #{content}, #{contentPlus}, 
+			#{income}, #{spand}, #{balance}, #{category}, #{logdate})
+	</insert>
+	
+	<!-- 해당월(1-막일) 조회 -->
+	<select id="monthListLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+		 <![CDATA[select * from ledger
+			where logdate >= #{startDate} and logdate <= #{endDate} and id=#{id} ]]> 
+	</select>
+	
+	<!-- 해당일 조회(달력 클릭) -->
+	<select id="todayListLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+		 select * from ledger where logdate = #{sqlDate} and id=#{id}
+	</select>
+	
+	<!-- 해당일 전날(View 이전 클릭) -->
+	<select id="beforeListLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+		<!-- <![CDATA[SELECT * FROM ledger WHERE #{stringDate} > (NOW() - INTERVAL 1 DAY)]]> -->
+		select * from ledger where logdate = #{sqlDate}-1 and id=#{id}
+	</select>
+	
+	<!-- 해당일 다음날(View 다음 클릭) -->
+	<select id="afterListLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+		 select * from ledger where logdate = #{sqlDate}+1 and id=#{id}
+	</select>
+	
+	<!-- 가계부 조회(단일) -->
+	<select id="viewLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+		 select * from ledger where seq = #{seq} and id=#{id}	
+	</select>
+	
+	<!-- 가계부 통계-기간별 조회 -->
+	<select id="searchListLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+		 <![CDATA[select * from ledger
+			where logdate >= #{startDate} and logdate <= #{endDate} and id=#{id} ]]> 
+	</select>
+	
+	<!-- 가계부 조회(viewAll) -->
+	<select id="viewAllLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+	 <![CDATA[select * from ledger
+			where logdate >= #{startDate} and logdate <= #{endDate} and id=#{id} ORDER BY logdate DESC ]]> 
+	</select>
+	
+	<!-- 가계부 수정 -->
+	<update id="modifyLedger" parameterType="ledgerDTO">
+		 update ledger set inOut=#{inOut}, content=#{content}, contentPlus=#{contentPlus}, 
+			income=#{income}, spand=#{spand}, balance=#{balance}, category=#{category}, 
+			logdate=#{logdate} where seq=#{seq} and id=#{id}
+	</update>
+	
+	<!-- 가계부 삭제 -->
+	<delete id="DeleteLedger" parameterType="java.util.Map">
+		delete from ledger where seq=#{seq}  and id=#{id}
+	</delete>
+	
+</mapper>

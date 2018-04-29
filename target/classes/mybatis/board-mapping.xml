@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.boardMapper">
+
+	<!-- resultType:sql에서 전달받는 데이터의 자료형, return에 해당 -->
+	<select id="boardView" parameterType="int" resultType="board.bean.BoardDTO">
+		select * from mallboard where board_seq=#{board_seq}
+	</select>
+
+	<select id="boardList" parameterType="java.util.Map" resultType="board.bean.BoardDTO">
+		<![CDATA[select board_seq, category, id, nickname, subject, content, to_char(logtime, 'YYYY,MM,DD')as logtime, hit from
+				(select rownum rn, tt.* from
+				(select * from mallboard order by board_seq desc)tt)
+				where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+
+	<!-- parameterType:sql에 전달하는 데이터의 자료형, () 안의 매개변수에 해당 -->
+	<insert id="boardWrite" parameterType="board.bean.BoardDTO">
+		insert into mallboard values(board_seq.nextval, #{category}, #{id},#{nickname},#{subject},#{content}, sysdate, 0)
+	</insert>
+
+	<delete id="boardDelete" parameterType="int">
+		delete from mallboard where board_seq=#{board_seq}
+	</delete>
+	
+	<select id="getTotalA" resultType="int">
+		select count(*) from mallboard
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		update mallboard set hit=hit+1 where board_seq=#{board_seq}
+	</update>
+	
+	<update id="boardModify" parameterType="board.bean.BoardDTO">
+		update mallboard set subject=#{subject}, category=#{category}, content=#{content} where board_seq=#{board_seq}
+	</update>
+
+</mapper>

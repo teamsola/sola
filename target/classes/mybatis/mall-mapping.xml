@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.mallMapper">
+
+	<insert id="mallInsert" parameterType="mall.bean.MallDTO" >
+		insert into mall values(mall_seq.nextval,#{id},#{subject},#{img},#{mallurl})
+	</insert>
+	
+	<select id="mallView" parameterType="int" resultType="mall.bean.MallDTO">
+		select * from mall where mall_seq=#{mall_seq}
+	</select>
+	
+	<update id="mallUpdate" parameterType="mall.bean.MallDTO">
+		update mall set subject=#{subject}, img=#{img}, mallurl=#{mallurl} where mall_seq=#{mall_seq}
+	</update>
+	
+	<select id="mallList" resultType="mall.bean.MallDTO">
+		select * from mall
+	</select> 
+
+	<delete id="mallDelete" parameterType="int">
+		delete from mall where mall_seq=#{mall_seq}
+	</delete>
+	
+	
+
+</mapper>

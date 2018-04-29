@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
+	<context:component-scan base-package="member.controller"></context:component-scan>
+	<context:component-scan base-package="email.controller"></context:component-scan>
+	<context:component-scan base-package="tip.controller" />
+	<context:component-scan base-package="diary.controller" />
+	<context:component-scan base-package="mall.controller" />
+	<context:component-scan base-package="board.controller" />
+	<context:component-scan base-package="ledger.controller" />
+	<context:component-scan base-package="calendar.controller" />
+	<context:component-scan base-package="textedit.controller" />
+	<context:component-scan base-package="proinfo.controller" />
+
+	<mvc:annotation-driven />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/script/**" location="/script/" />
+	<!--mall(new) -->
+	<mvc:resources location="/storage/" mapping="/storage/**"></mvc:resources>
+	<!--mall(old) -->
+	<mvc:resources location="/photoUpload/" mapping="/photoUpload/**"></mvc:resources>
+	<mvc:resources mapping="/image/**" location="/image/" />
+	<mvc:resources mapping="/proinfoimg/**" location="/proinfoimg/" />
+
+<!-- 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/view/"/> <property name="suffix" 
+		value=".jsp"/> </bean> -->
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="20971520" /> <!-- 5Mb를 의미한다. / -1값을 주면 파일 제한을 두지 않겠다는 의미이다. -->
+		<property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+</beans>

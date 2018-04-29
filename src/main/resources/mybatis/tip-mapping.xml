@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.tipMapper">
+	<insert id="placeAdd" parameterType="placeDTO">
+		insert into tip_place values(
+			place_seq.nextval,
+			#{id}, #{name}, #{place_lat},#{place_lng},
+			#{place_name},#{place_addressname},#{place_roadaddressname},
+			#{place_phone},#{place_type},#{place_detail},
+			sysdate)
+	</insert>
+	
+	<select id="placeView" parameterType="java.util.Map" resultType="placeDTO">
+	<![CDATA[
+		select * from 
+		(select rownum rn, tt.* from
+		(select * from tip_place where place_type=#{viewtype} order by place_seq desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	
+	<select id="getPlaceTotalNum" parameterType="int" resultType="int">
+		select count(*) from tip_place
+		where place_type=#{viewtype}
+	</select>
+	
+	<select id="getExpressTotalNum" parameterType="String" resultType="int">
+		select count(*) from tip_express
+		WHERE express_region_depth_name LIKE #{keyword}
+	</select>
+	
+	<insert id="expressAdd" parameterType="expressDTO">
+		insert into tip_express values(
+			express_seq.nextval,
+			#{id}, #{name}, #{express_lat},#{express_lng},
+			#{express_name},#{epxress_addressname},#{express_roadaddressname},
+			#{express_region_depth_name}, #{express_addressdetail},#{express_detail},
+			sysdate)
+	</insert>
+	
+	<select id="expressView" parameterType="java.util.Map" resultType="expressDTO">
+	<![CDATA[
+		select * from 
+		(select rownum rn, tt.* from
+		(select * from tip_express WHERE express_region_depth_name LIKE #{keyword}
+		order by express_seq desc) tt)
+		where rn>=TO_NUMBER(#{startNum}) and rn<=TO_NUMBER(#{endNum})
+		]]>
+	</select>
+	
+</mapper>
