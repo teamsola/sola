@@ -37,7 +37,7 @@ body{
 	width:200px;
 }
 
-#wrapper{
+#wrapper2{
 	width:100%;
 	height:100%;
 }
@@ -135,7 +135,7 @@ outline:none;
 </head>
 <body>
 
-<div id="wrapper">
+<div id="wrapper2">
 	
 	<div id="aa">관리자모드-수정/삭제관리</div>
 	<hr id="line1">
