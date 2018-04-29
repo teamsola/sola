@@ -92,7 +92,7 @@ body{
 	<div id="aa">목록더보기</div>
 	<hr id="line1">
 
-<div id="wrapper">
+<div id="wrapper2">
 	<table>
 		<tr>
 			<c:forEach var="mallDTO" items="${list2 }" begin="0" end="4" step="1">

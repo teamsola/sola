@@ -60,7 +60,7 @@ tr{
 	height:80%;
 }
 	
-#wrapper{
+#wrapper2{
 	background-color:#ffffff;
 	width:100%;
 	height:600px;
@@ -127,7 +127,7 @@ tr{
 	
 	
 	
-<div id="wrapper">
+<div id="wrapper2">
 	
 	
 	<!-- 중고 게시판 -->

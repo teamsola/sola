@@ -37,7 +37,7 @@ public class BoardController {
 		System.out.println("--------------");
 		System.out.println("게시판 글쓰기 들어옴");
 		
-		modelAndView.addObject("content","mallBoardWriteForm.jsp");
+		modelAndView.addObject("content","/mall/mallBoardWriteForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		 
 		return modelAndView;
@@ -74,7 +74,7 @@ public class BoardController {
 	    modelAndView.addObject("totalA",totalA);
 	    modelAndView.addObject("pg",pg);
 		
-	    modelAndView.addObject("content","mallBoardList.jsp");
+	    modelAndView.addObject("content","/mall/mallBoardList.jsp");
 	    modelAndView.setViewName("/mainFrame.jsp");
 	    
 		return modelAndView;
@@ -96,7 +96,7 @@ public class BoardController {
 		modelAndView.addObject("board_seq",board_seq);
 		modelAndView.addObject("boardDTO",boardDTO);
 		
-		modelAndView.addObject("content","mallBoardView.jsp");
+		modelAndView.addObject("content","/mall/mallBoardView.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -117,7 +117,7 @@ public class BoardController {
 		
 		modelAndView.addObject("su",su);
 		
-		modelAndView.addObject("content","mallBoardDelete.jsp");
+		modelAndView.addObject("content","/mall/mallBoardDelete.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -143,7 +143,7 @@ public class BoardController {
 		modelAndView.addObject("board_seq",board_seq);
 		modelAndView.addObject("pg",pg);
 		
-		modelAndView.addObject("content","mallBoardModifyForm.jsp");
+		modelAndView.addObject("content","/mall/mallBoardModifyForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
@@ -191,7 +191,7 @@ public class BoardController {
 		
 		modelAndView.addObject("su",su);	
 		
-		modelAndView.addObject("content","mall/mallBoardModify.jsp");
+		modelAndView.addObject("content","/mall/mallBoardModify.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;

@@ -16,6 +16,7 @@
 			<li><a href="memberProfile.do">프로필변경</a></li>
 			<li><a href="memberWithdrawalForm.do">회원탈퇴</a></li>
 			<li><a href="diaryIndex.do">일기</a></li>
+			<li><a href="mallIndex.do">쇼핑몰</a></li>
 			<li><a href="ledgerMain.do">가계부</a></li>
 		</ul>
 		<ul class="lv2-list" id="tipLv2" rel="tip">
