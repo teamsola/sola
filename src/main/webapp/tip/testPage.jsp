@@ -4,15 +4,17 @@ pageEncoding="UTF-8"%>
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>ERROR</title>
+	<title>Insert_title_here</title>
+	<script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
-			var msg = '${msg}';
-			var returnUrl = '${url}';
-			alert(msg);
-			document.location.href= returnUrl;
+		$(function(){
+			$('#test').html('${content}');
+		});
 	</script>
 	</head>
 	<body>
+		<div id="test">
 		
+		</div>
 	</body>
 </html>

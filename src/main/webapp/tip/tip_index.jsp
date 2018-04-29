@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 	<meta charset="UTF-8">
 	<title>SOLA > 팁</title>
 	<script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../css/tip.css?ver=3">
+	<link rel="stylesheet" type="text/css" href="../css/tip.css?ver=4">
 	<script type="text/javascript">
 		
 	</script>
@@ -89,12 +89,6 @@ pageEncoding="UTF-8"%>
 		<div class="frame">
 		  <div class="container">
 		    <div class="nav">
-		      <ul class="nav-list">
-		        <li class="nav-item"><a href="/sola/tip/place.do" class="nav-link">혼밥혼술</a></li>
-		        <li class="nav-item"><a href="/sola/tip/recipe.do?cmd=" class="nav-link">레시피</a></li>
-		        <li class="nav-item"><a href="/sola/tip/interior.do?cmd=" class="nav-link">인테리어</a></li>
-		        <li class="nav-item"><a href="/sola/tip/express.do" class="nav-link">무인택배</a></li>
-		      </ul>
 		    </div>
 		    <!-- //nav -->
 		    <div class="content">

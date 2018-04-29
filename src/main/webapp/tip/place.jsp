@@ -4,9 +4,10 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset=UTF-8">
+	<meta charset="UTF-8">
 	<title>SOLA > 혼밥&혼술</title>
 	<style type="text/css">
+		#place_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background-image: url('../img/qa.jpg'); background-size:cover; background-position:center; background-repeat: no-repeat;}
 		#place_main_left img, #place_main_right img{
 			margin:37px 20px 0 20px;
 			max-width: 400px;
@@ -14,12 +15,13 @@ pageEncoding="UTF-8"%>
 		.place_main{
 			margin:10px;
 			background-color: #6a6763;
-			float: left;
-			width: 45%;
+			width: 47%;
 			position:relative;
 			height: 400px;
 			text-align: center;
 		}
+		#place_main_left{float: left;}
+		#place_main_right{float: right;}
 		.place_main .intro_title_left, .place_main .intro_title_right{
 			display:inline-block;
 			margin: 0 auto;
@@ -61,7 +63,9 @@ pageEncoding="UTF-8"%>
 	</script>
 	</head>
 	<body>
-	<!-- <div style="font-size:30px;font-weight: bold;">혼밥 & 혼술</div> -->
+	<div id="place_title">
+				<span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">TIP > 혼밥혼술 </span>
+			</div>
 	<c:set var="cmd" value="${ cmd }"/>
 	
 	<c:if test="${ cmd == null}">
