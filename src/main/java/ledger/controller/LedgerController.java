@@ -41,7 +41,7 @@ public class LedgerController {
 		//		===================== 세션의 id 저장 (수정 해야됨) ===========================
 		session = request.getSession();
 
-		session.setAttribute("memId", "aaa");
+		/*session.setAttribute("memId", "aaa");*/
 		//		======================================================================
 
 		ModelAndView modelAndView = new ModelAndView("/WEB-INF/ledger_index.jsp");
