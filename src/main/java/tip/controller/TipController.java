@@ -48,7 +48,7 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
 	
  
  
-    @RequestMapping(value = "/tip/insertBoard.do")
+    @RequestMapping(value = "insertBoard.do")
     public ModelAndView insertBoard(HttpServletRequest request, MultipartFile interior_mainimage) {
         System.out.println("저장할 내용 : " + request.getParameter("editor"));
         
@@ -112,7 +112,7 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
     }
  
     // 다중파일업로드
-    @RequestMapping(value = "/file_uploader_html5.do",
+    @RequestMapping(value = "/file_uploader_html.do",
                   method = RequestMethod.POST)
     @ResponseBody
     public String multiplePhotoUpload(HttpServletRequest request) {
