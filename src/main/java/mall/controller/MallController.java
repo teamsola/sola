@@ -30,7 +30,7 @@ public class MallController {
 	@Autowired
 	private MallService mallService;
 	
-	@RequestMapping(value="/mall/mallIndex.do")
+	@RequestMapping(value="mallIndex.do")
 	public ModelAndView mallIndex(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -52,12 +52,12 @@ public class MallController {
 		
 		modelAndView.addObject("list2",list2);
 		
-		modelAndView.setViewName("mallMain.jsp");
+		modelAndView.addObject("content","mallMain.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mall/mallInsertForm.do")
+	@RequestMapping(value="mallInsertForm.do")
 	public ModelAndView mallInsertForm(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -65,12 +65,12 @@ public class MallController {
 		System.out.println("--------------");
 		System.out.println("등록하기form 들어옴");
 		
-		modelAndView.setViewName("mallInsertForm.jsp");
+		modelAndView.addObject("content","mallInsertForm.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mall/mallInsert.do")
+	@RequestMapping(value="mallInsert.do")
 	public ModelAndView mallInsert(HttpServletRequest request, MultipartFile img) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -111,13 +111,13 @@ public class MallController {
 		int su=mallService.mallInsert(mallDTO);
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("mallInsert.jsp");
+		modelAndView.addObject("content","mallInsert.jsp");
 		
 		return modelAndView;
 	}
 	
 	
-	@RequestMapping(value="/mall/mallDetail.do")
+	@RequestMapping(value="mallDetail.do")
 	public ModelAndView mallDetail(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -131,12 +131,13 @@ public class MallController {
 		ArrayList<MallDTO> list2=mallService.mallList();
 		
 		modelAndView.addObject("list2",list2);
-		modelAndView.setViewName("mallDetail.jsp");
+		
+		modelAndView.addObject("content","mallDetail.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mall/mallUpdateBefore.do")
+	@RequestMapping(value="mallUpdateBefore.do")
 	public ModelAndView mallUpdateBefore(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -150,13 +151,13 @@ public class MallController {
 		
 		modelAndView.addObject("list2",list2);
 		
-		modelAndView.setViewName("mallUpdateBefore.jsp");
+		modelAndView.addObject("content","mallUpdateBefore.jsp");
 		
 		return modelAndView;
 	}
 	
 	
-	@RequestMapping(value="/mall/mallUpdateForm.do")
+	@RequestMapping(value="mallUpdateForm.do")
 	public ModelAndView mallUpdateForm(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -171,14 +172,15 @@ public class MallController {
 		
 		modelAndView.addObject("mall_seq",mall_seq);
 		modelAndView.addObject("mallDTO",mallDTO);
-		modelAndView.setViewName("mallUpdateForm.jsp");
+		
+		modelAndView.addObject("content","mallUpdateForm.jsp");
 		
 		return modelAndView;
 	}
 	
 	
 	
-	@RequestMapping(value="/mall/mallUpdate.do")
+	@RequestMapping(value="mallUpdate.do")
 	public ModelAndView mallUpdate(HttpServletRequest request, MultipartFile img) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -222,12 +224,13 @@ public class MallController {
 		
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("mallUpdate.jsp");
+		
+		modelAndView.addObject("content","mallUpdate.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mall/mallDelete.do")
+	@RequestMapping(value="mallDelete.do")
 	public ModelAndView mallDelete(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -241,7 +244,8 @@ public class MallController {
 		int su=mallService.mallDelete(mall_seq);
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("mallDelete.jsp");
+		
+		modelAndView.addObject("content","mallDelete.jsp");
 		
 		return modelAndView;
 	}

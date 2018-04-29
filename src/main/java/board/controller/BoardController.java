@@ -29,7 +29,7 @@ public class BoardController {
 	private BoardService boardService;
 	
 	
-	@RequestMapping(value="/mall/mallBoardWriteForm.do")
+	@RequestMapping(value="mallBoardWriteForm.do")
 	public ModelAndView boarWriteForm(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -37,12 +37,14 @@ public class BoardController {
 		System.out.println("--------------");
 		System.out.println("게시판 글쓰기 들어옴");
 		
-		modelAndView.setViewName("mallBoardWriteForm.jsp");
+		modelAndView.addObject("content","mallBoardWriteForm.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
+		 
 		return modelAndView;
 	}
 	
 	
-	@RequestMapping(value="/mall/mallBoardList.do")
+	@RequestMapping(value="mallBoardList.do")
 	public ModelAndView boardList(HttpServletRequest request) {
 	
 		ModelAndView modelAndView=new ModelAndView();
@@ -72,13 +74,14 @@ public class BoardController {
 	    modelAndView.addObject("totalA",totalA);
 	    modelAndView.addObject("pg",pg);
 		
-	    modelAndView.setViewName("mallBoardList.jsp");
+	    modelAndView.addObject("content","mallBoardList.jsp");
+	    modelAndView.setViewName("/mainFrame.jsp");
 	    
 		return modelAndView;
 	}
 	
 	
-	@RequestMapping(value="/mall/mallBoardView.do")
+	@RequestMapping(value="mallBoardView.do")
 	public ModelAndView boarView(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -93,12 +96,13 @@ public class BoardController {
 		modelAndView.addObject("board_seq",board_seq);
 		modelAndView.addObject("boardDTO",boardDTO);
 		
-		modelAndView.setViewName("mallBoardView.jsp");
+		modelAndView.addObject("content","mallBoardView.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mall/mallBoardDelete.do")
+	@RequestMapping(value="mallBoardDelete.do")
 	public ModelAndView boardDelete(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -113,12 +117,13 @@ public class BoardController {
 		
 		modelAndView.addObject("su",su);
 		
-		modelAndView.setViewName("mallBoardDelete.jsp");
+		modelAndView.addObject("content","mallBoardDelete.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mall/mallBoardModifyForm.do")
+	@RequestMapping(value="mallBoardModifyForm.do")
 	public ModelAndView boardModifyForm(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -138,7 +143,8 @@ public class BoardController {
 		modelAndView.addObject("board_seq",board_seq);
 		modelAndView.addObject("pg",pg);
 		
-		modelAndView.setViewName("mallBoardModifyForm.jsp");
+		modelAndView.addObject("content","mallBoardModifyForm.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -185,7 +191,8 @@ public class BoardController {
 		
 		modelAndView.addObject("su",su);	
 		
-		modelAndView.setViewName("mall/mallBoardModify.jsp");
+		modelAndView.addObject("content","mall/mallBoardModify.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -235,10 +242,12 @@ public class BoardController {
 		boardDTO.setContent(editor);
 
 		int su=boardService.boardWrite(boardDTO);
+		
 		modelAndView.addObject("su",su);
-	
-		modelAndView.setViewName("mall/mallBoardWrite.jsp");
-       
+		
+		modelAndView.addObject("content","/mall/mallBoardWrite.jsp");
+        modelAndView.setViewName("/mainFrame.jsp");
+        
     	return modelAndView;
     }
  
