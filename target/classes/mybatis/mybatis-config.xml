@@ -14,7 +14,6 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/member-mapping.xml" />
-		<mapper resource="mybatis/tip-mapping.xml"/>
 		<mapper resource="mybatis/diary-mapping.xml"/>
         <mapper resource="mybatis/mall-mapping.xml"/>
         <mapper resource="mybatis/board-mapping.xml"/>
