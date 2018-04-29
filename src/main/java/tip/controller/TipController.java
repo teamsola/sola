@@ -37,18 +37,15 @@ public class TipController {
 	private ExpressDTO expressDTO;
 	private RecipeDTO recipeDTO;
 	private InteriorDTO interiorDTO;
-	public static final String tip_realPath = "C:\\Users\\서혜진\\Desktop\\JAVASW_DVLP\\Spring\\workspace\\sola\\src\\main\\webapp\\storage";
 	
 	@Autowired
 	private TipService tipService;
 	
 	//=================================================================================================
-public static final String tip_filePath = "C:\\Users\\서혜진\\Desktop\\JAVASW_DVLP\\Spring\\workspace\\sola\\src\\main\\webapp\\resources\\photoUpload\\";
-public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW_DVLP\\Spring\\workspace\\sola\\src\\main\\webapp\\interior_board";
 	
  
  
-    @RequestMapping(value = "insertBoard.do")
+    @RequestMapping(value = "/tip/insertBoard.do")
     public ModelAndView insertBoard(HttpServletRequest request, MultipartFile interior_mainimage) {
         System.out.println("저장할 내용 : " + request.getParameter("editor"));
         
@@ -64,7 +61,7 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
         if(request.getParameter("roomsize").length() > 0) roomsize = Integer.parseInt(request.getParameter("roomsize"));
         String img = "null";
         if(request.getParameter("interior_title") != null) interior_title = request.getParameter("interior_title");
-        String fileName = getCurrentDayTime()+"_"+id+"_";
+        String fileName = "tip_"+getCurrentDayTime()+"_"+id+"_";
         interiorDTO = new InteriorDTO();
         interiorDTO.setInterior_title(interior_title);
         interiorDTO.setRoomsize(roomsize);
@@ -74,9 +71,9 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
         interiorDTO.setInterior_mainimage(img);
         interiorDTO.setInterior_content(fileName);
         
-        int result = tipService.interiorAdd(interiorDTO);
         
-        tipService.updateFilename(fileName);
+        
+        String interiorPath = request.getSession().getServletContext().getRealPath("/interior_board");
         try {
 			BufferedWriter fw = new BufferedWriter(new FileWriter(interiorPath+"\\"+fileName, true));
 			fw.write(editor);
@@ -86,11 +83,12 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
 			e.printStackTrace();
 		}
         if(!interior_mainimage.isEmpty()) {
+        	String tip_realPath = request.getSession().getServletContext().getRealPath("/storage");
 			String originalFilename = interior_mainimage.getOriginalFilename(); // fileName.jpg
 		    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
 		    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
 		     
-		    img = onlyFileName + "_" + getCurrentDayTime() + extension;  // fileName_20150721-14-07-50.jpg
+		    img = "tip_"+onlyFileName + "_" + getCurrentDayTime() + extension;  // fileName_20150721-14-07-50.jpg
 			File file = new File(tip_realPath, img);
 			try {
 				FileCopyUtils.copy(interior_mainimage.getInputStream(), new FileOutputStream(file));
@@ -98,7 +96,7 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
 				e.printStackTrace();
 			}
 		}
-      
+        int result = tipService.interiorAdd(interiorDTO);
         
         modelAndView = new ModelAndView("errorPage.jsp");
 		if(result == 0) {
@@ -122,6 +120,7 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
             // 파일명을 받는다 - 일반 원본파일명
             String oldName = request.getHeader("file-name");
             // 파일 기본경로 _ 상세경로
+            String tip_filePath = request.getSession().getServletContext().getRealPath("/resources_tip/photoUpload");
             System.out.println(tip_filePath);
             String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss")
                           .format(System.currentTimeMillis()))
@@ -140,7 +139,7 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
             sb = new StringBuffer();
             sb.append("&bNewLine=true")
               .append("&sFileName=").append(oldName)
-              .append("&sFileURL=").append("http://localhost:8080/sola/resources/photoUpload/")
+              .append("&sFileURL=").append("http://localhost:8080/sola/resources_tip/photoUpload/")
         .append(saveName);
         } catch (Exception e) {
             e.printStackTrace();
@@ -283,7 +282,6 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
 		int seq = Integer.parseInt(request.getParameter("s"));
 		String keyword = request.getParameter("k");
 		recipeDTO = tipService.recipeDetail(seq);
-		System.out.println(tip_realPath);
 		recipeDTO.setRecipe0(recipeDTO.getRecipe0().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe1(recipeDTO.getRecipe1().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe2(recipeDTO.getRecipe2().replaceAll("\r\n", "<br>"));
@@ -465,6 +463,7 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
 			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}else {
 			if(!request.getParameter("i").equals("null")) {
+				String tip_realPath = request.getSession().getServletContext().getRealPath("/storage");
 				File file = new File(tip_realPath, request.getParameter("i"));
 				if(file.exists()) {
 					if(file.delete()) {
@@ -497,8 +496,8 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
 			String originalFilename = foodimage.getOriginalFilename(); // fileName.jpg
 		    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
 		    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
-		     
-		    fileName = onlyFileName + "_" + getCurrentDayTime() + extension;  // fileName_20150721-14-07-50.jpg
+		    String tip_realPath = request.getSession().getServletContext().getRealPath("/storage");
+		    fileName = "tip_"+onlyFileName + "_" + getCurrentDayTime() + extension;  // fileName_20150721-14-07-50.jpg
 			File file = new File(tip_realPath, fileName);
 			try {
 				FileCopyUtils.copy(foodimage.getInputStream(), new FileOutputStream(file));
@@ -580,8 +579,8 @@ public static final String interiorPath = "C:\\Users\\서혜진\\Desktop\\JAVASW
 			String originalFilename = foodimage.getOriginalFilename(); // fileName.jpg
 		    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
 		    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
-		     
-		    fileName = onlyFileName + "_" + getCurrentDayTime() + extension;  // fileName_20150721-14-07-50.jpg
+		    String tip_realPath = request.getSession().getServletContext().getRealPath("/storage");
+		    fileName = "tip_"+onlyFileName + "_" + getCurrentDayTime() + extension;  // fileName_20150721-14-07-50.jpg
 			File file = new File(tip_realPath, fileName);
 			try {
 				FileCopyUtils.copy(foodimage.getInputStream(), new FileOutputStream(file));
