@@ -43,7 +43,7 @@ public class EmailController {
     	HttpSession session = request.getSession();
 //    	String email = request.getParameter("email1") + "@" + request.getParameter("email2");
     	String email = request.getParameter("email");
-    	ModelAndView modelAndView = new ModelAndView("member/authEmail");
+    	ModelAndView modelAndView = new ModelAndView("member/authEmail.jsp");
     	    	
     	int min = 100000;
     	int MAX = 999999;
