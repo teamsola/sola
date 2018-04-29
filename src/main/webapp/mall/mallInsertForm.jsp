@@ -35,7 +35,7 @@ body{
 	padding-top:100px;
 }
 
-#wrapper{
+#wrapper2{
 	width:100%;
 	height:100%;
 }
@@ -99,7 +99,7 @@ table{
 </style>
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper2">
 
 <div id="aa">쇼핑몰 정보등록</div>
 	<hr id="line1">
