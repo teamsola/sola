@@ -1,0 +1,259 @@
+#ledger_background {/* 뒷배경 (불투명) */
+	/* display: none;  */position: fixed; left: 0; top: 0;
+	height: 100%; width: 100%; background: black;
+	filter: alpha(opacity=60); opacity: 0.60;
+
+}
+
+.ledger_body {/* 메인 화면 */
+	position: fixed;
+	left: 45% !important;
+	top: 35% !important;
+	margin-left: -325px; 
+	margin-top: -200px; 
+	width: 35% ;
+	height: 80%; 
+	border-radius: 12px; 
+	background-color: white; 
+}
+
+.ledger_body .top {	/* 헤더 (검은 바탕) */
+	
+	background-color: black;
+	width: 100%;
+	height: 10%;
+	border-radius: 12px 12px 0px 0px;
+}
+
+.ledger_body .top .close {	/* 닫기 버튼 */
+	float: right;
+	cursor: pointer;
+	color: #ff8400;
+	font-size: 35px;
+	font-weight: bold;
+	padding-top: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+.ledger_body .top .before {	/* 이전 버튼 */
+	float: right;
+	cursor: pointer;
+	color: #ff8400;
+	font-size: 35px;
+	font-weight: bold;
+	padding-top: 0px;
+	padding-right: 0px;
+	margin-right: 10px;
+	
+}
+
+.ledger_body .top .subject {	/* title */
+	float: left;
+	margin-left: 10px;
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #ff8400;
+	padding-left: 20px;
+}
+
+.ledger_body .bottom {		/* 컨텐츠가 들어갈 곳(중간) */
+
+	width: 100%;
+	height: 87%;
+	vertical-align: middle;
+}
+
+.ledger_body .bottom .view_before{		/* 이전으로 갈 탭 */
+	width: 10%;
+	height: 100%;
+	float: left;
+	padding-left: 10px;
+	background-image: url('../ledgerimg/arrowleft_hover.png');
+	background-repeat: no-repeat;
+	background-position:conter center;
+	background-size:100% 100%;
+	
+}
+
+.ledger_body .bottom .view_center{		/* 중앙에 들어갈 내용 */
+/* border: 1px solid red; */
+	width: 78%;
+	height: 100%;
+	float: left;
+}
+
+.ledger_body .bottom .view_after{		/* 다음으로 갈 탭 */
+
+	width: 10%;
+	height: 100%;
+	float: right;
+	background-image: url('../ledgerimg/arrowright_hover.png');
+	background-repeat: no-repeat;
+	background-position:conter center;
+	background-size:100% 100%;
+}
+
+
+.ledger_body .bottom .view_center .info {	/* 해당 년도 */
+	width: 100%;
+	height: 8%;
+	padding: 15px 0px 0px 0px;
+	text-align: center;
+	font-size: 25px;
+}
+
+.ledger_body .bottom .view_center .contents {/* 컨텐츠에 적용 */
+	width: 100%;
+	height: 80%;
+	/* margin: 20px 50px 20px 50px; */
+	text-align: center;
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_top{	/* 날짜  */
+	width: 100%;
+	height: 5%;
+	margin: 10px 0px 15px 0px;
+}
+
+.ledger_body .bottom .view_center .contents .contents_top .title_income{	/* 수입 타이틀*/
+	width: 33%;
+	height: 100%;
+	float: left;
+	background-color: white; 
+	color: black;
+	/* font-weight: bold; */
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+.ledger_body .bottom .view_center .contents .contents_top .title_spand{	/* 지출 타이틀*/
+	width: 33%;
+	height: 100%;
+	float: left;
+	background-color: white; 
+	color: black;
+/* 	font-weight: bold; */
+	vertical-align: middle;
+	font-size: 18px;
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_top .title_sum{	/* 합계 타이틀*/
+	width: 34%;
+	height: 100%;
+	float: left;
+	background-color: white; 
+	color: black;
+/* 	font-weight: bold; */
+	vertical-align: middle;
+	font-size: 18px;
+}
+
+.ledger_body .bottom .view_center .contents .contents_center{	/* 월,수입,지출, 합계 등 총 데이터 */
+	width: 100%;
+	height: 90%;
+}
+
+.auto {overflow: auto;} 
+
+.ledger_body .bottom .view_center .contents .contents_center .totalSubTitle{	/* 월,수입,지출 */
+	width: 100%;
+	height: 9%;
+	cursor: pointer;
+	float: left;
+	background-color: #D8D8D8; 
+	margin: 1px 0px 1px 0px;
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .totalSubTitle:hover{	/* 마우스 hover 이벤트 */
+	background-color: #BDBDBD;
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .totalSubTitle .subTitle1{	/* 해당 일 */
+	width: 33%;
+	height: 100%;
+	float: left;
+	vertical-align: middle;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .totalSubTitle .subTitle2{	/* 수입 */
+	width: 33%;
+	height: 100%;
+	float: left;
+	vertical-align: middle;
+	font-size: 15px;
+	text-align: center;
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .totalSubTitle .subTitle3{	/* 지출 */
+	width: 34%;
+	height: 100%;
+	float: left;
+	vertical-align: middle;
+	font-size: 15px;
+	text-align: center;
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .contentLine{	/* 카테고리, 내용, 수입지출 */
+	width: 100%;
+	height: 10%;
+	cursor: pointer;
+	float: left;
+	background-color: #EAEAEA; 
+	/* margin: 1px 0px 1px 0px; */
+	
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .contentLine:hover{	/* 마우스 hover 이벤트 */
+	background-color: #BDBDBD;
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .contentLine .category{	/* 카테고리 */
+	width: 33%;
+	height: 99%;
+	float: left;
+	vertical-align: middle;
+	font-size: 15px;
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .contentLine .l_content{	/* 내용 */
+	width: 32%;
+	height: 98%;
+	float: left;
+	vertical-align: middle;
+	font-size: 15px;
+}
+
+.ledger_body .bottom .view_center .contents .contents_center .contentLine .inout{	/* 수입-지출 */
+	width: 34%;
+	height: 99%;
+	float: left;
+	vertical-align: middle;
+	font-size: 15px;
+}
+
+
+.income{
+	color:blue;
+}
+
+.spand{
+	color:red;
+}
+
+
+
+
+
+

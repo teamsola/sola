@@ -1,0 +1,213 @@
+#ledger_background {/* 뒷배경 (불투명) */
+	/* display: none;  */position: fixed; left: 0; top: 0;
+	height: 100%; width: 100%; background: black;
+	filter: alpha(opacity=60); opacity: 0.60;
+
+}
+
+.ledger_body {/* 메인 화면 */
+	position: fixed;
+	left: 50% !important;
+	top: 35% !important;
+	margin-left: -500px; 
+	margin-top: -280px; 
+	width: 60% ;
+	height: 90%; 
+	border-radius: 12px; 
+	background-color: white; 
+}
+
+.ledger_body .top {	/* 헤더 (검은 바탕) */
+	
+	background-color: black;
+	width: 100%;
+	height: 10%;
+	border-radius: 12px 12px 0px 0px;
+}
+
+.ledger_body .top .close {	/* 닫기 버튼 */
+	float: right;
+	cursor: pointer;
+	color: #ff8400;
+	font-size: 35px;
+	font-weight: bold;
+	padding-top: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+.ledger_body .top .before {	/* 이전 버튼 */
+	float: right;
+	cursor: pointer;
+	color: #ff8400;
+	font-size: 35px;
+	font-weight: bold;
+	padding-top: 0px;
+	padding-right: 0px;
+	margin-right: 10px;
+	
+}
+
+.ledger_body .top .subject {	/* title */
+	float: left;
+	margin-left: 10px;
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #ff8400;
+	padding-left: 20px;
+}
+
+.ledger_body .bottom {		/* 컨텐츠가 들어갈 곳(중간) */
+
+	width: 100%;
+	height: 90%;
+	vertical-align: middle;
+}
+
+.ledger_body .bottom .view_before{		/* 이전으로 갈 탭 */
+
+	width: 10%;
+	height: 100%;
+	float: left;
+	
+	background-image: url('../ledgerimg/arrowleft_hover.png');
+	background-repeat: no-repeat;
+	background-position:conter center;
+/* 	background-size:100% 100%; */
+
+}
+
+.ledger_body .bottom .view_center{		/* 중앙에 들어갈 내용 */
+
+	width: 78%;
+	height: 100%;
+	float: left;
+}
+
+.ledger_body .bottom .view_after{		/* 다음으로 갈 탭 */
+
+	width: 10%;
+	height: 100%;
+	float: right;
+	
+	background-image: url('../ledgerimg/arrowright_hover.png');
+	background-position:conter center;
+	background-repeat: no-repeat;
+}
+
+
+.ledger_body .bottom .view_center .info {	/* 해당 년 월 기입 */
+	width: 100%;
+	height: 10%;
+	margin-top: 10px;
+	margin-bottom: -30px;
+	padding: 10px 15px 10px 15px;
+	text-align: center;
+	font-size: 30px;
+}
+
+.ledger_body .bottom .view_center .contents {/* 컨텐츠에 적용 */
+	width: 100%;
+	height: 80%;
+	text-align: center;
+}
+.ledger_body .bottom .view_center .contents .title1{/* 항목 타이틀 */
+	width: 30%;
+	height: 90%;
+/* 	text-align: center; */
+	vertical-align: middle;
+	float: left;
+	background-color: #6C6C6C; 
+	color : white;
+	font-weight: bold;
+}
+
+.ledger_body .bottom .view_center .contents .title2{/* 금액 타이틀 */
+	width: 99%;
+	height: 90%;
+/* 	text-align: center; */
+	vertical-align: middle;
+	background-color: #6C6C6C;
+	color : white; 
+	font-weight: bold;
+}
+
+.ledger_body .bottom .view_center .contents .contents_left{/* 월 수입 */
+	width: 50%;
+	height: 90%;
+	text-align: center;
+	float: left;
+}
+
+.ledger_body .bottom .view_center .contents .contents_right{/* 월 지출 */
+	width: 49%;
+	height: 90%;
+	text-align: center;
+	float: left;
+		
+}
+
+.ledger_body .bottom .view_center .contents .contents_bottom {/* 수입-지출-합계 */
+	width: 100%;
+	height: 10%;
+	/* margin: 20px 50px 20px 50px; */
+	text-align: center;
+	vertical-align: middle;
+/* 	border: 1px solid black; */
+	float: left;
+}
+
+.ledger_body .bottom .view_center .contents .contents_bottom .total_month{/* 수입-지출-합계 */
+	
+	width: 99%;
+	height: 100%;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+/* 	border: 1px solid black; */
+}
+
+.ledger_body ul {	/* ul 속성 */
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.ledger_body ul li {	/* li 속성 */
+	text-align: left;
+	padding: 5px;
+	height: 30px;
+/* 	float: left; */
+}
+
+ .ledger_body ul li .text_subject {	/* 날짜와 항목 text에 적용 */
+	width: 30%;
+	height: 100%;
+	float: left; 
+	font-size: 18px;
+	vertical-align: middle;
+	margin-top: 3px;
+	font-weight: bold;
+	background-color: #EAEAEA; 
+}
+
+.ledger_body ul li .text_desc {	/* 날짜와 항목의 내용 */
+	
+	height: 100%;
+	margin-top: 3px;
+	width: 99%;
+	font-size: 18px;
+	background-color: #EAEAEA; 
+}
+
+.income_closing .income{
+	text-align: center;
+}
+
+.spand_closing .spand{
+	text-align: center;
+}
+
+
