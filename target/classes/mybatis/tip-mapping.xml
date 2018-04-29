@@ -50,4 +50,88 @@
 		]]>
 	</select>
 	
+	<select id="recipeView" parameterType="java.util.Map" resultType="recipeDTO">
+	<![CDATA[
+		select recipe_seq,name, foodimage, foodname,foodname_detail, cookingtime,difficulty,price,hit,logtime from 
+		(select rownum rn, tt.* from
+		(select * from tip_recipe order by recipe_seq desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	
+	<insert id="recipeAdd" parameterType="recipeDTO">
+		insert into tip_recipe values(
+			recipe_seq.nextval,
+			#{id}, #{name}, #{foodimage},#{foodname},#{foodname_detail},
+			#{cookingtime},#{difficulty}, #{jaeryo_necessary}, #{jaeryo_nonecessary},
+			#{recipe0}, #{recipe1}, #{recipe2}, #{recipe3}, #{recipe4},
+			#{recipe5}, #{recipe6}, #{recipe7}, #{recipe8}, #{recipe9},
+			#{price}, 0,
+			sysdate)
+	</insert>
+	
+	<select id="recipeViewSearched" parameterType="java.util.Map" resultType="recipeDTO">
+	<![CDATA[
+		select recipe_seq,name, foodimage, foodname,foodname_detail, cookingtime,difficulty,price,hit,logtime from 
+		(select rownum rn, tt.* from
+		(select * from tip_recipe WHERE foodname LIKE #{keyword} OR name LIKE #{keyword}
+		order by recipe_seq desc) tt)
+		where rn>=TO_NUMBER(#{startNum}) and rn<=TO_NUMBER(#{endNum})
+		]]>
+	</select>
+	
+	<select id="recipeDetail" parameterType="int" resultType="recipeDTO">
+		select * from tip_recipe
+		where recipe_seq=#{seq}
+	</select>
+	
+	<update id="updateRecipeHit" parameterType="int">
+		update tip_recipe
+		set hit = hit+1
+		where recipe_seq=#{seq}
+	</update>
+	
+	<select id="getRecipeTotalNum" resultType="int">
+		select count(*) from tip_recipe
+	</select>
+	
+	<update id="recipeModify" parameterType="recipeDTO">
+		update tip_recipe
+		set foodimage=#{foodimage}, foodname=#{foodname},
+		foodname_detail=#{foodname_detail},cookingtime=#{cookingtime},
+		difficulty=#{difficulty}, jaeryo_necessary=#{jaeryo_necessary},
+		jaeryo_nonecessary=#{jaeryo_nonecessary},recipe0=#{recipe0},
+		recipe1=#{recipe1}, recipe2=#{recipe2}, recipe3=#{recipe3},
+		recipe4=#{recipe4}, recipe5=#{recipe5}, recipe6=#{recipe6},
+		recipe7=#{recipe7}, recipe8=#{recipe8}, recipe9=#{recipe9},
+		price=#{price}
+		where recipe_seq=#{recipe_seq}
+	</update>
+	
+	<delete id="recipeDelete" parameterType="int">
+		delete tip_recipe
+		where recipe_seq=#{seq}
+	</delete>
+	
+	<insert id="interiorAdd" parameterType="interiorDTO">
+		insert into tip_interior values(
+			interior_seq.nextval,
+			#{id}, #{name}, #{price}, #{roomsize}, #{interior_title},
+			#{interior_mainimage}, #{interior_content},
+			0, '', sysdate)
+	</insert>
+	
+	<select id="interiorList" parameterType="java.util.Map" resultType="interiorDTO">
+	<![CDATA[
+		select * from 
+		(select rownum rn, tt.* from
+		(select * from tip_interior order by interior_seq desc) tt)
+		where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+	
+	<select id="getInteriorTotalNum" resultType="int">
+		select count(*) from tip_interior
+	</select>
+	
 </mapper>
