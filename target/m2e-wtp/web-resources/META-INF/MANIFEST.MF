@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: ZO
+=======
+Built-By: ￬ﾄﾜ￭ﾘﾜ￬ﾧﾄ
+>>>>>>> 703bd63955d026468bc8e0b662722d5fafc7f807
 Build-Jdk: 1.8.0_151
 Created-By: Maven Integration for Eclipse
 
