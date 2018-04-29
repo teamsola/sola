@@ -54,7 +54,8 @@ public class DiaryController {
 		System.out.println("su:"+su);
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("/diary/diaryWrite.jsp");
+		modelAndView.addObject("content","/diary/diaryWrite.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
@@ -78,7 +79,8 @@ public class DiaryController {
 		
 		modelAndView.addObject("list",list);
 		//System.out.println(list.get(0).getDiary_content());
-		modelAndView.setViewName("diaryMain.jsp");
+		modelAndView.addObject("content","diary/diaryMain.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
