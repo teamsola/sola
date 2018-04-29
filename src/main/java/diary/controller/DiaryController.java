@@ -20,7 +20,7 @@ public class DiaryController {
 	@Autowired
 	private DiaryService diaryService;
 	
-	@RequestMapping(value="/diary/diaryWrite.do")
+	@RequestMapping(value="diaryWrite.do")
 	public ModelAndView diaryWrite(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -60,7 +60,7 @@ public class DiaryController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/diary/diaryIndex.do")
+	@RequestMapping(value="diaryIndex.do")
 	public ModelAndView diaryIndex(HttpServletRequest request) {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -79,13 +79,13 @@ public class DiaryController {
 		
 		modelAndView.addObject("list",list);
 		//System.out.println(list.get(0).getDiary_content());
-		modelAndView.addObject("content","diary/diaryMain.jsp");
+		modelAndView.addObject("content","/diary/diaryMain.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/diary/diaryDelete.do")
+	@RequestMapping(value="diaryDelete.do")
 	public ModelAndView diaryDelete(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -98,14 +98,15 @@ public class DiaryController {
 		int su=diaryService.diaryDelete(Date.valueOf(diary_date));
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("diaryDelete.jsp");
+		modelAndView.addObject("content","/diary/diaryDelete.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 		
 	}
 	
 	//수정시 기존값 불러오기
-	@RequestMapping(value="/diary/diaryModifyForm.do")
+	@RequestMapping(value="diaryModifyForm.do")
 	public ModelAndView diaryModifyForm(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -121,13 +122,14 @@ public class DiaryController {
 		
 		modelAndView.addObject("diary_seq",diary_seq);
 		modelAndView.addObject("diaryDTO",diaryDTO);
-		modelAndView.setViewName("diaryModifyForm.jsp");
+		modelAndView.addObject("content","/diary/diaryModifyForm.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
 		
 		return modelAndView;
 	}
 	
 	//수정한내용 db에 저장
-	@RequestMapping(value="/diary/diaryModify.do")
+	@RequestMapping(value="diaryModify.do")
 	public ModelAndView diaryModify(HttpServletRequest request) {
 		
 		System.out.println("--------------");
@@ -152,13 +154,15 @@ public class DiaryController {
 		int su=diaryService.diaryModify(diaryDTO);
 		
 		modelAndView.addObject("su",su);
-		modelAndView.setViewName("diaryModify.jsp");
+		modelAndView.addObject("content","/diary/diaryModify.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
+		
 		
 		return modelAndView;
 	}
 	
 	//모아보기
-	@RequestMapping(value="/diary/diaryList.do")
+	@RequestMapping(value="diaryList.do")
 	public ModelAndView diaryList(HttpServletRequest request) {
 	
 		System.out.println("--------------");
@@ -171,7 +175,9 @@ public class DiaryController {
 		ArrayList<DiaryDTO> list=diaryService.diaryList(id);
 		
 		modelAndView.addObject("list",list);
-		modelAndView.setViewName("diaryList.jsp");
+		modelAndView.addObject("content","/diary/diaryList.jsp");
+		modelAndView.setViewName("/mainFrame.jsp");
+		
 		
 		return modelAndView;
 	}
