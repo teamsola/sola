@@ -136,9 +136,9 @@ public class MallController {
 		ArrayList<MallDTO> list2=mallService.mallList();
 		
 		modelAndView.addObject("list2",list2);
-		
 		modelAndView.addObject("content","/mall/mallDetail.jsp");
 		
+		modelAndView.setViewName("/mainFrame.jsp");
 		return modelAndView;
 	}
 	
