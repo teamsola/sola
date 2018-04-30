@@ -111,6 +111,13 @@ th{
 			location.href="mallBoardView.do?board_seq="+board_seq+"&pg="+pg;
 		//}
 	}
+	
+	function check(){
+
+		$('#boardsearch').submit();
+	}
+
+
 </script>
 </head>
 <body>
@@ -121,15 +128,7 @@ th{
 	
 	
 	<div id="top">
-	<!-- 카테고리 선택 -->
-	<div id="category">
-		<select name="category">
-			<option value="전체">전체보기</option>
-			<option value="판매">판매</option>
-			<option value="구매">구매</option>
-		</select>
-	</div>
-	
+
 	<!-- 글쓰기 버튼 -->
 	<input type="button" id="writebtn" value="글쓰기" onclick="location.href='mallBoardWriteForm.do'">
 	</div>
@@ -138,20 +137,30 @@ th{
 	
 	
 		<table>
+							
 				<tr>
 					<th width=70>번호</th>
-					<th width=70>카테고리</th>
+					<th width=70>분류</th>
 					<th width=200>제목</th>
 					<th width=100>작성자</th>
 					<th width=100>날짜</th>
 					<th width=70>조회</th>
 				</tr>
 				
+				
+				
+			<!-- 글이 하나도등록안되있을때	 -->
+			<c:choose>
+			<c:when test="${empty list }">
+			등록된 글이없습니다.
+			</c:when>
+
+			<c:otherwise>	
+			
+			
+			
+			
 			<c:forEach var="boardDTO" items="${list }">
-			
-			
-				<!-- 전체보기 시 -->
-				<%-- <c:if test="${boardDTO.category eq '전체보기' }"> --%>
 					<tr>
 						<td align=center>${boardDTO.board_seq }
 						<td align=center>${boardDTO.category }
@@ -166,7 +175,6 @@ th{
 					<tr>
 						<td colspan="6"><hr id="line">
 					</tr>
-				<%-- </c:if> --%>
 			</c:forEach>
 				
 				<!-- 페이징 -->
@@ -191,14 +199,31 @@ th{
 						<a id="paging" href="boardList.do?pg=${endPage+1}">다음</a>  <!-- endPage가 총 페이지수보다 작을때 [다음] 표시 -->
 					</c:if>
 				</tr>
+				</c:otherwise>
+			</c:choose>
 	
 		</table>
 	
 	
 	
-	<!-- 판매만 보기 -->
+		<!-- 카테고리,키워드 검색 -->
+		<form action="mallBoardList.do?pg=1" method="post" name="boardsearch" id="boardsearch">
+		
+		
+		<div id="search">
+			<select name="category" id="category">
+				<option value="분류" <c:if test="${category eq '분류' }">selected</c:if>>분류</option>
+				<option value="제목" <c:if test="${category eq '제목'}">selected</c:if>>제목</option>
+				<option value="작성자" <c:if test="${category eq '작성자' }">selected</c:if>>작성자</option>
+			</select>
+		</div>
+		
 	
-	<!-- 구매만 보기 -->
+		<input type="text" id="keyword" name="keyword">
+		<input type="button" id="keywordbtn" name="keywordbtn" value="찾기" onclick="check()">
+		</form>
+	
+	
 	
 	
 	<div id="btnset">

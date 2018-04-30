@@ -36,5 +36,13 @@
 	<update id="boardModify" parameterType="board.bean.BoardDTO">
 		update mallboard set subject=#{subject}, category=#{category}, content=#{content} where board_seq=#{board_seq}
 	</update>
+	
+	<select id="boardListSearch" parameterType="java.util.Map" resultType="board.bean.BoardDTO">
+		<![CDATA[select board_seq, category, id, nickname, subject, content, to_char(logtime, 'YYYY,MM,DD')as logtime, hit from
+				(select rownum rn, tt.* from
+				(select * from mallboard where category like '%${keyword}%' or subject like '%${keyword}%' or nickname like '%${keyword}%'
+				 order by board_seq desc)tt)
+				where rn>=to_number(#{startNum}) and rn<=to_number(#{endNum})]]>
+	</select>
 
 </mapper>

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -59,14 +60,14 @@ public class TipController {
         if(request.getParameter("roomsize").length() > 0) roomsize = Integer.parseInt(request.getParameter("roomsize"));
         String img = "null";
         if(request.getParameter("interior_title") != null) interior_title = request.getParameter("interior_title");
-        String fileName = "tip_"+getCurrentDayTime()+"_"+id+"_";
+        String fileName = "tip_"+getCurrentDayTime()+"_"+id+".txt";
         interiorDTO = new InteriorDTO();
         interiorDTO.setInterior_title(interior_title);
         interiorDTO.setRoomsize(roomsize);
         interiorDTO.setId(id);
         interiorDTO.setName(name);
         interiorDTO.setPrice(price);
-        interiorDTO.setInterior_mainimage(img);
+        
         interiorDTO.setInterior_content(fileName);
         
         
@@ -94,6 +95,9 @@ public class TipController {
 				e.printStackTrace();
 			}
 		}
+        interiorDTO.setInterior_mainimage(img);
+        displayInterior(interiorDTO);
+        
         int result = tipService.interiorAdd(interiorDTO);
         
         modelAndView = new ModelAndView("/tip/errorPage.jsp");
@@ -185,28 +189,27 @@ public class TipController {
 		
 		String keyword = request.getParameter("keyword");
 		ArrayList<RecipeDTO> list = new ArrayList<>();
+		int totalN = 0;
 		if(keyword == null) {
 			list = tipService.recipeView(pg);
-			for(RecipeDTO tmp : list) {
-				if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
-				else tmp.setLogtime(tmp.getLogtime().substring(0,10));
-			}
+			totalN = tipService.getRecipeTotalNum();
 		} else {
 			list = tipService.recipeViewSearched("%"+keyword+"%",pg);
-			for(RecipeDTO tmp : list) {
-				if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
-				else tmp.setLogtime(tmp.getLogtime().substring(0,10));
-			}
+			totalN = tipService.getRecipeSearchedTotalNum("%"+keyword+"%");
 			
+		}
+		for(RecipeDTO tmp : list) {
+			if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
+			else tmp.setLogtime(tmp.getLogtime().substring(0,10));
 		}
 		if(list.isEmpty()) {
 			listStatus = "empty";
 		}
+
+		modelAndView.addObject("listStatus", listStatus);
 		
-		int totalN = tipService.getRecipeTotalNum();
 		
 		modelAndView.addObject("totalN", totalN);
-		modelAndView.addObject("listStatus", listStatus);
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("content", "/tip/recipe.jsp");
 		modelAndView.addObject("pg", pg);
@@ -216,8 +219,24 @@ public class TipController {
 	@RequestMapping(value="interior.do")
 	public ModelAndView tip_interior(HttpServletRequest request) {
 		int pg = 1;
-		if(request.getParameter("pg") != null) pg = Integer.parseInt(request.getParameter("pg"));
-		ArrayList<InteriorDTO> list = tipService.interiorList(pg);
+		if(request.getParameter("pg") != null) {
+			pg = Integer.parseInt(request.getParameter("pg"));
+		}
+		String keyword = request.getParameter("keyword");
+		ArrayList<InteriorDTO> list = new ArrayList<InteriorDTO>();
+		int totalN = 0;
+		if(keyword == null) {
+			list = tipService.interiorList(pg);
+			totalN = tipService.getInteriorTotalNum();
+		}else {
+			list = tipService.interiorListSearched("%"+keyword+"%", pg);
+			totalN = tipService.getInteriorSearchedTotalNum("%"+keyword+"%");
+		}
+		
+		for(InteriorDTO tmp : list) {
+			tmp.setLike_num(tmp.getLike_user().split("|").length-1);
+		}
+		
 
 		Date date = new Date();
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -227,9 +246,13 @@ public class TipController {
 			if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
 			else tmp.setLogtime(tmp.getLogtime().substring(0,10));
 		}
-		
+		String listStatus = "exist";
 		modelAndView = new ModelAndView("/mainFrame.jsp");
-		int totalN = tipService.getInteriorTotalNum();
+		if(list.isEmpty()) {
+			listStatus = "empty";
+		}
+
+		modelAndView.addObject("listStatus", listStatus);
 		
 		modelAndView.addObject("content", "/tip/interior.jsp");
 		modelAndView.addObject("list", list);
@@ -607,6 +630,25 @@ public class TipController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value="interior_view.do")
+	public ModelAndView interior_view(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		
+		interiorDTO = tipService.interiorDetail(seq);
+		
+		interiorDTO.setLike_num(interiorDTO.getLike_user().split("|").length-1);
+		
+		modelAndView.addObject("interiorDTO", interiorDTO);
+		modelAndView.addObject("pg",pg);
+		modelAndView.addObject("seq", seq);
+		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("content", "/tip/interior_view.jsp");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="recipe_view.do")
 	public ModelAndView recipe_view(HttpServletRequest request) {
 		modelAndView = new ModelAndView("/mainFrame.jsp");
@@ -687,6 +729,18 @@ public class TipController {
 		System.out.println("레시피10 : " +recipeDTO.getRecipe9());
 		System.out.println("가격 : " + recipeDTO.getPrice());
 	}
+	
+	public void displayInterior(InteriorDTO interiorDTO) {
+		System.out.println("작성번호 : "+interiorDTO.getInterior_seq());
+		System.out.println("작성자 id : "+interiorDTO.getId());
+		System.out.println("작성자 이름 : "+interiorDTO.getName());
+		System.out.println("예상가격 : "+interiorDTO.getPrice());
+		System.out.println("방 규모 : "+interiorDTO.getRoomsize());
+		System.out.println("한줄소개 : "+interiorDTO.getInterior_title());
+		System.out.println("대표이미지 : "+interiorDTO.getInterior_mainimage());
+		System.out.println("인테리어 내용 : "+interiorDTO.getInterior_content());
+	}
+	
 	public String getCurrentDayTime(){
 	    long time = System.currentTimeMillis();
 	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");
