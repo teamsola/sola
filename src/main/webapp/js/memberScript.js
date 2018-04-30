@@ -51,10 +51,20 @@ function checkLogin()
 function checkId()
 {
 	var sId = document.joinForm.id.value;
+	var disable = /[^A-Za-z0-9_.]/;
+	alert(disable.test(sId));
 
-	if (sId == "")
+	if(sId == "")
 	{
 		alert("먼저 아이디를 입력하세요.");
+	}
+	else if(sId.length < 6)
+	{
+		alert("아이디는 6자 이상으로 입력해주세요.")
+	}
+	else if(disable.test(sId))
+	{
+		alert("사용하실 수 없는 아이디 입니다.")
 	}
 	else
 	{

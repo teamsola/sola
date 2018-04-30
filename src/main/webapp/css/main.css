@@ -80,7 +80,7 @@ nav>#lv1>li
 	position: relative;
 	list-style: none;
 	height: 100%;
-	width: 16.7%;
+	width: 16.6%;
 	text-align: center;
 }
 nav>#lv1>li>a
@@ -170,6 +170,7 @@ footer
 	float: left;
 	height: 100%;
 	width: 648px;
+	background-color: #ff8400;
 }
 #home1
 {
