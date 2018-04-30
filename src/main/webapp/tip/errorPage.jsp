@@ -4,13 +4,12 @@ pageEncoding="UTF-8"%>
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>ERROR</title>
-	<script type="text/javascript">
+		<script type="text/javascript">
 			var msg = '${msg}';
-			var returnUrl = '${url}';
+			var pagelnk='${content}';
 			alert(msg);
-			document.location.href= returnUrl;
-	</script>
+			location.href=pagelnk;
+		</script>
 	</head>
 	<body>
 		

@@ -31,11 +31,12 @@ public class MemberController
 	public ModelAndView login(HttpSession session, String id, String pwd)
 	{
 		String nickname = memberService.login(id, pwd);
-
+		System.out.println("닉네임: "+nickname);
 		if(nickname != null)
 		{
 			session.setAttribute("memId", id);
 			session.setAttribute("memName", nickname);
+			System.out.println("아이디: "+id);
 			if(id.equals("hong"))
 			{
 				session.setAttribute("home1", "/home/test3.jsp");
@@ -135,6 +136,24 @@ public class MemberController
 
 		return modelAndView;
 	}
+	
+    @RequestMapping(value="authEmail.do")
+    public ModelAndView authEmail(HttpServletRequest request)
+    {
+    	HttpSession session = request.getSession();
+    	String email = request.getParameter("email");
+    	ModelAndView modelAndView = new ModelAndView("/member/authEmail.jsp");
+    	    	
+    	int min = 100000;
+    	int MAX = 999999;
+    	int rand = (int)(Math.random()*(MAX-min+1)+min);
+    	session.setAttribute("rand", rand);
+    	modelAndView.addObject("email", email);
+
+    	System.out.println(session.getAttribute("rand"));
+    	
+    	return modelAndView;
+    }
 
 
 	@RequestMapping(value = "logout.do")

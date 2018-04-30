@@ -10,7 +10,6 @@
 
 	<!-- Uncomment and add your base-package here: <context:component-scan base-package="org.springframework.samples.service"/> -->
 	<context:component-scan base-package="member"></context:component-scan>
- 	<context:component-scan base-package="email"></context:component-scan>
  	<context:component-scan base-package="tip"/>
  	<context:component-scan base-package="diary"/>
     <context:component-scan base-package="mall"/>
@@ -45,13 +44,6 @@
 	<bean id="memberService" class="member.controller.MemberServiceImpl">
 		<property name="memberDAO" ref="memberDAO"></property>
 	</bean>
-
-	<!-- 이메일 보내기 -->
-	<bean id="emailService" class="email.controller.EmailService">
-		<property name="fromEmail" value="sola.manage"></property>
-		<property name="email_pwd" value="solamanage"></property>
-	</bean>
-	
 	
 	<!-- Transaction -->
 	<!-- 혹시나 자동으로 정보를 입력하다가 오류가 발생했을때 롤백을 하기위해서 설정한 것이다. 

@@ -6,11 +6,11 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert_title_here</title>
-	<link rel="stylesheet" type="text/css" href="../css/tip.css">
-	<script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 	#interior_content{float:left;width:1100px; overflow:hidden; height:auto; margin:0 auto;}
-	.interior_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background: url("../img/recipe.jpg") no-repeat center center;}
+	.interior_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background: url("/sola/img/recipe.jpg") no-repeat center center;}
 	#r_add_subtitle{float:left;width:100%;margin:5px 0;}
 	.subtitle_detail{height: auto;overflow: hidden; box-sizing: border-box;}
 	.subtitle_detail .left{float:left;width:600px;height:400px;padding: 15px;text-align: center;border:1px solid #BDBDBD;box-sizing: border-box;}
@@ -59,7 +59,7 @@ pageEncoding="UTF-8"%>
 						<div style="width:500px;height: 300px;margin: 30px auto;overflow:hidden;text-align: center;border-radius:10px;">
 							<c:choose>
 								<c:when test="${recipeDTO.foodimage == 'null'}">
-								<img class="image" src="../img/recipe_default.png" width="100%" height="auto">
+								<img class="image" src="/sola/img/recipe_default.png" width="100%" height="auto">
 								</c:when>
 								<c:otherwise>
 								<img class="image" src="../storage/${recipeDTO.foodimage }" width="100%" height="auto">
@@ -81,10 +81,10 @@ pageEncoding="UTF-8"%>
 					
 					<div style="float:left;width:1100px;margin-top:30px; text-align: center;padding:20px; height:70px; border:1px solid #ff8400; border-radius:10px; box-sizing: border-box;">
 						
-						<span style="border-right:2px solid #ff8400; color:gray;font-size:20px;padding:0 20px;"><img src="../img/timer.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;"> 조리시간 : 분</span>
-						<span style="border-right:2px solid #ff8400; color:gray;font-size:20px;padding:0 20px;"><img src="../img/diff.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;">난이도 : </span>
-						<span style="border-right:2px solid #ff8400;color:gray; font-size:20px;padding:0 20px;"><img src="../img/price.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;">&nbsp;예상가격 :원</span>
-						<span style="font-size:20px;color:gray;padding:0 20px;"><img src="../img/hit.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;"> 조회수 :</span>
+						<span style="border-right:2px solid #ff8400; color:gray;font-size:20px;padding:0 20px;"><img src="/sola/img/timer.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;"> 조리시간 : 분</span>
+						<span style="border-right:2px solid #ff8400; color:gray;font-size:20px;padding:0 20px;"><img src="/sola/img/diff.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;">난이도 : </span>
+						<span style="border-right:2px solid #ff8400;color:gray; font-size:20px;padding:0 20px;"><img src="/sola/img/price.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;">&nbsp;예상가격 :원</span>
+						<span style="font-size:20px;color:gray;padding:0 20px;"><img src="/sola/img/hit.png" width="25px" height="25px" style="position: relative; top:5px; box-sizing: border-box;"> 조회수 :</span>
 						
 					</div>
 					<!-- 아래부터 레시피 -->
