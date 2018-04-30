@@ -9,7 +9,7 @@
 	window.onload=function(){
 		<c:if test="${su>0}">
 		alert("수정되었습니다");
-		location.href="mall/mallBoardList.do?pg=1";
+		location.href="mallBoardList.do?pg=1";
 		</c:if>
 		<c:if test="${su<=0}">
 		alert("등록실패");

@@ -29,7 +29,7 @@
 	margin: auto; 
 	border: #6a6763 solid 1px;
 	border-collapse: collapse;
-}
+}ㅂ
 </style>
 </head>
 <body>
