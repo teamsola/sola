@@ -44,12 +44,12 @@
 					<table id=loginForm>
 						<tr>
 							<th>아이디</th>
-							<td><input type="text" name="id" style="width: 100px" /></td>
-							<td rowspan="2"><input type="submit" value="로그인" /></td>
+							<td><input type="text" name="id" style="width: 100px" tabindex="1"/></td>
+							<td rowspan="2"><input type="submit" value="로그인" tabindex="3"/></td>
 						</tr>
 						<tr>
 							<th>비밀번호</th>
-							<td><input type="password" name="pwd" style="width: 100px" /></td>
+							<td><input type="password" name="pwd" style="width: 100px" tabindex="2" /></td>
 						</tr>
 						<tr>
 							<td colspan="3" align="right"><a href="joinForm.do">회원가입</a></td>

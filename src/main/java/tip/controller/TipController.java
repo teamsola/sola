@@ -42,10 +42,8 @@ public class TipController {
 	private TipService tipService;
 	
 	//=================================================================================================
-	
  
- 
-    @RequestMapping(value = "/tip/insertBoard.do")
+    @RequestMapping(value = "/insertBoard.do")
     public ModelAndView insertBoard(HttpServletRequest request, MultipartFile interior_mainimage) {
         System.out.println("저장할 내용 : " + request.getParameter("editor"));
         
@@ -101,11 +99,10 @@ public class TipController {
         modelAndView = new ModelAndView("errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "인테리어 공유 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/interior.do");
 		}else {
 			modelAndView.addObject("msg", "인테리어를 등록했습니다.");
-			modelAndView.addObject("url", "/sola/tip/interior.do");
 		}
+		modelAndView.addObject("content", "/tip/interior.do");
         return modelAndView;
     }
  
@@ -150,45 +147,31 @@ public class TipController {
 	
 	
 	//=======================================▼페이지 이동▼===========================================
-    @RequestMapping(value="/tip/interior_add.do")
+    @RequestMapping(value="/interior_add.do")
 	public ModelAndView interior_add(HttpServletRequest request) {
-    	return new ModelAndView("interior_add.jsp");
+    	return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/interior_add.jsp");
     }
     
-	@RequestMapping(value="/tip/tip_index.do")
-	public ModelAndView tip_main(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
-		modelAndView = new ModelAndView("tip_index.jsp");
-		modelAndView.addObject("page", cmd);
-		return modelAndView;
-	}
-	@RequestMapping(value="/tip/place.do")
+	@RequestMapping(value="/place.do")
 	public ModelAndView tip_place(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
-		modelAndView = new ModelAndView("tip_index.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		if(request.getParameter("result") != null) modelAndView.addObject("result", request.getParameter("result"));
-		if(cmd == null) {
-			modelAndView.addObject("page", "place");
-		}else if(cmd.equals("001")) {
-			modelAndView.addObject("page", "place_add");
-		}else if(cmd.equals("002")) {
-			modelAndView.addObject("page", "place_view");
-		}
+		modelAndView.addObject("content", "/tip/place.jsp");
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/place_add.do")
+	@RequestMapping(value="/place_add.do")
 	public ModelAndView place_add(HttpServletRequest request) {
-		return new ModelAndView("place.do?cmd=001");
+		return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/place_add.jsp");
 	}
-	@RequestMapping(value="/tip/recipe.do")
+	
+	@RequestMapping(value="/recipe.do")
 	public ModelAndView tip_recipe(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
 		String listStatus = "exist";
 		Date date = new Date();
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 		String today = f.format(date);
 		
-		modelAndView = new ModelAndView("tip_index.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		
 		int pg = 1;
 		if(request.getParameter("pg") != null) {
@@ -220,15 +203,13 @@ public class TipController {
 		modelAndView.addObject("totalN", totalN);
 		modelAndView.addObject("listStatus", listStatus);
 		modelAndView.addObject("list", list);
-		modelAndView.addObject("cmd", cmd);
+		modelAndView.addObject("content", "/tip/recipe.jsp");
 		modelAndView.addObject("pg", pg);
-		modelAndView.addObject("page", "recipe");
 		modelAndView.addObject("keyword", keyword);
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/interior.do")
+	@RequestMapping(value="/interior.do")
 	public ModelAndView tip_interior(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
 		int pg = 1;
 		if(request.getParameter("pg") != null) pg = Integer.parseInt(request.getParameter("pg"));
 		ArrayList<InteriorDTO> list = tipService.interiorList(pg);
@@ -242,42 +223,35 @@ public class TipController {
 			else tmp.setLogtime(tmp.getLogtime().substring(0,10));
 		}
 		
-		modelAndView = new ModelAndView("tip_index.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		int totalN = tipService.getInteriorTotalNum();
 		
-		modelAndView.addObject("cmd", cmd);
+		modelAndView.addObject("content", "/tip/interior.jsp");
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("totalN", totalN);
-		modelAndView.addObject("page", "interior");
+		
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/express.do")
+	@RequestMapping(value="/express.do")
 	public ModelAndView tip_express(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
-		modelAndView = new ModelAndView("tip_index.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		if(request.getParameter("result") != null) modelAndView.addObject("result", request.getParameter("result"));
-		if(cmd == null) {
-			modelAndView.addObject("page", "express");
-		}else if(cmd.equals("001")) {
-			modelAndView.addObject("page", "express_add");
-		}else if(cmd.equals("002")) {
-			modelAndView.addObject("page", "express_view");
-		}
+		modelAndView.addObject("content", "/tip/express.jsp");
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/express_add.do")
+	@RequestMapping(value="/express_add.do")
 	public ModelAndView express_add(HttpServletRequest request) {
-		return new ModelAndView("express.do?cmd=001");
+		return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/express_add.jsp");
 	}
 
-	@RequestMapping(value="/tip/recipe_add.do")
+	@RequestMapping(value="/recipe_add.do")
 	public ModelAndView recipe_add(HttpServletRequest request) {
-		return new ModelAndView("recipe_add.jsp");
+		return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/recipe_add.jsp");
 	}
-	@RequestMapping(value="/tip/recipe_modify.do")
+	@RequestMapping(value="/recipe_modify.do")
 	public ModelAndView recipe_modify(HttpServletRequest request) {
-		modelAndView = new ModelAndView("recipe_modify.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int seq = Integer.parseInt(request.getParameter("s"));
 		String keyword = request.getParameter("k");
@@ -296,6 +270,7 @@ public class TipController {
 		modelAndView.addObject("recipeDTO", recipeDTO);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("content", "/tip/recipe_modify.jsp");
 		return modelAndView;
 	}
 	
@@ -308,7 +283,7 @@ public class TipController {
 	
 	
 	//=======================================▼데이터 전송▼===========================================
-	@RequestMapping(value="/tip/addPlace.do")
+	@RequestMapping(value="/addPlace.do")
 	public ModelAndView addPlace(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
@@ -341,20 +316,18 @@ public class TipController {
 		int result = tipService.placeAdd(placeDTO);
 		System.out.println(result);
 
-		modelAndView = new ModelAndView("errorPage.jsp");
+		modelAndView = new ModelAndView("/errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "장소 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/place.do");
 		}else {
 			modelAndView.addObject("msg", "장소를 성공적으로 등록했습니다.");
-			modelAndView.addObject("url", "/sola/tip/place.do");
 		}
+		modelAndView.addObject("content", "/tip/place.do");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/place_view.do")
+	@RequestMapping(value="/place_view.do")
 	public ModelAndView place_view(HttpServletRequest request) {
-		modelAndView = new ModelAndView("place.do?cmd=002");
 		int viewtype = 1;
 		int pg = 1;
 		String flag = request.getParameter("viewtype");
@@ -372,7 +345,8 @@ public class TipController {
 		int totalN = tipService.getPlaceTotalNum(viewtype);
 		displayInfo(list, viewtype, pg);
 		
-		
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("content", "/tip/place_view.jsp");
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("viewtype", viewtype);
 		modelAndView.addObject("pg", pg);
@@ -380,9 +354,8 @@ public class TipController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/express_view.do")
+	@RequestMapping(value="/express_view.do")
 	public ModelAndView express_view(HttpServletRequest request) {
-		modelAndView = new ModelAndView("express.do?cmd=002");
 		String keyword = "종로";
 		int pg = 1;
 		if(request.getParameter("pg") != null) {
@@ -398,6 +371,8 @@ public class TipController {
 		};
 		int totalN = tipService.getExpressTotalNum("%"+keyword+"%");
 		
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("content", "/tip/express_view.jsp");
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("totalN", totalN);
 		modelAndView.addObject("pg", pg);
@@ -406,7 +381,7 @@ public class TipController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/addExpress.do")
+	@RequestMapping(value="/addExpress.do")
 	public ModelAndView addExpress(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
@@ -443,16 +418,15 @@ public class TipController {
 		modelAndView = new ModelAndView("errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "장소 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/express.do");
 		}else {
 			modelAndView.addObject("msg", "장소를 성공적으로 등록했습니다.");
-			modelAndView.addObject("url", "express.do");
 		}
+		modelAndView.addObject("content", "/tip/express.do");
 		return modelAndView;
 	}
 	
 
-	@RequestMapping(value="/tip/recipe_delete.do")
+	@RequestMapping(value="/recipe_delete.do")
 	public ModelAndView deleteRecipe(HttpServletRequest request) {
 		modelAndView = new ModelAndView("errorPage.jsp");
 		
@@ -460,7 +434,6 @@ public class TipController {
 		int result = tipService.recipeDelete(seq);
 		if(result <= 0) {
 			modelAndView.addObject("msg", "레시피 삭제 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}else {
 			if(!request.getParameter("i").equals("null")) {
 				String tip_realPath = request.getSession().getServletContext().getRealPath("/storage");
@@ -472,12 +445,12 @@ public class TipController {
 				}
 			}
 			modelAndView.addObject("msg", "레시피를 삭제했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}
+		modelAndView.addObject("content", "/tip/recipe.do");
 		
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/modifyRecipe.do")
+	@RequestMapping(value="/modifyRecipe.do")
 	public ModelAndView modifyRecipe(HttpServletRequest request, MultipartFile foodimage) {
 		HttpSession session = request.getSession();
 		recipeDTO = new RecipeDTO();
@@ -550,15 +523,14 @@ public class TipController {
 		modelAndView = new ModelAndView("errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "레시피 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}else {
 			modelAndView.addObject("msg", "레시피를 수정했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe_view.do?p="+request.getParameter("pg")+"&s="+request.getParameter("recipe_seq")+"&k="+request.getParameter("keyword"));
 		}
+		modelAndView.addObject("content", "/tip/recipe_view.do?p="+request.getParameter("pg")+"&s="+request.getParameter("recipe_seq")+"&k="+request.getParameter("keyword"));
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/addRecipe.do")
+	@RequestMapping(value="/addRecipe.do")
 	public ModelAndView addRecipe(HttpServletRequest request, MultipartFile foodimage) {
 		HttpSession session = request.getSession();
 		
@@ -623,17 +595,16 @@ public class TipController {
 		modelAndView = new ModelAndView("errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "레시피 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}else {
 			modelAndView.addObject("msg", "레시피를 등록했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}
+		modelAndView.addObject("content", "/tip/recipe.do");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/recipe_view.do")
+	@RequestMapping(value="/recipe_view.do")
 	public ModelAndView recipe_view(HttpServletRequest request) {
-		modelAndView = new ModelAndView("recipe_view.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int seq = Integer.parseInt(request.getParameter("s"));
 		String keyword = request.getParameter("k");
@@ -651,10 +622,10 @@ public class TipController {
 		recipeDTO.setRecipe8(recipeDTO.getRecipe8().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe9(recipeDTO.getRecipe9().replaceAll("\r\n", "<br>"));
 		
-		modelAndView.addObject("cmd", "recipe");
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("keyword", keyword);
 		modelAndView.addObject("recipeDTO", recipeDTO);
+		modelAndView.addObject("content", "/tip/recipe_view.jsp");
 		return modelAndView;
 	}
 	

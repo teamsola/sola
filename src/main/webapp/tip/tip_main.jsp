@@ -5,6 +5,8 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert_title_here</title>
+	<link rel="stylesheet" type="text/css" href="../css/tip.css">
+	<script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$(".cont_left").hide();
