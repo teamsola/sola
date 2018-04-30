@@ -59,26 +59,26 @@ public class ProinfoController {
 	}
 
 	// 전문지식 메인폼 이동
-	@RequestMapping(value="/proinfo/proinfoMain.do")
+	@RequestMapping(value="proinfoMain.do")
 	public ModelAndView proinfoMain(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("proinfoMain.jsp");
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoMain.jsp");
 
 		return modelAndView;
 	}
 
 	// 전문지식 메인폼 이동
-	@RequestMapping(value="/proinfo/proinfoInsertForm.do")
+	@RequestMapping(value="proinfoInsertForm.do")
 	public ModelAndView proinfoInsertForm(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("proinfoInsert.jsp");
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoInsert.jsp");
 
 		return modelAndView;
 	}
 
 
 	// 전문지식 입력
-	@RequestMapping(value="/proinfo/proinfoInsert.do")
+	@RequestMapping(value="proinfoInsert.do")
 	public  ModelAndView proinfoInsert(HttpServletRequest request, 
 			MultipartFile imgFile) {
 		System.out.println("전문지식 입력 처리");
@@ -96,18 +96,18 @@ public class ProinfoController {
 		int su= proinfoService.insertProinfo(proinfoDTO);
 		System.out.println("su : "+su);
 
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("cmd", "insert");
 		modelAndView.addObject("su", su);
-		modelAndView.setViewName("proinfoMessage.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoMessage.jsp");
 
 		return modelAndView;
 	}
 
 	// 전문지식 보기
-	@RequestMapping(value="/proinfo/proinfoView.do")
+	@RequestMapping(value="proinfoView.do")
 	public ModelAndView proinfoView(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		ProinfoDTO proinfoDTO = new ProinfoDTO();
 		String list_t = request.getParameter("list_t");
 		String searchOp = request.getParameter("searchOp");
@@ -123,13 +123,13 @@ public class ProinfoController {
 		modelAndView.addObject("list_t",list_t);
 		modelAndView.addObject("searchOp", searchOp);
 		modelAndView.addObject("keyword", keyword);
-		modelAndView.setViewName("proinfoMain.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoMain.jsp");
 		return modelAndView;
 	}
 
 
 	// 전문지식 수정 폼 이동
-	@RequestMapping(value="/proinfo/proinfoModifyForm.do")
+	@RequestMapping(value="proinfoModifyForm.do")
 	public  ModelAndView proinfoModifyForm(HttpServletRequest request) {
 		System.out.println("수정 하기 폼 이동");
 		
@@ -139,17 +139,16 @@ public class ProinfoController {
 
 		proinfoDTO = proinfoService.viewProinfo(seq);
 
-		ModelAndView modelAndView = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("proinfoDTO", proinfoDTO);
-
-		modelAndView.setViewName("proinfoModify.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoModify.jsp");
 
 		return modelAndView;
 		
 	}
 	
 	// 전문지식 수정 처리
-		@RequestMapping(value="/proinfo/proinfoModify.do")
+		@RequestMapping(value="proinfoModify.do")
 		public  ModelAndView proinfoModify(HttpServletRequest request,
 				MultipartFile imgFile) {
 			System.out.println("전문지식 수정 처리");
@@ -172,17 +171,17 @@ public class ProinfoController {
 			
 			int su = proinfoService.modifyProinfo(proinfoDTO);
 
-			ModelAndView modelAndView = new ModelAndView();
+			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("cmd", "update");
 			modelAndView.addObject("su", su);
-			modelAndView.setViewName("proinfoMessage.jsp");
+			modelAndView.addObject("content", "/proinfo/proinfoMessage.jsp");
 
 			return modelAndView;
 			
 		}
 		
 		// 전문지식 삭제 처리
-		@RequestMapping(value="/proinfo/proinfoDelete.do")
+		@RequestMapping(value="proinfoDelete.do")
 		public  ModelAndView proinfoDelete(HttpServletRequest request) {
 			System.out.println("삭제 처리");
 			
@@ -190,17 +189,17 @@ public class ProinfoController {
 
 			int su = proinfoService.deleteProinfo(seq);
 
-			ModelAndView modelAndView = new ModelAndView();
+			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("cmd", "delete");
 			modelAndView.addObject("su", su);
-			modelAndView.setViewName("proinfoMessage.jsp");
+			modelAndView.addObject("content", "/proinfo/proinfoMessage.jsp");
 
 			return modelAndView;
 			
 		}
 		
 		// 전문지식 검색
-		@RequestMapping(value="/proinfo/search.do")
+		@RequestMapping(value="search.do")
 		public ModelAndView search(HttpServletRequest request) {
 			
 			// 1. 사용자 입력 정보 추출
@@ -224,7 +223,7 @@ public class ProinfoController {
 
 
 			// 3. 검색 결과를 저장하고 목록 화면으로 이동한다.
-			ModelAndView modelAndView = new ModelAndView();
+			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("list",list);
 			modelAndView.addObject("startPage", startPage);
 			modelAndView.addObject("endPage", endPage);
@@ -235,14 +234,14 @@ public class ProinfoController {
 			modelAndView.addObject("list_t",list_t);
 			modelAndView.addObject("pg", pg);
 
-			modelAndView.setViewName("proinfoMain.jsp");
+			modelAndView.addObject("content", "/proinfo/proinfoMain.jsp");
 			return modelAndView;	
 		}
 		
 		// 전문지식 전-중-후
-		@RequestMapping(value="/proinfo/search_c.do")
+		@RequestMapping(value="search_c.do")
 		public ModelAndView search_c(HttpServletRequest request) {
-			ModelAndView modelAndView = new ModelAndView();
+			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			String list_t = request.getParameter("list_t");
 			String keyword_c = request.getParameter("keyword_c");
 			System.out.println(keyword_c);
@@ -263,8 +262,11 @@ public class ProinfoController {
 			modelAndView.addObject("list_n",list_n);
 			modelAndView.addObject("proinfoDTO",proinfoDTO);
 			modelAndView.addObject("list_t",list_t);
+			System.out.println("list_t : "+ list_t);
 			modelAndView.addObject("keyword_c", keyword_c);
-			modelAndView.setViewName("proinfoMain.jsp");
+			modelAndView.addObject("content", "/proinfo/proinfoMain.jsp");
+			
+			System.out.println("keyword_c : "+keyword_c);
 			return modelAndView;
 			
 		}

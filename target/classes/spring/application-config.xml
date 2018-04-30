@@ -52,6 +52,16 @@
 		<property name="email_pwd" value="solamanage"></property>
 	</bean>
 	
+	
+	<!-- Transaction -->
+	<!-- 혹시나 자동으로 정보를 입력하다가 오류가 발생했을때 롤백을 하기위해서 설정한 것이다. 
+	DAO파일에 어노테이션으로 @Transactional를 선언해주면 된다. (오토 커밋 설정일때는 의미가 없다.! 오토커밋이 아닐경우 가능하다.) -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+
+	</bean>
+	
 	<!-- aop의 around로 동작을 한다. -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 

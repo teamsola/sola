@@ -99,7 +99,7 @@ body{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="../storage/${mallDTO.img }" width="100" height="120">
+						<img src="storage/${mallDTO.img }" width="100" height="120">
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -114,7 +114,7 @@ body{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="../storage/${mallDTO.img }" width="100" height="120">
+						<img src="storage/${mallDTO.img }" width="100" height="120">
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -129,7 +129,7 @@ body{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="../storage/${mallDTO.img }" width="100" height="120">
+						<img src="storage/${mallDTO.img }" width="100" height="120">
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>

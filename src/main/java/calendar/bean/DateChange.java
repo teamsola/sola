@@ -78,4 +78,15 @@ public class DateChange {
 	
 		return utilDateToString(stringToUtilDate(stringDate));
 	}
+	
+	// String-> Date(sql) -> 1년전 변경 -> String
+	public String beforeYear(String date) {
+		
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd"); 
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(stringToSqlDate(date));
+		cal.add(Calendar.YEAR, -1);	// 1년 전
+		return sdformat.format(cal.getTime());
+		
+	}
 }
