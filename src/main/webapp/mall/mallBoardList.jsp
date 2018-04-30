@@ -121,15 +121,7 @@ th{
 	
 	
 	<div id="top">
-	<!-- 카테고리 선택 -->
-	<div id="category">
-		<select name="category">
-			<option value="전체">전체보기</option>
-			<option value="판매">판매</option>
-			<option value="구매">구매</option>
-		</select>
-	</div>
-	
+
 	<!-- 글쓰기 버튼 -->
 	<input type="button" id="writebtn" value="글쓰기" onclick="location.href='mallBoardWriteForm.do'">
 	</div>
@@ -148,10 +140,6 @@ th{
 				</tr>
 				
 			<c:forEach var="boardDTO" items="${list }">
-			
-			
-				<!-- 전체보기 시 -->
-				<%-- <c:if test="${boardDTO.category eq '전체보기' }"> --%>
 					<tr>
 						<td align=center>${boardDTO.board_seq }
 						<td align=center>${boardDTO.category }
@@ -166,7 +154,6 @@ th{
 					<tr>
 						<td colspan="6"><hr id="line">
 					</tr>
-				<%-- </c:if> --%>
 			</c:forEach>
 				
 				<!-- 페이징 -->
@@ -196,9 +183,22 @@ th{
 	
 	
 	
-	<!-- 판매만 보기 -->
+		<!-- 카테고리,키워드 검색 -->
+		<form action="mallBoardList.do" method="post">
+		
+		<div id="category">
+			<select name="category">
+				<option value="전체" name="전체보기">전체보기</option>
+				<option value="판매" name="판매">판매</option>
+				<option value="구매" name="구매">구매</option>
+			</select>
+		</div>
 	
-	<!-- 구매만 보기 -->
+		<input type="text" id="keyword" name="keyword">
+		<input type="submit" id="keywordbtn" name="keywordbtn" value="찾기">
+		</form>
+	
+	
 	
 	
 	<div id="btnset">

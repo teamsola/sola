@@ -21,6 +21,9 @@ public interface BoardService
 		
 	//글목록조회
 	ArrayList<BoardDTO> boardList(int startNum,int endNum);
+	
+	//글목록 키워드검색
+	ArrayList<BoardDTO> boardListSearch(String category, String keyword, int startNum, int endNum);
 		
 	//조회수증가
 	void updateHit(int board_seq);

@@ -52,21 +52,29 @@ public class BoardController {
 		System.out.println("리스트 들어가기전 들어옴");
 		System.out.println("----------------");
 		
+		String category=request.getParameter("category");	
+		String keyword=request.getParameter("keyword");
+		
+		System.out.println("받아온 category:"+category);
+		System.out.println("받아온 keyword:"+keyword);
+		
 		int pg = Integer.parseInt(request.getParameter("pg"));
-	
+		
 		int endNum = pg*5;	
-		int startNum = endNum-4;	
-		
-		ArrayList<BoardDTO> list = boardService.boardList(startNum, endNum);
-		
+		int startNum = endNum-4;
 		int totalA = boardService.getTotalA();   
 	    int totalP = (totalA+4) /5 ;   
 		int startPage = (pg-1)/3*3+1;  
 	    int endPage = startPage + 2;    
-	    if(totalP<endPage) endPage = totalP;	
-	    
-	    
-	    modelAndView.addObject("list",list);
+	    if(totalP<endPage) endPage = totalP;
+		
+		
+	    //카테고리 전체보기 선택시 목록
+		if(category==null || category.equals("전체보기") || keyword==null) {
+		
+		ArrayList<BoardDTO> list = boardService.boardList(startNum, endNum);
+		
+		modelAndView.addObject("list",list);
 	    modelAndView.addObject("totalA",totalA);
 	    modelAndView.addObject("totalP",totalP);
 	    modelAndView.addObject("startPage",startPage);
@@ -76,7 +84,51 @@ public class BoardController {
 		
 	    modelAndView.addObject("content","/mall/mallBoardList.jsp");
 	    modelAndView.setViewName("/mainFrame.jsp");
-	    
+		}
+		
+		
+		//카테고리 판매 선택시 목록
+		else if(category.equals("판매")) {
+		ArrayList<BoardDTO> list=boardService.boardListSearch(category,keyword,startNum,endNum);
+		
+		modelAndView.addObject("category",category);
+		modelAndView.addObject("keyword",keyword);
+		modelAndView.addObject("list",list);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("totalP",totalP);
+	    modelAndView.addObject("startPage",startPage);
+	    modelAndView.addObject("endPage",endPage);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("pg",pg);
+		
+	    modelAndView.addObject("content","/mall/mallBoardList.jsp");
+	    modelAndView.setViewName("/mainFrame.jsp");
+			    
+		
+		}
+		
+		
+		
+		//카테고리 구매 선택시 목록
+		else if(category.equals("구매")) {
+			ArrayList<BoardDTO> list=boardService.boardListSearch(category,keyword,startNum,endNum);
+			
+			modelAndView.addObject("category",category);
+			modelAndView.addObject("keyword",keyword);
+			modelAndView.addObject("list",list);
+		    modelAndView.addObject("totalA",totalA);
+		    modelAndView.addObject("totalP",totalP);
+		    modelAndView.addObject("startPage",startPage);
+		    modelAndView.addObject("endPage",endPage);
+		    modelAndView.addObject("totalA",totalA);
+		    modelAndView.addObject("pg",pg);
+			
+		    modelAndView.addObject("content","/mall/mallBoardList.jsp");
+		    modelAndView.setViewName("/mainFrame.jsp");
+				    
+			
+			}
+		
 		return modelAndView;
 	}
 	
@@ -149,7 +201,7 @@ public class BoardController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/mallBoardModify.do", method = RequestMethod.POST)
+	@RequestMapping(value="mallBoardModify.do", method = RequestMethod.POST)
 	public ModelAndView boardModify(HttpServletRequest request,HttpServletResponse response,String editor) throws IOException {
 		
 		ModelAndView modelAndView=new ModelAndView();
@@ -200,7 +252,7 @@ public class BoardController {
 	//---------------------------------------------------------------------------에디터
 	
  
-    @RequestMapping(value = "/insertBoard.do", method = RequestMethod.POST)
+    @RequestMapping(value = "insertBoard.do", method = RequestMethod.POST)
     public ModelAndView insertBoard(HttpServletRequest request,HttpServletResponse response,String editor) throws IOException {
     	
     	ModelAndView modelAndView=new ModelAndView();
@@ -255,7 +307,7 @@ public class BoardController {
     
     
     //다중파일업로드 (창에 사진을 끌어당기고 확인누른후 다시 에디터에 STRING값으로 들어감)
-    @RequestMapping(value = "/file_uploader_html5.do",
+    @RequestMapping(value = "file_uploader_html5.do",
                   method = RequestMethod.POST)
     @ResponseBody
     public String multiplePhotoUpload(HttpServletRequest request) {
@@ -264,8 +316,12 @@ public class BoardController {
         try {
             // 파일명을 받는다 - 일반 원본파일명
             String oldName = request.getHeader("file-name");
+            
+            HttpSession session=request.getSession(); 
+            
             // 파일 기본경로 _ 상세경로
-            String filePath = "C:/Users/my/Desktop/kgitbank/spring/workspace/sola/src/main/webapp/resources/photoUpload/";
+            String filePath = session.getServletContext().getRealPath("/sola/src/main/webapp/resources/photoUpload/");
+            
             String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss")
                           .format(System.currentTimeMillis()))
                           .append(UUID.randomUUID().toString())
