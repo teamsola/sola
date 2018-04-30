@@ -20,7 +20,7 @@ public class BoardDAO {
 		return sqlSession.insert("mybatis.boardMapper.boardWrite",boardDTO);
 	}
 
-
+	//글 목록
 	public List<BoardDTO> boardList(int startNum, int endNum){
 		
 		Map<String, Integer> map=new HashMap<String,Integer>();
@@ -29,6 +29,17 @@ public class BoardDAO {
 		
 		return sqlSession.selectList("mybatis.boardMapper.boardList",map);
 		
+	}
+	
+	//글 목록 키워드 조회
+	public List<BoardDTO> boardListSearch(String category, String keyword, int startNum, int endNum) {
+		Map<String, String> map=new HashMap<String,String>();
+		map.put("category", category);
+		map.put("keyword", keyword);
+		map.put("startNum",startNum+"");
+		map.put("endNum",endNum+"");
+		
+		return sqlSession.selectList("mybatis.boardMapper.boardListSearch",map);
 	}
 	
 	public BoardDTO boardView(int board_seq) {

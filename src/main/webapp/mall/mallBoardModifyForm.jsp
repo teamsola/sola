@@ -6,7 +6,7 @@
 <meta charset="UTF-8" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="../resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <script type="text/javascript">
     $(function(){
@@ -16,7 +16,7 @@
         nhn.husky.EZCreator.createInIFrame({
             oAppRef: obj,
             elPlaceHolder: "editor",
-            sSkinURI: "../resources/editor/SmartEditor2Skin.html",
+            sSkinURI: "/sola/resources/editor/SmartEditor2Skin.html",
            /* sSkinURI: "./SmartEditor2Skin.html", */
             htParams : {
                 // 툴바 사용 여부
@@ -127,7 +127,7 @@ table{
 	<hr id="line1">
 
 
-	<form action="../mallBoardModify.do?board_seq=${board_seq}" method="post" id="modifyBoardFrm" enctype="multipart/form-data">
+	<form action="./mallBoardModify.do?board_seq=${board_seq}" method="post" id="modifyBoardFrm" enctype="multipart/form-data">
 	
 	<table>
 		<tr>

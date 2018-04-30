@@ -52,32 +52,79 @@ public class BoardController {
 		System.out.println("리스트 들어가기전 들어옴");
 		System.out.println("----------------");
 		
+		
+		
+		String category=request.getParameter("category");
+		System.out.println("받아온 category:"+category);
+		
+		String keyword=request.getParameter("keyword");
+		System.out.println("받아온 keyword:"+keyword);
+		
+		
+		if(category==null & keyword ==null) {
+			
 		int pg = Integer.parseInt(request.getParameter("pg"));
-	
+		
 		int endNum = pg*5;	
-		int startNum = endNum-4;	
-		
-		ArrayList<BoardDTO> list = boardService.boardList(startNum, endNum);
-		
+		int startNum = endNum-4;
 		int totalA = boardService.getTotalA();   
 	    int totalP = (totalA+4) /5 ;   
 		int startPage = (pg-1)/3*3+1;  
 	    int endPage = startPage + 2;    
-	    if(totalP<endPage) endPage = totalP;	
-	    
-	    
-	    modelAndView.addObject("list",list);
+	    if(totalP<endPage) endPage = totalP;
+	    ArrayList<BoardDTO> list=boardService.boardList(startNum, endNum);
+		
+	    modelAndView.addObject("category",category);
+	    modelAndView.addObject("keyword",keyword);
+		modelAndView.addObject("list",list);
 	    modelAndView.addObject("totalA",totalA);
 	    modelAndView.addObject("totalP",totalP);
 	    modelAndView.addObject("startPage",startPage);
+	    modelAndView.addObject("startNum",startNum);
+	    modelAndView.addObject("endNum",endNum);
 	    modelAndView.addObject("endPage",endPage);
 	    modelAndView.addObject("totalA",totalA);
 	    modelAndView.addObject("pg",pg);
 		
+		}
+	   
+		else if(category!=null & keyword!=null) {
+		
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int endNum = pg*5;	
+		int startNum = endNum-4;
+		int totalA = boardService.getTotalA();   
+	    int totalP = (totalA+4) /5 ;   
+		int startPage = (pg-1)/3*3+1;  
+	    int endPage = startPage + 2;    
+	    if(totalP<endPage) endPage = totalP;
+	    
+	    ArrayList<BoardDTO> list=boardService.boardListSearch(category, keyword, startNum, endNum);
+		
+	    modelAndView.addObject("category",category);
+	    modelAndView.addObject("keyword",keyword);
+		modelAndView.addObject("list",list);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("totalP",totalP);
+	    modelAndView.addObject("startPage",startPage);
+	    modelAndView.addObject("startNum",startNum);
+	    modelAndView.addObject("endNum",endNum);
+	    modelAndView.addObject("endPage",endPage);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("pg",pg);
+		
+		}
+		
+		
+		
 	    modelAndView.addObject("content","/mall/mallBoardList.jsp");
 	    modelAndView.setViewName("/mainFrame.jsp");
 	    
+	    
 		return modelAndView;
+	    
+		
 	}
 	
 	
@@ -264,8 +311,14 @@ public class BoardController {
         try {
             // 파일명을 받는다 - 일반 원본파일명
             String oldName = request.getHeader("file-name");
+            
+            HttpSession session=request.getSession(); 
+            
             // 파일 기본경로 _ 상세경로
-            String filePath = "C:/Users/my/Desktop/kgitbank/spring/workspace/sola/src/main/webapp/resources/photoUpload/";
+            String filePath = session.getServletContext().getRealPath("/resources/photoUpload/");
+            System.out.println("에디터들어옴");
+            System.out.println(filePath);
+            
             String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss")
                           .format(System.currentTimeMillis()))
                           .append(UUID.randomUUID().toString())
