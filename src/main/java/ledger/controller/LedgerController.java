@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import calendar.bean.CalendarDTO;
+import calendar.bean.DateChange;
 import calendar.controller.CalendarService;
 import ledger.bean.LedgerDTO;
 
@@ -374,12 +375,14 @@ public class LedgerController {
 		
 		List<LedgerDTO> ledgerList = null;		// 현재 가계부 리스트
 		List<LedgerDTO> ledgerListBefore = null;// 지난달 (월별-이전달과 비교에 사용(div))
-		Map<Integer, List<LedgerDTO>> yearMap = null;
+		Map<Integer, List<LedgerDTO>> yearMap = null;// 현재 가계부 리스트
+		Map<Integer, List<LedgerDTO>> yearMapBefore = null;// 지난년 (년별-이전년과 비교에 사용(div))
 		
 
 		List<String> monthDay = null;	// 한달 1-막일 까지 조합한 데이터
 		List<String> monthDayBefore = null;	// 지난달 (월별-이전달과 비교에 사용(div))
 		List<String> selectPeriodList = new ArrayList<>();	// 기간 조회에 사용되는 날짜(시작일-종료일)
+		List<String> selectPeriodListBefore = new ArrayList<>();	// 기간 조회 일년전에 사용되는 날짜(시작일-종료일)
 
 		int year=0; int month=0;
 
@@ -434,32 +437,53 @@ public class LedgerController {
 			}
 			monthDayBefore = new ArrayList<>();	// div용 이전 달
 			for(int i=1;i<=calendarDTOBefore.getLastOfDate();i++) {
-				monthDayBefore.add(calendarService.stringDateSet(year, month+1, i));
+				monthDayBefore.add(calendarService.stringDateSet(year, month, i));
 			}
 			
-
-
 		}else if(period.equals("year")) {	// 통계 - 연간
 
 			yearMap = new HashMap<>();
+			yearMapBefore = new HashMap<>();
 			for(int i=0; i<12; i++) {
 				// 해당 월의 데이터 뽑아옴
 				calendarDTO = calendarService.daySet(year, i, "");
+				calendarDTOBefore = calendarService.daySet(year-1, i, "");
 
 				// 해당 월에 해당하는 가계부 정보 받음
 				ledgerList = new ArrayList<>();
 				ledgerList = ledgerService.monthListLedger(calendarDTO, id);
+				ledgerListBefore = new ArrayList<>();
+				ledgerListBefore = ledgerService.monthListLedger(calendarDTOBefore, id);
 
 				// Date(sql) -> String으로 변환 (LedgerDTO stringDate 셋팅)
 				ledgerList = calendarService.stringDateSet(ledgerList);
+				ledgerListBefore = calendarService.stringDateSet(ledgerListBefore);
 
 				// 월 + 데이터 
 				yearMap.put(i+1, ledgerList);
+				yearMapBefore.put(i+1, ledgerListBefore);
 			}
+			
+			for(int i=1;i<13;i++) {
+				System.out.println("이번년 "+i+"달의 등록된 가계부 : "+yearMap.get(i).size());
+				System.out.println("저번년 "+i+"달의 등록된 가계부 : "+yearMapBefore.get(i).size());
+			}
+			
 		}else if(period.equals("selectPeriod")) {
 			calendarDTO = calendarService.today();
 			ledgerList = ledgerService.searchList(startDay, endDay, id);
 			ledgerList = calendarService.stringDateSet(ledgerList);
+			System.out.println("해당 년 조회 시작 날짜 : "+startDay);
+			System.out.println("해당 년 조회 종료 날짜 : "+endDay);
+			
+			DateChange dc = new DateChange();
+			String beforeStartDay = dc.beforeYear(startDay);
+			String beforeEndDay = dc.beforeYear(endDay);
+			System.out.println("일년전 조회 시작 날짜 : "+beforeStartDay);
+			System.out.println("일년전 조회 종료 날짜 : "+beforeEndDay);
+			ledgerListBefore = ledgerService.searchList
+					(beforeStartDay, beforeEndDay, id);
+			ledgerListBefore = calendarService.stringDateSet(ledgerListBefore);
 
 
 			//	기간별 조회 시작일 -> 종료일 까지의 날짜
@@ -468,6 +492,7 @@ public class LedgerController {
 
 			Calendar calStartDay = Calendar.getInstance();
 			Calendar calEndDay = Calendar.getInstance();
+			
 
 			calStartDay.setTime(utilStartDay);
 			calEndDay.setTime(utilEndDay);
@@ -479,6 +504,26 @@ public class LedgerController {
 
 				//시작날짜 + 1 일
 				calStartDay.add(Calendar.DATE, 1);
+			}
+			
+//			기간별 조회 시작일 -> 종료일 까지의 날짜
+			java.util.Date utilBeforeStartDay = calendarService.stringToUtilDate(beforeStartDay);
+			java.util.Date utilBeforeEndDay = calendarService.stringToUtilDate(beforeEndDay);
+
+			Calendar calBeforeStartDay = Calendar.getInstance();
+			Calendar calBeforeEndDay = Calendar.getInstance();
+					
+
+			calBeforeStartDay.setTime(utilBeforeStartDay);
+			calBeforeEndDay.setTime(utilBeforeEndDay);
+
+			while( calBeforeStartDay.compareTo( calBeforeEndDay ) !=1 ){
+
+
+				selectPeriodListBefore.add(calendarService.utilDateToString(calBeforeStartDay.getTime()));
+
+				//시작날짜 + 1 일
+				calBeforeStartDay.add(Calendar.DATE, 1);
 			}
 
 		}
@@ -518,6 +563,7 @@ public class LedgerController {
 		}else if(cmd.equals("stats") && period.equals("year")) {	// 통계 - 연간
 			modelAndView.addObject("year", year);
 			modelAndView.addObject("yearMap", yearMap);
+			modelAndView.addObject("yearMapBefore", yearMapBefore);
 			modelAndView.addObject("period", period);			// month, year
 			modelAndView.addObject("inout", inout);				// 수입-지출, 수입, 지출
 
@@ -527,9 +573,11 @@ public class LedgerController {
 			modelAndView.addObject("startDay",startDay);
 			modelAndView.addObject("endDay",endDay);
 			modelAndView.addObject("ledgerList", ledgerList );	// 가계부 리스트
+			modelAndView.addObject("ledgerListBefore", ledgerListBefore );	// 일년전
 			modelAndView.addObject("period", period);			// month, year, selectPeriod
 			modelAndView.addObject("inout", inout);				// 수입-지출, 수입, 지출
 			modelAndView.addObject("selectPeriodList", selectPeriodList);	// 기간 조회에 사용되는 날짜리스트(시작일-종료일)
+			modelAndView.addObject("selectPeriodListBefore", selectPeriodListBefore);	// 조회 기간 일년전
 		}
 
 		modelAndView.addObject("categoryOut", categoryOut);	// 지출 카테고리
