@@ -107,4 +107,24 @@ public class TipServiceImpl implements TipService{
 		tipDAO.updateFilename(interior_content);
 	}
 
+	@Override
+	public ArrayList<InteriorDTO> interiorListSearched(String keyword, int pg) {
+		return (ArrayList<InteriorDTO>) tipDAO.interiorListSearched(keyword, pg);
+	}
+
+	@Override
+	public int getRecipeSearchedTotalNum(String keyword) {
+		return tipDAO.getRecipeSearchedTotalNum(keyword);
+	}
+
+	@Override
+	public int getInteriorSearchedTotalNum(String keyword) {
+		return tipDAO.getInteriorSearchedTotalNum(keyword);
+	}
+
+	@Override
+	public InteriorDTO interiorDetail(int seq) {
+		return tipDAO.interiorDetail(seq);
+	}
+
 }

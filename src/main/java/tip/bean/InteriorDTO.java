@@ -11,7 +11,8 @@ public class InteriorDTO {
 	private String interior_mainimage;
 	private String interior_content;
 	private int hit;
-	private String like_num;
+	private int like_num;
+	private String like_user;
 	private String logtime;
 	
 	public int getRoomsize() {
@@ -69,11 +70,18 @@ public class InteriorDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public String getLike_num() {
+
+	public int getLike_num() {
 		return like_num;
 	}
-	public void setLike_num(String like_num) {
+	public void setLike_num(int like_num) {
 		this.like_num = like_num;
+	}
+	public String getLike_user() {
+		return like_user;
+	}
+	public void setLike_user(String like_user) {
+		this.like_user = like_user;
 	}
 	public String getLogtime() {
 		return logtime;

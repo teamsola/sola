@@ -348,7 +348,7 @@ pageEncoding="UTF-8"%>
 							<div style="float:left;width:50%;height:100px;">
 							<div style="float:left;font-size:12px; color:#6a6763;">현재사진 &gt;&nbsp;</div>
 							<c:if test="${recipeDTO.foodimage != 'null'}">
-								<div style="float:left;width:200px;height:100px;overflow:hidden;border-radius: 10px; border:1px solid #6a6763;"><img src="../storage/${recipeDTO.foodimage }" id="imgBefore" width="" height=""></div>
+								<div style="float:left;width:200px;height:100px;overflow:hidden;border-radius: 10px; border:1px solid #6a6763;"><img src="/sola/storage/${recipeDTO.foodimage }" id="imgBefore" width="" height=""></div>
 							</c:if>
 							<c:if test="${recipeDTO.foodimage == 'null'}">
 							없음

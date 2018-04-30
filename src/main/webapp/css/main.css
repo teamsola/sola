@@ -3,14 +3,14 @@ body
 {
 	background-color: white;
 }
-header, footer,  nav
+header, nav
 {
 	margin: auto;
-	background-color: #6a6763;
+	background-color: #ff8400;
 	box-sizing: border-box;
 	display: table;
 }
-.frame, section{
+.frame, section, footer{
 	margin: auto;
 	background-color: white;
 	box-sizing: border-box;
