@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import calendar.bean.CalendarDTO;
 import ledger.bean.LedgerDTO;
 
-@Transactional	// 커넥션을 얻어도 오고, close도 시킴, aop around로 동작함
 @Repository
 public class LedgerDAO {
 

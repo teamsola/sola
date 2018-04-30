@@ -1,0 +1,72 @@
+.container {	/* 전체 */
+   width: 100%;
+   height: 100%;
+}
+
+div#glayLayer {	/* 뒷 배경 */
+   display: none;
+   position: fixed;
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   background: black;
+   filter: alpha(opacity = 60);
+   opacity: 0.60;
+}
+
+/*이미지가 표현될 레이어를 화면 중앙에 배치 > 기본적으로 표지되지 않도록 설정*/
+div#overLayer {		/* 실질적 배치 div */
+   display: none;
+   position: fixed;
+   background-color: gray;
+   width: 800px;
+   height: 600px;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+}
+
+.ol_top{	/* 상단 검은 바 */
+   width: 100%;
+   height: 50px;
+   background-color: black;
+}
+
+#cancel{	/* 닫기 버튼 */
+   width: 50px;
+   height: 50px;
+   color: white;
+   font-size: 30px;
+   font-weight: bold;
+   background-color: black;
+   border: none;
+   outline: 0;
+   cursor: pointer;
+}
+
+.ol_center{		/* 중간 */
+   width: 80%;
+   height: 550px;
+   margin: auto;
+   background-color: white;
+}
+
+.ol_center .select{	/* 카테고리 */
+
+}
+
+.ol_center .subject{	/* 제목 */
+
+}
+
+.ol_center .contents{	/* 글 */
+
+}
+
+.ol_center .imgFile{	/* 파일 */
+
+}
+

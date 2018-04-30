@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/xml; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/xml; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
 	<ul id="lv1">
@@ -16,8 +16,18 @@
 			<li><a href="memberProfile.do">프로필변경</a></li>
 			<li><a href="memberWithdrawalForm.do">회원탈퇴</a></li>
 			<li><a href="diaryIndex.do">일기</a></li>
+
+			<li><a href="ledgerMain.do">가계부 로그인</a></li>
+		 	<li><a href="calendar.do?cmd=main" >달력 보기</a></li>
+		    <li><a href="ledgerViewDay.do?cmd=today">하루 보기</a></li>
+		    <li><a href="ledgerViewAll.do?cmd=main">일일 보기</a></li>
+		    <li><a href="ledgerViewMonth.do?cmd=main">월별 보기</a></li>
+		    <li><a href="ledgerViewClosing.do?cmd=main">결산 보기</a></li>
+		    <li><a href="ledgerViewStats.do?cmd=main">통계 보기</a></li>
+
 			<li><a href="mallIndex.do">쇼핑몰</a></li>
-			<li><a href="ledgerMain.do">가계부</a></li>
+			<li><a href="proinfoMain.do">전문지식</a></li>
+
 		</ul>
 		<ul class="lv2-list" id="tipLv2" rel="tip">
 			<li class="nav-item"><a href="/sola/tip/place.do" class="nav-link">혼밥혼술</a></li>

@@ -103,8 +103,8 @@ pageEncoding="UTF-8"%>
 				            <c:out value="${fn:substring(item.interior_title,0,22)}"/>...
 				           </c:when>
 				           <c:otherwise>
-				            <c:if test="${item.interior_title == 'null' }">한줄소개가 없습니다</c:if>
-				            <c:if test="${item.interior_title != 'null' }"><c:out value="${item.interior_title}"/></c:if>
+				            <c:if test="${item.interior_title == null }">한줄소개가 없습니다</c:if>
+				            <c:if test="${item.interior_title != null }"><c:out value="${item.interior_title}"/></c:if>
 				           </c:otherwise> 
 				          </c:choose>
 						</div>

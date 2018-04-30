@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-session.setAttribute("memId","nohongchul");
-session.setAttribute("memName", "노홍철");
-%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,7 +8,7 @@ session.setAttribute("memName", "노홍철");
 	<title>Insert_title_here</title>
 	<link rel="stylesheet" type="text/css" href="../css/tip.css">
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
-	<script type="text/javascript" src="/sola/resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/sola/resources_tip/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<style type="text/css">
 		#i_add_title{width:100%; height:170px;background: url("../img/interior_drawing.jpg") repeat left center;}
 		#i_add_content{margin:40px; float:left; width:1200px; overflow:hidden;height:auto;}
@@ -37,7 +33,7 @@ session.setAttribute("memName", "노홍철");
 		    nhn.husky.EZCreator.createInIFrame({
 		        oAppRef: obj,
 		        elPlaceHolder: "editor",
-		        sSkinURI: "/sola/resources/editor/SmartEditor2Skin.html",
+		        sSkinURI: "/sola/resources_tip/editor/SmartEditor2Skin.html",
 		       /* sSkinURI: "./SmartEditor2Skin.html", */
 		        htParams : {
 		            // 툴바 사용 여부

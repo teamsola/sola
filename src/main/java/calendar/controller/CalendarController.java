@@ -117,12 +117,12 @@ public class CalendarController {
 		// 그리고 날짜를 클릭하여 가계부 등록페이지에 넘겨줄때 그 배열의 날짜를 넘겨준다.
 
 		//		---------------------------------------------------------------------------------	
-		ModelAndView modelAndView = new ModelAndView("/WEB-INF/ledger_index.jsp");
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("calendarDTO", calendarDTO);	// 달력에 들어가는 정보
 		modelAndView.addObject("ledgerList", ledgerList);	// 검색날짜에 맞는 가계부 정보 리스트
 		modelAndView.addObject("monthMap", monthMap);		// 해당월-날짜별 가계부 리스트 정보
 		modelAndView.addObject("dayList", dayList);			// 해당 월의 날짜 담은 리스트(yyyy-mm-dd)
-		modelAndView.addObject("content", "/calendar/calendar");
+		modelAndView.addObject("content", "/calendar/calendar.jsp");
 		
 //		modelAndView.setViewName("ledger_index.jsp");
 		return modelAndView;

@@ -181,7 +181,6 @@
 				        var startDay = $("#startDatePic").val();
 				        var endDay = $("#endDatePic").val();
 				    
-				        
 				        if(endDay!='클릭하세요'){
 				        	if(startDay > endDay){
 						    	alert("조회종료날보다 이전날로 선택해주세요");
@@ -280,6 +279,17 @@
 				<c:if test="${fn:length(ledgerList) ne 0  }">	// 리스트가 O
 					data.push([ "수입", Number("${insum}") ]);
 					data.push([ "지출", Number("${outsum}") ]);
+					if(keyword == 'month'){
+						$("#item_title").text("지난달과 항목별 비교");
+						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('수입','cateinout','month','${year}','beforeTime');\" value=\"수입\" />");
+						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('지출','cateinout','month','${year}','beforeTime');\" value=\"지출\" />");
+						
+					}else if(keyword == 'selectPeriod'){
+						$("#item_title").text("일년전과 항목별 비교");
+						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('수입','cateinout','selectPeriod','${year}','beforeTime');\" value=\"수입\" />");
+						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('지출','cateinout','selectPeriod','${year}','beforeTime');\" value=\"지출\" />");
+					}
+					
 				</c:if>
 				<c:if test="${fn:length(ledgerList) eq 0  }">	// 리스트가 X
 					data.push(["등록된 가계부가 없습니다.", 0]);
@@ -311,6 +321,9 @@
 				<c:if test="${totalin ne 0 || totalout ne 0}">	// 리스트 O
 					data.push([ "수입", Number("${totalin}") ]);
 					data.push([ "지출", Number("${totalout}") ]);
+					$("#item_title").text("1년전과 항목별 비교");
+					$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('수입','cateinout','year','${year}','beforeTime');\" value=\"수입\" />");
+					$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('지출','cateinout','year','${year}','beforeTime');\" value=\"지출\" />");
 				</c:if>
 				<c:if test="${totalin eq 0 || totalout eq 0}">	// 리스트 X
 					data.push(["등록된 가계부가 없습니다.", 0]);
@@ -338,8 +351,10 @@
 					data.push([ "${cate }", Number("${cash }") ]);
 					
 					if(keyword == 'month'){
+						$("#item_title").text("지난달과 항목별 비교");
 						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','catein','month','${year}','beforeTime');\" value=\"${cate}\" />");
 					}else if(keyword == 'selectPeriod'){
+						$("#item_title").text("1년전과 항목별 비교");
 						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','catein','selectPeriod','${year}','beforeTime');\" value=\"${cate}\" />");
 					}
 					</c:forEach> 
@@ -349,6 +364,7 @@
 				</c:if>
 				
 			}else if(keyword=='year'){	// 연간
+				
 				<c:set var="listCheck" value="stop"/>
 				<c:forEach var="i" begin="1" end="12" step="1">		// 데이터 유무 확인
 				<c:set var="ledgerList" value="${yearMap[i] }"/>
@@ -358,6 +374,7 @@
 				</c:forEach>
 				
 				<c:if test="${listCheck eq 'pass'}">	// 데이터 O
+				$("#item_title").text("1년전과 항목별 비교");
 					<c:forEach var="cate" items="${categoryIn}" >
 					<c:set var="cash" value="0"/>
 						<c:forEach var="i" begin="1" end="12" step="1">
@@ -392,6 +409,12 @@
 			
 			if(keyword == 'month' || keyword == 'selectPeriod'){
 				<c:if test="${fn:length(tempList) ne 0  }">	// 리스트가 O
+				if(keyword == 'month'){
+					$("#item_title").text("지난달과 항목별 비교");
+				}else if(keyword == 'selectPeriod'){
+					$("#item_title").text("1년전과 항목별 비교");
+				}
+				
 					<c:forEach var="cate" items="${categoryOut}" >
 					<c:set var="cash" value="0"/>
 					<c:forEach var="ledgerDTO" items="${tempList}">
@@ -420,6 +443,7 @@
 				</c:forEach>
 			
 				<c:if test="${listCheck eq 'pass'}">	// 데이터 O
+				$("#item_title").text("1년전과 항목별 비교");
 					<c:forEach var="cate" items="${categoryOut}" >
 					<c:set var="cash" value="0"/>
 						<c:forEach var="i" begin="1" end="12" step="1">
@@ -506,6 +530,7 @@
 // ========================== Div 그래프 데이터 조합  ==========================
 function chartDivData(cate, inout, period, year, time){
 	alert("time : "+time);
+	alert("카테고리 : "+cate);
 	var data = [];			// 조회한 달, 년, 기간 데이터
 	var dataBefore = [];	// 조회한 지난 달, 년, 기간 데이터
 	var maxMoney = 0;		// 최대 금액
@@ -514,6 +539,9 @@ function chartDivData(cate, inout, period, year, time){
 	var dateFormat = null;
 	var divColor = "";
 	var date = "";
+	var xBarTitle =""; 		// div x축 title
+	var cateBefore="";		// 저번 카테고리
+	var cateThis="";		// 이번 카테고리
 	
 	if(period == 'month'){		// 월간
 		dateFormat = '%y/%m/%d';
@@ -551,15 +579,15 @@ function chartDivData(cate, inout, period, year, time){
 					}
 				}
 			</c:forEach>
-			
-			
-			
 			if(time == 'thisTime'){
 				date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
+				xBarTitle = "년/월/일";
 			}else if(time == 'beforeTime'){	
-			//	date = i;
-				date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
+				date = i;
+			//	date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
+				xBarTitle = "월";
 			}
+			cateThis = "${calendarDTO.month+1}"+"월 "+cate;
 			
 			if(inout == 'catein'){			// 수입
 				data.push([ date , Number(income) ]);
@@ -573,8 +601,7 @@ function chartDivData(cate, inout, period, year, time){
 		
 		if(time == 'beforeTime'){	// 전월 비교용
 			alert("div2 들어옴");
-	//	dateFormat = '%d';
-		dateFormat = '%y/%m/%d';
+		dateFormat = '%e';
 		i = 0;
 		<c:forEach var="monthDays" items="${monthDayBefore}">
 		var income = 0;
@@ -610,17 +637,19 @@ function chartDivData(cate, inout, period, year, time){
 					}
 				}
 			</c:forEach>
-			date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
-			
+			// date = "${calendarDTO.year}/"+Number("${calendarDTO.month}")+"/"+i;
+			date = i;
 			if(inout == 'catein'){			// 수입
-				dataBefore.push([ i, Number(income) ]);
+				dataBefore.push([ date, Number(income) ]);
 			}else if(inout == 'cateout'){	// 지출
-				dataBefore.push([ i , Number(outcome) ]);
+				dataBefore.push([ date , Number(outcome) ]);
 			}else if(inout == 'cateinout'){	// 수입-지출
-				dataBefore.push([ i , Number(inoutcash) ]);
+				dataBefore.push([ date , Number(inoutcash) ]);
 			}
 			
 		</c:forEach>
+		
+		cateBefore = "${calendarDTO.month}"+"월 "+cate;
 		}
 	}else if(period == 'year'){	// 연간
 		dateFormat = '%y/%m';
@@ -636,19 +665,19 @@ function chartDivData(cate, inout, period, year, time){
 					if(inout == 'cateinout'){	// 수입-지출
 						if(cate == '수입'){
 							inoutcash += Number('${ledgerDTO.income}');
-							dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.income}');
+							dayMaxMoney += Number('${ledgerDTO.income}');
 						}else if(cate =='지출'){
 							inoutcash += Number('${ledgerDTO.spand}');
-							dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.spand}');
+							dayMaxMoney += Number('${ledgerDTO.spand}');
 						}
 					}else{	// 수입, 지출
 						if('${ledgerDTO.category }'== cate){
 							if(inout == 'catein'){
-								dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.income}');
-								income = income+Number('${ledgerDTO.income}');
+								dayMaxMoney += Number('${ledgerDTO.income}');
+								income += Number('${ledgerDTO.income}');
 							}else if(inout == 'cateout'){
-								dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.spand}');
-								outcome = outcome+Number('${ledgerDTO.spand}');
+								dayMaxMoney += Number('${ledgerDTO.spand}');
+								outcome += Number('${ledgerDTO.spand}');
 							}
 						}
 					}
@@ -658,15 +687,73 @@ function chartDivData(cate, inout, period, year, time){
 					maxMoney = dayMaxMoney;
 				}
 			</c:if>
+			if(time == 'thisTime'){
+				date = year+"/${i}";
+				xBarTitle = "년/월";
+			}else if(time == 'beforeTime'){
+				date = '${i}';
+				xBarTitle = "월";
+			}
+			cateThis = Number(year)+"년 "+cate;
+			
 			if(inout == 'catein'){			// 수입 
-				data.push([ year+"/${i}" , Number(income) ]);
+				data.push([ date , Number(income) ]);
 			}else if(inout == 'cateout'){	// 지출
-				data.push([ year+"/${i}" , Number(outcome) ]);
+				data.push([ date , Number(outcome) ]);
 			}else if(inout == 'cateinout'){	// 수입-지출
-				data.push([ year+"/${i}" , Number(inoutcash) ]);
+				data.push([ date , Number(inoutcash) ]);
 			}
 		
 		</c:forEach>
+		
+		if(time =='beforeTime'){	// 지난 해
+			dateFormat = '%m';
+			<c:forEach var="i" begin="1" end="12" step="1">
+				var income = 0;
+				var outcome = 0;
+				var inoutcash = 0;
+				<c:set var="ledgerListBefore" value="${yearMapBefore[i] }"/>	
+				<c:if test="${fn:length(ledgerListBefore) ne 0  }">
+					dayMaxMoney = 0;
+				
+					<c:forEach var="ledgerDTO" items="${ledgerListBefore}">	
+						if(inout == 'cateinout'){	// 수입-지출
+							if(cate == '수입'){
+								inoutcash += Number('${ledgerDTO.income}');
+								dayMaxMoney += Number('${ledgerDTO.income}');
+							}else if(cate =='지출'){
+								inoutcash += Number('${ledgerDTO.spand}');
+								dayMaxMoney += Number('${ledgerDTO.spand}');
+							}
+						}else{	// 수입, 지출
+							if('${ledgerDTO.category }'== cate){
+								if(inout == 'catein'){
+									dayMaxMoney += Number('${ledgerDTO.income}');
+									income += Number('${ledgerDTO.income}');
+								}else if(inout == 'cateout'){
+									dayMaxMoney += Number('${ledgerDTO.spand}');
+									outcome += Number('${ledgerDTO.spand}');
+								}
+							}
+						}
+					</c:forEach>
+					
+					if(maxMoney < dayMaxMoney){	// 하루 금액이 최대 금액보다 클경우
+						maxMoney = dayMaxMoney;
+					}
+				</c:if>
+				/* (year-1)+"/${i}" */
+				if(inout == 'catein'){			// 수입 
+					dataBefore.push([ "${i}" , Number(income) ]);
+				}else if(inout == 'cateout'){	// 지출
+					dataBefore.push([ "${i}" , Number(outcome) ]);
+				}else if(inout == 'cateinout'){	// 수입-지출
+					dataBefore.push([ "${i}" , Number(inoutcash) ]);
+				}
+			
+				cateBefore = Number(year)-1+"년 "+cate;
+			</c:forEach>
+		}
 		
 	}else if(period == 'selectPeriod'){	// 기간 
 		dateFormat = '%y/%m/%d';
@@ -702,6 +789,14 @@ function chartDivData(cate, inout, period, year, time){
 					maxMoney = dayMaxMoney;
 				}
 			</c:forEach>
+			if(time = "thisTime"){
+				xBarTitle = "년/월/일";
+			}else if(time = "beforeTime"){
+				xBarTitle = "년/월/일";
+				
+			}
+			
+			cateThis = "조회기간 "+cate;
 			
 			if(inout == 'catein'){			// 수입
 				data.push([ "${periodDay}" , Number(income) ]);
@@ -711,6 +806,53 @@ function chartDivData(cate, inout, period, year, time){
 				data.push([ "${periodDay}" , Number(inoutcash) ]);
 			}
 		</c:forEach>
+		
+		
+		if(time == 'beforeTime'){
+		dateFormat = '%m/%d';
+		<c:forEach var="periodDay" items="${selectPeriodListBefore}">
+		var income = 0;
+		var outcome = 0;
+		var inoutcash = 0;
+		dayMaxMoney = 0;
+			<c:forEach var="ledgerDTO" items="${ledgerListBefore}">
+				<c:if test="${periodDay eq ledgerDTO.stringDate}">	// 날짜가 같으면
+				if(inout == 'cateinout'){	// 수입-지출
+					if(cate == '수입'){
+						inoutcash += Number('${ledgerDTO.income}');
+						dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.income}');
+					}else if(cate =='지출'){
+						inoutcash += Number('${ledgerDTO.spand}');
+						dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.spand}');
+					}
+				}else{	// 수입, 지출
+					if('${ledgerDTO.category }'== cate){	// 카테고리가 같으면
+						if(inout == 'catein'){			// 수입
+							dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.income}');
+							income = income+Number('${ledgerDTO.income}');
+						}else if(inout == 'cateout'){	// 지출
+							dayMaxMoney = dayMaxMoney+Number('${ledgerDTO.spand}');
+							outcome = outcome+Number('${ledgerDTO.spand}');
+						}
+					}
+				}
+				</c:if>
+		
+				if(maxMoney < dayMaxMoney){	// 하루 금액이 최대 금액보다 클경우
+					maxMoney = dayMaxMoney;
+				}
+			</c:forEach>
+			
+			if(inout == 'catein'){			// 수입
+				dataBefore.push([ "${periodDay}" , Number(income) ]);
+			}else if(inout == 'cateout'){	// 지출
+				dataBefore.push([ "${periodDay}" , Number(outcome) ]);
+			}else if(inout == 'cateinout'){	// 수입-지출
+				dataBefore.push([ "${periodDay}" , Number(inoutcash) ]);
+			}
+		</c:forEach>
+		cateBefore="1년전 "+cate;
+		}
 	}
 	// div 그래프 글자 색 설정
 	if(inout == 'catein' || cate == '수입'){
@@ -720,21 +862,21 @@ function chartDivData(cate, inout, period, year, time){
 	}
 	
 	if(time== 'thisTime'){
-		makeChartDiv(data, maxMoney, cate, dateFormat, divColor);
+		makeChartDiv(data, maxMoney, cateThis, dateFormat, divColor, xBarTitle);
 	}else if(time == 'beforeTime'){
-		makeChartDivBefore(data, dataBefore, maxMoney, cate, dateFormat, divColor);
+		makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, dateFormat, divColor, xBarTitle);
 	}
 }
 		
 		
 // ========================== Div 그래프 제작 (조회기간) ==========================
-function makeChartDiv(data, maxMoney, cate, dateFormat, divColor) {
+function makeChartDiv(data, maxMoney, cateThis, dateFormat, divColor, xBarTitle) {
     
 	$('#graphDiv').empty();	// 기존 그래프 삭제
     var plot = $.jqplot('graphDiv', [data],{	// 라인 1, 라인 2
      axes:{
       xaxis:{
-    	  label : '날짜',
+    	  label : xBarTitle, // '날짜'
        // 날짜 형태로 입력: Date형식의 Renderer을 사용.
        renderer:$.jqplot.DateAxisRenderer,
        tickOptions:{ // 축에관한 옵션                   
@@ -754,7 +896,7 @@ function makeChartDiv(data, maxMoney, cate, dateFormat, divColor) {
      },
      series:[        // 속성?  양쪽에 선그리기
       {         // 두번째 그래프 속성
-       label:cate,	// 선택된 항목으로 표시
+       label:cateThis,	// 선택된 항목으로 표시
        color : divColor, //'#CE3636',
        rendererOptions: {
         animation: {
@@ -783,19 +925,19 @@ function makeChartDiv(data, maxMoney, cate, dateFormat, divColor) {
    }
    
 //========================== Div 그래프 제작 (조회기간 전) ==========================
-function makeChartDivBefore(data, dataBefore, maxMoney, cate, dateFormat, divColor) {
+function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, dateFormat, divColor, xBarTitle) {
     alert("data : "+data);
     alert("dataBefore : "+dataBefore);
 	$('#graphDiv').empty();	// 기존 그래프 삭제
     var plot = $.jqplot('graphDiv', [data,dataBefore],{	// 라인 1, 라인 2
      axes:{
       xaxis:{
-    	  label : '날짜',
+    	  label : xBarTitle,	// '날짜'
        // 날짜 형태로 입력: Date형식의 Renderer을 사용.
        renderer:$.jqplot.DateAxisRenderer,
        tickOptions:{ // 축에관한 옵션                   
        // format 형식: 입력값(yyyy/mm/dd)
-        formatString: '%e'//dateFormat
+        formatString: dateFormat //dateFormat - '%e'
        }
       },
       yaxis: { // y축 옵션
@@ -810,7 +952,7 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cate, dateFormat, divCol
      },
      series:[        // 속성?  양쪽에 선그리기
       {         // 첫번째 그래프 속성
-       label: cate,	// 선택된 항목으로 표시
+       label: cateThis,	// 선택된 항목으로 표시
        color : divColor, //'#CE3636',
        rendererOptions: {
         animation: {
@@ -819,7 +961,7 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cate, dateFormat, divCol
        }
       },
       {         // 두번째 그래프 속성
-          label: cate,	// 선택된 항목으로 표시
+          label: cateBefore,	// 선택된 항목으로 표시
           color : '#000000', //'#CE3636',
           rendererOptions: {
            animation: {

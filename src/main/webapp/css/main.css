@@ -121,7 +121,7 @@ nav>#lv2>ul.lv2-list
 	padding: 0px;
 	float: left;
 	width: 25%;
-	min-height: 4px;
+	height: 4px;
 	visibility: hidden;
 }
 nav>#lv2>ul.lv2-list>li
