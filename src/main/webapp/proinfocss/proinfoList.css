@@ -1,0 +1,100 @@
+.container {
+	width: 100%;
+	height: 100%;
+}
+.modal{
+	
+}
+.inner{
+	width: 1100px;
+	height: 600px;;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	margin-top: 100px;
+}
+.in{	/* 전-중-후 div */
+	margin: 30px;
+	width: 300px;
+	height: 500px;
+	border: 1px solid;
+	float: left;
+	cursor: pointer;
+}
+div#glayLayer {
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background: black;
+	filter: alpha(opacity = 60);
+	opacity: 0.60;
+}
+
+/*이미지가 표현될 레이어를 화면 중앙에 배치 > 기본적으로 표지되지 않도록 설정*/
+div#overLayer {
+	display: none;
+	position: fixed;
+	width: 800px;
+	height: 600px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+.ol_top{
+	width: 100%;
+	height: 50px;
+	background-color: black;
+}
+.ol_center{
+	width: 100%;
+	height: 550px;
+	background-color: white;
+	float: left;
+}
+
+.ol_center .searchListdiv{	/* 검색 결과 감싸는 div (스크롤) */
+	width: 98%;
+	height: 98%;
+	background-color: white;
+	float: left;
+	overflow:scroll;
+	border: solid 1px black;
+}
+
+.ol_center .searchListdiv .searchList{	/* 검색 결과 div */
+	width: 98%;
+	height: 8%;
+	background-color: #DBDBDB;
+	float: left;
+	border: solid 1px red;
+}
+
+.ol_center .searchListdiv .searchList:hover{	/* 검색 결과 리스트 hover 이벤트 */
+	
+	background-color: #8C8C8C;
+}
+
+
+#cancel{
+	width: 50px;
+	height: 50px;
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+	background-color: black;
+	border: none;
+	outline: 0;
+	cursor: pointer;
+}
+
+.v_subject{
+	height: 10%;
+}
