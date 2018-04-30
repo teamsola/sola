@@ -144,7 +144,7 @@ outline:none;
 	
 	<c:forEach var="mallDTO" items="${list2 }">
 		<tr>
-			<td width="20%"><div id="first"><img src="../storage/${mallDTO.img }" width="100" height="120"></div>
+			<td width="20%"><div id="first"><img src="storage/${mallDTO.img }" width="100" height="120"></div>
 			<td width="40%"><div id="second">${mallDTO.subject }</div>
 			<td width="20%"><div id="third"><input type="button" value="수정" id="modify" onclick="location.href='mallUpdateForm.do?mall_seq=${mallDTO.mall_seq}'"></div>
 			<td width="20%"><div id="fourth"><input type="button" value="삭제" id="delete" onclick="javascript:del()"></div>

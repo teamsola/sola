@@ -137,8 +137,8 @@ tr{
 	
 	<table id="oldtable">
 		<tr>
-			<td id="oldtd"><a href="mallBoardList.do?pg=1"><img src="../image/2.JPG" id="oldimg1" width="250" height="300"></a>
-			<td id="oldtd"><a href="mallBoardWriteForm.do"><img src="../image/1.JPG" id="oldimg2" width="250" height="300"></a>
+			<td id="oldtd"><a href="mallBoardList.do?pg=1"><img src="image/2.JPG" id="oldimg1" width="250" height="300"></a>
+			<td id="oldtd"><a href="mallBoardWriteForm.do"><img src="image/1.JPG" id="oldimg2" width="250" height="300"></a>
 		</tr>
 	</table>
 	
@@ -168,7 +168,7 @@ tr{
 							<td id="newtd">
 							<div id="one">
 								<div id="picture">
-								<a href="${mallDTO.mallurl }"><img src="../storage/${mallDTO.img }" width="100" height="120"></a>
+								<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 								</div>
 								<div id="subject">
 								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -183,7 +183,7 @@ tr{
 							<td id="newtd">
 							<div id="one">
 								<div id="picture">
-								<img src="../storage/${mallDTO.img }" width="100" height="120">
+								<img src="storage/${mallDTO.img }" width="100" height="120">
 								</div>
 								<div id="subject">
 								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -199,7 +199,7 @@ tr{
 							<td id="newtd">
 							<div id="one">
 								<div id="picture">
-								<img src="../storage/${mallDTO.img }" width="100" height="120">
+								<img src="storage/${mallDTO.img }" width="100" height="120">
 								</div>
 								<div id="subject">
 								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
