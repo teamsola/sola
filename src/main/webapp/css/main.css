@@ -1,12 +1,18 @@
 @charset "UTF-8";
 body
 {
-	background-color: #6a6763;
+	background-color: white;
 }
-.frame, header, footer, section, nav
+header, footer,  nav
 {
 	margin: auto;
-	background-color: #ff8400;
+	background-color: #6a6763;
+	box-sizing: border-box;
+	display: table;
+}
+.frame, section{
+	margin: auto;
+	background-color: white;
 	box-sizing: border-box;
 	display: table;
 }
