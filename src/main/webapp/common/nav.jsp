@@ -33,9 +33,9 @@
 			<li><a href="proinfoMain.do">전문지식</a></li>
 		</ul>
 		<ul class="lv2-list" id="tipLv2" rel="tip">
-			<li class="nav-item"><a href="/sola/tip/place.do" class="nav-link">혼밥혼술</a></li>
+			<li class="nav-item"><a href="place.do" class="nav-link">혼밥혼술</a></li>
 			<li class="nav-item"><a href="/sola/tip/recipe.do?cmd=" class="nav-link">레시피</a></li>
-			<li class="nav-item"><a href="/sola/tip/interior.do?cmd=" class="nav-link">인테리어</a></li>
+			<li class="nav-item"><a href="interior.do" class="nav-link">인테리어</a></li>
 			<li class="nav-item"><a href="/sola/tip/express.do" class="nav-link">무인택배</a></li>
 		</ul>
 		<ul class="lv2-list" rel="logout"></ul>

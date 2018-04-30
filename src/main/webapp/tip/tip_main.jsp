@@ -5,6 +5,8 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert_title_here</title>
+	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$(".cont_left").hide();
@@ -65,10 +67,10 @@ pageEncoding="UTF-8"%>
 			width:100%;
 			height:400px;
 		}
-		.tip_main_menu1{ background:url("../img/place.jpg") center; background-size: 100%; cursor: pointer; }
-		.tip_main_menu2{  background:url("../img/express.jpg") center; background-size: 100%; cursor: pointer; }
-		.tip_main_menu3{  background:url("../img/interior.jpg") center; background-size: 100%; cursor: pointer; }
-		.tip_main_menu4{  background:url("../img/recipe.jpg") center; background-size: 100%; cursor: pointer; }
+		.tip_main_menu1{ background:url("/sola/img/place.jpg") center; background-size: 100%; cursor: pointer; }
+		.tip_main_menu2{  background:url("/sola/img/express.jpg") center; background-size: 100%; cursor: pointer; }
+		.tip_main_menu3{  background:url("/sola/img/interior.jpg") center; background-size: 100%; cursor: pointer; }
+		.tip_main_menu4{  background:url("/sola/img/recipe.jpg") center; background-size: 100%; cursor: pointer; }
 		.cont_left{
 			float: left;
 			width:500px;

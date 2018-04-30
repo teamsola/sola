@@ -71,7 +71,7 @@ public class ProinfoController {
 	@RequestMapping(value="proinfoInsertForm.do")
 	public ModelAndView proinfoInsertForm(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
-		modelAndView.setViewName("/proinfo/proinfoInsert.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoInsert.jsp");
 
 		return modelAndView;
 	}
@@ -99,7 +99,7 @@ public class ProinfoController {
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("cmd", "insert");
 		modelAndView.addObject("su", su);
-		modelAndView.setViewName("/proinfo/proinfoMessage.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoMessage.jsp");
 
 		return modelAndView;
 	}
@@ -141,8 +141,7 @@ public class ProinfoController {
 
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("proinfoDTO", proinfoDTO);
-
-		modelAndView.setViewName("/proinfo/proinfoModify.jsp");
+		modelAndView.addObject("content", "/proinfo/proinfoModify.jsp");
 
 		return modelAndView;
 		
@@ -175,7 +174,7 @@ public class ProinfoController {
 			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("cmd", "update");
 			modelAndView.addObject("su", su);
-			modelAndView.setViewName("/proinfo/proinfoMessage.jsp");
+			modelAndView.addObject("content", "/proinfo/proinfoMessage.jsp");
 
 			return modelAndView;
 			
@@ -193,7 +192,7 @@ public class ProinfoController {
 			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("cmd", "delete");
 			modelAndView.addObject("su", su);
-			modelAndView.setViewName("/proinfo/proinfoMessage.jsp");
+			modelAndView.addObject("content", "/proinfo/proinfoMessage.jsp");
 
 			return modelAndView;
 			
@@ -263,8 +262,11 @@ public class ProinfoController {
 			modelAndView.addObject("list_n",list_n);
 			modelAndView.addObject("proinfoDTO",proinfoDTO);
 			modelAndView.addObject("list_t",list_t);
+			System.out.println("list_t : "+ list_t);
 			modelAndView.addObject("keyword_c", keyword_c);
 			modelAndView.addObject("content", "/proinfo/proinfoMain.jsp");
+			
+			System.out.println("keyword_c : "+keyword_c);
 			return modelAndView;
 			
 		}

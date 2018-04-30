@@ -7,9 +7,24 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../proinfocss/proinfo.css?ver=2" />
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="proinfocss/proinfo.css?ver=2" />
+
 <script type="text/javascript">
+
+$(document).ready(function(){
+	alert("레디 들어옴");
+	alert("keyword : ${keyword}");
+	alert("keyword_c : ${keyword_c}");
+	alert("list_tt : ${list_t}");
+	
+	if('${!empty keyword }' || '${!empty keyword_c}'){
+		alert("검색, 카테고리 눌림 눌림");
+		$("#glayLayer").fadeIn(300);
+		$("#overLayer").fadeIn(200);
+		return false;
+	}
+});
 
 function right_btn_check(){
 	<c:if test="${list_t eq 'c'}">
@@ -35,23 +50,6 @@ function left_btn_check(){
 }
 
 
-window.onload=function(){ 
-	alert("온로드 들어옴")
-	// 검색할 때 
-	if(document.proinfoMain.keyword.value != ""){
-		alert("검색 눌림");
-		$("#glayLayer").fadeIn(300);
-		$("#overLayer").fadeIn(200);
-		return false;
-		
-	// 카테고리 누를때
-	}else if(document.proinfoMain.keyword_c.value != ""){
-		alert("카테고리 눌림");
-		$("#glayLayer").fadeIn(300);
-		$("#overLayer").fadeIn(200);
-		return false;
-	}
-}
 
 	$(function(){
 		
@@ -102,7 +100,7 @@ window.onload=function(){
 </script>
 </head>
 <body>
-<form name="proinfoMain" method="post" action="search.do?pg=1"> 
+<form name="proinfoMain" method="post" action="search.do?pg=1">
 <input type="hidden" name="list_t" value="${list_t }"/>
 	<div class="container">
 		<div id='glayLayer'></div>
@@ -135,7 +133,7 @@ window.onload=function(){
 			<c:set var="len" value="${fn:length(text) }" />
 			<input name="keyword" class="keyword" type="text"
 				value="${fn:substring(text,1,len-1)}" /> <input name="searchbt"
-				class="searchbt" type="submit" value="." />
+				class="searchbt" type="submit" value="검색" />
 			</div>
 			
 			<!-- 전, 중, 후 -->

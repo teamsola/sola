@@ -8,16 +8,17 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert_title_here</title>
-	<script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 	#interior_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto;}
-	.interior_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background: url("../img/interior.jpg") no-repeat center center;}
+	.interior_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background: url("/sola/img/interior.jpg") no-repeat center center;}
 	.interior_srch{margin:20px;}
 	#keyword{border-style:none;font-size:16px; padding:7px; position:relative;bottom:13px;border:1px solid #6a6763;box-sizing: border-box;}
 	#keyword:focus{outline:none;border:2px solid #6a6763;box-sizing: border-box;}
 	#searchimg{cursor: pointer;}
-	#interior_add_btn{background: url("../img/interior_btn.png") no-repeat 6px; font-weight:bold; border-style:none; border:1px solid black; border-radius:20px; background-size:120px 30px; width: 162px; height: 35px;font-size:15px;}
-	#interior_add_btn:hover, #interior_add_btn:active{cursor:pointer; outline:none; background:#6a6763 url("../img/interior_btn_hover.png") no-repeat 6px; border:none; background-size:120px 30px;color:white;}
+	#interior_add_btn{background: url("/sola/img/interior_btn.png") no-repeat 6px; font-weight:bold; border-style:none; border:1px solid black; border-radius:20px; background-size:120px 30px; width: 162px; height: 35px;font-size:15px;}
+	#interior_add_btn:hover, #interior_add_btn:active{cursor:pointer; outline:none; background:#6a6763 url("/sola/img/interior_btn_hover.png") no-repeat 6px; border:none; background-size:120px 30px;color:white;}
 	.interior_list{float:left;margin:10px; width:100%;}
 	.interior_list .list_each{float:left;width:330px;margin:30px 15px 40px 15px;height:380px;}
 	.interior_list .list_each a, .interior_list .interior_list a:visited{text-decoration: none;color: black;}
@@ -74,7 +75,7 @@ pageEncoding="UTF-8"%>
 			<div style="float:left;">
 				<input type="hidden" value="1" id="pg" name="pg">
 				<input type="text" id="keyword" placeholder="검색어를 입력하세요" name="keyword">
-				<img id="searchimg" src="../img/i_searchBtn.png" width="36px" height="36px" style="margin-top:5px;" onclick="javascript:interiorSrch()">
+				<img id="searchimg" src="/sola/img/i_searchBtn.png" width="36px" height="36px" style="margin-top:5px;" onclick="javascript:interiorSrch()">
 			</div>
 			<div style="float:right;margin:5px;">
 			지금 바로 인테리어를 등록해보세요! >&nbsp;&nbsp;&nbsp;&nbsp;<input id="interior_add_btn" type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인테리어 작성" onclick="location.href='interior_add.do'">
@@ -88,7 +89,7 @@ pageEncoding="UTF-8"%>
 						<div style="float:left;width:330px;height: 200px;margin: 0 auto;overflow:hidden;text-align: center;border-radius:15px;">
 						<c:choose>
 							<c:when test="${item.interior_mainimage == 'null' }">
-							<img class="image${i.count }" src="../img/recipe_default.png" onclick="location.href='interior_view.do?s=${item.interior_seq}'">
+							<img class="image${i.count }" src="/sola/img/recipe_default.png" onclick="location.href='interior_view.do?s=${item.interior_seq}'">
 							</c:when>
 							<c:otherwise>
 							<img class="image${i.count }" src="../storage/${item.interior_mainimage }" onclick="location.href='interior_view.do?s=${item.interior_seq}'">
@@ -125,7 +126,7 @@ pageEncoding="UTF-8"%>
 							</c:otherwise>
 						</c:choose>
 						</span>
-						<span style="float:right;"><img src="../img/hit.png" width="15px" height="12px" style="margin-top:12px;margin-right:5px;">${item.hit }</span>
+						<span style="float:right;"><img src="/sola/img/hit.png" width="15px" height="12px" style="margin-top:12px;margin-right:5px;">${item.hit }</span>
 						</div>
 					</div>
 				</c:forEach>
