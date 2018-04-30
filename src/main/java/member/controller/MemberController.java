@@ -31,11 +31,12 @@ public class MemberController
 	public ModelAndView login(HttpSession session, String id, String pwd)
 	{
 		String nickname = memberService.login(id, pwd);
-
+		System.out.println("닉네임: "+nickname);
 		if(nickname != null)
 		{
 			session.setAttribute("memId", id);
 			session.setAttribute("memName", nickname);
+			System.out.println("아이디: "+id);
 			if(id.equals("hong"))
 			{
 				session.setAttribute("home1", "/home/test3.jsp");
