@@ -5,6 +5,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+tr.sub
+{
+	font-size: 8px;
+	text-align: left;
+}
+tr.inp
+{
+	text-align: left;
+}
 </style>
 <script type="text/javascript" src="js/memberScript.js?v=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -123,39 +132,54 @@ function execDaumPostcode()
     		});
 </script>
 </head>
-<body>
+<body align="center">
 		<h3>회원가입</h3>
 		<hr>
 		<form name="joinForm" action="join.do" method="post">
 			<table>
-				<tr>
+				<tr class="sub">
 					<td>아이디</td>
+				</tr>
+				<tr class="inp">
 					<td><input type="text" name="id" required="required"> <input type="button" value="중복확인" id="duplCheck" onclick="checkId()"></td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td>비밀번호</td>
+				</tr>
+				<tr class="inp">
 					<td><input type="password" name="pwd" id="pwd" required="required"></td>
 				</tr>
-				<tr>
-					<td>비밀번호 확인</td>
-					<td><input type="password" id="pwd2"><span id="pwCheck" required="required"></span></td>
+				<tr class="sub">
+					<td>비밀번호 확인</td><span id="pwCheck" required="required">
 				</tr>
-				<tr>
+				<tr class="inp">
+					<td><input type="password" id="pwd2"></span></td>
+				</tr>
+				<tr class="sub">
 					<td>이름</td>
+				</tr>
+				<tr class="inp">
 					<td><input type="text" name="name" required="required"></td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td>성별</td>
+				</tr>
+				<tr class="inp">
 					<td>
 						<input type="radio" name="gender" value="m">남
 						<input type="radio" name="gender" value="f">여
 					</td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td>별명</td>
+				</tr>
+				<tr class="inp">
 					<td><input type="text" name="nickname" required="required"></td>
 				</tr>
-				<tr><td>전화번호</td>
+				<tr class="sub">
+					<td>전화번호</td>
+				</tr>
+				<tr class="inp">
 					<td>
 						<select name="tel1">
 							<option>02<option>031<option>032<option>033<option>041<option>042<option>043<option>044<option>051
@@ -164,8 +188,10 @@ function execDaumPostcode()
 						-<input type="text" name="tel2" required="required">-<input type="text" name="tel3" required="required">
 					</td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td>이메일</td>
+				</tr>
+				<tr class="inp">
 					<td>
 						<input type="text" id="email1" name="email1" required="required"> @
 						<input type="text" name="email2" id="email2" value="hanmail.net" style="display:none">
@@ -178,20 +204,28 @@ function execDaumPostcode()
 						</select>
 					</td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td><input type="button" id="authEmailBtn" value="이메일인증받기"></td>
+				</tr>
+				<tr class="inp">	
 					<td><input type="text" id="authEmailText" name="authEmailText"><span id="authEmailResult"></span></td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td>우편번호</td>
+				</tr>
+				<tr class="inp">
 					<td><input type="text" name="post" id="post" readonly="readonly"> <input type="button" value="찾기" id="postButton"></td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td>주소</td>
+				</tr>
+				<tr class="inp">
 					<td><input type="text" name="addr1" id="addr1" readonly="readonly"></td>
 				<tr>
-				<tr>
-					<td></td>
+				<tr class="sub">
+					<td class="sub"></td>
+				</tr>
+				<tr class="inp">
 					<td><input type="text" name="addr2"></td>
 				<tr>
 			</table>

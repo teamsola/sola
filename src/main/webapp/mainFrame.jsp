@@ -21,7 +21,7 @@ var loginCheck = function()
 <body>
 <div id="wrapper" class="frame">
 	<header><jsp:include page="/common/header.jsp" /></header>
-	<nav>
+	<nav role="gnb">
 	<jsp:include page="/common/nav.jsp" />
 	</nav>
 	<div id="body" class="frame">
