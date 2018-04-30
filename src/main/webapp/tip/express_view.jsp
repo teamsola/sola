@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
 	<meta charset="UTF-8">
 	<title>SOLA > 장소 보기</title>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f80aacb55527fc9a78de91374d1d0c3&libraries=services,clusterer,drawing"></script>
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 	function subBtn(){
 		if($('#keyword').val()==''){

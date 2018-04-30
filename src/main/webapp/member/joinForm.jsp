@@ -5,6 +5,39 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+#joinForm table
+{
+	width: 350px;
+}
+tr.sub
+{
+	font-size: 8px;
+	text-align: left;
+}
+tr.inp
+{
+	text-align: left;
+}
+tr.inp>td>.inp_text
+{
+	width: 100%;
+}
+tr.hid
+{
+	display: none;
+}
+.inp_div
+{
+	float: left;
+	width: 100%;
+}
+.inp_div_btn
+{
+	position: absolute;
+	right: 0px;
+	z-index: 10;
+	float: right;
+}
 </style>
 <script type="text/javascript" src="js/memberScript.js?v=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -65,15 +98,16 @@ function execDaumPostcode()
     					    var isHan = /[ㄱ-ㅎ가-힣]/g;
     					    if (!isEmail.test(email) || isHan.test(email)) 
     					    {
-    					        authEmailResult.innerHTML = "이메일 주소를 다시 확인해주세요.";
+    					        authEmailResult.innerHTML = "<font color=red>이메일 주소를 다시 확인해주세요.</font>";
     					        return false;
     					    }
     						
+    					    $("#hid_auth").show();
     						var togo = "authEmail.do?email=" + email;
     						var authEmailWindow = open(togo, "이메일인증", "height=10, width=10, top=0, left=0, location, resizable");
     						if(authEmailWindow.close)
     							{
-										$("#authEmailResult").html("이메일이 발송되었습니다.");
+										$("#authEmailResult").html("<font color=blue>이메일이 발송되었습니다.</font>");
     							}
     					});
     			
@@ -92,14 +126,15 @@ function execDaumPostcode()
     					
     					//결과에 따른 후속 처리
     					if(result_value){
-    						$("#authEmailResult").html(message);
-    						$("#authEmailText").attr("disabled", "disabled");
+    						$("#authEmailResult").html("<font color=blue>" + message + "</font>");
     						$("#email1").attr("readonly", "readonly");
     						$("#email2").attr("readonly", "readonly");
     						$("#emailSel").attr("disabled", "disabled");
+    						$("#sub_auth").hide();
+    						$("#hid_auth").hide();
     						$("#emailAuth").val("ok");
     					}else{
-    						$("#authEmailResult").html(message);
+    						$("#authEmailResult").html("<font color=red>" + message + "</font>");
     					}
     				}).fail(function(){
     					$("#authEmailResult").html("error");
@@ -112,64 +147,99 @@ function execDaumPostcode()
     						if($("#emailSel").val() == "직접 입력")
     							{
     								$("#email2").val(null);
-    								$("#email2").show();
+    								$("#hid_email").show();
+    							//	$("#email2").show();
     							}
     						else
     							{
     								$("#email2").val($("#emailSel").val());
-    								$("#email2").hide();
+    								$("#hid_email").hide();
+    							//	$("#email2").hide();
     							}
     					})
     		});
 </script>
 </head>
-<body>
+<body align="center">
 		<h3>회원가입</h3>
 		<hr>
-		<form name="joinForm" action="join.do" method="post">
-			<table>
-				<tr>
+		<form id="joinForm" name="joinForm" action="join.do" method="post">
+			<table align="center">
+				<tr class="sub">
 					<td>아이디</td>
-					<td><input type="text" name="id" required="required"> <input type="button" value="중복확인" id="duplCheck" onclick="checkId()"></td>
 				</tr>
-				<tr>
+				<tr class="inp">
+					<td style="position:relative">
+						<div class="inp_div"><input type="text" name="id" required="required" class="inp_text"></div> 
+						<div class="inp_div_btn"><input type="button" value="중복확인" id="duplCheck" onclick="checkId()"></div>
+					</td>
+				</tr>
+				<tr class="sub">
 					<td>비밀번호</td>
-					<td><input type="password" name="pwd" id="pwd" required="required"></td>
 				</tr>
-				<tr>
-					<td>비밀번호 확인</td>
-					<td><input type="password" id="pwd2"><span id="pwCheck" required="required"></span></td>
+				<tr class="inp">
+					<td><input type="password" name="pwd" id="pwd" required="required" class="inp_text"></td>
 				</tr>
-				<tr>
+				<tr class="sub">
+					<td>비밀번호 확인</td><span id="pwCheck" required="required">
+				</tr>
+				<tr class="inp">
+					<td><input type="password" id="pwd2" class="inp_text"></span></td>
+				</tr>
+				<tr class="sub">
 					<td>이름</td>
-					<td><input type="text" name="name" required="required"></td>
 				</tr>
-				<tr>
+				<tr class="inp">
+					<td><input type="text" name="name" required="required" class="inp_text"></td>
+				</tr>
+				<tr class="sub">
 					<td>성별</td>
+				</tr>
+				<tr class="inp">
 					<td>
 						<input type="radio" name="gender" value="m">남
 						<input type="radio" name="gender" value="f">여
 					</td>
 				</tr>
-				<tr>
+				<tr class="sub">
 					<td>별명</td>
-					<td><input type="text" name="nickname" required="required"></td>
 				</tr>
-				<tr><td>전화번호</td>
+				<tr class="inp">
+					<td><input type="text" name="nickname" required="required" class="inp_text"></td>
+				</tr>
+				<tr class="sub">
+					<td>전화번호</td>
+				</tr>
+				<tr class="inp">
 					<td>
-						<select name="tel1">
+						<select name="tel1" class="inp_text">
 							<option>02<option>031<option>032<option>033<option>041<option>042<option>043<option>044<option>051
 							<option>052<option>053<option>054<option>055<option>061<option>062<option>063<option>064
 						</select>
-						-<input type="text" name="tel2" required="required">-<input type="text" name="tel3" required="required">
 					</td>
 				</tr>
-				<tr>
-					<td>이메일</td>
+				<tr class="inp">
+					<td><input type="text" name="tel2" required="required" class="inp_text"></td>
+				</tr>
+				<tr class="inp">
+					<td><input type="text" name="tel3" required="required" class="inp_text"></td>
+				</tr>
+				<tr class="sub">
+					<td>이메일<br><span id="authEmailResult" style="text-align: right"></span></td>
+				</tr>
+				<tr class="inp">
 					<td>
-						<input type="text" id="email1" name="email1" required="required"> @
-						<input type="text" name="email2" id="email2" value="hanmail.net" style="display:none">
-						<select id="emailSel">
+						<input type="text" id="email1" name="email1" required="required" class="inp_text">
+					</td>
+				</tr>
+				<tr class="hid" id="hid_email" align="right">
+					<td>
+						@<input type="text" name="email2" id="email2" value="hanmail.net" class="inp_hid" style="width:90%">
+					</td>
+				</tr>
+				<tr class="inp">
+					<td>	
+						@<select id="emailSel" style="width:90%">
 							<option>hanmail.net
 							<option>naver.com
 							<option>nate.com
@@ -178,27 +248,37 @@ function execDaumPostcode()
 						</select>
 					</td>
 				</tr>
-				<tr>
+				<tr class="sub" id="sub_auth">
 					<td><input type="button" id="authEmailBtn" value="이메일인증받기"></td>
-					<td><input type="text" id="authEmailText" name="authEmailText"><span id="authEmailResult"></span></td>
 				</tr>
-				<tr>
+				<tr class="hid" id="hid_auth">	
+					<td><input type="text" id="authEmailText" name="authEmailText" class="inp_text"></td>
+				</tr>
+				<tr class="sub">
 					<td>우편번호</td>
-					<td><input type="text" name="post" id="post" readonly="readonly"> <input type="button" value="찾기" id="postButton"></td>
 				</tr>
-				<tr>
+				<tr class="inp">
+					<td style="position:relative">
+						<div class="inp_div"><input type="text" name="post" id="post" readonly="readonly" class="inp_text"></div> 
+						<div class="inp_div_btn"><input type="button" value="찾기" id="postButton"></div>
+					</td>
+				</tr>
+				<tr class="sub">
 					<td>주소</td>
-					<td><input type="text" name="addr1" id="addr1" readonly="readonly"></td>
+				</tr>
+				<tr class="inp">
+					<td><input type="text" name="addr1" id="addr1" readonly="readonly" class="inp_text"></td>
 				<tr>
-				<tr>
-					<td></td>
-					<td><input type="text" name="addr2"></td>
+				<tr class="sub">
+					<td class="sub"></td>
+				</tr>
+				<tr class="inp">
+					<td><input type="text" name="addr2" class="inp_text"></td>
 				<tr>
 			</table>
 			<input type="hidden" name="idAuth" value="no" />
 			<input type="hidden" name="emailAuth" value="no" />
 			<input type="button" value="회원가입" onclick="javascript:checkJoin()">
 		</form>
-		joinDate, grade, score,profile
 </body>
 </html>

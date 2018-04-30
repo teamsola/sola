@@ -6,6 +6,8 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>SOLA > 무인택배</title>
+	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('.link001').hide();
@@ -48,11 +50,11 @@ pageEncoding="UTF-8"%>
 	</script>
 	<style type="text/css">
 		#express_main_up{
-			background: black url("../img/express_up.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_up.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 		#express_main_down{
-			background: black url("../img/express_down.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_down.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 		.express_main{
@@ -105,11 +107,11 @@ pageEncoding="UTF-8"%>
 			color: white;
 		}
 		.link001:hover, .link001:active{
-			background: black url("../img/express_up_hover.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_up_hover.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 		.link002:hover, .link002:active{
-			background: black url("../img/express_down_hover.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_down_hover.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 	</style>
