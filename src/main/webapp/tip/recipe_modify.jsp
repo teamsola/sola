@@ -128,9 +128,9 @@ pageEncoding="UTF-8"%>
 			    document.getElementById('afterImg').innerHTML = '<img src="#" id="imgAfter" width="" height="">';
 			    var output = document.getElementById('imgAfter');
 			    output.src = URL.createObjectURL(event.target.files[0]);
-			    $('#imgAfter').load(function(){
-			    	var widthAfter = $(this).naturalWidth();
-					var heightAfter = $(this).naturalHeight();
+			    $('#imgAfter').on('load', function(){
+			    	var widthAfter = $(this)[0].naturalWidth;
+					var heightAfter = $(this)[0].naturalHeight;
 					if(widthAfter/heightAfter > 2){
 						$('#imgAfter').css({
 							"display":"block",

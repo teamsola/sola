@@ -351,7 +351,7 @@ public class TipController {
 		}else {
 			modelAndView.addObject("msg", "장소를 성공적으로 등록했습니다.");
 		}
-		modelAndView.addObject("content", "/tip/place.do");
+		modelAndView.addObject("content", "place.do");
 		return modelAndView;
 	}
 	
@@ -450,10 +450,31 @@ public class TipController {
 		}else {
 			modelAndView.addObject("msg", "장소를 성공적으로 등록했습니다.");
 		}
-		modelAndView.addObject("content", "/tip/express.do");
+		modelAndView.addObject("content", "express.do");
 		return modelAndView;
 	}
-	
+	@RequestMapping(value="interior_delete.do")
+	public ModelAndView deleteInterior(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String image = request.getParameter("i");
+		String content = request.getParameter("c");
+		
+		int result = tipService.interiorDelete(seq);
+		if(result <= 0) {
+			modelAndView.addObject("msg", "삭제에 실패했습니다.");
+		}else {
+			String img_filePath = request.getSession().getServletContext().getRealPath("/storage");
+			String txt_filePath = request.getSession().getServletContext().getRealPath("/interior_board");
+			File file1 = new File(img_filePath, image);
+			File file2 = new File(txt_filePath, content);
+			if(file1.exists()) file1.delete();
+			if(file2.exists()) file2.delete();
+			modelAndView.addObject("msg", "게시글을 삭제했습니다.");
+		}
+		modelAndView.addObject("content", "interior.do");
+		return modelAndView;
+	}
 
 	@RequestMapping(value="recipe_delete.do")
 	public ModelAndView deleteRecipe(HttpServletRequest request) {
@@ -475,7 +496,7 @@ public class TipController {
 			}
 			modelAndView.addObject("msg", "레시피를 삭제했습니다.");
 		}
-		modelAndView.addObject("content", "/tip/recipe.do");
+		modelAndView.addObject("content", "recipe.do");
 		
 		return modelAndView;
 	}
@@ -555,7 +576,7 @@ public class TipController {
 		}else {
 			modelAndView.addObject("msg", "레시피를 수정했습니다.");
 		}
-		modelAndView.addObject("content", "/tip/recipe_view.do?p="+request.getParameter("pg")+"&s="+request.getParameter("recipe_seq")+"&k="+request.getParameter("keyword"));
+		modelAndView.addObject("content", "recipe_view.do?p="+request.getParameter("pg")+"&s="+request.getParameter("recipe_seq")+"&k="+request.getParameter("keyword"));
 		return modelAndView;
 	}
 	
@@ -627,25 +648,19 @@ public class TipController {
 		}else {
 			modelAndView.addObject("msg", "레시피를 등록했습니다.");
 		}
-		modelAndView.addObject("content", "/tip/recipe.do");
+		modelAndView.addObject("content", "recipe.do");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="interior_view.do")
-	public ModelAndView interior_view(HttpServletRequest request) {
+	@RequestMapping(value="interior_modify.do")
+	public ModelAndView interior_modify(HttpServletRequest request) {
 		modelAndView = new ModelAndView("/mainFrame.jsp");
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int seq = Integer.parseInt(request.getParameter("s"));
 		String keyword = request.getParameter("k");
 		
 		interiorDTO = tipService.interiorDetail(seq);
-		int like_num = interiorDTO.getLike_user().split("\\|").length-1;
-		if(interiorDTO.getLike_user().contains((String)request.getSession().getAttribute("memId"))) {
-			modelAndView.addObject("likeStatus", "exist");
-		}
-		
 		String filename = interiorDTO.getInterior_content();
-		System.out.println();
 		String filePath = request.getSession().getServletContext().getRealPath("/interior_board");
 		System.out.println(filePath);
 		File file = new File(filePath,filename);
@@ -663,7 +678,47 @@ public class TipController {
 			e.printStackTrace();
 		}
 		
-		interiorDTO.setInterior_content(interior_content);
+		modelAndView.addObject("interior_content", interior_content);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("seq", seq);
+		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("interiorDTO", interiorDTO);
+		modelAndView.addObject("content", "/tip/interior_modify.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="interior_view.do")
+	public ModelAndView interior_view(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		
+		interiorDTO = tipService.interiorDetail(seq);
+		int like_num = interiorDTO.getLike_user().split("\\|").length-1;
+		if(interiorDTO.getLike_user().contains((String)request.getSession().getAttribute("memId"))) {
+			modelAndView.addObject("likeStatus", "exist");
+		}
+		
+		String filename = interiorDTO.getInterior_content();
+		String filePath = request.getSession().getServletContext().getRealPath("/interior_board");
+		System.out.println(filePath);
+		File file = new File(filePath,filename);
+		String interior_content = "";
+		try {
+			FileReader fileReader = new FileReader(file);
+			int counter = 0;
+			while((counter = fileReader.read()) != -1) {
+				interior_content += (char)counter;
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		modelAndView.addObject("interior_content", interior_content);
 		interiorDTO.setLike_num(like_num);
 		modelAndView.addObject("interiorDTO", interiorDTO);
 		modelAndView.addObject("pg",pg);

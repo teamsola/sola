@@ -39,4 +39,5 @@ public interface TipService {
 	InteriorDTO interiorDetail(int seq);
 	int likeRequest(String id, int seq);
 	int likeDelRequest(String like_user, int seq);
+	int interiorDelete(int seq);
 }

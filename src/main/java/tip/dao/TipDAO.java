@@ -124,4 +124,7 @@ public class TipDAO {
 			map.put("seq", seq+"");
 			return sqlSession.update("mybatis.tipMapper.likeDelRequest", map);
 		}
+		public int interiorDelete(int seq) {
+			return sqlSession.delete("mybatis.tipMapper.interiorDelete", seq);
+		}
 }

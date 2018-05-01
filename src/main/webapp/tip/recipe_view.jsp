@@ -17,6 +17,10 @@ pageEncoding="UTF-8"%>
 	.subtitle_detail .right{float:right;text-align:center;width:500px;height:400px;padding: 10px;border-top:1px solid #BDBDBD;border-bottom:1px solid #BDBDBD;border-right:1px solid #BDBDBD; box-sizing: border-box;}
 	#underBtn{outline:none;border-style: none;border:1px solid #ff8400; background: none; border-radius: 20px; color:#ff8400; width:150px;height:40px;}
 	#underBtn:hover, #underBtn:active{background: #ff8400;color:white;outline:none;}
+	#newImageWindow{cursor:pointer;display: block;transition:.3s ease;}
+	#zoomin_img{transition:.3s ease;opacity:0;position: absolute; top:50%;left: 50%;transform:translate(-50%, -50%);-ms-transform:(-50%, -50%);}
+	#img_hov:hover #newImageWindow{opacity:0.8;}
+	#zoomin_img:hover{transition:.3s ease;opacity: 1;cursor: pointer;}
 	</style>
 	<script type="text/javascript">
 	function confirmDel(){
@@ -25,7 +29,13 @@ pageEncoding="UTF-8"%>
 		}
 	};
 	$(function(){
-
+		$('#zoomin_img').click(function(){
+			var elem = $('#newImageWindow');
+				var winProps=' width=900,height=700, resizable=yes, scrollvars=yes,menubar=no, toolbar=no';
+			    var newWin=open(elem.attr('src'),'aWin',winProps);
+			
+		});
+		
 		var width = $('.image').width();
 		var height = $('.image').height();
 		if(width/height > (5/3)){
@@ -56,13 +66,14 @@ pageEncoding="UTF-8"%>
 				<div class="subtitle_detail">
 					
 					<div class="left">
-						<div style="width:500px;height: 300px;margin: 30px auto;overflow:hidden;text-align: center;border-radius:10px;">
+						<div id="img_hov" style="width:500px;height: 300px;margin: 30px auto;overflow:hidden;text-align: center;border-radius:10px;position: relative;">
 							<c:choose>
 								<c:when test="${recipeDTO.foodimage == 'null'}">
 								<img class="image" src="/sola/img/recipe_default.png" width="100%" height="auto">
 								</c:when>
 								<c:otherwise>
-								<img class="image" src="/sola/storage/${recipeDTO.foodimage }" width="100%" height="auto">
+								<img class="image" src="/sola/storage/${recipeDTO.foodimage }" id="newImageWindow" width="100%" height="auto">
+								<div id="zoomin_img"><img src="/sola/img/zoomin.png" width="500px" height="300px"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>

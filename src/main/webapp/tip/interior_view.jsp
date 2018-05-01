@@ -18,19 +18,28 @@ pageEncoding="UTF-8"%>
 	.subtitle_detail .right{float:right;text-align:center;width:500px;height:400px;padding: 10px;border-top:1px solid #BDBDBD;border-bottom:1px solid #BDBDBD;border-right:1px solid #BDBDBD; box-sizing: border-box;}
 	#underBtn{outline:none;border-style: none;border:1px solid #ff8400; background: none; border-radius: 20px; color:#ff8400; width:150px;height:40px;}
 	#underBtn:hover, #underBtn:active{background: #ff8400;color:white;outline:none;}
-	.image {cursor:pointer;}
+	#newImageWindow{cursor:pointer;display: block;transition:.3s ease;backface-visibility:hidden;}
+	#zoomin_img{transition:.3s ease;opacity:0;position: absolute; top:50%;left: 50%;transform:translate(-50%, -50%);-ms-transform:(-50%, -50%);}
+	#img_hov:hover #newImageWindow{opacity:0.8;}
+	#zoomin_img:hover{transition:.3s ease;opacity: 1;cursor: pointer;}
 	#likeBtn{border-style: none; background:none;width:180px;height:40px;border:1px solid #6a6763;border-radius: 20px;outline:none;}
 	#likeDelBtn{border-style: none;width:180px;height:40px;border:1px solid #ff8400;border-radius: 20px;outline:none;background : #ff8400 url('/sola/img/like_white.png') no-repeat center center;background-size : auto 80%;outline : none;}
 	</style>
 	<script type="text/javascript">
 	function confirmDel(){
 		if(confirm("게시물을 삭제하시겠습니까?")){
-			location.href="recipe_delete.do?s=${recipeDTO.recipe_seq}&i=${recipeDTO.foodimage}";
+			location.href="interior_delete.do?s=${interiorDTO.interior_seq}&i=${interiorDTO.interior_mainimage}&c=${interiorDTO.interior_content}";
 		}
 	};
 	$(function(){
-		var cont = '${interiorDTO.interior_content}';
+		var cont = '${interior_content}';
 		$('#interior_detail').append(cont);
+		$('#zoomin_img').click(function(){
+			var elem = $('#newImageWindow');
+				var winProps=' width=900,height=700, resizable=yes, scrollvars=yes,menubar=no, toolbar=no';
+			    var newWin=open(elem.attr('src'),'aWin',winProps);
+			
+		});
 		$('#likeBtn').on("mouseover", function(){
 			$(this).css({
 				"background" : "#6a6763 url('/sola/img/like_white.png') no-repeat center center",
@@ -75,10 +84,6 @@ pageEncoding="UTF-8"%>
 		$('#likeDelBtn').on("click", function(){
 			location.href='likeDelBtnReq.do?p=${pg}&s=${interiorDTO.interior_seq}&k=${keyword}';
 		});
-		$('#newImageWindow').click(function(){
-			var winProps=' width=900,height=700, resizable=yes, scrollvars=yes,menubar=no, toolbar=no';
-		    var newWin=open($(this).attr('src'),'aWin',winProps);
-		});
 
 		var width = $('.image').width();
 		var height = $('.image').height();
@@ -111,13 +116,14 @@ pageEncoding="UTF-8"%>
 				<div class="subtitle_detail">
 					
 					<div class="left">
-						<div style="width:500px;height: 300px;margin: 30px auto;overflow:hidden;text-align: center;border-radius:10px;">
+						<div id="img_hov" style="width:500px;height: 300px;margin: 30px auto;overflow:hidden;text-align: center;border-radius:10px;position: relative;">
 							<c:choose>
 								<c:when test="${interiorDTO.interior_mainimage == 'null'}">
 								<img class="image" src="/sola/img/interior_default.png" width="100%" height="auto">
 								</c:when>
 								<c:otherwise>
 								<img class="image" src="/sola/storage/${interiorDTO.interior_mainimage }" id="newImageWindow" width="100%" height="auto">
+								<div id="zoomin_img"><img src="/sola/img/zoomin.png" width="500px" height="300px"></div>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -184,14 +190,14 @@ pageEncoding="UTF-8"%>
 						
 					</div>
 					<!-- 아래부터 인테리어 -->
-					<div style="float:left;width:1100px;box-sizing: border-box;margin-top:30px;padding:70px;height:auto;background: #6a6763; border-radius: 10px; overflow: hidden;">
+					<div style="float:left;border:1px solid #6a6763;width:1100px;box-sizing: border-box;margin-top:30px;padding:70px;height:auto;background: none; border-radius: 10px; overflow: hidden;">
 						<div id="interior_detail" style="background: white;text-align: justify;">
 						
 						</div>
 					</div>
 					<div style="float:left;width:100%;height:60px;text-align: center;padding:10px 0;">
 						<c:if test="${interiorDTO.id == memId }">
-						<input type="button" id="underBtn" value="수정" onclick="">&nbsp;
+						<input type="button" id="underBtn" value="수정" onclick="location.href='interior_modify.do?s=${interiorDTO.interior_seq }&p=${pg}&k=${keyword}'">&nbsp;
 						<input type="button" id="underBtn" value="삭제" onclick="confirmDel()">&nbsp;
 						</c:if>
 						<input type="button" id="underBtn" value="목록으로" onclick="location.href='interior.do?pg=${pg}&keyword=${keyword}'">
