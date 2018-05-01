@@ -60,7 +60,6 @@ function checkId()
 {
 	var sId = document.joinForm.id.value;
 	var disable = /[^A-Za-z0-9_.]/;
-	alert(disable.test(sId));
 
 	if(sId == "")
 	{

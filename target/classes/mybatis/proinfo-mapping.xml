@@ -31,11 +31,12 @@
 	
 	<!-- 전문지식 검색 (검색창) -->
 	<select id="searchProinfo" parameterType="java.util.Map" resultType="proinfoDTO">
-         <![CDATA[
+         <!-- <![CDATA[
             select * from(select rownum rn, tt.* from
             (select * from proinfo WHERE ${searchOp} like #{keyword} order by seq) tt)
             where rn>=#{startNum} and rn<=#{endNum}
-         ]]>
+         ]]> -->
+         select * from proinfo where ${searchOp} like #{keyword} order by seq
    </select>
    
    <!-- 전문지식 검색 (카테고리) -->

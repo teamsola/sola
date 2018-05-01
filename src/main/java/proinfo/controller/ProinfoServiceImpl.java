@@ -35,8 +35,8 @@ public class ProinfoServiceImpl implements ProinfoService{
 	}
 
 	@Override
-	public ArrayList<ProinfoDTO> searchList(int startNum, int endNum, String searchOp, String keyword) {
-		return (ArrayList<ProinfoDTO>)proinfoDAO.searchList(startNum, endNum, searchOp, keyword);
+	public ArrayList<ProinfoDTO> searchList(String searchOp, String keyword) {
+		return (ArrayList<ProinfoDTO>)proinfoDAO.searchList(searchOp, keyword);
 	}
 
 	@Override

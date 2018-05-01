@@ -97,16 +97,12 @@ public class MemberController
 
 		System.out.println(memberDTO.toString());
 
-		ModelAndView modelAndView = null;
 		int result = memberService.memberJoin(memberDTO);
+		ModelAndView modelAndView = null;
 		if (result > 0)
 		{
-			modelAndView = new ModelAndView();
-			modelAndView.addObject("memberDTO", memberDTO);
-			modelAndView.setViewName("/main.jsp");
 			HttpSession session = request.getSession();
-			session.setAttribute("memId", memberDTO.getId());
-			session.setAttribute("memName", memberDTO.getName());
+			modelAndView = login(session, memberDTO.getId(), memberDTO.getPwd());
 		}
 		else
 		{
@@ -361,7 +357,7 @@ public class MemberController
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("memId");
-		String filePath = "C:/JAVA취업반/spring/workspace/sola/src/main/webapp/storage/";
+		String filePath = request.getSession().getServletContext().getRealPath("/storage");
 		String fileName = img.getOriginalFilename();
 		String nickname = request.getParameter("nickname");
 		int result = 0;
@@ -405,8 +401,8 @@ public class MemberController
 		}
 		return modelAndView;
 	}
-
-	@RequestMapping(value = "/member/memberProfileDelete.do")
+	
+	@RequestMapping(value = "memberProfileDelete.do")
 	public ModelAndView memberProfileDelete(HttpServletRequest request, MemberDTO memberDTO) throws UnsupportedEncodingException
 	{
 		ModelAndView modelAndView = null;
