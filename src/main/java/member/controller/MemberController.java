@@ -357,7 +357,7 @@ public class MemberController
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("memId");
-		String filePath = "C:/JAVA취업반/spring/workspace/sola/src/main/webapp/storage/";
+		String filePath = request.getSession().getServletContext().getRealPath("/storage");
 		String fileName = img.getOriginalFilename();
 		String nickname = request.getParameter("nickname");
 		int result = 0;
@@ -401,8 +401,8 @@ public class MemberController
 		}
 		return modelAndView;
 	}
-
-	@RequestMapping(value = "/member/memberProfileDelete.do")
+	
+	@RequestMapping(value = "memberProfileDelete.do")
 	public ModelAndView memberProfileDelete(HttpServletRequest request, MemberDTO memberDTO) throws UnsupportedEncodingException
 	{
 		ModelAndView modelAndView = null;
