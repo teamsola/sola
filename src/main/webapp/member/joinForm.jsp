@@ -112,7 +112,7 @@ function execDaumPostcode()
     						
     					    $("#hid_auth").show();
     						var togo = "authEmail.do?email=" + email;
-    						var authEmailWindow = open(togo, "이메일인증", "height=10, width=10, top=0, left=0, location, resizable");
+    						var authEmailWindow = open(togo, "이메일인증", "width=450, height=150, location, resizable");
     						if(authEmailWindow.close)
     							{
 										$("#authEmailResult").html("<font color=blue>이메일이 발송되었습니다.</font>");
@@ -214,7 +214,7 @@ function execDaumPostcode()
 				</tr>
 				<tr class="inp">
 					<td style="position:relative">
-						<div class="inp_div"><input type="text" name="id" required="required" class="inp_text" placeholder="아이디 입력"></div>
+						<div class="inp_div"><input type="text" id="id" name="id" required="required" class="inp_text" placeholder="아이디 입력"></div>
 						<div class="inp_div_btn"><input type="button" value="중복확인" id="duplCheck" onclick="checkId()"></div>
 					</td>
 				</tr>
@@ -339,8 +339,8 @@ function execDaumPostcode()
 					<td><input type="text" name="addr2" class="inp_text" placeholder="상세주소 입력"></td>
 				<tr>
 			</table>
-			<input type="hidden" name="idAuth" value="no" />
-			<input type="hidden" name="emailAuth" value="no" />
+			<input type="hidden" id="idAuth" name="idAuth" value="no" />
+			<input type="hidden" id="emailAuth" name="emailAuth" value="no" />
 			<input type="button" value="회원가입" onclick="javascript:checkJoin()">
 		</form>
 </body>

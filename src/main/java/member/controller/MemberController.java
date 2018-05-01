@@ -97,16 +97,12 @@ public class MemberController
 
 		System.out.println(memberDTO.toString());
 
-		ModelAndView modelAndView = null;
 		int result = memberService.memberJoin(memberDTO);
+		ModelAndView modelAndView = null;
 		if (result > 0)
 		{
-			modelAndView = new ModelAndView();
-			modelAndView.addObject("memberDTO", memberDTO);
-			modelAndView.setViewName("/main.jsp");
 			HttpSession session = request.getSession();
-			session.setAttribute("memId", memberDTO.getId());
-			session.setAttribute("memName", memberDTO.getName());
+			modelAndView = login(session, memberDTO.getId(), memberDTO.getPwd());
 		}
 		else
 		{
