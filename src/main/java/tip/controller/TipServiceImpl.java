@@ -127,4 +127,14 @@ public class TipServiceImpl implements TipService{
 		return tipDAO.interiorDetail(seq);
 	}
 
+	@Override
+	public int likeRequest(String id, int seq) {
+		return tipDAO.likeRequest(id, seq);
+	}
+
+	@Override
+	public int likeDelRequest(String like_user, int seq) {
+		return tipDAO.likeDelRequest(like_user, seq);
+	}
+
 }

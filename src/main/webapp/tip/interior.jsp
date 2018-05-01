@@ -157,7 +157,16 @@ pageEncoding="UTF-8"%>
 						</c:choose>
 						</span>
 						<span style="float:right;"><img src="/sola/img/hit.png" width="15px" height="12px" style="margin-top:12px;margin-right:3px;cursor:default;">${item.hit }</span>
-						<span style="float:right;"><img src="/sola/img/like.png" width="15px" height="12px" style=";margin-top:12px;margin-right:3px;cursor:default;">${item.like_num }&nbsp;|&nbsp;</span>
+						<span style="float:right;"><img src="/sola/img/like.png" width="15px" height="12px" style="overflow:hidden;margin-top:12px;margin-right:3px;cursor:default;">
+						<c:choose>
+							<c:when test="${item.like_num <= 0 }">
+							0&nbsp;|&nbsp;
+							</c:when>
+							<c:otherwise>
+							${item.like_num }&nbsp;|&nbsp;
+							</c:otherwise>
+						</c:choose>
+						</span>
 						</div>
 					</div>
 				</c:forEach>

@@ -158,4 +158,16 @@
 		select * from tip_interior where interior_seq=#{seq}
 	</select>
 	
+	<update id="likeRequest" parameterType="java.util.Map">
+		update tip_interior
+		set like_user=like_user || #{id} || '|'
+		where interior_seq=TO_NUMBER(#{seq})
+	</update>
+	
+	<update id="likeDelRequest" parameterType="java.util.Map">
+		update tip_interior
+		set like_user=#{like_user}
+		where interior_seq=TO_NUMBER(#{seq})
+	</update>
+	
 </mapper>

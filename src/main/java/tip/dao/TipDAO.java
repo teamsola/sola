@@ -112,4 +112,16 @@ public class TipDAO {
 		public InteriorDTO interiorDetail(int seq) {
 			return sqlSession.selectOne("mybatis.tipMapper.interiorDetail", seq);
 		}
+		public int likeRequest(String id, int seq) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("id", id);
+			map.put("seq", seq+"");
+			return sqlSession.update("mybatis.tipMapper.likeRequest", map);
+		}
+		public int likeDelRequest(String like_user, int seq) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("like_user", like_user);
+			map.put("seq", seq+"");
+			return sqlSession.update("mybatis.tipMapper.likeDelRequest", map);
+		}
 }

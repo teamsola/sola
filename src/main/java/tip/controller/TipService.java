@@ -37,4 +37,6 @@ public interface TipService {
 	int getInteriorTotalNum();
 	void updateFilename(String interior_content);
 	InteriorDTO interiorDetail(int seq);
+	int likeRequest(String id, int seq);
+	int likeDelRequest(String like_user, int seq);
 }

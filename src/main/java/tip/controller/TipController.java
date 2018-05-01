@@ -2,7 +2,9 @@ package tip.controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -121,7 +122,7 @@ public class TipController {
             // 파일명을 받는다 - 일반 원본파일명
             String oldName = request.getHeader("file-name");
             // 파일 기본경로 _ 상세경로
-            String tip_filePath = request.getSession().getServletContext().getRealPath("/resources_tip/photoUpload");
+            String tip_filePath = request.getSession().getServletContext().getRealPath("/resources_tip/photoUpload/");
             System.out.println(tip_filePath);
             String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss")
                           .format(System.currentTimeMillis()))
@@ -234,7 +235,7 @@ public class TipController {
 		}
 		
 		for(InteriorDTO tmp : list) {
-			tmp.setLike_num(tmp.getLike_user().split("|").length-1);
+			tmp.setLike_num(tmp.getLike_user().split("\\|").length-1);
 		}
 		
 
@@ -638,9 +639,32 @@ public class TipController {
 		String keyword = request.getParameter("k");
 		
 		interiorDTO = tipService.interiorDetail(seq);
+		int like_num = interiorDTO.getLike_user().split("\\|").length-1;
+		if(interiorDTO.getLike_user().contains((String)request.getSession().getAttribute("memId"))) {
+			modelAndView.addObject("likeStatus", "exist");
+		}
 		
-		interiorDTO.setLike_num(interiorDTO.getLike_user().split("|").length-1);
+		String filename = interiorDTO.getInterior_content();
+		System.out.println();
+		String filePath = request.getSession().getServletContext().getRealPath("/interior_board");
+		System.out.println(filePath);
+		File file = new File(filePath,filename);
+		String interior_content = "";
+		try {
+			FileReader fileReader = new FileReader(file);
+			int counter = 0;
+			while((counter = fileReader.read()) != -1) {
+				interior_content += (char)counter;
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
+		interiorDTO.setInterior_content(interior_content);
+		interiorDTO.setLike_num(like_num);
 		modelAndView.addObject("interiorDTO", interiorDTO);
 		modelAndView.addObject("pg",pg);
 		modelAndView.addObject("seq", seq);
@@ -648,6 +672,41 @@ public class TipController {
 		modelAndView.addObject("content", "/tip/interior_view.jsp");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="likeBtnReq.do")
+	public ModelAndView likeBtnReq(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		int result = tipService.likeRequest((String)request.getSession().getAttribute("memId"), seq);
+		
+		if(result == 0) {
+			modelAndView.addObject("msg", "문제가 발생했습니다.");
+		}else {
+			modelAndView.addObject("msg", "좋아요를 누르셨습니다.");
+		}
+		modelAndView.addObject("content", "interior_view.do?p="+pg+"&s="+seq+"&k="+keyword);
+		return modelAndView;
+	}
+	@RequestMapping(value="likeDelBtnReq.do")
+	public ModelAndView likeDelBtnReq(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		String like_user = tipService.interiorDetail(seq).getLike_user();
+		int result = tipService.likeDelRequest(like_user.replace(request.getSession().getAttribute("memId")+"|", ""), seq);
+		
+		if(result == 0) {
+			modelAndView.addObject("msg", "문제가 발생했습니다.");
+		}else {
+			modelAndView.addObject("msg", "좋아요를 취소했습니다.");
+		}
+		modelAndView.addObject("content", "interior_view.do?p="+pg+"&s="+seq+"&k="+keyword);
+		return modelAndView;
+	}
+
 	
 	@RequestMapping(value="recipe_view.do")
 	public ModelAndView recipe_view(HttpServletRequest request) {
