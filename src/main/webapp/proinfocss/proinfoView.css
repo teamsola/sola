@@ -48,8 +48,25 @@ div#overLayer {
 	margin: auto;
 }
 
+#overLayer_s{
+	display: none;
+	position: fixed;
+	width: 600px;
+	height: 600px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
 .ol_top{
 	width: 100%;
+	height: 50px;
+	background-color: black;
+}
+.ol_top_s{
+	width: 650px;
 	height: 50px;
 	background-color: black;
 }
@@ -59,8 +76,14 @@ div#overLayer {
 	background-color: white;
 	float: left;
 }
+.ol_center_s{
+	width: 650px;
+	height: 550px;
+	background-color: white;
+	float: left;
+}
 
-.ol_center .searchListdiv{	/* 검색 결과 감싸는 div (스크롤) */
+.searchListdiv{	/* 검색 결과 감싸는 div (스크롤) */
 	width: 99%;
 	height: 99%;
 	background-color: white;
@@ -99,6 +122,14 @@ div#overLayer {
 	background-color: #8C8C8C;
 	float: left;
 }
+
+.side{
+	width: 10%;
+	height: 550px;
+	background-color: white;
+	float: left;
+}
+
 #imgFile{
 	width: 98%;
 	height: 200px;
@@ -116,6 +147,12 @@ div#overLayer {
 
 .category{
 	width: 750px;
+	height: 50px;
+	display: inline-block;
+    float: left;
+}
+.category_s{
+	width: 600px;
 	height: 50px;
 	display: inline-block;
     float: left;

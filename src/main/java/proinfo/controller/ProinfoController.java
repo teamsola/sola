@@ -29,14 +29,11 @@ public class ProinfoController {
 	
 	private ArrayList<ProinfoDTO> list = null;
 
-	String realFolder = "C:/Users/ZO/Desktop/201712_JAVASW/Spring/workspace/"
-			+ "sola/src/main/webapp/proinfoimg";
 
 	// 파일 이름 추출 메서드
-	public String makeFileName(MultipartFile image1) {	
+	public String makeFileName(HttpServletRequest request,MultipartFile image1) {	
 		// 저장 경로
-		String filePath = "C:/Users/ZO/Desktop/201712_JAVASW/Spring/workspace/"
-				+ "sola/src/main/webapp/proinfoimg";
+		String filePath = request.getSession().getServletContext().getRealPath("/proinfoimg");
 
 		System.out.println("img : "+image1);
 
@@ -92,7 +89,7 @@ public class ProinfoController {
 
 		System.out.println("imgFile : "+imgFile);
 
-		proinfoDTO.setImgFile(makeFileName(imgFile));
+		proinfoDTO.setImgFile(makeFileName(request,imgFile));
 
 		int su= proinfoService.insertProinfo(proinfoDTO);
 		System.out.println("su : "+su);
@@ -170,7 +167,7 @@ public class ProinfoController {
 
 			System.out.println("imgFile : "+imgFile);
 
-			proinfoDTO.setImgFile(makeFileName(imgFile));
+			proinfoDTO.setImgFile(makeFileName(request,imgFile));
 			
 			int su = proinfoService.modifyProinfo(proinfoDTO);
 
@@ -213,27 +210,18 @@ public class ProinfoController {
 			String list_t = request.getParameter("list_t");
 			list_t = "s";
 			// 2. DB 연동 처리	
-			int endNum = pg*5;
-			int startNum = endNum-4;
 			list = null;
-			list = proinfoService.searchList(startNum, endNum, searchOp, keyword);
+			list = proinfoService.searchList(searchOp, keyword);
 
 			int totalS = proinfoService.getTotalS(searchOp, keyword);
-			int totalP = (totalS+4) / 5;
-			int startPage = (pg-1)/3*3+1;
-			int endPage = startPage + 2;
-			if(totalP < endPage) endPage = totalP;
 
 
 			// 3. 검색 결과를 저장하고 목록 화면으로 이동한다.
 			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("list",list);
-			modelAndView.addObject("startPage", startPage);
-			modelAndView.addObject("endPage", endPage);
 			modelAndView.addObject("searchOp", searchOp);
 			modelAndView.addObject("keyword", keyword);
 			modelAndView.addObject("totalS", totalS);
-			modelAndView.addObject("totalP", totalP);
 			modelAndView.addObject("list_t",list_t);
 			modelAndView.addObject("pg", pg);
 

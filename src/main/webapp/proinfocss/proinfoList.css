@@ -72,10 +72,10 @@ div#overLayer {
 .ol_center .searchListdiv .searchList{	/* 검색 결과 div */
 	width: 98%;
 	height: 8%;
+	margin: auto;
 	background-color: #DBDBDB;
 	float: left;
 	border: solid 1px red;
-	margin: auto;
 }
 
 .ol_center .searchListdiv .searchList:hover{	/* 검색 결과 리스트 hover 이벤트 */

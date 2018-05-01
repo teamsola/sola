@@ -37,6 +37,9 @@ public class BoardController {
 		System.out.println("--------------");
 		System.out.println("게시판 글쓰기 들어옴");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		modelAndView.addObject("content","/mall/mallBoardWriteForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		 
@@ -52,7 +55,8 @@ public class BoardController {
 		System.out.println("리스트 들어가기전 들어옴");
 		System.out.println("----------------");
 		
-		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		String category2=request.getParameter("category2");
 		String keyword=request.getParameter("keyword");
@@ -209,6 +213,12 @@ public class BoardController {
 	@RequestMapping(value="mallBoardView.do")
 	public ModelAndView boarView(HttpServletRequest request) {
 		
+		System.out.println("쇼핑몰 게시판 상세보기 처리");
+		System.out.println("----------------");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		ModelAndView modelAndView=new ModelAndView();
 		
 		int board_seq = Integer.parseInt(request.getParameter("board_seq"));
@@ -235,6 +245,9 @@ public class BoardController {
 		System.out.println("게시판 삭제 들어옴");
 		System.out.println("-------------");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		int board_seq = Integer.parseInt(request.getParameter("board_seq"));
 
 		int su=boardService.boardDelete(board_seq);
@@ -256,9 +269,9 @@ public class BoardController {
 		int board_seq=Integer.parseInt(request.getParameter("board_seq"));
 		int pg=Integer.parseInt(request.getParameter("pg"));
 		
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
-		String id = "zz";			//임시id
 		String nickname = "닉네임";	//임시 닉네임
 
 		boardService.updateHit(board_seq);	// 조회수 증가
@@ -282,6 +295,7 @@ public class BoardController {
 		System.out.println("게시판 수정처리");
 		System.out.println("----------");
 		
+		
 		if(editor.equals("<p>&nbsp;</p>")) {
     		
     		response.setContentType("text/html; charset=UTF-8");
@@ -301,9 +315,10 @@ public class BoardController {
 		String category=request.getParameter("category");
 		String subject = request.getParameter("subject");
 	
-		HttpSession session=request.getSession();
-			
-		String id = "zz";			//임시id
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
+		
 		String nickname = "닉네임";	//임시 닉네임
 	
 		BoardDTO boardDTO=new BoardDTO();
@@ -354,9 +369,9 @@ public class BoardController {
 		System.out.println("제목:"+subject);
 		System.out.println("카테고리:"+category);
 		
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
-		String id = "zz";			//임시id
 		String nickname = "닉네임";	//임시 닉네임
 
 		BoardDTO boardDTO=new BoardDTO();
