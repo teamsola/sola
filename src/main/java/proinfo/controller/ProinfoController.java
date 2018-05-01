@@ -114,7 +114,7 @@ public class ProinfoController {
 		String searchOp = request.getParameter("searchOp");
 		String keyword = request.getParameter("keyword");
 		keyword = "%"+keyword+"%";
-		list_t = "c";
+		list_t = "s";
 		
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		
@@ -243,21 +243,26 @@ public class ProinfoController {
 		@RequestMapping(value="search_c.do")
 		public ModelAndView search_c(HttpServletRequest request) {
 			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+			ProinfoDTO proinfoDTO = new ProinfoDTO();
 			String list_t = request.getParameter("list_t");
 			String keyword_c = request.getParameter("keyword_c");
 			System.out.println(keyword_c);
 			int list_n = Integer.parseInt(request.getParameter("list_n"));
 			list_t = "c";
-			System.out.println(list_n);
+			System.out.println("list_n"+list_n);
 			
 			list = null;
 			list = proinfoService.search_c(keyword_c);
 			
+			int list_len = list.size();
 			
-			ProinfoDTO proinfoDTO = new ProinfoDTO();
+			if(list_len > 0) {
 			proinfoDTO = list.get(list_n);
 			int seq = proinfoDTO.getSeq();
 			proinfoDTO = proinfoService.viewProinfo(seq);
+			}else {
+				proinfoDTO = null;
+			}
 			
 			modelAndView.addObject("list",list);
 			modelAndView.addObject("list_n",list_n);
