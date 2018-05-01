@@ -210,34 +210,34 @@ function execDaumPostcode()
 		<form id="joinForm" name="joinForm" action="join.do" method="post">
 			<table align="center">
 				<tr class="sub">
-					<td>아이디<br><span id="span_id">영문과 숫자 6자 이상, 특수문자는 .과 _만 허용됩니다.</span></td>
+					<td>*아이디<br><span id="span_id">영문과 숫자 6자 이상, 특수문자는 .과 _만 허용됩니다.</span></td>
 				</tr>
 				<tr class="inp">
 					<td style="position:relative">
-						<div class="inp_div"><input type="text" name="id" required="required" class="inp_text"></div>
+						<div class="inp_div"><input type="text" name="id" required="required" class="inp_text" placeholder="아이디 입력"></div>
 						<div class="inp_div_btn"><input type="button" value="중복확인" id="duplCheck" onclick="checkId()"></div>
 					</td>
 				</tr>
 				<tr class="sub">
-					<td>비밀번호<br><span id="span_pwd">8자 이상, 영문과 숫자 혼용</span></td>
+					<td>*비밀번호<br><span id="span_pwd">8자 이상, 영문과 숫자 혼용</span></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="password" name="pwd" id="pwd" required="required" class="inp_text"></td>
+					<td><input type="password" name="pwd" id="pwd" required="required" class="inp_text" placeholder="비밀번호 입력"></td>
 				</tr>
 				<tr class="sub">
-					<td>비밀번호 확인<br><span id="span_pwd2"></span></td>
+					<td>*비밀번호 확인<br><span id="span_pwd2"></span></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="password" id="pwd2" class="inp_text"></td>
+					<td><input type="password" id="pwd2" class="inp_text" placeholder="비밀번호 다시 입력"></td>
 				</tr>
 				<tr class="sub">
-					<td>이름</td>
+					<td>*이름</td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="name" required="required" class="inp_text"></td>
+					<td><input type="text" name="name" required="required" class="inp_text" placeholder="이름 입력"></td>
 				</tr>
 				<tr class="sub">
-					<td>성별</td>
+					<td>*성별</td>
 				</tr>
 				<tr class="inp">
 					<td>
@@ -246,34 +246,53 @@ function execDaumPostcode()
 					</td>
 				</tr>
 				<tr class="sub">
-					<td>별명<br><span id="span_nickname"></span></td>
+					<td>*별명<br><span id="span_nickname"></span></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="nickname" required="required" class="inp_text"></td>
+					<td><input type="text" name="nickname" required="required" class="inp_text" placeholder="별명 입력"></td>
 				</tr>
 				<tr class="sub">
-					<td>전화번호</td>
+					<td>*전화번호</td>
 				</tr>
 				<tr class="inp">
 					<td>
 						<select name="tel1" class="inp_text">
-							<option>02<option>031<option>032<option>033<option>041<option>042<option>043<option>044<option>051
-							<option>052<option>053<option>054<option>055<option>061<option>062<option>063<option>064
+							<option>02
+							<option>031
+							<option>032
+							<option>033
+							<option>041
+							<option>042
+							<option>043
+							<option>044
+							<option>051
+							<option>052
+							<option>053
+							<option>054
+							<option>055
+							<option>061
+							<option>062
+							<option>063
+							<option>064
+							<option selected="selected">010
+							<option>011
+							<option>017
+							<option>019
 						</select>
 					</td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="tel2" required="required" class="inp_text"></td>
+					<td><input type="text" name="tel2" required="required" class="inp_text" placeholder="전화번호 입력(가운데 3~4자리)"></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="tel3" required="required" class="inp_text"></td>
+					<td><input type="text" name="tel3" required="required" class="inp_text" placeholder="전화번호 입력(뒷 4자리)"></td>
 				</tr>
 				<tr class="sub">
-					<td>이메일<br><span id="authEmailResult" style="text-align: right"></span></td>
+					<td>*이메일<br><span id="authEmailResult" style="text-align: right"></span></td>
 				</tr>
 				<tr class="inp">
 					<td>
-						<input type="text" id="email1" name="email1" required="required" class="inp_text">
+						<input type="text" id="email1" name="email1" required="required" class="inp_text" placeholder="이메일 입력">
 					</td>
 				</tr>
 				<tr class="hid" id="hid_email" align="right">
@@ -303,7 +322,7 @@ function execDaumPostcode()
 				</tr>
 				<tr class="inp">
 					<td style="position:relative">
-						<div class="inp_div"><input type="text" name="post" id="post" readonly="readonly" class="inp_text"></div> 
+						<div class="inp_div"><input type="text" name="post" id="post" readonly="readonly" class="inp_text" placeholder="우편번호"></div> 
 						<div class="inp_div_btn"><input type="button" value="찾기" id="postButton"></div>
 					</td>
 				</tr>
@@ -311,13 +330,13 @@ function execDaumPostcode()
 					<td>주소</td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="addr1" id="addr1" readonly="readonly" class="inp_text"></td>
+					<td><input type="text" name="addr1" id="addr1" readonly="readonly" class="inp_text" placeholder="주소"></td>
 				<tr>
 				<tr class="sub">
 					<td class="sub"></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="addr2" class="inp_text"></td>
+					<td><input type="text" name="addr2" class="inp_text" placeholder="상세주소 입력"></td>
 				<tr>
 			</table>
 			<input type="hidden" name="idAuth" value="no" />
