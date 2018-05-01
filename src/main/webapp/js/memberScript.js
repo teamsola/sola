@@ -1,5 +1,5 @@
 function checkJoin()
-{
+{	
 	if (document.joinForm.name.value == "")
 	{
 		alert("이름을 입력하세요");
@@ -12,6 +12,14 @@ function checkJoin()
 	else if (document.joinForm.pwd.value == "")
 	{
 		alert("비밀번호를 입력하세요");
+	}
+	else if(document.joinForm.pwd.value.length < 7)
+	{
+		alert("비밀번호는 최소 8자 입니다.");
+	}
+	else if(!(/\w\W/.test(document.joinForm.pwd.value)))
+	{
+		alert("비밀번호는 숫자/영어/특수문자 혼용 입니다.");
 	}
 	else if (document.joinForm.pwd.value != document.joinForm.pwd2.value)
 	{
