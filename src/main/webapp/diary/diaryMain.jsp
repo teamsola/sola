@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <meta content="Chrissy Collins" name="author">
 <meta content="A pure vanilla JS calendar by @chrisssycollins" name="description">
-<link href="../css/vanillaCalendar.css" rel="stylesheet">
+<link href="css/vanillaCalendar.css" rel="stylesheet">
 	
 <script type="text/javascript">
 
@@ -355,6 +356,8 @@ h1 {
 	
 	<!-- 달력구성 스크립트 -->
 	<script type="text/javascript">
+	
+	
 	var vanillaCalendar = {
 			  month: document.querySelectorAll('[data-calendar-area="month"]')[0],
 			  next: document.querySelectorAll('[data-calendar-toggle="next"]')[0],
@@ -406,38 +409,40 @@ h1 {
 			    
 			    
 			    
-			    
-			 	//달력에 내용있으면 일에 밑줄 표시하기
-			    /* DTO에 있는 날짜 */
-			    <c:forEach var="diaryDTO" items="${list}">
-				    var result2= "${diaryDTO.diary_date}";
-					
-				    /*  달력에있는날짜->date형식변환 */
-				    var dateall=this.date
-				    var dateall2=dateToYYYYMMDD(dateall)
-				    
-				    /* 달력에있는날짜 (1~30일 동안) */
-				    for(var i=0; i<dateall2.length; i++){
-				    	
-				    	
-				    	/* DTO날짜==달력날짜 같으면 */
-					    if(dateall2==result2){
-					    		
-					    		//해당 일에 밑줄
-					    		 newDay.style.textDecoration='underline';
-					    		newDay.style.color='#ff8400';
-				    
-				  		  }
-				    }
-				    
-			    </c:forEach>
-			    
-		
-			    
+			    <c:if test="${fn:length(list) > 0}">
+
+				  //달력에 내용있으면 일에 밑줄 표시하기
+				    /* DTO에 있는 날짜 */
+				    <c:forEach var="diaryDTO" items="${list}">
+					    var result2= "${diaryDTO.diary_date}";
+						
+					    /*  달력에있는날짜->date형식변환 */
+					    var dateall=this.date
+					    var dateall2=dateToYYYYMMDD(dateall)
+					    
+					    /* 달력에있는날짜 (1~30일 동안) */
+					    for(var i=0; i<dateall2.length; i++){
+					    	
+					    	
+					    	/* DTO날짜==달력날짜 같으면 */
+						    if(dateall2==result2){
+						    		
+						    		//해당 일에 밑줄
+						    		newDay.style.textDecoration='underline';
+						    		newDay.style.color='#ff8400';
+					    
+					  		  }
+					    }
+					    
+				    </c:forEach>
+				</c:if>
+			  
+				 /*  달력에있는날짜->date형식변환 */
+			    var dateall=this.date;
 			    newDay.setAttribute('data-calendar-date', dateall)
 
 			    
-			    
+				
 			    
 			    // if it's the first day of the month
 			    if (num === 1) {
@@ -462,6 +467,10 @@ h1 {
 
 			    newDay.appendChild(dateEl)
 			    this.month.appendChild(newDay)
+			    
+			    
+			   
+			    
 			  },
 
 			  
@@ -538,6 +547,7 @@ h1 {
 			    	</c:forEach> 
 			    	
 			    	
+			    	
 			    	//dto에 저장된 내용이 없을때
 			    	if(flag==false){
 			    		//텍스트박스 생성
@@ -547,16 +557,12 @@ h1 {
 			    		
 			    		}
 			        
-			        
-			        
-			        
 			      }
 			      )//리스너 끝
 			    }//for문 끝
 			  },
-
-			  
-			
+	
+		
 			  createMonth: function () {
 			    var currentMonth = this.date.getMonth()
 			    while (this.date.getMonth() === currentMonth) {
@@ -606,7 +612,7 @@ h1 {
 			    }
 			  }
 			}
-	
+	 
 	</script>
 	<script>
 		window.addEventListener('load', function () {
