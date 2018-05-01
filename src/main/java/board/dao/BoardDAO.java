@@ -1,5 +1,6 @@
 package board.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,14 +33,34 @@ public class BoardDAO {
 	}
 	
 	//글 목록 키워드 조회
-	public List<BoardDTO> boardListSearch(String category, String keyword, int startNum, int endNum) {
+	public List<BoardDTO> boardListSearch1(String category2, String keyword, int startNum, int endNum) {
 		Map<String, String> map=new HashMap<String,String>();
-		map.put("category", category);
+		map.put("category2", category2);
 		map.put("keyword", keyword);
 		map.put("startNum",startNum+"");
 		map.put("endNum",endNum+"");
-		
-		return sqlSession.selectList("mybatis.boardMapper.boardListSearch",map);
+
+		return sqlSession.selectList("mybatis.boardMapper.boardListSearch1",map);
+	}
+	
+	public List<BoardDTO> boardListSearch2(String category2, String keyword, int startNum, int endNum) {
+		Map<String, String> map=new HashMap<String,String>();
+		map.put("category2", category2);
+		map.put("keyword", keyword);
+		map.put("startNum",startNum+"");
+		map.put("endNum",endNum+"");
+
+		return sqlSession.selectList("mybatis.boardMapper.boardListSearch2",map);
+	}
+	
+	public List<BoardDTO> boardListSearch3(String category2, String keyword, int startNum, int endNum) {
+		Map<String, String> map=new HashMap<String,String>();
+		map.put("category2", category2);
+		map.put("keyword", keyword);
+		map.put("startNum",startNum+"");
+		map.put("endNum",endNum+"");
+
+		return sqlSession.selectList("mybatis.boardMapper.boardListSearch3",map);
 	}
 	
 	public BoardDTO boardView(int board_seq) {
