@@ -210,27 +210,18 @@ public class ProinfoController {
 			String list_t = request.getParameter("list_t");
 			list_t = "s";
 			// 2. DB 연동 처리	
-			int endNum = pg*5;
-			int startNum = endNum-4;
 			list = null;
 			list = proinfoService.searchList(searchOp, keyword);
 
 			int totalS = proinfoService.getTotalS(searchOp, keyword);
-			int totalP = (totalS+4) / 5;
-			int startPage = (pg-1)/3*3+1;
-			int endPage = startPage + 2;
-			if(totalP < endPage) endPage = totalP;
 
 
 			// 3. 검색 결과를 저장하고 목록 화면으로 이동한다.
 			ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("list",list);
-			modelAndView.addObject("startPage", startPage);
-			modelAndView.addObject("endPage", endPage);
 			modelAndView.addObject("searchOp", searchOp);
 			modelAndView.addObject("keyword", keyword);
 			modelAndView.addObject("totalS", totalS);
-			modelAndView.addObject("totalP", totalP);
 			modelAndView.addObject("list_t",list_t);
 			modelAndView.addObject("pg", pg);
 
