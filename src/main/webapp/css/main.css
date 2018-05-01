@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 header, footer,  nav
 {
 	margin: auto;
@@ -6,7 +7,7 @@ header, footer,  nav
 	box-sizing: border-box;
 	display: table;
 }
-.frame, section{
+.frame, section, footer{
 	margin: auto;
 	box-sizing: border-box;
 	display: table;
