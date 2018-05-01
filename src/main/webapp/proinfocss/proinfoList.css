@@ -61,12 +61,12 @@ div#overLayer {
 }
 
 .ol_center .searchListdiv{	/* 검색 결과 감싸는 div (스크롤) */
-	width: 98%;
-	height: 98%;
+	width: 99%;
+	height: 99%;
 	background-color: white;
-	float: left;
-	overflow:scroll;
+	overflow: auto;
 	border: solid 1px black;
+	margin: auto;
 }
 
 .ol_center .searchListdiv .searchList{	/* 검색 결과 div */
@@ -75,6 +75,7 @@ div#overLayer {
 	background-color: #DBDBDB;
 	float: left;
 	border: solid 1px red;
+	margin: auto;
 }
 
 .ol_center .searchListdiv .searchList:hover{	/* 검색 결과 리스트 hover 이벤트 */

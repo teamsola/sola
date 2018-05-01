@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="proinfocss/proinfo.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="proinfocss/proinfoView.css?ver=1" />
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -63,12 +63,28 @@
 	<input type="hidden" name="keyword_c" value="${keyword_c }"/>
 	<input type="hidden" name="list_n" value="${list_n }"/>
 	<input type="hidden" name="list_t" value="${list_t }"/>
+	<c:if test="${list_t eq 'c'}">
+	<c:set var="list_len" value="${fn:length(list) }"/>
+	</c:if>
+	<c:if test="${list_t eq 's'}">
+	<c:set var="list_len" value="${fn:length(list) + 1}"/>
+	</c:if>
       <div id='glayLayer'></div>
       <div id='overLayer'>
-         <div class="ol_top" align="right"> 
-			<%-- <div id="select" class="select">		<!-- 카테고리 -->
-         		<label>${proinfoDTO.category }</label>
-         	</div> --%>
+         <div class="ol_top"> 
+			<div id="category" class="category" >		<!-- 카테고리 -->
+         		<label style="color: white;">
+         		<c:if test="${proinfoDTO.category eq 'live'}">
+         			입주 전
+         		</c:if>
+         		<c:if test="${proinfoDTO.category eq 'living'}">
+         			입주 중
+         		</c:if>
+         		<c:if test="${proinfoDTO.category eq 'lived'}">
+         			입주 후
+         		</c:if>
+         		</label>
+         	</div>
          	<div class="cancel_c">
          		<c:if test="${list_t eq 's' }">
          			<input type="button" id="cancel" onclick="location.href='search.do?pg=1&keyword=${fn:substring(text,1,len-1)}&searchOp=${searchOp}'" value="x"/>
@@ -80,22 +96,24 @@
          </div>
          <div class="ol_left" onclick="left_btn_check()"></div>
          <div class="ol_center">
-         	<c:if test="${fn:length(list) > 0}">
+         <div class="searchListdiv">
+         	<c:if test="${list_len > 0}">
          		<div  class="subject">					<!-- 제목 -->
          			<label>제목 : ${proinfoDTO.subject }</label>
-         		</div>
-         		<div class="contents">					<!-- 내용 -->
-         			<label>내용 : ${proinfoDTO.contents }</label>
          		</div>
          		<div id="imgFile" class="imgFile">		<!-- 이미지  -->
          			<img src="../proinfoimg/${proinfoDTO.imgFile }">
          		</div>
-         		<div class="insert_btn"> 				<!-- 수정 삭제 버튼 -->
+         		<div class="contents">					<!-- 내용 -->
+         			<pre><label>${proinfoDTO.contents }</label></pre>
+         		</div>
+         		<div class="insert_btn" align="right"> 				<!-- 수정 삭제 버튼 -->
          			<input type="button" id="modify_btn" value="수정">
          			<input type="button" id="delete_btn" value="삭제">
          		</div>
          	</c:if>
-         	<c:if test="${fn:length(list) == 0}">작성된 글이 없습니다</c:if>
+         	<c:if test="${list_len == 0}">작성된 글이 없습니다</c:if>
+         	</div>
          </div>
          <div class="ol_right" onclick="right_btn_check()"></div>
       </div>
