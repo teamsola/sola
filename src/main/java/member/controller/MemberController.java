@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +27,8 @@ public class MemberController
 {
 	@Autowired
 	private MemberService memberService;
+	
+	private ArrayList<MemberDTO> list = null;
 
 	@RequestMapping(value = "login.do")
 	public ModelAndView login(HttpSession session, String id, String pwd)
@@ -489,4 +492,157 @@ public class MemberController
 		}
 		return modelAndView;
 	}
+	
+	@RequestMapping(value="memberList.do")
+	public ModelAndView memberList(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		// 1. 사용자 입력 정보 추출
+		System.out.println(request.getParameter("pg"));
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		// 2. DB 연동 처리	
+		int endNum = pg*20;				// 1 * 5 = 5
+		int startNum = endNum-19;// 5 - 4 = 1
+		list = null;
+		list = memberService.memberList(startNum, endNum);
+
+		int totalA = memberService.getTotalA();	// 총글수 (Total Article number)
+		int totalP = (totalA+19) / 20;					// 총페이지수
+
+		int startPage = (pg-1)/3*3+1;			// (2-1)/3*3+1 = 1
+		int endPage = startPage + 2;			// 1 + 2 = 3
+		if(totalP < endPage) endPage = totalP;	
+
+		// 3. 검색 결과를 저장하고 목록 화면으로 이동한다.
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("list",list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("content", "/member/memberList.jsp");
+		
+		return modelAndView;	
+	}
+	
+	public ModelAndView memberList(HttpServletRequest request, int pg) {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		// 1. 사용자 입력 정보 추출
+		// 2. DB 연동 처리	
+		int endNum = pg*20;				// 1 * 5 = 5
+		int startNum = endNum-19;// 5 - 4 = 1
+		list = null;
+		list = memberService.memberList(startNum, endNum);
+
+		int totalA = memberService.getTotalA();	// 총글수 (Total Article number)
+		int totalP = (totalA+19) / 20;					// 총페이지수
+
+		int startPage = (pg-1)/3*3+1;			// (2-1)/3*3+1 = 1
+		int endPage = startPage + 2;			// 1 + 2 = 3
+		if(totalP < endPage) endPage = totalP;	
+
+		// 3. 검색 결과를 저장하고 목록 화면으로 이동한다.
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("list",list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("content", "/member/memberList.jsp");
+		
+		return modelAndView;	
+	}
+
+	@RequestMapping(value="searchList.do")
+	public ModelAndView searchList(HttpServletRequest request) {
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		// 1. 사용자 입력 정보 추출
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		String keyword = request.getParameter("keyword");
+		keyword = "%"+keyword+"%";
+		String searchOp = request.getParameter("searchOp");
+		// 2. DB 연동 처리	
+		int endNum = pg*20;				// 1 * 5 = 5
+		int startNum = endNum-19;// 5 - 4 = 1
+		list = null;
+		list = memberService.searchList(startNum, endNum, searchOp, keyword);
+
+		int totalS = memberService.getTotalS(searchOp, keyword);	// 총글수 (Total Article number)
+		int totalP = (totalS+19) / 20;// 총페이지수
+
+		int startPage = (pg-1)/3*3+1;			// (2-1)/3*3+1 = 1
+		int endPage = startPage + 2;			// 1 + 2 = 3
+		if(totalP < endPage) endPage = totalP;
+
+
+		// 3. 검색 결과를 저장하고 목록 화면으로 이동한다.
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("list",list);
+		modelAndView.addObject("startPage", startPage);
+		modelAndView.addObject("endPage", endPage);
+		modelAndView.addObject("searchOp", searchOp);
+		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("totalS", totalS);
+		modelAndView.addObject("totalP", totalP);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("content", "/member/memberList.jsp");
+		
+		return modelAndView;	
+	}
+
+	@RequestMapping(value="memberView.do")
+	public ModelAndView memberView(HttpServletRequest request, MemberDTO memberDTO) {
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+		try {
+			request.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String id = request.getParameter("id");
+		memberDTO = memberService.memberView(id);
+		modelAndView.addObject("memberDTO", memberDTO);
+		modelAndView.addObject("content", "/member/memberView.jsp");
+		return modelAndView;
+	}
+
+	@RequestMapping(value="memberWd.do")
+	public ModelAndView memberWd(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView modelAndView = new ModelAndView();
+		PrintWriter out;
+		int result = 0;
+		HttpSession session = request.getSession();
+		String id = request.getParameter("id");
+
+		result = memberService.memberWd(id);
+		if(result > 0) {
+			modelAndView = memberList(request, 1);
+		//	modelAndView.setViewName("memberList.do?pg=1");
+		}else {
+			try {
+				out = response.getWriter();
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<html>");
+				out.println("<script>");
+				out.println("alert('실패')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.println("</html>");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return modelAndView;	
+	}
+
 }

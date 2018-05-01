@@ -7,44 +7,76 @@
 	<select id="login" parameterType="java.util.Map" resultType="String">
 		select nickname from member where id=#{id} and pwd=#{pwd}
 	</select>
-	
-	<insert parameterType="memberDTO" id="memberJoin"> 
-		insert into member values(#{id},#{pwd},#{name},#{nickname},#{gender},#{tel1},#{tel2},#{tel3},#{email1},#{email2},#{post},#{addr1},#{addr2},sysdate,'basic',0,'default_profile.jpg') 
+
+	<insert parameterType="memberDTO" id="memberJoin">
+		insert into member
+		values(#{id},#{pwd},#{name},#{nickname},#{gender},#{tel1},#{tel2},#{tel3},#{email1},#{email2},#{post},#{addr1},#{addr2},sysdate,'basic',0,'default_profile.jpg')
 	</insert>
 
-	<select parameterType="java.lang.String" id="isExistId" resultType="java.lang.String"> 
-		select name from member where id = #{id} 
+	<select parameterType="java.lang.String" id="isExistId"
+		resultType="java.lang.String">
+		select name from member where id = #{id}
 	</select>
 
-	<select parameterType="java.lang.String" id="memberView" resultType="memberDTO"> 
-		select * from member where id = #{id} 
+	<select parameterType="java.lang.String" id="memberView"
+		resultType="memberDTO">
+		select * from member where id = #{id}
 	</select>
 
 	<!-- 개인정보수정 -->
-	<update parameterType="memberDTO" id="memberInfoUpdate"> 
-		update member set name=#{name},post=#{post},addr1=#{addr1},addr2=#{addr2},tel1=#{tel1},tel2=#{tel2},tel3=#{tel3},email1=#{email1},email2=#{email2} where id=#{id} 
+	<update parameterType="memberDTO" id="memberInfoUpdate">
+		update member set
+		name=#{name},post=#{post},addr1=#{addr1},addr2=#{addr2},tel1=#{tel1},tel2=#{tel2},tel3=#{tel3},email1=#{email1},email2=#{email2}
+		where id=#{id}
 	</update>
 
 	<!-- 비밀번호 수정 -->
-	<update parameterType="memberDTO" id="memberPwUpdate"> 
-		update member set pwd=#{pwd} where id=#{id} 
+	<update parameterType="memberDTO" id="memberPwUpdate">
+		update member set pwd=#{pwd} where id=#{id}
 	</update>
 
 	<!-- 사진을 선택했을시 프로필 수정 -->
-	<update parameterType="memberDTO" id="memberProfileUpdate"> 
-		update member set profile=#{profile},nickname=#{nickname} where id=#{id} 
+	<update parameterType="memberDTO" id="memberProfileUpdate">
+		update member set profile=#{profile},nickname=#{nickname} where id=#{id}
 	</update>
 
 	<!-- 사진을 선택하지 않았을시 프로필 수정 -->
-	<update parameterType="memberDTO" id="memberProfileUpdate2"> 
-		update member set nickname=#{nickname} where id=#{id} 
+	<update parameterType="memberDTO" id="memberProfileUpdate2">
+		update member set nickname=#{nickname} where id=#{id}
 	</update>
 
-	<update parameterType="java.lang.String" id="memberProfileDelete"> 
-		update member set profile='default_profile.jpg' where id=#{id} 
+	<update parameterType="java.lang.String" id="memberProfileDelete">
+		update member set profile='default_profile.jpg' where id=#{id}
 	</update>
 
-	<delete parameterType="java.lang.String" id="memberWithdrawal"> 
-		delete from member where id=#{id} 
+	<delete parameterType="java.lang.String" id="memberWithdrawal">
+		delete from member where id=#{id}
 	</delete>
+
+
+	<select resultType="memberDTO" parameterType="java.util.Map" id="memberList">
+			<![CDATA[
+				select * from (select rownum rn, tt.* from
+				(select * from member order by joinDate) tt)
+				where rn>=#{startNum} and rn<=#{endNum}
+			]]>
+	</select>
+
+
+	<select resultType="memberDTO" parameterType="java.util.Map" id="searchList">
+			<![CDATA[
+				select * from(select rownum rn, tt.* from
+				(select * from member WHERE ${searchOp} like #{keyword} order by joinDate) tt)
+				where rn>=#{startNum} and rn<=#{endNum}
+			]]>
+	</select>
+
+	<select resultType="int" parameterType="java.util.Map" id="getTotalS">
+		select count(*) from member where ${searchOp} like #{keyword} </select>
+
+	<select resultType="int" id="getTotalA"> select count(*) from member
+	</select>
+
+	<delete parameterType="java.lang.String" id="memberWd"> delete from member
+		where id=#{id} </delete>
 </mapper>
