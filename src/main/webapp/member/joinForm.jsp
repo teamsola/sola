@@ -38,6 +38,14 @@ tr.hid
 	z-index: 10;
 	float: right;
 }
+.gender_label
+{
+    background-color: orange;
+    width: 49%;
+    cursor: pointer;
+    display: inline-table;
+    text-align: center;
+}
 </style>
 <script type="text/javascript" src="js/memberScript.js?v=1"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -170,6 +178,17 @@ function execDaumPostcode()
     								$("#span_pwd2").html("<font color=red>비밀번호가 일치하지 않습니다.</font>");
     							}
     					});
+    			$(".gender_radio").change(function()
+    					{
+    						var id = $(this).attr("id");
+    						
+    						if(id == "male") {var otherId = "female";}
+    						else {var otherId = "male";}	
+    						$("#label_" + id).css("background-color", 'gray');
+    						$("#label_" + id).css("text-decoration", 'underline');
+    						$("#label_" + otherId).css("background-color", 'orange');
+    						$("#label_" + otherId).css("text-decoration", 'none');
+    					});
 /* 				$("#pwd").keyup(function()
 						{
 							var pwd = $("#pwd").val();
@@ -222,8 +241,8 @@ function execDaumPostcode()
 				</tr>
 				<tr class="inp">
 					<td>
-						<input type="radio" name="gender" value="m">남
-						<input type="radio" name="gender" value="f">여
+						<label class="gender_label" for="male" id="label_male"><input type="radio" name="gender" class="gender_radio" value="m" id="male" hidden>남</label>
+						<label class="gender_label" for="female" id="label_female"><input type="radio" name="gender" class="gender_radio" value="f" id="female" hidden>여</label>
 					</td>
 				</tr>
 				<tr class="sub">
