@@ -29,14 +29,11 @@ public class ProinfoController {
 	
 	private ArrayList<ProinfoDTO> list = null;
 
-	String realFolder = "C:/Users/ZO/Desktop/201712_JAVASW/Spring/workspace/"
-			+ "sola/src/main/webapp/proinfoimg";
 
 	// 파일 이름 추출 메서드
-	public String makeFileName(MultipartFile image1) {	
+	public String makeFileName(HttpServletRequest request,MultipartFile image1) {	
 		// 저장 경로
-		String filePath = "C:/Users/ZO/Desktop/201712_JAVASW/Spring/workspace/"
-				+ "sola/src/main/webapp/proinfoimg";
+		String filePath = request.getSession().getServletContext().getRealPath("/proinfoimg");
 
 		System.out.println("img : "+image1);
 
@@ -92,7 +89,7 @@ public class ProinfoController {
 
 		System.out.println("imgFile : "+imgFile);
 
-		proinfoDTO.setImgFile(makeFileName(imgFile));
+		proinfoDTO.setImgFile(makeFileName(request,imgFile));
 
 		int su= proinfoService.insertProinfo(proinfoDTO);
 		System.out.println("su : "+su);
@@ -170,7 +167,7 @@ public class ProinfoController {
 
 			System.out.println("imgFile : "+imgFile);
 
-			proinfoDTO.setImgFile(makeFileName(imgFile));
+			proinfoDTO.setImgFile(makeFileName(request,imgFile));
 			
 			int su = proinfoService.modifyProinfo(proinfoDTO);
 
@@ -216,7 +213,7 @@ public class ProinfoController {
 			int endNum = pg*5;
 			int startNum = endNum-4;
 			list = null;
-			list = proinfoService.searchList(startNum, endNum, searchOp, keyword);
+			list = proinfoService.searchList(searchOp, keyword);
 
 			int totalS = proinfoService.getTotalS(searchOp, keyword);
 			int totalP = (totalS+4) / 5;
