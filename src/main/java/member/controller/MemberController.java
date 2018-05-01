@@ -245,20 +245,20 @@ public class MemberController
 	}
 
 	@RequestMapping(value = "memberInfoUpdate.do")
-	public ModelAndView memberInfoUpdate(HttpServletRequest request, HttpServletResponse response, String id, MemberDTO memberDTO) throws UnsupportedEncodingException
+	public ModelAndView memberInfoUpdate(HttpServletRequest request, HttpServletResponse response, MemberDTO memberDTO) throws UnsupportedEncodingException
 	{
 		request.setCharacterEncoding("utf-8");
 
 		HttpSession session = request.getSession();
 		ModelAndView modelAndView = null;
-		
+		String id = (String) session.getAttribute("memId");
+		memberDTO.setId(id);
 		int result = memberService.memberInfoUpdate(memberDTO);
+		System.out.println(result);
 		if (result > 0)
 		{
 			modelAndView = new ModelAndView("/mainFrame.jsp");
-			modelAndView.addObject("content", "/member/memberUpdateFrom.jsp");
-			
-			modelAndView.addObject("id", id);
+			modelAndView.addObject("content", "/member/memberUpdateForm.jsp");
 			modelAndView.addObject("memberDTO", memberDTO);
 		}
 		else
