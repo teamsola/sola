@@ -33,6 +33,7 @@ public class MemberController
 	@RequestMapping(value = "login.do")
 	public ModelAndView login(HttpSession session, String id, String pwd)
 	{
+		ModelAndView modelAndView = new ModelAndView();
 		String nickname = memberService.login(id, pwd);
 		System.out.println("닉네임: "+nickname);
 		if(nickname != null)
@@ -55,14 +56,17 @@ public class MemberController
 				session.setAttribute("home1", "/home/test1.jsp");
 				session.setAttribute("home2", "/home/test2.jsp");
 			}
+			modelAndView = main(session);
+		}else {
+			modelAndView.setViewName("/member/loginFail.jsp");
 		}
-		return main(session);
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "loginForm.do")
 	public ModelAndView loginForm()
 	{
-		return new ModelAndView("member/loginForm.jsp");
+		return new ModelAndView("/member/loginForm.jsp");
 	}
 
 	@RequestMapping(value = "main.do")
