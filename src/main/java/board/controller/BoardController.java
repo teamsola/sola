@@ -54,14 +54,12 @@ public class BoardController {
 		
 		
 		
-		String category=request.getParameter("category");
-		System.out.println("받아온 category:"+category);
-		
+		String category2=request.getParameter("category2");
 		String keyword=request.getParameter("keyword");
-		System.out.println("받아온 keyword:"+keyword);
 		
 		
-		if(category==null & keyword ==null) {
+		
+		if(category2==null & keyword ==null) {
 			
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
@@ -72,9 +70,13 @@ public class BoardController {
 		int startPage = (pg-1)/3*3+1;  
 	    int endPage = startPage + 2;    
 	    if(totalP<endPage) endPage = totalP;
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+		
+		
 	    ArrayList<BoardDTO> list=boardService.boardList(startNum, endNum);
 		
-	    modelAndView.addObject("category",category);
+	    modelAndView.addObject("category2",category2);
 	    modelAndView.addObject("keyword",keyword);
 		modelAndView.addObject("list",list);
 	    modelAndView.addObject("totalA",totalA);
@@ -87,8 +89,9 @@ public class BoardController {
 	    modelAndView.addObject("pg",pg);
 		
 		}
+		
 	   
-		else if(category!=null & keyword!=null) {
+		else if(category2.equals("subject") & keyword!=null) {
 		
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
@@ -100,9 +103,84 @@ public class BoardController {
 	    int endPage = startPage + 2;    
 	    if(totalP<endPage) endPage = totalP;
 	    
-	    ArrayList<BoardDTO> list=boardService.boardListSearch(category, keyword, startNum, endNum);
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+	    
+	    ArrayList<BoardDTO> list=boardService.boardListSearch1(category2, keyword, startNum, endNum);
 		
-	    modelAndView.addObject("category",category);
+	    
+	    System.out.println("list:"+list);
+	    
+	    
+	    modelAndView.addObject("category2",category2);
+	    modelAndView.addObject("keyword",keyword);
+		modelAndView.addObject("list",list);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("totalP",totalP);
+	    modelAndView.addObject("startPage",startPage);
+	    modelAndView.addObject("startNum",startNum);
+	    modelAndView.addObject("endNum",endNum);
+	    modelAndView.addObject("endPage",endPage);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("pg",pg);
+		
+		}
+		
+		
+		
+		else if(category2.equals("category") & keyword!=null) {
+			
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int endNum = pg*5;	
+		int startNum = endNum-4;
+		int totalA = boardService.getTotalA();   
+	    int totalP = (totalA+4) /5 ;   
+		int startPage = (pg-1)/3*3+1;  
+	    int endPage = startPage + 2;    
+	    if(totalP<endPage) endPage = totalP;
+	    
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+	    
+	    ArrayList<BoardDTO> list=boardService.boardListSearch2(category2, keyword, startNum, endNum);
+		
+	    
+	    
+	    modelAndView.addObject("category2",category2);
+	    modelAndView.addObject("keyword",keyword);
+		modelAndView.addObject("list",list);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("totalP",totalP);
+	    modelAndView.addObject("startPage",startPage);
+	    modelAndView.addObject("startNum",startNum);
+	    modelAndView.addObject("endNum",endNum);
+	    modelAndView.addObject("endPage",endPage);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("pg",pg);
+		
+		}
+		
+		
+		else if(category2.equals("nickname") & keyword!=null) {
+			
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int endNum = pg*5;	
+		int startNum = endNum-4;
+		int totalA = boardService.getTotalA();   
+	    int totalP = (totalA+4) /5 ;   
+		int startPage = (pg-1)/3*3+1;  
+	    int endPage = startPage + 2;    
+	    if(totalP<endPage) endPage = totalP;
+	    
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+	    
+	    ArrayList<BoardDTO> list=boardService.boardListSearch3(category2, keyword, startNum, endNum);
+		
+	    
+	    modelAndView.addObject("category2",category2);
 	    modelAndView.addObject("keyword",keyword);
 		modelAndView.addObject("list",list);
 	    modelAndView.addObject("totalA",totalA);

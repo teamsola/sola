@@ -34,6 +34,7 @@ th{
 	height:30px;
 }
 
+
 #top{
 	margin-left:530px;
 	margin-top:50px;
@@ -147,18 +148,6 @@ th{
 					<th width=70>조회</th>
 				</tr>
 				
-				
-				
-			<!-- 글이 하나도등록안되있을때	 -->
-			<c:choose>
-			<c:when test="${empty list }">
-			등록된 글이없습니다.
-			</c:when>
-
-			<c:otherwise>	
-			
-			
-			
 			
 			<c:forEach var="boardDTO" items="${list }">
 					<tr>
@@ -181,26 +170,24 @@ th{
 				<tr>
 					<td colspan=5 align=center>
 					<c:if test="${startPage>3}"><!--  [1][2][3]인경우 [이전]보이지않음 -->
-						<a id="paging" href="boardList.do?pg=${startPage-1}">이전</a>  <!-- 이전 누를시 [startpage-1] 로 이동 -->
+						<a id="paging" href="mallBoardList.do?pg=${startPage-1}">이전</a>  <!-- 이전 누를시 [startpage-1] 로 이동 -->
 					</c:if>
 					
 					<c:forEach var="i" begin="${startPage}" end="${ endPage}" step="1">
 						
 						<c:if test="${i==pg}">
-							<a id="currentPaging" href="boardList.do?pg=${i }">${i }</a>  <!-- 현재페이지=빨간색 -->
+							<a id="currentPaging" href="mallBoardList.do?pg=${i }">${i }</a>  <!-- 현재페이지=빨간색 -->
 						</c:if>
 						
 						<c:if test="${i!=pg }">
-							<a id="paging" href="boardList.do?pg=${i }">${i }</a>  <!-- 현재페이지 아닌곳=파란색 -->
+							<a id="paging" href="mallBoardList.do?pg=${i }">${i }</a>  <!-- 현재페이지 아닌곳=파란색 -->
 						</c:if>
 					</c:forEach>
 					
 					<c:if test="${endPage<totalP}"> <!-- 2페이지까지 있을경우 endPage=totalP-->
-						<a id="paging" href="boardList.do?pg=${endPage+1}">다음</a>  <!-- endPage가 총 페이지수보다 작을때 [다음] 표시 -->
+						<a id="paging" href="mallBoardList.do?pg=${endPage+1}">다음</a>  <!-- endPage가 총 페이지수보다 작을때 [다음] 표시 -->
 					</c:if>
 				</tr>
-				</c:otherwise>
-			</c:choose>
 	
 		</table>
 	
@@ -211,10 +198,10 @@ th{
 		
 		
 		<div id="search">
-			<select name="category" id="category">
-				<option value="분류" <c:if test="${category eq '분류' }">selected</c:if>>분류</option>
-				<option value="제목" <c:if test="${category eq '제목'}">selected</c:if>>제목</option>
-				<option value="작성자" <c:if test="${category eq '작성자' }">selected</c:if>>작성자</option>
+			<select name="category2" id="category2">
+				<option value="category" <c:if test="${category2 eq 'category' }">selected</c:if>>분류</option>
+				<option value="subject" <c:if test="${category2 eq 'subject'}">selected</c:if>>제목</option>
+				<option value="nickname" <c:if test="${category2 eq 'nickname' }">selected</c:if>>작성자</option>
 			</select>
 		</div>
 		
