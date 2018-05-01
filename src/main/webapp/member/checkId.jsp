@@ -6,10 +6,14 @@ pageEncoding="UTF-8"%>
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			function checkIdClose(){
-				opener.joinForm.id.value = '${id }';
-				opener.joinForm.idAuth.value = "ok";
+				$("#id", opener.document).val("${id}");
+				$("#idAuth", opener.document).val("ok");
+				$("#id", opener.document).attr("readonly", "readonly");
+//				opener.joinForm.id.value = '${id }';
+//				opener.joinForm.idAuth.value = "ok";
 				window.close();
 				opener.joinForm.pwd.focus();
 			}

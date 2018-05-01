@@ -19,7 +19,7 @@ public interface ProinfoService {
 	public int deleteProinfo(int seq);
 	
 	// 전문 지식 검색 (검색창)
-	public ArrayList<ProinfoDTO> searchList(int startNum, int endNum, String searchOp, String keyword);
+	public ArrayList<ProinfoDTO> searchList(String searchOp, String keyword);
 	
 	// 전문 지식 검색 (카테고리별)
 	public ArrayList<ProinfoDTO> search_c(String keyword_c);

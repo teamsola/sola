@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Index화면</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/sola/js/memberScript.js"></script>
 <script type="text/javascript">
 /* if("${lgout}" == 1)
 {
@@ -29,7 +30,7 @@
 	margin: auto; 
 	border: #6a6763 solid 1px;
 	border-collapse: collapse;
-}ㅂ
+}
 </style>
 </head>
 <body>
@@ -39,13 +40,13 @@
 		</div>
 		<div id="right" class="frame">
 			<div id="login" class="frame">
-				<form action="login.do" method="post">
+				<form name="login" action="login.do" method="post">
 					<br>
-					<table id=loginForm>
+					<table id="loginForm">
 						<tr>
 							<th>아이디</th>
 							<td><input type="text" name="id" style="width: 100px" tabindex="1"/></td>
-							<td rowspan="2"><input type="submit" value="로그인" tabindex="3"/></td>
+							<td rowspan="2"><input type="button" value="로그인" tabindex="3" onclick="javascript:checkLogin()"/></td>
 						</tr>
 						<tr>
 							<th>비밀번호</th>

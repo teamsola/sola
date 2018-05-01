@@ -28,7 +28,8 @@ public class DiaryController {
 	
 		ModelAndView modelAndView=new ModelAndView();
 		
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -36,7 +37,6 @@ public class DiaryController {
 			e.printStackTrace();
 		}
 		
-		String id="zz";
 		String diary_date=request.getParameter("result");
 		String diary_content=request.getParameter("content");
 		
@@ -68,7 +68,8 @@ public class DiaryController {
 		System.out.println("--------------");
 		System.out.println("인덱스 들어옴");
 		
-		String id="zz";	//임시 id
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		ArrayList<DiaryDTO> list=diaryService.diaryList(id);
 
@@ -91,6 +92,9 @@ public class DiaryController {
 		System.out.println("--------------");
 		System.out.println("글삭제처리");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		ModelAndView modelAndView=new ModelAndView();
 		
 		String diary_date=request.getParameter("diary_date");
@@ -111,6 +115,9 @@ public class DiaryController {
 		
 		System.out.println("--------------");
 		System.out.println("기존값 불러오기 처리");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		ModelAndView modelAndView=new ModelAndView();
 		
@@ -135,9 +142,11 @@ public class DiaryController {
 		System.out.println("--------------");
 		System.out.println("글수정처리");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		String diary_date=request.getParameter("diary_date");
 		String diary_content=request.getParameter("diary_content");
-		String id="zz";
 		int diary_seq=Integer.parseInt(request.getParameter("diary_seq"));
 		System.out.println("seq확인:"+diary_seq);
 		
@@ -168,9 +177,11 @@ public class DiaryController {
 		System.out.println("--------------");
 		System.out.println("모아보기처리");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		ModelAndView modelAndView=new ModelAndView();
 		
-		String id="zz";
 		
 		ArrayList<DiaryDTO> list=diaryService.diaryList(id);
 		

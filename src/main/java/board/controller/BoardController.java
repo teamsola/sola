@@ -37,6 +37,9 @@ public class BoardController {
 		System.out.println("--------------");
 		System.out.println("게시판 글쓰기 들어옴");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		modelAndView.addObject("content","/mall/mallBoardWriteForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		 
@@ -52,16 +55,15 @@ public class BoardController {
 		System.out.println("리스트 들어가기전 들어옴");
 		System.out.println("----------------");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
-		
-		String category=request.getParameter("category");
-		System.out.println("받아온 category:"+category);
-		
+		String category2=request.getParameter("category2");
 		String keyword=request.getParameter("keyword");
-		System.out.println("받아온 keyword:"+keyword);
 		
 		
-		if(category==null & keyword ==null) {
+		
+		if(category2==null & keyword ==null) {
 			
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
@@ -72,9 +74,13 @@ public class BoardController {
 		int startPage = (pg-1)/3*3+1;  
 	    int endPage = startPage + 2;    
 	    if(totalP<endPage) endPage = totalP;
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+		
+		
 	    ArrayList<BoardDTO> list=boardService.boardList(startNum, endNum);
 		
-	    modelAndView.addObject("category",category);
+	    modelAndView.addObject("category2",category2);
 	    modelAndView.addObject("keyword",keyword);
 		modelAndView.addObject("list",list);
 	    modelAndView.addObject("totalA",totalA);
@@ -87,8 +93,9 @@ public class BoardController {
 	    modelAndView.addObject("pg",pg);
 		
 		}
+		
 	   
-		else if(category!=null & keyword!=null) {
+		else if(category2.equals("subject") & keyword!=null) {
 		
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		
@@ -100,9 +107,84 @@ public class BoardController {
 	    int endPage = startPage + 2;    
 	    if(totalP<endPage) endPage = totalP;
 	    
-	    ArrayList<BoardDTO> list=boardService.boardListSearch(category, keyword, startNum, endNum);
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+	    
+	    ArrayList<BoardDTO> list=boardService.boardListSearch1(category2, keyword, startNum, endNum);
 		
-	    modelAndView.addObject("category",category);
+	    
+	    System.out.println("list:"+list);
+	    
+	    
+	    modelAndView.addObject("category2",category2);
+	    modelAndView.addObject("keyword",keyword);
+		modelAndView.addObject("list",list);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("totalP",totalP);
+	    modelAndView.addObject("startPage",startPage);
+	    modelAndView.addObject("startNum",startNum);
+	    modelAndView.addObject("endNum",endNum);
+	    modelAndView.addObject("endPage",endPage);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("pg",pg);
+		
+		}
+		
+		
+		
+		else if(category2.equals("category") & keyword!=null) {
+			
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int endNum = pg*5;	
+		int startNum = endNum-4;
+		int totalA = boardService.getTotalA();   
+	    int totalP = (totalA+4) /5 ;   
+		int startPage = (pg-1)/3*3+1;  
+	    int endPage = startPage + 2;    
+	    if(totalP<endPage) endPage = totalP;
+	    
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+	    
+	    ArrayList<BoardDTO> list=boardService.boardListSearch2(category2, keyword, startNum, endNum);
+		
+	    
+	    
+	    modelAndView.addObject("category2",category2);
+	    modelAndView.addObject("keyword",keyword);
+		modelAndView.addObject("list",list);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("totalP",totalP);
+	    modelAndView.addObject("startPage",startPage);
+	    modelAndView.addObject("startNum",startNum);
+	    modelAndView.addObject("endNum",endNum);
+	    modelAndView.addObject("endPage",endPage);
+	    modelAndView.addObject("totalA",totalA);
+	    modelAndView.addObject("pg",pg);
+		
+		}
+		
+		
+		else if(category2.equals("nickname") & keyword!=null) {
+			
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		int endNum = pg*5;	
+		int startNum = endNum-4;
+		int totalA = boardService.getTotalA();   
+	    int totalP = (totalA+4) /5 ;   
+		int startPage = (pg-1)/3*3+1;  
+	    int endPage = startPage + 2;    
+	    if(totalP<endPage) endPage = totalP;
+	    
+	    System.out.println("받아온 keyword:"+keyword);
+		System.out.println("받아온 category2:"+category2);
+	    
+	    ArrayList<BoardDTO> list=boardService.boardListSearch3(category2, keyword, startNum, endNum);
+		
+	    
+	    modelAndView.addObject("category2",category2);
 	    modelAndView.addObject("keyword",keyword);
 		modelAndView.addObject("list",list);
 	    modelAndView.addObject("totalA",totalA);
@@ -131,6 +213,12 @@ public class BoardController {
 	@RequestMapping(value="mallBoardView.do")
 	public ModelAndView boarView(HttpServletRequest request) {
 		
+		System.out.println("쇼핑몰 게시판 상세보기 처리");
+		System.out.println("----------------");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		ModelAndView modelAndView=new ModelAndView();
 		
 		int board_seq = Integer.parseInt(request.getParameter("board_seq"));
@@ -157,6 +245,9 @@ public class BoardController {
 		System.out.println("게시판 삭제 들어옴");
 		System.out.println("-------------");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
 		int board_seq = Integer.parseInt(request.getParameter("board_seq"));
 
 		int su=boardService.boardDelete(board_seq);
@@ -178,9 +269,9 @@ public class BoardController {
 		int board_seq=Integer.parseInt(request.getParameter("board_seq"));
 		int pg=Integer.parseInt(request.getParameter("pg"));
 		
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
-		String id = "zz";			//임시id
 		String nickname = "닉네임";	//임시 닉네임
 
 		boardService.updateHit(board_seq);	// 조회수 증가
@@ -204,6 +295,7 @@ public class BoardController {
 		System.out.println("게시판 수정처리");
 		System.out.println("----------");
 		
+		
 		if(editor.equals("<p>&nbsp;</p>")) {
     		
     		response.setContentType("text/html; charset=UTF-8");
@@ -223,9 +315,10 @@ public class BoardController {
 		String category=request.getParameter("category");
 		String subject = request.getParameter("subject");
 	
-		HttpSession session=request.getSession();
-			
-		String id = "zz";			//임시id
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
+		
 		String nickname = "닉네임";	//임시 닉네임
 	
 		BoardDTO boardDTO=new BoardDTO();
@@ -276,9 +369,9 @@ public class BoardController {
 		System.out.println("제목:"+subject);
 		System.out.println("카테고리:"+category);
 		
-		HttpSession session=request.getSession();
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
-		String id = "zz";			//임시id
 		String nickname = "닉네임";	//임시 닉네임
 
 		BoardDTO boardDTO=new BoardDTO();

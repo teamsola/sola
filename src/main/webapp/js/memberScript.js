@@ -41,18 +41,18 @@ function checkJoin()
 
 function checkLogin()
 {
-	if (document.loginForm.id.value == "")
+	if (document.login.id.value == "")
 	{
 		alert("아이디를 입력하세요.");
-		document.loginForm.id.focus();
+		document.login.id.focus();
 	}
-	else if (document.loginForm.pwd.value == "")
+	else if (document.login.pwd.value == "")
 	{
 		alert("비밀번호를 입력하세요.");
 	}
 	else
 	{
-		document.loginForm.submit();
+		document.login.submit();
 	}
 }
 
@@ -60,7 +60,6 @@ function checkId()
 {
 	var sId = document.joinForm.id.value;
 	var disable = /[^A-Za-z0-9_.]/;
-	alert(disable.test(sId));
 
 	if(sId == "")
 	{

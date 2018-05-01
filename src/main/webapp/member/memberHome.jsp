@@ -59,7 +59,7 @@ pageEncoding="UTF-8"%>
 					<td>
 						<div class="profileImg" align="left">
 							<a href="memberProfile.do">
-							<img alt="" src="storage/${memberDTO.profile }" width="100" height="100" /></a>
+							<img alt="" src="/sola/storage/${memberDTO.profile }" width="100" height="100" /></a>
 						</div>
 					</td>
 					<td>

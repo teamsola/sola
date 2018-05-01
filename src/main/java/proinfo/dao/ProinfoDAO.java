@@ -40,10 +40,8 @@ public class ProinfoDAO {
 		return sqlSession.delete("mybatis.proinfoMapper.deleteProinfo", seq);
 	}
 	
-	public List<ProinfoDTO> searchList(int startNum, int endNum,String searchOp,String keyword) {
+	public List<ProinfoDTO> searchList(String searchOp,String keyword) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
 		map.put("searchOp",searchOp);
 		map.put("keyword", keyword);
 		System.out.println("===> SpringMVC-myBatis로 searchList() 기능 처리");
