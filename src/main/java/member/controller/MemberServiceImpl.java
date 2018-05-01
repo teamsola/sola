@@ -1,5 +1,7 @@
 package member.controller;
 
+import java.util.ArrayList;
+
 import member.bean.MemberDTO;
 import member.dao.MemberDAO;
 
@@ -61,5 +63,26 @@ public class MemberServiceImpl implements MemberService
 	{
 		this.memberDAO = memberDAO;
 	}
+	
+	public ArrayList<MemberDTO> memberList(int startNum, int endNum){
+		return (ArrayList<MemberDTO>)memberDAO.memberList(startNum, endNum);
+	}
+	
+	public ArrayList<MemberDTO> searchList(int startNum, int endNum, String searchOp, String keyword){
+		return (ArrayList<MemberDTO>)memberDAO.searchList(startNum, endNum, searchOp, keyword);
+	}
+	
+	public int getTotalA() {
+		return memberDAO.getTotalA();
+	}
+	
+	public int getTotalS(String searchOp,String keyword) {
+		return memberDAO.getTotalS(searchOp,keyword);
+	}
+	
+	public int memberWd(String id) {
+		return memberDAO.memberWd(id);
+	}
+
 
 }

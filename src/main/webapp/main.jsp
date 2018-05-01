@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +24,13 @@
 <body>
 <div id="wrapper" class="frame">
 	<header><jsp:include page="/common/header.jsp" /></header>
-	<nav role="gnb">	
-		<jsp:include page="/common/nav.jsp" />
+	<nav role="gnb">
+		<c:if test="${memId.length() >= 6}">
+			<jsp:include page="/common/nav.jsp" />
+		</c:if>
+		<c:if test="${memId.length() < 6}">
+			<jsp:include page="/common/nav_admin.jsp" />
+		</c:if>
 	</nav>
 	<section class="event_banner">
  		<div id="banners">
