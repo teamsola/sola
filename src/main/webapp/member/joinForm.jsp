@@ -156,7 +156,32 @@ function execDaumPostcode()
     								$("#hid_email").hide();
     							//	$("#email2").hide();
     							}
-    					})
+    					});
+    			$("#pwd2").keyup(function()
+    					{
+    						var pwd = $("#pwd").val();
+    						var pwd2 = $("#pwd2").val();
+    						if(pwd == pwd2)
+    							{
+    								$("#span_pwd2").html("<font color=blue>비밀번호가 일치합니다.</font>");
+    							}
+    						else
+    							{
+    								$("#span_pwd2").html("<font color=red>비밀번호가 일치하지 않습니다.</font>");
+    							}
+    					});
+/* 				$("#pwd").keyup(function()
+						{
+							var pwd = $("#pwd").val();
+							if(/\w\W/.test(pwd))
+								{
+								$("#span_pwd").html("<font color=blue>perfect</font>");
+								}
+							else
+								{
+								$("#span_pwd").html("<font color=red>false</font>");
+								}
+						}); */
     		});
 </script>
 </head>
@@ -166,25 +191,25 @@ function execDaumPostcode()
 		<form id="joinForm" name="joinForm" action="join.do" method="post">
 			<table align="center">
 				<tr class="sub">
-					<td>아이디</td>
+					<td>아이디<br><span id="span_id">영문과 숫자 6자 이상, 특수문자는 .과 _만 허용됩니다.</span></td>
 				</tr>
 				<tr class="inp">
 					<td style="position:relative">
-						<div class="inp_div"><input type="text" name="id" required="required" class="inp_text"></div> 
+						<div class="inp_div"><input type="text" name="id" required="required" class="inp_text"></div>
 						<div class="inp_div_btn"><input type="button" value="중복확인" id="duplCheck" onclick="checkId()"></div>
 					</td>
 				</tr>
 				<tr class="sub">
-					<td>비밀번호</td>
+					<td>비밀번호<br><span id="span_pwd">8자 이상, 영문과 숫자 혼용</span></td>
 				</tr>
 				<tr class="inp">
 					<td><input type="password" name="pwd" id="pwd" required="required" class="inp_text"></td>
 				</tr>
 				<tr class="sub">
-					<td>비밀번호 확인</td><span id="pwCheck" required="required">
+					<td>비밀번호 확인<br><span id="span_pwd2"></span></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="password" id="pwd2" class="inp_text"></span></td>
+					<td><input type="password" id="pwd2" class="inp_text"></td>
 				</tr>
 				<tr class="sub">
 					<td>이름</td>
@@ -202,7 +227,7 @@ function execDaumPostcode()
 					</td>
 				</tr>
 				<tr class="sub">
-					<td>별명</td>
+					<td>별명<br><span id="span_nickname"></span></td>
 				</tr>
 				<tr class="inp">
 					<td><input type="text" name="nickname" required="required" class="inp_text"></td>
