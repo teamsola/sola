@@ -49,10 +49,9 @@ div#overLayer {
 }
 
 .ol_top{
-	width: 800px;
+	width: 100%;
 	height: 50px;
-	background-color: gray;
-	display: none;
+	background-color: black;
 }
 .ol_center{
 	width: 80%;
@@ -62,12 +61,12 @@ div#overLayer {
 }
 
 .ol_center .searchListdiv{	/* 검색 결과 감싸는 div (스크롤) */
-	width: 98%;
-	height: 98%;
+	width: 99%;
+	height: 99%;
 	background-color: white;
-	float: left;
-	overflow:scroll;
+	overflow: auto;
 	border: solid 1px black;
+	margin: auto;
 }
 
 .ol_center .searchListdiv .searchList{	/* 검색 결과 div */
@@ -101,9 +100,11 @@ div#overLayer {
 	float: left;
 }
 #imgFile{
-	width: 100%;
+	width: 98%;
 	height: 200px;
 	border: 1px solid black;
+	margin: auto;
+	margin-top: 10px;
 }
 .imgFile img{
 	width:100%;
@@ -111,6 +112,29 @@ div#overLayer {
 }
 .ol_right:hover{	/* 다음 div hover div */
 	background-color: #DBDBDB;
+}
+
+.category{
+	width: 750px;
+	height: 50px;
+	display: inline-block;
+    float: left;
+}
+
+.category label{
+	width: 150px;
+	height: 50px;
+	font-size: 25px;
+	display: inline-block;
+    float: left;
+    margin-left: 10px;
+}
+
+.cancel_c{
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+    float: left;
 }
 
 #cancel{
@@ -123,6 +147,30 @@ div#overLayer {
 	border: none;
 	outline: 0;
 	cursor: pointer;
+}
+
+#cancel{
+	width: 50px;
+	height: 50px;
+	color: white;
+	font-size: 30px;
+	font-weight: bold;
+	background-color: black;
+	border: none;
+	outline: 0;
+	cursor: pointer;
+	float: left;
+}
+
+.contents{
+	width: 98%;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 10px;
+}
+.insert_btn{
+	margin-top: 10px;
+	margin-right: 15px;
 }
 
 .s_result{

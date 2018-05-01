@@ -115,15 +115,17 @@ public class ProinfoController {
 		String keyword = request.getParameter("keyword");
 		keyword = "%"+keyword+"%";
 		list_t = "s";
+		list = null;
 		
 		int seq = Integer.parseInt(request.getParameter("seq"));
-		
 		proinfoDTO = proinfoService.viewProinfo(seq);
+		
 		
 		modelAndView.addObject("proinfoDTO",proinfoDTO);
 		modelAndView.addObject("list_t",list_t);
 		modelAndView.addObject("searchOp", searchOp);
 		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("list", list);
 		modelAndView.addObject("content", "/proinfo/proinfoView.jsp");
 		return modelAndView;
 	}

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../proinfocss/proinfoInsert.css" />
+<link rel="stylesheet" type="text/css" href="proinfocss/proinfoInsert.css?ver=1" />
 
 <script type="text/javascript">
 	$(document).ready(function(){
