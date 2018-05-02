@@ -23,9 +23,6 @@
 </script>
 
 <style>
-body{
-	padding-top:100px;
-}
 
 #aa{
 	margin-top:70px;
@@ -61,9 +58,8 @@ padding-top:30px;
 }
 
 #goback{
-	margin-top:50px;
-	margin-bottom:50px;
-	
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -76,17 +72,19 @@ padding-top:30px;
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 	
 }
 
 #modify{
-outline:none;
+margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
@@ -98,16 +96,18 @@ outline:none;
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#6a6763;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#6a6763;
+	border-width:1px;
 	border-style:solid;
 }
 
 #delete{
-outline:none;
+margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
@@ -119,11 +119,11 @@ outline:none;
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
 	border-color:#ff8400;
-	border-width:2px;
+	border-width:1px;
 	border-style:solid;
 }
 
