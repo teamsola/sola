@@ -174,4 +174,18 @@
 		delete tip_interior
 		where interior_seq=#{seq}
 	</delete>
+	
+	<update id="interiorModify" parameterType="interiorDTO">
+		update tip_interior
+		set price=#{price}, roomsize=#{roomsize},
+		interior_title=#{interior_title}, interior_mainimage=#{interior_mainimage},
+		interior_content=#{interior_content}
+		where interior_seq=#{interior_seq}
+	</update>
+	
+	<update id="updateInteriorHit" parameterType="int">
+		update tip_interior
+		set hit=hit+1
+		where interior_seq=#{seq}
+	</update>
 </mapper>

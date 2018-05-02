@@ -127,4 +127,10 @@ public class TipDAO {
 		public int interiorDelete(int seq) {
 			return sqlSession.delete("mybatis.tipMapper.interiorDelete", seq);
 		}
+		public int interiorModify(InteriorDTO interiorDTO) {
+			return sqlSession.update("mybatis.tipMapper.interiorModify", interiorDTO);
+		}
+		public int updateInteriorHit(int seq) {
+			return sqlSession.update("mybatis.tipMapper.updateInteriorHit", seq);
+		}
 }

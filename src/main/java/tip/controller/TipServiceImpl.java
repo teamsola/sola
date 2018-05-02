@@ -142,4 +142,14 @@ public class TipServiceImpl implements TipService{
 		return tipDAO.interiorDelete(seq);
 	}
 
+	@Override
+	public int interiorModify(InteriorDTO interiorDTO) {
+		return tipDAO.interiorModify(interiorDTO);
+	}
+
+	@Override
+	public int updateInteriorHit(int seq) {
+		return tipDAO.updateInteriorHit(seq);
+	}
+
 }

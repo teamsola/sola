@@ -34,6 +34,7 @@ pageEncoding="UTF-8"%>
 	$(function(){
 		var cont = '${interior_content}';
 		$('#interior_detail').append(cont);
+		$('#interior_detail').find('img').css("width", "100%");
 		$('#zoomin_img').click(function(){
 			var elem = $('#newImageWindow');
 				var winProps=' width=900,height=700, resizable=yes, scrollvars=yes,menubar=no, toolbar=no';
@@ -145,25 +146,32 @@ pageEncoding="UTF-8"%>
 						<div style="width:400px; text-align: center;color:#ff8400;padding:40px;font-size:20px;font-style: italic;">
 
 							<c:choose>
-								<c:when test="${likeStatus == 'exist' }">
-								<input type="button" id="likeDelBtn" value=""><br><br><br>
-									<c:if test="${interiorDTO.like_num == 1 }">
-									회원님이 좋아하는 글입니다. 
-									</c:if>
-									<c:if test="${interiorDTO.like_num > 1 }">
-									회원님 외 ${interiorDTO.like_num-1 }명이 좋아하는 글입니다.
-									</c:if>
+								<c:when test="${memId == 'admin' }">
+								<br><br><br>관리자 모드입니다.
 								</c:when>
 								<c:otherwise>
-									<c:if test="${memId == interiorDTO.id }">
-									<br><br><br>
-									회원님의 소중한 정보, 감사합니다
-									</c:if>
-									<c:if test="${memId != interiorDTO.id }">
-									<input type="button" id="likeBtn" value="좋아요">
-									<br><br><br>
-									지금 바로 좋아요를 남겨보세요!
-									</c:if>
+									<c:choose>
+										<c:when test="${likeStatus == 'exist' }">
+										<input type="button" id="likeDelBtn" value=""><br><br><br>
+											<c:if test="${interiorDTO.like_num == 1 }">
+											회원님이 좋아하는 글입니다. 
+											</c:if>
+											<c:if test="${interiorDTO.like_num > 1 }">
+											회원님 외 ${interiorDTO.like_num-1 }명이 좋아하는 글입니다.
+											</c:if>
+										</c:when>
+										<c:otherwise>
+											<c:if test="${memId == interiorDTO.id }">
+											<br><br><br>
+											회원님의 소중한 정보, 감사합니다
+											</c:if>
+											<c:if test="${memId != interiorDTO.id }">
+											<input type="button" id="likeBtn" value="좋아요">
+											<br><br><br>
+											지금 바로 좋아요를 남겨보세요!
+											</c:if>
+										</c:otherwise>
+									</c:choose>
 								</c:otherwise>
 							</c:choose>
 							
@@ -196,8 +204,8 @@ pageEncoding="UTF-8"%>
 						</div>
 					</div>
 					<div style="float:left;width:100%;height:60px;text-align: center;padding:10px 0;">
-						<c:if test="${interiorDTO.id == memId }">
-						<input type="button" id="underBtn" value="수정" onclick="location.href='interior_modify.do?s=${interiorDTO.interior_seq }&p=${pg}&k=${keyword}'">&nbsp;
+						<c:if test="${memId == interiorDTO.id }"><input type="button" id="underBtn" value="수정" onclick="location.href='interior_modify.do?s=${interiorDTO.interior_seq }&p=${pg}&k=${keyword}'">&nbsp;</c:if>
+						<c:if test="${interiorDTO.id == memId || memId == 'admin' }">
 						<input type="button" id="underBtn" value="삭제" onclick="confirmDel()">&nbsp;
 						</c:if>
 						<input type="button" id="underBtn" value="목록으로" onclick="location.href='interior.do?pg=${pg}&keyword=${keyword}'">

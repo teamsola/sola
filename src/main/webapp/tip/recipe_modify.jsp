@@ -135,15 +135,15 @@ pageEncoding="UTF-8"%>
 						$('#imgAfter').css({
 							"display":"block",
 							"margin" : "auto",
-							"max-width" : "100%",
-							"height" : "auto"
+							"max-height" : "100%",
+							"width" : "auto"
 						});
 					}else{
 						$('#imgAfter').css({
 							"display":"block",
 							"margin" : "auto",
-							"max-height" : "100%",
-							"width" : "auto"
+							"max-width" : "100%",
+							"height" : "auto"
 						});
 					}
 			    });
@@ -228,13 +228,15 @@ pageEncoding="UTF-8"%>
 				$('#imgBefore').css({
 					"display":"block",
 					"margin" : "auto",
-					"max-height" : "100%"
+					"max-height" : "100%",
+					"width" : "auto"
 				});
 			}else{
 				$('#imgBefore').css({
 					"display":"block",
 					"margin" : "auto",
-					"max-width" : "100%"
+					"max-width" : "100%",
+					"height":"auto"
 				});
 			}
 			$('#fileAdd').on('click', function(){
