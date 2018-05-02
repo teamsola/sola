@@ -1,6 +1,7 @@
 package member.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -76,6 +77,38 @@ public class MemberDAO
 		return sqlSession.delete("mybatis.memberMapper.memberWithdrawal", id);
 	}
 
+	public List<MemberDTO> memberList(int startNum, int endNum) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);		
+		return sqlSession.selectList("mybatis.memberMapper.memberList", map);
+	}
+	
+	public List<MemberDTO> searchList(int startNum, int endNum,String searchOp,String keyword) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		map.put("searchOp",searchOp);
+		map.put("keyword", keyword);
+		return sqlSession.selectList("mybatis.memberMapper.searchList", map);
+	}
+	
+	public int getTotalA() {		
+		return sqlSession.selectOne("mybatis.memberMapper.getTotalA");
+	}
+	
+	public int getTotalS(String searchOp,String keyword) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchOp", searchOp);
+		map.put("keyword", keyword);
+		return sqlSession.selectOne("mybatis.memberMapper.getTotalS", map);
+	}
+	
+	public int memberWd(String id) {
+		return sqlSession.delete("mybatis.memberMapper.memberWd",id);
+	}
+
+	
 	public MemberDAO()
 	{
 	}

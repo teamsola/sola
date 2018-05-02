@@ -6,11 +6,11 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert_title_here</title>
-	<link rel="stylesheet" type="text/css" href="../css/tip.css">
+	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="/sola/resources_tip/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<style type="text/css">
-		#i_add_title{width:100%; height:170px;background: url("../img/interior_drawing.jpg") repeat left center;}
+		#i_add_title{width:100%; height:170px;background: url("/sola/img/interior_drawing.jpg") repeat left center;}
 		#i_add_content{margin:40px; float:left; width:1200px; overflow:hidden;height:auto;}
 		#i_add_subtitle{margin:20px 0;}
 		#i_add_subtitle .subtitle_detail{border:1px solid #DCDCDC;height:80px; padding: 20px; font-size:17px; line-height: 26px;}
@@ -138,7 +138,7 @@ pageEncoding="UTF-8"%>
 			</div>
 			
 			<div id="i_add_form">
-				<form action="./insertBoard.do" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+				<form action="./insertInteriorBoard.do" method="post" id="insertBoardFrm" enctype="multipart/form-data">
 				<div style="text-align: left; color: #ff8400;font-size:12px;margin-bottom:20px;"> * 는 필수 입력 사항입니다.</div>
 					<div style="color:white; margin-bottom:50px;">
 					<div class="form_title">한줄소개<span style="font-size:14px;color:white;margin:10px 10px;">| 방에 대한 소개를 한줄로 적어주세요</span></div>

@@ -5,10 +5,10 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<script type="text/javascript" src="../script/memberScript.js?v=1"></script>
+<script type="text/javascript" src="../js/memberScript.js?v=1"></script>
 </head>
 <body>
-<form name="loginForm" method="post" action="login.do">
+<form name="login" method="post" action="login.do">
 	<div>
 		<input type="text" name="id" size="25" placeholder="ID">
 		<input type="password" name="pwd" size="25" placeholder="PW">

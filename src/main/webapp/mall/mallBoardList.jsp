@@ -34,6 +34,7 @@ th{
 	height:30px;
 }
 
+
 #top{
 	margin-left:530px;
 	margin-top:50px;
@@ -111,6 +112,13 @@ th{
 			location.href="mallBoardView.do?board_seq="+board_seq+"&pg="+pg;
 		//}
 	}
+	
+	function check(){
+
+		$('#boardsearch').submit();
+	}
+
+
 </script>
 </head>
 <body>
@@ -121,15 +129,7 @@ th{
 	
 	
 	<div id="top">
-	<!-- 카테고리 선택 -->
-	<div id="category">
-		<select name="category">
-			<option value="전체">전체보기</option>
-			<option value="판매">판매</option>
-			<option value="구매">구매</option>
-		</select>
-	</div>
-	
+
 	<!-- 글쓰기 버튼 -->
 	<input type="button" id="writebtn" value="글쓰기" onclick="location.href='mallBoardWriteForm.do'">
 	</div>
@@ -138,20 +138,18 @@ th{
 	
 	
 		<table>
+							
 				<tr>
 					<th width=70>번호</th>
-					<th width=70>카테고리</th>
+					<th width=70>분류</th>
 					<th width=200>제목</th>
 					<th width=100>작성자</th>
 					<th width=100>날짜</th>
 					<th width=70>조회</th>
 				</tr>
 				
+			
 			<c:forEach var="boardDTO" items="${list }">
-			
-			
-				<!-- 전체보기 시 -->
-				<%-- <c:if test="${boardDTO.category eq '전체보기' }"> --%>
 					<tr>
 						<td align=center>${boardDTO.board_seq }
 						<td align=center>${boardDTO.category }
@@ -166,29 +164,28 @@ th{
 					<tr>
 						<td colspan="6"><hr id="line">
 					</tr>
-				<%-- </c:if> --%>
 			</c:forEach>
 				
 				<!-- 페이징 -->
 				<tr>
 					<td colspan=5 align=center>
 					<c:if test="${startPage>3}"><!--  [1][2][3]인경우 [이전]보이지않음 -->
-						<a id="paging" href="boardList.do?pg=${startPage-1}">이전</a>  <!-- 이전 누를시 [startpage-1] 로 이동 -->
+						<a id="paging" href="mallBoardList.do?pg=${startPage-1}">이전</a>  <!-- 이전 누를시 [startpage-1] 로 이동 -->
 					</c:if>
 					
 					<c:forEach var="i" begin="${startPage}" end="${ endPage}" step="1">
 						
 						<c:if test="${i==pg}">
-							<a id="currentPaging" href="boardList.do?pg=${i }">${i }</a>  <!-- 현재페이지=빨간색 -->
+							<a id="currentPaging" href="mallBoardList.do?pg=${i }">${i }</a>  <!-- 현재페이지=빨간색 -->
 						</c:if>
 						
 						<c:if test="${i!=pg }">
-							<a id="paging" href="boardList.do?pg=${i }">${i }</a>  <!-- 현재페이지 아닌곳=파란색 -->
+							<a id="paging" href="mallBoardList.do?pg=${i }">${i }</a>  <!-- 현재페이지 아닌곳=파란색 -->
 						</c:if>
 					</c:forEach>
 					
 					<c:if test="${endPage<totalP}"> <!-- 2페이지까지 있을경우 endPage=totalP-->
-						<a id="paging" href="boardList.do?pg=${endPage+1}">다음</a>  <!-- endPage가 총 페이지수보다 작을때 [다음] 표시 -->
+						<a id="paging" href="mallBoardList.do?pg=${endPage+1}">다음</a>  <!-- endPage가 총 페이지수보다 작을때 [다음] 표시 -->
 					</c:if>
 				</tr>
 	
@@ -196,9 +193,24 @@ th{
 	
 	
 	
-	<!-- 판매만 보기 -->
+		<!-- 카테고리,키워드 검색 -->
+		<form action="mallBoardList.do?pg=1" method="post" name="boardsearch" id="boardsearch">
+		
+		
+		<div id="search">
+			<select name="category2" id="category2">
+				<option value="category" <c:if test="${category2 eq 'category' }">selected</c:if>>분류</option>
+				<option value="subject" <c:if test="${category2 eq 'subject'}">selected</c:if>>제목</option>
+				<option value="nickname" <c:if test="${category2 eq 'nickname' }">selected</c:if>>작성자</option>
+			</select>
+		</div>
+		
 	
-	<!-- 구매만 보기 -->
+		<input type="text" id="keyword" name="keyword">
+		<input type="button" id="keywordbtn" name="keywordbtn" value="찾기" onclick="check()">
+		</form>
+	
+	
 	
 	
 	<div id="btnset">

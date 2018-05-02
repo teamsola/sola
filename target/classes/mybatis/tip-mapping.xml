@@ -80,6 +80,11 @@
 		]]>
 	</select>
 	
+	<select id="getRecipeSearchedTotalNum" parameterType="String" resultType="int">
+		select count(*) from tip_recipe
+		WHERE foodname LIKE #{keyword} OR name LIKE #{keyword}
+	</select>
+	
 	<select id="recipeDetail" parameterType="int" resultType="recipeDTO">
 		select * from tip_recipe
 		where recipe_seq=#{seq}
@@ -118,7 +123,7 @@
 			interior_seq.nextval,
 			#{id}, #{name}, #{price}, #{roomsize}, #{interior_title},
 			#{interior_mainimage}, #{interior_content},
-			0, '', sysdate)
+			0, '|', sysdate)
 	</insert>
 	
 	<select id="interiorList" parameterType="java.util.Map" resultType="interiorDTO">
@@ -134,4 +139,39 @@
 		select count(*) from tip_interior
 	</select>
 	
+	<select id="interiorListSearched" parameterType="java.util.Map" resultType="interiorDTO">
+	<![CDATA[
+		select * from 
+		(select rownum rn, tt.* from
+		(select * from tip_interior WHERE interior_title LIKE #{keyword} OR name LIKE #{keyword}
+		order by interior_seq desc) tt)
+		where rn>=TO_NUMBER(#{startNum}) and rn<=TO_NUMBER(#{endNum})
+		]]>
+	</select>
+	
+	<select id="getInteriorSearchedTotalNum" parameterType="String" resultType="int">
+		select count(*) from tip_interior
+		WHERE interior_title LIKE #{keyword} OR name LIKE #{keyword}
+	</select>
+	
+	<select id="interiorDetail" parameterType="int" resultType="interiorDTO">
+		select * from tip_interior where interior_seq=#{seq}
+	</select>
+	
+	<update id="likeRequest" parameterType="java.util.Map">
+		update tip_interior
+		set like_user=like_user || #{id} || '|'
+		where interior_seq=TO_NUMBER(#{seq})
+	</update>
+	
+	<update id="likeDelRequest" parameterType="java.util.Map">
+		update tip_interior
+		set like_user=#{like_user}
+		where interior_seq=TO_NUMBER(#{seq})
+	</update>
+	
+	<delete id="interiorDelete" parameterType="int">
+		delete tip_interior
+		where interior_seq=#{seq}
+	</delete>
 </mapper>

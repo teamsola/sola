@@ -1,5 +1,5 @@
 function checkJoin()
-{
+{	
 	if (document.joinForm.name.value == "")
 	{
 		alert("이름을 입력하세요");
@@ -12,6 +12,14 @@ function checkJoin()
 	else if (document.joinForm.pwd.value == "")
 	{
 		alert("비밀번호를 입력하세요");
+	}
+	else if(document.joinForm.pwd.value.length < 7)
+	{
+		alert("비밀번호는 최소 8자 입니다.");
+	}
+	else if(!(/\w\W/.test(document.joinForm.pwd.value)))
+	{
+		alert("비밀번호는 숫자/영어/특수문자 혼용 입니다.");
 	}
 	else if (document.joinForm.pwd.value != document.joinForm.pwd2.value)
 	{
@@ -33,28 +41,37 @@ function checkJoin()
 
 function checkLogin()
 {
-	if (document.loginForm.id.value == "")
+	if (document.login.id.value == "")
 	{
 		alert("아이디를 입력하세요.");
-		document.loginForm.id.focus();
+		document.login.id.focus();
 	}
-	else if (document.loginForm.pwd.value == "")
+	else if (document.login.pwd.value == "")
 	{
 		alert("비밀번호를 입력하세요.");
 	}
 	else
 	{
-		document.loginForm.submit();
+		document.login.submit();
 	}
 }
 
 function checkId()
 {
 	var sId = document.joinForm.id.value;
+	var disable = /[^A-Za-z0-9_.]/;
 
-	if (sId == "")
+	if(sId == "")
 	{
 		alert("먼저 아이디를 입력하세요.");
+	}
+	else if(sId.length < 6)
+	{
+		alert("아이디는 6자 이상으로 입력해주세요.")
+	}
+	else if(disable.test(sId))
+	{
+		alert("사용하실 수 없는 아이디 입니다.")
 	}
 	else
 	{

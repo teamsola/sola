@@ -6,6 +6,8 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>SOLA > 무인택배</title>
+	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('.link001').hide();
@@ -48,11 +50,11 @@ pageEncoding="UTF-8"%>
 	</script>
 	<style type="text/css">
 		#express_main_up{
-			background: black url("../img/express_up.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_up.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 		#express_main_down{
-			background: black url("../img/express_down.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_down.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 		.express_main{
@@ -105,11 +107,11 @@ pageEncoding="UTF-8"%>
 			color: white;
 		}
 		.link001:hover, .link001:active{
-			background: black url("../img/express_up_hover.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_up_hover.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 		.link002:hover, .link002:active{
-			background: black url("../img/express_down_hover.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_down_hover.jpg") no-repeat center -300px;
 			background-size: cover;
 		}
 	</style>
@@ -126,7 +128,7 @@ pageEncoding="UTF-8"%>
 	
 	<c:if test="${ cmd == null}">
 	<div id="express_main_up" class="express_main">
-		<a href="/sola/tip/express_add.do" class="link001">
+		<a href="express_add.do" class="link001">
 			<span class="intro_title_up">장소 등록하기</span>
 			<span class="intro_detail_up">'기사님! 택배 OO에 놔주세요!'<br>얼마 전 무인택배를 이용한 경험이 있으신가요?<br>그렇다면 혼자 사는 분들을 위해 알려주시죠!</span>
 
@@ -134,7 +136,7 @@ pageEncoding="UTF-8"%>
 	</div>
 	
 	<div id="express_main_down" class="express_main">
-		<a href="/sola/tip/express_view.do" class="link002">
+		<a href="express_view.do" class="link002">
 			<span class="intro_title_down">추천장소 보기</span>
 			<span class="intro_detail_down">택배를 집까지 가져다놓는 게 부담스러우신가요?<br>혼자 살면 충분히 그럴 수 있어요. 이해합니다.<br>SOLA는 그런 분들을 위해 무인택배 HOT SPOT 을 공유합니다.</span>
 		</a>

@@ -8,9 +8,11 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>SOLA > TIP > 레시피</title>
+	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 	#recipe_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto;}
-	.recipe_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background: url("../img/recipe.jpg") no-repeat center center;}
+	.recipe_title{line-height:150px;float:left; width:100%;height:150px; background-size:100% auto; background: url("/sola/img/recipe.jpg") no-repeat center;}
 	.recipe_srch{margin:20px;}
 	#keyword{border-style:none;font-size:16px; padding:7px; position:relative;bottom:13px;border:1px solid #ff8400;box-sizing: border-box;}
 	#keyword:focus{outline:none;border:2px solid #ff8400;box-sizing: border-box;}
@@ -20,8 +22,8 @@ pageEncoding="UTF-8"%>
 	.recipe_list .list_each a, .recipe_list .list_each a:visited{text-decoration: none;color: #ff8400;}
 	.recipe_list .list_each a:hover{color:red;}
 	.recipe_list .list_each img:hover{cursor:pointer;}
-	#recipe_add_btn{background: url("../img/write_btn.png") no-repeat 6px; color:#ff8400; font-weight:bold; border-style:none; border:1px solid #ff8400; border-radius:20px; background-size:120px 30px; width: 150px; height: 35px;font-size:15px;}
-	#recipe_add_btn:hover, #recipe_add_btn:active{cursor:pointer; outline:none; background:#ff8400 url("../img/write_btn_hover.png") no-repeat 6px; background-size:120px 30px;color:white;}
+	#recipe_add_btn{background: url("/sola/img/write_btn.png") no-repeat 6px; color:#ff8400; font-weight:bold; border-style:none; border:1px solid #ff8400; border-radius:20px; background-size:120px 30px; width: 150px; height: 35px;font-size:15px;}
+	#recipe_add_btn:hover, #recipe_add_btn:active{cursor:pointer; outline:none; background:#ff8400 url("/sola/img/write_btn_hover.png") no-repeat 6px; background-size:120px 30px;color:white;}
 	#pagingBtn{color:#ff8400;font-size:15px;border-style: none; width:160px; height:35px;background: none; border:1px solid #ff8400; border-radius:20px;}
 	#pagingBtn:hover, #pagingBtn:active{background:#ff8400; color:white;outline:none;}
 	</style>
@@ -35,7 +37,7 @@ pageEncoding="UTF-8"%>
 				$('#keyword').val('${keyword}');
 			}
 			
-			$('#recipe_search').on('keyup', function(e){
+			$('#keyword').on('keyup', function(e){
 				if(e.keyCode == 13){
 					recipeSrch();
 				}
@@ -87,21 +89,23 @@ pageEncoding="UTF-8"%>
 		<div id="recipe_content">
 			
 			<div class="recipe_title">
-				<span style="cursor:pointer;font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);" onclick="javascript:goToRecipe()">TIP > 레시피 </span>
+				<span style="cursor:pointer;font-size:25px;padding:10px 13px 10px 3px;margin:7px 30px;background: rgba(255,255,255, 0.7);" onclick="javascript:goToRecipe()">TIP > 레시피 </span>
 			</div>
 			
-			<form action="recipe.do" method="post" id="recipeSearchForm" name="recipeSearchForm">
+			
 			<div class="recipe_srch">
+			<form action="recipe.do" method="post" id="recipeSearchForm" name="recipeSearchForm">
 			<div style="float:left;">
 				<input type="hidden" value="1" id="pg" name="pg">
 				<input type="text" id="keyword" placeholder="검색어를 입력하세요" name="keyword">
-				<img id="searchimg" src="../img/searchBtn.png" width="36px" height="36px" style="margin-top:5px;" onclick="javascript:recipeSrch()">
+				<img id="searchimg" src="/sola/img/searchBtn.png" width="36px" height="36px" style="margin-top:5px;" onclick="javascript:recipeSrch()">
 			</div>
+			</form>
 			<div style="float:right;margin:5px;">
 			지금 바로 레시피를 등록해보세요! >&nbsp;&nbsp;&nbsp;&nbsp;<input id="recipe_add_btn" type="button" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;레시피 작성" onclick="location.href='recipe_add.do'">
 			</div>
 			</div>
-			</form>
+			
 			
 			<div class="recipe_list">
 				<c:forEach items="${list }" var="item" varStatus="i">
@@ -109,10 +113,10 @@ pageEncoding="UTF-8"%>
 						<div style="float:left;width:330px;height: 200px;margin: 0 auto;overflow:hidden;text-align: center;border-radius:15px;">
 						<c:choose>
 							<c:when test="${item.foodimage == 'null' }">
-							<img class="image${i.count }" src="../img/recipe_default.png" onclick="location.href='recipe_view.do?p=${pg }&s=${item.recipe_seq }&k=${keyword }'">
+							<img class="image${i.count }" src="/sola/img/recipe_default.png" onclick="location.href='recipe_view.do?p=${pg }&s=${item.recipe_seq }&k=${keyword }'">
 							</c:when>
 							<c:otherwise>
-							<img class="image${i.count }" src="../storage/${item.foodimage }" onclick="location.href='recipe_view.do?p=${pg }&s=${item.recipe_seq }&k=${keyword }'">
+							<img class="image${i.count }" src="/sola/storage/${item.foodimage }" onclick="location.href='recipe_view.do?p=${pg }&s=${item.recipe_seq }&k=${keyword }'">
 							</c:otherwise>
 						</c:choose>
 						</div>
@@ -159,7 +163,7 @@ pageEncoding="UTF-8"%>
 							</c:otherwise>
 						</c:choose>
 						</span>
-						<span style="float:right;"><img src="../img/hit.png" width="15px" height="12px" style="margin-top:12px;margin-right:5px;">${item.hit }</span>
+						<span style="float:right;"><img src="/sola/img/hit.png" width="15px" height="12px" style="margin-top:12px;margin-right:5px;">${item.hit }</span>
 						</div>
 					</div>
 				</c:forEach>

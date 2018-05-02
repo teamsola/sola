@@ -74,6 +74,9 @@ public class TipDAO {
 		public int getRecipeTotalNum() {
 			return sqlSession.selectOne("mybatis.tipMapper.getRecipeTotalNum");
 		}
+		public int getRecipeSearchedTotalNum(String keyword) {
+			return sqlSession.selectOne("mybatis.tipMapper.getRecipeSearchedTotalNum", keyword);
+		}
 		public int recipeModify(RecipeDTO recipeDTO) {
 			return sqlSession.update("mybatis.tipMapper.recipeModify", recipeDTO);
 		}
@@ -92,7 +95,36 @@ public class TipDAO {
 		public int getInteriorTotalNum() {
 			return sqlSession.selectOne("mybatis.tipMapper.getInteriorTotalNum");
 		}
+		
 		public void updateFilename(String interior_content) {
 			sqlSession.update("mybatis.tipMapper.updateFilename", interior_content);
+		}
+		public List<InteriorDTO> interiorListSearched(String keyword, int pg){
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("keyword", keyword);
+			map.put("startNum", ((pg*6)-5)+"");
+			map.put("endNum", pg*6+"");
+			return sqlSession.selectList("mybatis.tipMapper.interiorListSearched", map);
+		}
+		public int getInteriorSearchedTotalNum(String keyword) {
+			return sqlSession.selectOne("mybatis.tipMapper.getInteriorSearchedTotalNum", keyword);
+		}
+		public InteriorDTO interiorDetail(int seq) {
+			return sqlSession.selectOne("mybatis.tipMapper.interiorDetail", seq);
+		}
+		public int likeRequest(String id, int seq) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("id", id);
+			map.put("seq", seq+"");
+			return sqlSession.update("mybatis.tipMapper.likeRequest", map);
+		}
+		public int likeDelRequest(String like_user, int seq) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("like_user", like_user);
+			map.put("seq", seq+"");
+			return sqlSession.update("mybatis.tipMapper.likeDelRequest", map);
+		}
+		public int interiorDelete(int seq) {
+			return sqlSession.delete("mybatis.tipMapper.interiorDelete", seq);
 		}
 }

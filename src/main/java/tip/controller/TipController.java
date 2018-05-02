@@ -2,7 +2,9 @@ package tip.controller;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,11 +44,9 @@ public class TipController {
 	private TipService tipService;
 	
 	//=================================================================================================
-	
  
- 
-    @RequestMapping(value = "/tip/insertBoard.do")
-    public ModelAndView insertBoard(HttpServletRequest request, MultipartFile interior_mainimage) {
+    @RequestMapping(value = "insertInteriorBoard.do")
+    public ModelAndView insertInteriorBoard(HttpServletRequest request, MultipartFile interior_mainimage) {
         System.out.println("저장할 내용 : " + request.getParameter("editor"));
         
         HttpSession session = request.getSession();
@@ -61,14 +61,14 @@ public class TipController {
         if(request.getParameter("roomsize").length() > 0) roomsize = Integer.parseInt(request.getParameter("roomsize"));
         String img = "null";
         if(request.getParameter("interior_title") != null) interior_title = request.getParameter("interior_title");
-        String fileName = "tip_"+getCurrentDayTime()+"_"+id+"_";
+        String fileName = "tip_"+getCurrentDayTime()+"_"+id+".txt";
         interiorDTO = new InteriorDTO();
         interiorDTO.setInterior_title(interior_title);
         interiorDTO.setRoomsize(roomsize);
         interiorDTO.setId(id);
         interiorDTO.setName(name);
         interiorDTO.setPrice(price);
-        interiorDTO.setInterior_mainimage(img);
+        
         interiorDTO.setInterior_content(fileName);
         
         
@@ -96,21 +96,23 @@ public class TipController {
 				e.printStackTrace();
 			}
 		}
+        interiorDTO.setInterior_mainimage(img);
+        displayInterior(interiorDTO);
+        
         int result = tipService.interiorAdd(interiorDTO);
         
-        modelAndView = new ModelAndView("errorPage.jsp");
+        modelAndView = new ModelAndView("/tip/errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "인테리어 공유 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/interior.do");
 		}else {
 			modelAndView.addObject("msg", "인테리어를 등록했습니다.");
-			modelAndView.addObject("url", "/sola/tip/interior.do");
 		}
+		modelAndView.addObject("content", "interior.do");
         return modelAndView;
     }
  
     // 다중파일업로드
-    @RequestMapping(value = "/file_uploader_html.do",
+    @RequestMapping(value = "file_uploader_html.do",
                   method = RequestMethod.POST)
     @ResponseBody
     public String multiplePhotoUpload(HttpServletRequest request) {
@@ -120,7 +122,7 @@ public class TipController {
             // 파일명을 받는다 - 일반 원본파일명
             String oldName = request.getHeader("file-name");
             // 파일 기본경로 _ 상세경로
-            String tip_filePath = request.getSession().getServletContext().getRealPath("/resources_tip/photoUpload");
+            String tip_filePath = request.getSession().getServletContext().getRealPath("/resources_tip/photoUpload/");
             System.out.println(tip_filePath);
             String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss")
                           .format(System.currentTimeMillis()))
@@ -150,45 +152,36 @@ public class TipController {
 	
 	
 	//=======================================▼페이지 이동▼===========================================
-    @RequestMapping(value="/tip/interior_add.do")
-	public ModelAndView interior_add(HttpServletRequest request) {
-    	return new ModelAndView("interior_add.jsp");
+    @RequestMapping(value="tip.do")
+	public ModelAndView tip(HttpServletRequest request) {
+    	return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/tip_main.jsp");
     }
     
-	@RequestMapping(value="/tip/tip_index.do")
-	public ModelAndView tip_main(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
-		modelAndView = new ModelAndView("tip_index.jsp");
-		modelAndView.addObject("page", cmd);
-		return modelAndView;
-	}
-	@RequestMapping(value="/tip/place.do")
+    @RequestMapping(value="interior_add.do")
+	public ModelAndView interior_add(HttpServletRequest request) {
+    	return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/interior_add.jsp");
+    }
+    
+	@RequestMapping(value="place.do")
 	public ModelAndView tip_place(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
-		modelAndView = new ModelAndView("tip_index.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		if(request.getParameter("result") != null) modelAndView.addObject("result", request.getParameter("result"));
-		if(cmd == null) {
-			modelAndView.addObject("page", "place");
-		}else if(cmd.equals("001")) {
-			modelAndView.addObject("page", "place_add");
-		}else if(cmd.equals("002")) {
-			modelAndView.addObject("page", "place_view");
-		}
+		modelAndView.addObject("content", "/tip/place.jsp");
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/place_add.do")
+	@RequestMapping(value="place_add.do")
 	public ModelAndView place_add(HttpServletRequest request) {
-		return new ModelAndView("place.do?cmd=001");
+		return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/place_add.jsp");
 	}
-	@RequestMapping(value="/tip/recipe.do")
+	
+	@RequestMapping(value="recipe.do")
 	public ModelAndView tip_recipe(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
 		String listStatus = "exist";
 		Date date = new Date();
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 		String today = f.format(date);
 		
-		modelAndView = new ModelAndView("tip_index.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		
 		int pg = 1;
 		if(request.getParameter("pg") != null) {
@@ -197,41 +190,54 @@ public class TipController {
 		
 		String keyword = request.getParameter("keyword");
 		ArrayList<RecipeDTO> list = new ArrayList<>();
+		int totalN = 0;
 		if(keyword == null) {
 			list = tipService.recipeView(pg);
-			for(RecipeDTO tmp : list) {
-				if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
-				else tmp.setLogtime(tmp.getLogtime().substring(0,10));
-			}
+			totalN = tipService.getRecipeTotalNum();
 		} else {
 			list = tipService.recipeViewSearched("%"+keyword+"%",pg);
-			for(RecipeDTO tmp : list) {
-				if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
-				else tmp.setLogtime(tmp.getLogtime().substring(0,10));
-			}
+			totalN = tipService.getRecipeSearchedTotalNum("%"+keyword+"%");
 			
+		}
+		for(RecipeDTO tmp : list) {
+			if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
+			else tmp.setLogtime(tmp.getLogtime().substring(0,10));
 		}
 		if(list.isEmpty()) {
 			listStatus = "empty";
 		}
+
+		modelAndView.addObject("listStatus", listStatus);
 		
-		int totalN = tipService.getRecipeTotalNum();
 		
 		modelAndView.addObject("totalN", totalN);
-		modelAndView.addObject("listStatus", listStatus);
 		modelAndView.addObject("list", list);
-		modelAndView.addObject("cmd", cmd);
+		modelAndView.addObject("content", "/tip/recipe.jsp");
 		modelAndView.addObject("pg", pg);
-		modelAndView.addObject("page", "recipe");
 		modelAndView.addObject("keyword", keyword);
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/interior.do")
+	@RequestMapping(value="interior.do")
 	public ModelAndView tip_interior(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
 		int pg = 1;
-		if(request.getParameter("pg") != null) pg = Integer.parseInt(request.getParameter("pg"));
-		ArrayList<InteriorDTO> list = tipService.interiorList(pg);
+		if(request.getParameter("pg") != null) {
+			pg = Integer.parseInt(request.getParameter("pg"));
+		}
+		String keyword = request.getParameter("keyword");
+		ArrayList<InteriorDTO> list = new ArrayList<InteriorDTO>();
+		int totalN = 0;
+		if(keyword == null) {
+			list = tipService.interiorList(pg);
+			totalN = tipService.getInteriorTotalNum();
+		}else {
+			list = tipService.interiorListSearched("%"+keyword+"%", pg);
+			totalN = tipService.getInteriorSearchedTotalNum("%"+keyword+"%");
+		}
+		
+		for(InteriorDTO tmp : list) {
+			tmp.setLike_num(tmp.getLike_user().split("\\|").length-1);
+		}
+		
 
 		Date date = new Date();
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
@@ -241,43 +247,40 @@ public class TipController {
 			if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
 			else tmp.setLogtime(tmp.getLogtime().substring(0,10));
 		}
+		String listStatus = "exist";
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		if(list.isEmpty()) {
+			listStatus = "empty";
+		}
+
+		modelAndView.addObject("listStatus", listStatus);
 		
-		modelAndView = new ModelAndView("tip_index.jsp");
-		int totalN = tipService.getInteriorTotalNum();
-		
-		modelAndView.addObject("cmd", cmd);
+		modelAndView.addObject("content", "/tip/interior.jsp");
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("totalN", totalN);
-		modelAndView.addObject("page", "interior");
+		
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/express.do")
+	@RequestMapping(value="express.do")
 	public ModelAndView tip_express(HttpServletRequest request) {
-		String cmd = request.getParameter("cmd");
-		modelAndView = new ModelAndView("tip_index.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		if(request.getParameter("result") != null) modelAndView.addObject("result", request.getParameter("result"));
-		if(cmd == null) {
-			modelAndView.addObject("page", "express");
-		}else if(cmd.equals("001")) {
-			modelAndView.addObject("page", "express_add");
-		}else if(cmd.equals("002")) {
-			modelAndView.addObject("page", "express_view");
-		}
+		modelAndView.addObject("content", "/tip/express.jsp");
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/express_add.do")
+	@RequestMapping(value="express_add.do")
 	public ModelAndView express_add(HttpServletRequest request) {
-		return new ModelAndView("express.do?cmd=001");
+		return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/express_add.jsp");
 	}
 
-	@RequestMapping(value="/tip/recipe_add.do")
+	@RequestMapping(value="recipe_add.do")
 	public ModelAndView recipe_add(HttpServletRequest request) {
-		return new ModelAndView("recipe_add.jsp");
+		return new ModelAndView("/mainFrame.jsp").addObject("content", "/tip/recipe_add.jsp");
 	}
-	@RequestMapping(value="/tip/recipe_modify.do")
+	@RequestMapping(value="recipe_modify.do")
 	public ModelAndView recipe_modify(HttpServletRequest request) {
-		modelAndView = new ModelAndView("recipe_modify.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int seq = Integer.parseInt(request.getParameter("s"));
 		String keyword = request.getParameter("k");
@@ -296,6 +299,7 @@ public class TipController {
 		modelAndView.addObject("recipeDTO", recipeDTO);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("content", "/tip/recipe_modify.jsp");
 		return modelAndView;
 	}
 	
@@ -308,7 +312,7 @@ public class TipController {
 	
 	
 	//=======================================▼데이터 전송▼===========================================
-	@RequestMapping(value="/tip/addPlace.do")
+	@RequestMapping(value="addPlace.do")
 	public ModelAndView addPlace(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
@@ -341,20 +345,18 @@ public class TipController {
 		int result = tipService.placeAdd(placeDTO);
 		System.out.println(result);
 
-		modelAndView = new ModelAndView("errorPage.jsp");
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "장소 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/place.do");
 		}else {
 			modelAndView.addObject("msg", "장소를 성공적으로 등록했습니다.");
-			modelAndView.addObject("url", "/sola/tip/place.do");
 		}
+		modelAndView.addObject("content", "place.do");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/place_view.do")
+	@RequestMapping(value="place_view.do")
 	public ModelAndView place_view(HttpServletRequest request) {
-		modelAndView = new ModelAndView("place.do?cmd=002");
 		int viewtype = 1;
 		int pg = 1;
 		String flag = request.getParameter("viewtype");
@@ -372,7 +374,8 @@ public class TipController {
 		int totalN = tipService.getPlaceTotalNum(viewtype);
 		displayInfo(list, viewtype, pg);
 		
-		
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("content", "/tip/place_view.jsp");
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("viewtype", viewtype);
 		modelAndView.addObject("pg", pg);
@@ -380,9 +383,8 @@ public class TipController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/express_view.do")
+	@RequestMapping(value="express_view.do")
 	public ModelAndView express_view(HttpServletRequest request) {
-		modelAndView = new ModelAndView("express.do?cmd=002");
 		String keyword = "종로";
 		int pg = 1;
 		if(request.getParameter("pg") != null) {
@@ -398,6 +400,8 @@ public class TipController {
 		};
 		int totalN = tipService.getExpressTotalNum("%"+keyword+"%");
 		
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("content", "/tip/express_view.jsp");
 		modelAndView.addObject("list", list);
 		modelAndView.addObject("totalN", totalN);
 		modelAndView.addObject("pg", pg);
@@ -406,7 +410,7 @@ public class TipController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/addExpress.do")
+	@RequestMapping(value="addExpress.do")
 	public ModelAndView addExpress(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		
@@ -440,27 +444,46 @@ public class TipController {
 		int result = tipService.expressAdd(expressDTO);
 		System.out.println(result);
 
-		modelAndView = new ModelAndView("errorPage.jsp");
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "장소 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/express.do");
 		}else {
 			modelAndView.addObject("msg", "장소를 성공적으로 등록했습니다.");
-			modelAndView.addObject("url", "express.do");
 		}
+		modelAndView.addObject("content", "express.do");
 		return modelAndView;
 	}
-	
+	@RequestMapping(value="interior_delete.do")
+	public ModelAndView deleteInterior(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String image = request.getParameter("i");
+		String content = request.getParameter("c");
+		
+		int result = tipService.interiorDelete(seq);
+		if(result <= 0) {
+			modelAndView.addObject("msg", "삭제에 실패했습니다.");
+		}else {
+			String img_filePath = request.getSession().getServletContext().getRealPath("/storage");
+			String txt_filePath = request.getSession().getServletContext().getRealPath("/interior_board");
+			File file1 = new File(img_filePath, image);
+			File file2 = new File(txt_filePath, content);
+			if(file1.exists()) file1.delete();
+			if(file2.exists()) file2.delete();
+			modelAndView.addObject("msg", "게시글을 삭제했습니다.");
+		}
+		modelAndView.addObject("content", "interior.do");
+		return modelAndView;
+	}
 
-	@RequestMapping(value="/tip/recipe_delete.do")
+	@RequestMapping(value="recipe_delete.do")
 	public ModelAndView deleteRecipe(HttpServletRequest request) {
-		modelAndView = new ModelAndView("errorPage.jsp");
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
 		
 		int seq = Integer.parseInt(request.getParameter("s"));
 		int result = tipService.recipeDelete(seq);
 		if(result <= 0) {
 			modelAndView.addObject("msg", "레시피 삭제 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}else {
 			if(!request.getParameter("i").equals("null")) {
 				String tip_realPath = request.getSession().getServletContext().getRealPath("/storage");
@@ -472,12 +495,12 @@ public class TipController {
 				}
 			}
 			modelAndView.addObject("msg", "레시피를 삭제했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}
+		modelAndView.addObject("content", "recipe.do");
 		
 		return modelAndView;
 	}
-	@RequestMapping(value="/tip/modifyRecipe.do")
+	@RequestMapping(value="modifyRecipe.do")
 	public ModelAndView modifyRecipe(HttpServletRequest request, MultipartFile foodimage) {
 		HttpSession session = request.getSession();
 		recipeDTO = new RecipeDTO();
@@ -547,18 +570,17 @@ public class TipController {
 		displayRecipeAdd(recipeDTO);
 		
 		int result = tipService.recipeModify(recipeDTO);
-		modelAndView = new ModelAndView("errorPage.jsp");
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "레시피 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}else {
 			modelAndView.addObject("msg", "레시피를 수정했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe_view.do?p="+request.getParameter("pg")+"&s="+request.getParameter("recipe_seq")+"&k="+request.getParameter("keyword"));
 		}
+		modelAndView.addObject("content", "recipe_view.do?p="+request.getParameter("pg")+"&s="+request.getParameter("recipe_seq")+"&k="+request.getParameter("keyword"));
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/addRecipe.do")
+	@RequestMapping(value="addRecipe.do")
 	public ModelAndView addRecipe(HttpServletRequest request, MultipartFile foodimage) {
 		HttpSession session = request.getSession();
 		
@@ -620,20 +642,130 @@ public class TipController {
 		displayRecipeAdd(recipeDTO);
 		
 		int result = tipService.recipeAdd(recipeDTO);
-		modelAndView = new ModelAndView("errorPage.jsp");
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
 		if(result == 0) {
 			modelAndView.addObject("msg", "레시피 입력 중에 문제가 발생했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}else {
 			modelAndView.addObject("msg", "레시피를 등록했습니다.");
-			modelAndView.addObject("url", "/sola/tip/recipe.do");
 		}
+		modelAndView.addObject("content", "recipe.do");
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/tip/recipe_view.do")
+	@RequestMapping(value="interior_modify.do")
+	public ModelAndView interior_modify(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		
+		interiorDTO = tipService.interiorDetail(seq);
+		String filename = interiorDTO.getInterior_content();
+		String filePath = request.getSession().getServletContext().getRealPath("/interior_board");
+		System.out.println(filePath);
+		File file = new File(filePath,filename);
+		String interior_content = "";
+		try {
+			FileReader fileReader = new FileReader(file);
+			int counter = 0;
+			while((counter = fileReader.read()) != -1) {
+				interior_content += (char)counter;
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		modelAndView.addObject("interior_content", interior_content);
+		modelAndView.addObject("pg", pg);
+		modelAndView.addObject("seq", seq);
+		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("interiorDTO", interiorDTO);
+		modelAndView.addObject("content", "/tip/interior_modify.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="interior_view.do")
+	public ModelAndView interior_view(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/mainFrame.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		
+		interiorDTO = tipService.interiorDetail(seq);
+		int like_num = interiorDTO.getLike_user().split("\\|").length-1;
+		if(interiorDTO.getLike_user().contains((String)request.getSession().getAttribute("memId"))) {
+			modelAndView.addObject("likeStatus", "exist");
+		}
+		
+		String filename = interiorDTO.getInterior_content();
+		String filePath = request.getSession().getServletContext().getRealPath("/interior_board");
+		System.out.println(filePath);
+		File file = new File(filePath,filename);
+		String interior_content = "";
+		try {
+			FileReader fileReader = new FileReader(file);
+			int counter = 0;
+			while((counter = fileReader.read()) != -1) {
+				interior_content += (char)counter;
+			}
+			fileReader.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		modelAndView.addObject("interior_content", interior_content);
+		interiorDTO.setLike_num(like_num);
+		modelAndView.addObject("interiorDTO", interiorDTO);
+		modelAndView.addObject("pg",pg);
+		modelAndView.addObject("seq", seq);
+		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("content", "/tip/interior_view.jsp");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="likeBtnReq.do")
+	public ModelAndView likeBtnReq(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		int result = tipService.likeRequest((String)request.getSession().getAttribute("memId"), seq);
+		
+		if(result == 0) {
+			modelAndView.addObject("msg", "문제가 발생했습니다.");
+		}else {
+			modelAndView.addObject("msg", "좋아요를 누르셨습니다.");
+		}
+		modelAndView.addObject("content", "interior_view.do?p="+pg+"&s="+seq+"&k="+keyword);
+		return modelAndView;
+	}
+	@RequestMapping(value="likeDelBtnReq.do")
+	public ModelAndView likeDelBtnReq(HttpServletRequest request) {
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
+		int pg = Integer.parseInt(request.getParameter("p"));
+		int seq = Integer.parseInt(request.getParameter("s"));
+		String keyword = request.getParameter("k");
+		String like_user = tipService.interiorDetail(seq).getLike_user();
+		int result = tipService.likeDelRequest(like_user.replace(request.getSession().getAttribute("memId")+"|", ""), seq);
+		
+		if(result == 0) {
+			modelAndView.addObject("msg", "문제가 발생했습니다.");
+		}else {
+			modelAndView.addObject("msg", "좋아요를 취소했습니다.");
+		}
+		modelAndView.addObject("content", "interior_view.do?p="+pg+"&s="+seq+"&k="+keyword);
+		return modelAndView;
+	}
+
+	
+	@RequestMapping(value="recipe_view.do")
 	public ModelAndView recipe_view(HttpServletRequest request) {
-		modelAndView = new ModelAndView("recipe_view.jsp");
+		modelAndView = new ModelAndView("/mainFrame.jsp");
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int seq = Integer.parseInt(request.getParameter("s"));
 		String keyword = request.getParameter("k");
@@ -651,10 +783,10 @@ public class TipController {
 		recipeDTO.setRecipe8(recipeDTO.getRecipe8().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe9(recipeDTO.getRecipe9().replaceAll("\r\n", "<br>"));
 		
-		modelAndView.addObject("cmd", "recipe");
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("keyword", keyword);
 		modelAndView.addObject("recipeDTO", recipeDTO);
+		modelAndView.addObject("content", "/tip/recipe_view.jsp");
 		return modelAndView;
 	}
 	
@@ -711,6 +843,18 @@ public class TipController {
 		System.out.println("레시피10 : " +recipeDTO.getRecipe9());
 		System.out.println("가격 : " + recipeDTO.getPrice());
 	}
+	
+	public void displayInterior(InteriorDTO interiorDTO) {
+		System.out.println("작성번호 : "+interiorDTO.getInterior_seq());
+		System.out.println("작성자 id : "+interiorDTO.getId());
+		System.out.println("작성자 이름 : "+interiorDTO.getName());
+		System.out.println("예상가격 : "+interiorDTO.getPrice());
+		System.out.println("방 규모 : "+interiorDTO.getRoomsize());
+		System.out.println("한줄소개 : "+interiorDTO.getInterior_title());
+		System.out.println("대표이미지 : "+interiorDTO.getInterior_mainimage());
+		System.out.println("인테리어 내용 : "+interiorDTO.getInterior_content());
+	}
+	
 	public String getCurrentDayTime(){
 	    long time = System.currentTimeMillis();
 	    SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss");

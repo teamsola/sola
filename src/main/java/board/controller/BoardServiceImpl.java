@@ -44,6 +44,25 @@ public class BoardServiceImpl implements BoardService{
 		return (ArrayList<BoardDTO>) boardDAO.boardList(startNum, endNum);
 	}
 
+	@Override
+	//글목록 키워드검색
+	public ArrayList<BoardDTO> boardListSearch1(String category2, String keyword, int startNum, int endNum) {
+		
+		return (ArrayList<BoardDTO>)boardDAO.boardListSearch1(category2, keyword, startNum, endNum);
+	}
+	
+	@Override
+	public ArrayList<BoardDTO> boardListSearch2(String category2, String keyword, int startNum, int endNum) {
+		
+		return (ArrayList<BoardDTO>)boardDAO.boardListSearch2(category2, keyword, startNum, endNum);
+	}
+	
+	@Override
+	public ArrayList<BoardDTO> boardListSearch3(String category2, String keyword, int startNum, int endNum) {
+		
+		return (ArrayList<BoardDTO>)boardDAO.boardListSearch3(category2, keyword, startNum, endNum);
+	}
+		
 	//조회수
 	@Override
 	public void updateHit(int board_seq) {

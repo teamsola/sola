@@ -8,22 +8,22 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	h3{
+	h3
+	{
 		border-bottom: 2px dashed #e3e4e5; 
 	}
 	.container{
-		padding: 5%;
 		text-align: center;
-		width: 818px;
-		height: 700px;
-		margin: auto;
+		background-color: #ff8400;
+		width: 100%;
+		min-height: 900px;
+		margin: 0;
+		padding: 0;
 	}
 	.in{
 		border: 1px solid #e3e7ed;
 		width: 400px;
 		height: 250px;
-		display: inline-block;
-		margin: 4%;
 		padding: 15px;
 	}
 	.profileImg,h3{
@@ -59,7 +59,7 @@ pageEncoding="UTF-8"%>
 					<td>
 						<div class="profileImg" align="left">
 							<a href="memberProfile.do">
-							<img alt="" src="storage/${memberDTO.profile }" width="100" height="100" /></a>
+							<img alt="" src="/sola/storage/${memberDTO.profile }" width="100" height="100" /></a>
 						</div>
 					</td>
 					<td>

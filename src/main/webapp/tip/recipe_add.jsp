@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%
-session.setAttribute("memId","hello");
-session.setAttribute("memName", "박안녕");
-%>
 <!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert_title_here</title>
-	<link rel="stylesheet" type="text/css" href="../css/tip.css">
-	<script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
+	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
-		#r_add_title{width:100%; height:170px;background: url("../img/recipe001.jpg") repeat center center;}
+		#r_add_title{width:100%; height:170px;background: url("/sola/img/recipe001.jpg") repeat center center;}
 		#r_add_content{margin:40px; float:left; width:1200px; overflow:hidden;height:auto;}
 		#r_add_subtitle{margin:20px 0;}
 		#r_add_subtitle .subtitle_detail{border:1px solid #DCDCDC;height:80px; padding: 20px; font-size:17px; line-height: 26px;}
@@ -27,8 +23,8 @@ session.setAttribute("memName", "박안녕");
 		.form_input_half select{width:200px;font-size: 17px; padding:10px; height:45px;border-style: none;}
 		.form_input_half .subtt{font-size:14px; color:gray;}
 		.form_input_half input[type='text']{width: 95%;font-size: 18px; padding:10px;border-style: none;}
-		#addBtn{width:100%;border-style: none; cursor:pointer; background:url("../img/add.png") no-repeat center center; height: 40px; font-size: 17px; color:gray; border:1px solid #ff8400; border-radius:10px;}
-		#addBtn:hover, #addBtn:active{background: #ff8400 url("../img/add_hover.png") no-repeat center center; color: white;}
+		#addBtn{width:100%;border-style: none; cursor:pointer; background:url("/sola/img/add.png") no-repeat center center; height: 40px; font-size: 17px; color:gray; border:1px solid #ff8400; border-radius:10px;}
+		#addBtn:hover, #addBtn:active{background: #ff8400 url("/sola/img/add_hover.png") no-repeat center center; color: white;}
 		.recipe_btn{outline: none;border-style:none;width:200px; border:1px solid #ff8400; background: none;font-size:16px;border-radius:20px;height:40px;}
 		.recipe_btn:hover, .recipe_btn:active{background: #ff8400;color:white;}
 	</style>
@@ -231,8 +227,8 @@ session.setAttribute("memName", "박안녕");
 								<div style="float:left;width:90%;"><textarea class="recipe4_detail" name="recipe4" rows="3" style="width:97%;font-size: 16px; padding: 10px; border-style: none; resize: none;"></textarea></div>
 							</div>
 						</div>
-						<img src="../img/plus.png" onclick="javascript:plusBtn()" width="20px" height="20px" style="cursor:pointer;float:right; margin: 5px;">
-						<img src="../img/minus.png" width="20px" height="20px" onclick="javascript:minusBtn()" style="cursor:pointer;float:right;margin: 5px;">
+						<img src="/sola/img/plus.png" onclick="javascript:plusBtn()" width="20px" height="20px" style="cursor:pointer;float:right; margin: 5px;">
+						<img src="/sola/img/minus.png" width="20px" height="20px" onclick="javascript:minusBtn()" style="cursor:pointer;float:right;margin: 5px;">
 					</div>
 					<div class="form_input">
 						<div style="padding: 10px 0;">예상 가격
