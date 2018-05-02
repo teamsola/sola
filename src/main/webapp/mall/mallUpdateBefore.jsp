@@ -28,6 +28,7 @@ body{
 }
 
 #aa{
+	margin-top:70px;
 	font-weight: bold;
 	text-align:center;
 }
@@ -37,7 +38,7 @@ body{
 	width:200px;
 }
 
-#wrapper2{
+#wrapper{
 	width:100%;
 	height:100%;
 }
@@ -73,7 +74,7 @@ padding-top:30px;
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:17px;
+	font-size:15px;
 	background-color:#ffffff;
 	color:#5D5D5D;
 	width:150px;
@@ -95,7 +96,7 @@ outline:none;
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:17px;
+	font-size:15px;
 	background-color:#ffffff;
 	color:#5D5D5D;
 	width:150px;
@@ -116,7 +117,7 @@ outline:none;
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:17px;
+	font-size:15px;
 	background-color:#ffffff;
 	color:#5D5D5D;
 	width:150px;
@@ -135,7 +136,7 @@ outline:none;
 </head>
 <body>
 
-<div id="wrapper2">
+<div id="wrapper">
 	
 	<div id="aa">관리자모드-수정/삭제관리</div>
 	<hr id="line1">

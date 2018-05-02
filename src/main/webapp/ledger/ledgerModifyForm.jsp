@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerModify.css?ver=2" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerModify.css?ver=1" />
 <script type="text/javascript">
 	
 	$(function(){
@@ -76,9 +76,9 @@
 			}else if(isNaN($("#money").val())){
 				alert("금액에는 숫자만 입력 가능합니다.");
 				$("#money").focus(); 
-			}else if($("#content").val().length>10){
+			}else if($("#contents").val().length>10){
 				alert("내용은 10자까지만 가능합니다.");
-				$("#content").focus(); 
+				$("#contents").focus(); 
 			}else if($("#contentPlus").val().length>20){
 				alert("추가 내용은 20자까지만 가능합니다.");
 				$("#contentPlus").focus(); 
@@ -108,12 +108,12 @@
 		});
 		
 		// content, contentPlus 글자수 제한
-		$("#content, #contentPlus").keyup(function(){
+		$("#contents, #contentPlus").keyup(function(){
 			var tagId = $(this).attr('id');
 			var checkId = "";
 			var numChar = $(this).val().length;
 			var maxNum = 0;
-			 	if(tagId=='content'){ 	// content 
+			 	if(tagId=='contents'){ 	// contents 
 			 		maxNum = 10;
 			 		checkId = "#"+tagId+"Check";
 			 	}else{					// contentPlus
@@ -190,16 +190,17 @@
 			<li>
 				<div class="text_subject">내용 : </div>
 				<div class="text_desc">
-					<input type="text" class="text_insert" id="content" name="content" value="${ledgerDTO.content }">
-					<label class="text_check" id="contentCheck"></label>
+					<input type="text" class="text_insert" id="contents" name="content" value="${ledgerDTO.content }">
+					<label class="text_check" id="contentsCheck"></label>
 				</div>
 			</li>
 			<li>
 				<div class="text_subject">추가내용 : </div>
 				<div class="text_desc2">
-					<pre><textarea class="text_insert2" id="contentPlus" name="contentPlus">${ledgerDTO.contentPlus }</textarea></pre>
-					<%-- <input type="text" class="text_insert" id="contentPlus" name="contentPlus" value="${ledgerDTO.contentPlus }"> --%>
-					<label class="text_check" id="contentPlusCheck"></label>
+					<div class="text_area">
+						<textarea class="text_insert2" id="contentPlus" name="contentPlus" rows="4" cols="33">${ledgerDTO.contentPlus }</textarea>
+					</div>
+					<label class="text_check2" id="contentPlusCheck"></label>
 				</div>
 			</li>
 			<li class="button_li">
