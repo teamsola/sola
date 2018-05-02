@@ -47,15 +47,12 @@
     });
 </script>
 <style>
-body{
-	padding-top:100px;
-}
-
 table{
 	margin:auto;
 }
 
 #aa{
+	margin-top:70px;
 	font-weight: bold;
 	text-align:center;
 }
@@ -72,7 +69,8 @@ table{
 }
 
 #modifyBoard{
-	margin-top:70px;
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -85,16 +83,17 @@ table{
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 }
 
 #btn{
-	margin-top:70px;
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -107,11 +106,11 @@ table{
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 }
 
@@ -149,7 +148,7 @@ table{
 		</tr>
 		
 		<tr>
-			<td><input type="text" value="${boardDTO.subject }" id="subject" name="subject" size="100">
+			<td><input type="text" value="${boardDTO.subject }" id="subject" name="subject" size="95">
 		</tr>
         
         <tr>
@@ -162,7 +161,6 @@ table{
      </table>
 	
 	
-      
       
         <div id="btnset">
         	<input type="button" id="modifyBoard" value="수정" />

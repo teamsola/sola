@@ -73,6 +73,10 @@ $(document).ready(function(){
 				<span class="fold" rel="div_tel" id="span_tel">&nbsp;&nbsp;&nbsp;▶전화번호로 찾기</span>
 				<div id="div_tel">
 					<select name="tel1" class="inp_text">
+						<option selected="selected">010
+						<option>011
+						<option>017
+						<option>019
 						<option>02
 						<option>031
 						<option>032
@@ -90,10 +94,6 @@ $(document).ready(function(){
 						<option>062
 						<option>063
 						<option>064
-						<option selected="selected">010
-						<option>011
-						<option>017
-						<option>019
 					</select> 
 					<input type="text" name="tel2" class="inp_text" placeholder="전화번호 입력(가운데 3~4자리)" />
 					<input type="text" name="tel3" class="inp_text" placeholder="전화번호 입력(뒷 4자리)">

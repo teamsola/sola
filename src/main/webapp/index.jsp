@@ -62,6 +62,7 @@ html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;}
 						</tr>
 						<tr>
 							<td><a id="joinLink" href="joinForm.do">쏠라는 처음이신가요?</a></td>
+							<td><a id="joinLink" href="javascript:findAccount()">아이디/비밀번호 찾기</a></td>
 						</tr>
 					</table>
 				</form>

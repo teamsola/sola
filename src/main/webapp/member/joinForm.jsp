@@ -5,13 +5,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+html,body{width:100%;margin:0;padding: 0;display: block;}
 #joinForm table
 {
-	width: 350px;
+	width: 600px;
 }
 tr.sub
 {
-	font-size: 8px;
+	font-size: 14px;
 	text-align: left;
 }
 tr.inp
@@ -204,8 +205,8 @@ function execDaumPostcode()
     		});
 </script>
 </head>
-<body align="center">
-		<h3>회원가입</h3>
+<body>
+		<div style="width:100%;background: #ff8400;height:50px;padding-top:30px;font-size: 20px;color:white;font-weight: bold;position:fixed;min-height: 50px;">&nbsp;&nbsp;&nbsp;회원가입<img src="img/logo(whi).png" height="25px" style="float: right;margin-top: 25px;"></div>
 		<hr>
 		<form id="joinForm" name="joinForm" action="join.do" method="post">
 			<table align="center">

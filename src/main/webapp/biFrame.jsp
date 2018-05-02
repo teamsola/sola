@@ -16,9 +16,6 @@
 			<jsp:include page="${left}" />
 		</c:if>
 	</div>
-	<div id="right" align="right" class="frame">
-		<img src="img/sola.jpg" height="60px">
-	</div>
 </div>
 </body>
 </html>

@@ -37,12 +37,31 @@ th{
 	margin-top:50px;
 	margin-bottom:10px;
 }
+
+select { 
+	background: url(이미지 경로) no-repeat 95% 50%; /* 화살표 모양의 이미지 */ 
+	width: 100px; /* 원하는 너비설정 */ 
+	padding: .4em .9em; /* 여백으로 높이 설정 */ 
+	font-family: inherit; /* 폰트 상속 */ 
+	background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */ 
+	border: 1px solid #999; 
+	border-radius: 0px; /* iOS 둥근모서리 제거 */ 
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+	-moz-appearance: none; 
+	appearance: none;
+	
+} /* IE 10, 11의 네이티브 화살표 숨기기 */ 
+
+select::-ms-expand { 
+	display: none; 
+}
+
 #category{
 	float:left;
 }
 
 #writebtn{
-	margin-left:905px;
+	margin-left:929px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -51,10 +70,10 @@ th{
 	vertical-align:middle;
 	display:inline-block;
 	font-size:15px;
-	background-color:#ff8400;
-	color:#FFFFFF;
+	background-color:#ffffff;
+	color:#6a6763;
 	height:30px;
-	border-color:#ff8400;
+	border-color:#6a6763;
 	border-width:1px;
 	border-style:solid;
 }
@@ -66,7 +85,8 @@ th{
 }
 
 #btn{
-	margin-top:100px;
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -79,11 +99,11 @@ th{
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 }
 
@@ -96,8 +116,8 @@ th{
 }
 
 #searchset{
-	margin-top:10px;
-	margin-left:680px;
+	margin-top:30px;
+	margin-left:650px;
 	float:left;
 	text-align:center;
 }
@@ -106,22 +126,19 @@ th{
 	float:left;
 }
 
-#keywordbtn{
-	outline:none;
-	text-decoration:none;
-	text-indent:0px;
-	line-height:16px;
-	text-align:center;
-	vertical-align:middle;
-	display:inline-block;
-	font-size:14px;
-	background-color:#ffffff;
-	color:black;
-	height:26px;
-	border-color:black;
-	border-width:1px;
-	border-style:solid;
+#keyword{
+	margin-left:7px;
+	border-style: none;
+    font-size: 15px;
+    padding: 5px;
+    position: relative;
+    bottom: 14px;
+    border: 1px solid #ff8400;
+    box-sizing: border-box;
+}
 
+#paging,#currentPaging{
+	text-align:center;
 }
 
 
@@ -164,7 +181,7 @@ th{
 				<tr>
 					<th width=70>번호</th>
 					<th width=70>분류</th>
-					<th width=200>제목</th>
+					<th width=250>제목</th>
 					<th width=100>작성자</th>
 					<th width=100>날짜</th>
 					<th width=70>조회</th>
@@ -230,8 +247,8 @@ th{
 			</div>
 			
 			
-			<input type="text" id="keyword" name="keyword">
-			<input type="button" id="keywordbtn" name="keywordbtn" value="찾기" onclick="check()">
+			<input type="text" id="keyword" name="keyword" placeholder="검색어를 입력하세요">
+			<img id="keywordbtn" src="/sola/img/searchBtn.png" name="keywordbtn" onclick="check()" width="36px" height="34px">
 		</div>
 		
 		</form>
