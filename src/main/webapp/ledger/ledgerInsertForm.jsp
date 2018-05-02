@@ -48,9 +48,9 @@ $(function(){
 			}else if(isNaN($("#money").val())){
 				alert("금액에는 숫자만 입력 가능합니다.");
 				$("#money").focus(); 
-			}else if($("#content").val().length>10){
+			}else if($("#contents").val().length>10){
 				alert("내용은 10자까지만 가능합니다.");
-				$("#content").focus(); 
+				$("#contents").focus(); 
 			}else if($("#contentPlus").val().length>20){
 				alert("추가 내용은 20자까지만 가능합니다.");
 				$("#contentPlus").focus(); 
@@ -79,12 +79,12 @@ $(function(){
 		});
 		
 		// content, contentPlus 글자수 제한
-		$("#content, #contentPlus").keyup(function(){
+		$("#contents, #contentPlus").keyup(function(){
 			var tagId = $(this).attr('id');
 			var checkId = "";
 			var numChar = $(this).val().length;
 			var maxNum = 0;
-			 	if(tagId=='content'){ 	// content 
+			 	if(tagId=='contents'){ 	// content 
 			 		maxNum = 10;
 			 		checkId = "#"+tagId+"Check";
 			 	}else{					// contentPlus
@@ -158,8 +158,8 @@ $(function(){
 			<li>
 				<div class="text_subject">내용 : </div>
 				<div class="text_desc">
-					<input type="text" class="text_insert" id="content" name="content">
-					<label class="text_check" id="contentCheck"></label>
+					<input type="text" class="text_insert" id="contents" name="content">
+					<label class="text_check" id="contentsCheck"></label>
 				</div>
 			</li>
 			<li>

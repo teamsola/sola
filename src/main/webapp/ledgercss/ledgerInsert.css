@@ -142,7 +142,7 @@
 }
 
 .ledger_body ul li .text_type1 {	/* 내용의 속성 */
-	height: 100% !important;
+	height: 100% ;
 	width: 100%;
 }
 

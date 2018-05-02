@@ -44,18 +44,42 @@
 		}, function(){
 			$(this).css('background-color','#EFEFEF');
 		});
+		
+		$("#search_btn").click(function(){	// 검색버튼 눌림
+			if($("#search").val()==""){
+				alert("검색어를 입력해주세요");
+				$("#search").focus();
+			}else{
+				location.href="ledgerSearch.do?keyword="+$("#search").val();
+			}
+		});
 	});
 	
 	// 숫자 3번째 자리마다 콤마(,) 찍기
 	function addComma(num) {
 		  var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		   return num.toString().replace(regexp, ',');
-		}
+	}
+	
+	function enterkey() {
+	    if (window.event.keyCode == 13) {
+	    	if($("#search").val()==""){
+				alert("검색어를 입력해주세요");
+				$("#search").focus();
+			}else{
+				location.href="ledgerSearch.do?keyword="+$("#search").val();
+			}
+	    }
+	}
 </script>
 <title>달력</title>
 </head>
-<body>
+<body class="total_body">
 <div class="calendar">
+<div class="searchBar">
+	<input type="button" id="search_btn" class="search_btn" value="검색">
+	<input type="text" id="search" class="search" name="search" onkeyup="enterkey();">
+</div>
 <!-- 날짜 네비게이션 -->
 <div class="navigation">
 	<!-- 지난해 -->	
@@ -73,7 +97,7 @@
 <table class="calendar_body">
 	<thead>
 		<tr>
-			<td colspan="7" align="center">
+			<td colspan="7" align="center" class="info_td">
 				<div class="info" id="info"></div>  
 			</td>
 		</tr>
