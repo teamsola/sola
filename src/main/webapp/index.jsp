@@ -8,14 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/sola/js/memberScript.js"></script>
 <script type="text/javascript">
-/* if("${lgout}" == 1)
-{
-	history.pushState(null, document.title, location.href);  // push 
-	window.addEventListener('popstate', function(event) {    //  뒤로가기 이벤트 등록
-    	// 특정 페이지로 가고싶다면 location.href = '';
-   	history.pushState(null, document.title, location.href);  // 다시 push함으로 뒤로가기 Block
-});
-} */
+var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=450, height=450, location, resizable")};
 </script>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <style type="text/css">
@@ -53,7 +46,8 @@
 							<td><input type="password" name="pwd" style="width: 100px" tabindex="2" onkeypress="if(event.keyCode==13) {javascript:checkLogin(); return false;}"/></td>
 						</tr>
 						<tr>
-							<td colspan="3" align="right"><a href="joinForm.do">회원가입</a></td>
+							<td colspan="2" align="right"><a href="javascript:findAccount()">아이디/비밀번호 찾기</a></td>
+							<td align="right"><a href="joinForm.do">회원가입</a></td>
 						</tr>
 					</table>
 				</form>
