@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css" />
 <link rel="stylesheet" type="text/css" href="ledgercss/ledgerInsert.css?ver=2" />
 
 <script type="text/javascript">
@@ -80,7 +81,7 @@ $(function(){
 				$("#moneyCheck").text("숫자만 가능합니다");
 				$("#moneyCheck").css("color", "red");
 			}else if(!isNaN($("#money").val())){
-				$("#moneyCheck").text("입력 가능합니다");
+				$("#moneyCheck").text("입력 가능합니다("+addComma($("#money").val())+"원)");
 				$("#moneyCheck").css("color", "blue");
 			}
 			if(blank_pattern.test($("#money").val()) == true){	// 공백 불가
@@ -116,6 +117,12 @@ $(function(){
 			    }
 		});
 });
+
+//숫자 3번째 자리마다 콤마(,) 찍기
+function addComma(num) {
+	var regexp = /\B(?=(\d{3})+(?!\d))/g;
+	return num.toString().replace(regexp, ',');
+}
 </script>
 
 <title>가계부 입력</title>
@@ -123,7 +130,7 @@ $(function(){
 <body>
 <!-- 흐릿한 뒷 배경 -->
 <div id="ledger_background"></div>
-
+<div class="container">
 <div class="ledger_body">
 
 	<div class="top">
@@ -181,12 +188,13 @@ $(function(){
 					<label class="text_check2" id="contentPlusCheck"></label>
 				</div>
 			</li>
-			<li class="button_li">
-				<input type="button" class="ledger_btn" id="insertButton" value="저장하기" style="cursor: pointer">
-			</li>
 		</ul>
+		<div class="button_li">
+			<input type="button" class="ledger_btn" id="insertButton" value="저장하기" style="cursor: pointer">
+		</div>
 	</div>
 </form>
+</div>
 </div>
 </body>
 </html>

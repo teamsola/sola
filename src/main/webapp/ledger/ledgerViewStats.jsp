@@ -22,8 +22,8 @@
 
 <!-- ======================================== CSS작업 ========================================= -->
 
-<link rel="stylesheet" type="text/css"
-	href="ledgercss/ledgerViewStats.css?ver=2" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle3.css?ver=3" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewStats.css?ver=3" />
 
 <!-- ==================================== 그래프(Pie-Div)용 ==================================== -->
 <!-- JQ-PLOT의 CSS를 설정 -->
@@ -506,7 +506,7 @@
 		
 		// =========================== Pie 그래프 클릭 이벤트 ============================
 			$('#graphPie').bind('jqplotDataClick',
-				    function (ev, seriesIndex, pointIndex, data) {                
+				    function (ev, seriesIndex, pointIndex, data) {  
 		        var cate = data[0];	// 카테고리
 		        var inout = $("#inout option:selected").val();		// 현재 선택된 항목 (수입-지출, 수입, 지출)
 				var period = $("#period option:selected").val(); 	// 선택된 기간	(월간, 연간, 기간)
@@ -519,7 +519,7 @@
 					inout = 'cateout';
 				}
 				
-				chartDivData(cate, inout, period, '${year}','this');
+				chartDivData(cate, inout, period, '${year}','thisTime');
 		    	
 				}
 			);
@@ -1031,7 +1031,7 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 
 	<!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
-
+<div class="container">
 	<div class="ledger_body">
 
 		<div class="top">
@@ -1084,6 +1084,6 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 			<div class="view_after" onclick="" style="cursor: pointer"></div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

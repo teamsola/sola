@@ -1,71 +1,4 @@
-#ledger_background {/* 뒷배경 (불투명) */
-	/* display: none;  */position: fixed; left: 0; top: 0;
-	height: 100%; width: 100%; background: black;
-	filter: alpha(opacity=60); opacity: 0.60;
-
-}
-
-.ledger_body {/* 메인 화면 */
-	position: fixed;
-	left: 50% !important;
-	top: 35% !important;
-	margin-left: -325px; 
-	margin-top: -100px; 
-	width: 40% ;
-	height: 50%; 
-	border-radius: 12px; 
-	background-color: white; 
-}
-
-.ledger_body .top {	/* 헤더 (검은 바탕) */
-	background-color: black;
-	width: 100%;
-	height: 13%;
-	border-radius: 12px 12px 0px 0px;
-}
-
-.ledger_body .top .close {	/* 닫기 버튼 */
-	float: right;
-	cursor: pointer;
-	color: #ff8400;
-	font-size: 35px;
-	font-weight: bold;
-	padding-top: 0px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-right: 10px;
-}
-
-.ledger_body .top .before {	/* 이전 버튼 */
-	float: right;
-	cursor: pointer;
-	color: #ff8400;
-	font-size: 35px;
-	font-weight: bold;
-	padding-top: 0px;
-	padding-right: 0px;
-	margin-right: 10px;
-	
-}
-
-.ledger_body .top .subject {	/* title */
-	float: left;
-	margin-left: 10px;
-	margin-top: 20px;
-	font-size: 20px;
-	font-weight: bold;
-	color: #ff8400;
-	padding-left: 20px;
-}
-
-.ledger_body .bottom {		/* 컨텐츠가 들어갈 곳(중간) */
-
-	width: 100%;
-	height: 87%;
-	vertical-align: middle;
-	
-}
-
+/* 가계부 상세보기 Body CSS */
 
 .ledger_body ul {	/* ul 속성 */
 	padding: 0;
@@ -100,7 +33,7 @@
 
 .ledger_body ul .button_li {		/* 버튼의 위치 */
 /* border: 1px solid red; */
-	padding-top: 50px;
+	padding-top: 15px;
 	width: 100%;
 }
 
@@ -111,6 +44,7 @@
 	background-color: gray;
 	color: white;
 	float: left;
+	border-radius: 12px; 
 }
 
 .ledger_body .bottom .ledger_btn:hover {/* 버튼 hover 이벤트 */
