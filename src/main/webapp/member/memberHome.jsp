@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
 	}
 	.container{
 		text-align: center;
-		background-color: #ff8400;
+		background-color: white;
 		width: 100%;
 		min-height: 900px;
 		margin: 0;
@@ -25,6 +25,8 @@ pageEncoding="UTF-8"%>
 		width: 400px;
 		height: 250px;
 		padding: 15px;
+		margin: auto;
+		margin-top: 30px;
 	}
 	.profileImg,h3{
 		margin-left: 10px;

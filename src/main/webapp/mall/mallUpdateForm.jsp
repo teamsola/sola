@@ -34,6 +34,7 @@ body{
 	padding-top:100px;
 }
 #aa{
+	margin-top: 70px;
 	font-weight: bold;
 	text-align:center;
 }
@@ -80,7 +81,7 @@ table{
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:17px;
+	font-size:15px;
 	background-color:#ffffff;
 	color:#5D5D5D;
 	width:150px;
@@ -126,6 +127,5 @@ table{
 
 </body>
 </html>
-
 
 

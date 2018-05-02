@@ -60,6 +60,7 @@ table{
 }
 
 #aa{
+	margin-top:70px;
 	font-weight: bold;
 	text-align:center;
 }
@@ -76,7 +77,8 @@ table{
 }
 
 #insertBoard{
-	margin-top:70px;
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -98,7 +100,8 @@ table{
 }
 
 #btn{
-	margin-top:70px;
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -152,7 +155,7 @@ table{
 		</tr>
 	
 		<tr>	
-        	<td id="content"><textarea name="editor" class="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
+        	<td id="contents"><textarea name="editor" class="editor" id="editor" style="width: 700px; height: 400px;"></textarea>
         </tr>
         
      </table>

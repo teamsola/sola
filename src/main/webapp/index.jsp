@@ -50,7 +50,7 @@
 						</tr>
 						<tr>
 							<th>비밀번호</th>
-							<td><input type="password" name="pwd" style="width: 100px" tabindex="2" /></td>
+							<td><input type="password" name="pwd" style="width: 100px" tabindex="2" onkeypress="if(event.keyCode==13) {javascript:checkLogin(); return false;}"/></td>
 						</tr>
 						<tr>
 							<td colspan="3" align="right"><a href="joinForm.do">회원가입</a></td>

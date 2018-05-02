@@ -39,6 +39,7 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
+		String nickname=(String)session.getAttribute("memName");
 		
 		modelAndView.addObject("content","/mall/mallBoardWriteForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
@@ -57,11 +58,10 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
+		String nickname=(String)session.getAttribute("memName");
 		
 		String category2=request.getParameter("category2");
 		String keyword=request.getParameter("keyword");
-		
-		
 		
 		if(category2==null & keyword ==null) {
 			
@@ -213,11 +213,12 @@ public class BoardController {
 	@RequestMapping(value="mallBoardView.do")
 	public ModelAndView boarView(HttpServletRequest request) {
 		
-		System.out.println("쇼핑몰 게시판 상세보기 처리");
+		System.out.println("중고 게시판 상세보기 처리");
 		System.out.println("----------------");
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
+		String nickname=(String)session.getAttribute("memName");
 		
 		ModelAndView modelAndView=new ModelAndView();
 		
@@ -247,6 +248,7 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
+		String nickname=(String)session.getAttribute("memName");
 		
 		int board_seq = Integer.parseInt(request.getParameter("board_seq"));
 
@@ -271,8 +273,7 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
-		
-		String nickname = "닉네임";	//임시 닉네임
+		String nickname=(String)session.getAttribute("memName");
 
 		boardService.updateHit(board_seq);	// 조회수 증가
 		BoardDTO boardDTO = boardService.boardView(board_seq); 
@@ -317,9 +318,7 @@ public class BoardController {
 	
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
-		
-		
-		String nickname = "닉네임";	//임시 닉네임
+		String nickname=(String)session.getAttribute("memName");
 	
 		BoardDTO boardDTO=new BoardDTO();
 		boardDTO.setCategory(category);
@@ -371,8 +370,9 @@ public class BoardController {
 		
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("memId");
+		String nickname=(String)session.getAttribute("memName");
 		
-		String nickname = "닉네임";	//임시 닉네임
+		System.out.println("저장하는 닉네임:"+nickname);
 
 		BoardDTO boardDTO=new BoardDTO();
 		boardDTO.setNickname(nickname);
@@ -409,8 +409,6 @@ public class BoardController {
             
             // 파일 기본경로 _ 상세경로
             String filePath = session.getServletContext().getRealPath("/resources/photoUpload/");
-            System.out.println("에디터들어옴");
-            System.out.println(filePath);
             
             String saveName = sb.append(new SimpleDateFormat("yyyyMMddHHmmss")
                           .format(System.currentTimeMillis()))

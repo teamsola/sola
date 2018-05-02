@@ -7,9 +7,6 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>글보기</title>
 <style>
-body{
-	margin-top:150px;
-}
 
 table{
 	margin:auto;
@@ -72,6 +69,7 @@ table{
 </style>
 </head>
 <body>
+
 	<table>
 		<tr>
 			<td colspan="3" style="font-size:20px;">${boardDTO.subject }
@@ -98,11 +96,16 @@ table{
 	
 	
 	<div id="btnset">
-		<%-- <c:if test="${memId.equals(boardDTO.id) }"> --%>
-		<input type=button id="btn" value=수정 onclick="location.href='mallBoardModifyForm.do?board_seq=${board_seq}&pg=${pg }'">
+		<c:if test="${memId.equals(boardDTO.id) }">
+		<input type=button id="btn" value=수정 onclick="location.href='mallBoardModifyForm.do?board_seq=${board_seq}&pg=${pg }&'">
 		<input type=button id="btn" value=삭제 onclick="location.href='mallBoardDelete.do?board_seq=${board_seq}'">
+		</c:if>
+		
+		<c:if test="${memId.equals('admin') }">
+		<input type=button id="btn" value=삭제 onclick="location.href='mallBoardDelete.do?board_seq=${board_seq}'">
+		</c:if>
+		
 		<input type=button id="btn2" value=목록 onclick="location.href='mallBoardList.do?pg=${pg}'">
-		<%-- </c:if> --%>
 	</div>
 	
 	

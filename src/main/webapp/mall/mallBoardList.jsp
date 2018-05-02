@@ -7,15 +7,13 @@
 <title>Insert title here</title>
 
 <style>
-body{
-	padding-top:100px;
-}
-
 a{
+	color:black;
 	text-decoration:none;
 }
 
 #aa{
+	margin-top: 70px;
 	font-weight: bold;
 	text-align:center;
 }
@@ -36,7 +34,6 @@ th{
 
 
 #top{
-	margin-left:530px;
 	margin-top:50px;
 	margin-bottom:10px;
 }
@@ -45,7 +42,7 @@ th{
 }
 
 #writebtn{
-	margin-left:495px;
+	margin-left:905px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -97,20 +94,45 @@ th{
 #paging,#currentPaging{
 	margin:auto;
 }
+
+#searchset{
+	margin-top:10px;
+	margin-left:680px;
+	float:left;
+	text-align:center;
+}
+
+#search{
+	float:left;
+}
+
+#keywordbtn{
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:14px;
+	background-color:#ffffff;
+	color:black;
+	height:26px;
+	border-color:black;
+	border-width:1px;
+	border-style:solid;
+
+}
+
+
 </style>
 
 
 <script type="text/javascript">
 	function isLogin(board_seq){
 	
-		//var id ='${id}';
 		var pg='${pg}';
-		
-		/* if(id==null){
-			alert("먼저 로그인하세요");
-		}else{ */
-			location.href="mallBoardView.do?board_seq="+board_seq+"&pg="+pg;
-		//}
+		location.href="mallBoardView.do?board_seq="+board_seq+"&pg="+pg;
 	}
 	
 	function check(){
@@ -197,17 +219,21 @@ th{
 		<form action="mallBoardList.do?pg=1" method="post" name="boardsearch" id="boardsearch">
 		
 		
-		<div id="search">
-			<select name="category2" id="category2">
-				<option value="category" <c:if test="${category2 eq 'category' }">selected</c:if>>분류</option>
-				<option value="subject" <c:if test="${category2 eq 'subject'}">selected</c:if>>제목</option>
-				<option value="nickname" <c:if test="${category2 eq 'nickname' }">selected</c:if>>작성자</option>
-			</select>
+		
+		<div id="searchset">
+			<div id="search">
+				<select name="category2" id="category2">
+					<option value="category" <c:if test="${category2 eq 'category' }">selected</c:if>>분류</option>
+					<option value="subject" <c:if test="${category2 eq 'subject'}">selected</c:if>>제목</option>
+					<option value="nickname" <c:if test="${category2 eq 'nickname' }">selected</c:if>>작성자</option>
+				</select>
+			</div>
+			
+			
+			<input type="text" id="keyword" name="keyword">
+			<input type="button" id="keywordbtn" name="keywordbtn" value="찾기" onclick="check()">
 		</div>
 		
-	
-		<input type="text" id="keyword" name="keyword">
-		<input type="button" id="keywordbtn" name="keywordbtn" value="찾기" onclick="check()">
 		</form>
 	
 	

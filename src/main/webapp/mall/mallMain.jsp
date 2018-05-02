@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <style>
 a{
+	color:black;
 	text-decoration:none;
 }
 
@@ -107,13 +108,44 @@ tr{
 
 #subject{
 	margin:auto;
-	width:50%;
+	width:60%;
 	height:30%;
 	font-size:14px;
 }
 
 #more{
-	margin-left:650px;
+	margin-left:550px;
+}
+
+#btn{
+	text-align:center;
+	float:left;
+	width:100%;
+}
+
+#goback{
+	margin-top:50px;
+	margin-bottom:50px;
+	
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ffffff;
+	color:#5D5D5D;
+	width:150px;
+	height:30px;
+	border-color:#4a4949;
+	border-width:2px;
+	border-style:solid;
+	
 }
 </style>
 </head>
@@ -221,9 +253,13 @@ tr{
 
 </div>
 
-
-	<a href="mallUpdateBefore.do">(관리자일경우만 보임)수정/삭제</a><br>
-	<a href="mallInsertForm.do">(관리자일경우만 보임)등록</a><br>
+		<%-- <c:if test="${memId.equals('admin') }"> --%>
+		<div id="btn">
+			<input type="button" id="goback" value="수정/삭제" onclick='location.href="mallUpdateBefore.do"'>
+			<input type="button" id="goback" value="등록" onclick='location.href="mallInsertForm.do"'>
+		</div>
+		<%-- </c:if> --%>
+	
 
 
 </body>

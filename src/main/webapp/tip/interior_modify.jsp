@@ -34,13 +34,15 @@ pageEncoding="UTF-8"%>
 				$('#imgBefore').css({
 					"display":"block",
 					"margin" : "auto",
-					"max-height" : "100%"
+					"max-height" : "100%",
+					"width":"auto"
 				});
 			}else{
 				$('#imgBefore').css({
 					"display":"block",
 					"margin" : "auto",
-					"max-width" : "100%"
+					"max-width" : "100%",
+					"height":"auto"
 				});
 			}
 			
@@ -113,15 +115,15 @@ pageEncoding="UTF-8"%>
 					$('#imgAfter').css({
 						"display":"block",
 						"margin" : "auto",
-						"max-width" : "100%",
-						"height" : "auto"
+						"max-height" : "100%",
+						"width" : "auto"
 					});
 				}else{
 					$('#imgAfter').css({
 						"display":"block",
 						"margin" : "auto",
-						"max-height" : "100%",
-						"width" : "auto"
+						"max-width" : "100%",
+						"height" : "auto"
 					});
 				}
 		    });
@@ -142,8 +144,14 @@ pageEncoding="UTF-8"%>
 		<div id="i_add_content">
 			
 			<div id="i_add_form">
-				<form action="./insertInteriorBoard.do" method="post" id="insertBoardFrm" enctype="multipart/form-data">
-				<div style="text-align: left; color: #ff8400;font-size:12px;margin-bottom:20px;"> * 는 필수 입력 사항입니다.</div>
+				<form action="modifyInterior.do" method="post" id="insertBoardFrm" enctype="multipart/form-data">
+					<input type="hidden" name="interior_mainimage_before" id="interior_mainimage_before" value="${interiorDTO.interior_mainimage }">
+					<input type="hidden" name="interior_seq" id="interior_seq" value="${interiorDTO.interior_seq }">
+					<input type="hidden" name="keyword" id="keyword" value="${keyword }">
+					<input type="hidden" name="content_before" id="content_before" value="${interiorDTO.interior_content }">
+					<input type="hidden" name="pg" id="pg" value="${pg }">
+					
+					<div style="text-align: left; color: #ff8400;font-size:12px;margin-bottom:20px;"> * 는 필수 입력 사항입니다.</div>
 					<div style="color:white; margin-bottom:50px;">
 					<div class="form_title">한줄소개<span style="font-size:14px;color:white;margin:10px 10px;">| 방에 대한 소개를 한줄로 적어주세요</span></div>
 					<input type="text" id="interior_title" value="${interiorDTO.interior_title }" name="interior_title" placeholder="방 꾸미는 데 하루면 충분!" style="width: 98%;font-size: 18px; padding:10px;border-style: none;">

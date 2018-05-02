@@ -54,7 +54,7 @@ public class TipController {
         String editor = request.getParameter("editor");
         String id = (String)session.getAttribute("memId");
         String name = (String)session.getAttribute("memName");
-        String interior_title = null;
+        String interior_title = "null";
         int price = 0;
         int roomsize = 0;
         if(request.getParameter("price").length() > 0) price = Integer.parseInt(request.getParameter("price"));
@@ -500,6 +500,94 @@ public class TipController {
 		
 		return modelAndView;
 	}
+	
+
+	@RequestMapping(value="modifyInterior.do")
+	public ModelAndView modifyInterior(HttpServletRequest request, MultipartFile interior_mainimage) {
+		HttpSession session = request.getSession();
+		modelAndView = new ModelAndView("/tip/errorPage.jsp");
+		interiorDTO = new InteriorDTO();
+		String fileName = "tip_"+getCurrentDayTime()+"_"+(String)session.getAttribute("memId")+".txt";
+		
+		//넘어온 데이터 받는 부분
+		String keyword = request.getParameter("keyword");
+		int pg = Integer.parseInt(request.getParameter("pg"));
+		int seq = Integer.parseInt(request.getParameter("interior_seq"));
+		String editor = request.getParameter("editor");
+		String interior_title = request.getParameter("interior_title");
+		if(interior_title == null) interior_title = "null";
+		int price = 0;
+		int roomsize = 0;
+		if(request.getParameter("price") != null) price = Integer.parseInt(request.getParameter("price"));
+		if(request.getParameter("roomsize") != null) roomsize = Integer.parseInt(request.getParameter("roomsize"));
+		
+		//넘어온 데이터 중 이전에 있던 파일명 - 1. 메인이미지
+		String mainimage_before = request.getParameter("interior_mainimage_before");
+		
+		//넘어온 데이터 중 이전에 있던 파일명 - 2. content
+		String content_before = request.getParameter("content_before");
+		
+		//메인이미지 새거 저장
+		if(!interior_mainimage.isEmpty()) {
+        	String tip_realPath = request.getSession().getServletContext().getRealPath("/storage");
+			String originalFilename = interior_mainimage.getOriginalFilename(); // fileName.jpg
+		    String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+		    String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
+		     
+		    String img = "tip_"+onlyFileName + "_" + getCurrentDayTime() + extension;  // fileName_20150721-14-07-50.jpg
+			File file = new File(tip_realPath, img);
+			try {
+				FileCopyUtils.copy(interior_mainimage.getInputStream(), new FileOutputStream(file));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if(!mainimage_before.equals("null")) {
+				File f = new File(tip_realPath, mainimage_before);
+				if(f.exists()) {
+					if(f.delete()) {
+						System.out.println("이전 사진 삭제 성공!");
+					}
+				}
+			}
+			interiorDTO.setInterior_mainimage(img);
+			
+		}else {
+			interiorDTO.setInterior_mainimage(mainimage_before);
+		}
+		//content 새거 저장
+		String interiorPath = request.getSession().getServletContext().getRealPath("/interior_board");
+        try {
+			BufferedWriter fw = new BufferedWriter(new FileWriter(interiorPath+"\\"+fileName, true));
+			fw.write(editor);
+			fw.flush();
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+        //content 이전꺼 삭제
+        if(new File(interiorPath, fileName).exists()) new File(interiorPath, content_before).delete();
+        
+		//DTO에 데이터 입력
+        interiorDTO.setInterior_seq(seq);
+        interiorDTO.setPrice(price);
+        interiorDTO.setRoomsize(roomsize);
+        interiorDTO.setInterior_title(interior_title);
+        interiorDTO.setInterior_content(fileName);
+
+		displayInterior(interiorDTO);
+		//tipservice 수정 함수 호출
+		int result = tipService.interiorModify(interiorDTO);
+        
+		if(result <= 0) {
+			modelAndView.addObject("msg", "수정 중에 문제가 발생했습니다.");
+		}else {
+			modelAndView.addObject("msg", "성공적으로 수정했습니다.");
+		}
+		modelAndView.addObject("content", "interior_view.do?p="+pg+"&s="+seq+"&k="+keyword);
+		return modelAndView;
+	}
+	
 	@RequestMapping(value="modifyRecipe.do")
 	public ModelAndView modifyRecipe(HttpServletRequest request, MultipartFile foodimage) {
 		HttpSession session = request.getSession();
@@ -535,11 +623,12 @@ public class TipController {
 					}
 				}
 			}
+			recipeDTO.setFoodimage(fileName);
 		}else {
 			recipeDTO.setFoodimage(request.getParameter("foodimage_before"));
 		}
 		String foodname_detail = request.getParameter("foodname_detail");
-		recipeDTO.setFoodimage(fileName);
+		
 		recipeDTO.setFoodname(request.getParameter("foodname"));
 		if(foodname_detail.length() > 0) msg1 = foodname_detail;
 		recipeDTO.setFoodname_detail(msg1);
@@ -687,13 +776,15 @@ public class TipController {
 		return modelAndView;
 	}
 	
+	
 	@RequestMapping(value="interior_view.do")
 	public ModelAndView interior_view(HttpServletRequest request) {
 		modelAndView = new ModelAndView("/mainFrame.jsp");
 		int pg = Integer.parseInt(request.getParameter("p"));
 		int seq = Integer.parseInt(request.getParameter("s"));
 		String keyword = request.getParameter("k");
-		
+
+		tipService.updateInteriorHit(seq);
 		interiorDTO = tipService.interiorDetail(seq);
 		int like_num = interiorDTO.getLike_user().split("\\|").length-1;
 		if(interiorDTO.getLike_user().contains((String)request.getSession().getAttribute("memId"))) {
@@ -717,7 +808,6 @@ public class TipController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		modelAndView.addObject("interior_content", interior_content);
 		interiorDTO.setLike_num(like_num);
 		modelAndView.addObject("interiorDTO", interiorDTO);
