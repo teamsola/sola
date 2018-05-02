@@ -22,8 +22,8 @@
 
 <!-- ======================================== CSS작업 ========================================= -->
 
-<link rel="stylesheet" type="text/css"
-	href="ledgercss/ledgerViewStats.css?ver=2" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle3.css?ver=3" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewStats.css?ver=3" />
 
 <!-- ==================================== 그래프(Pie-Div)용 ==================================== -->
 <!-- JQ-PLOT의 CSS를 설정 -->
@@ -470,7 +470,6 @@
 		
 		// ========================== Pie 그래프 제작 ==========================
 		 function makeChartPie(data) {
-		//	alert("makeChartPie 들어옴");
 			$('#graphPie').empty();	// 기존 그래프 삭제
 			$.jqplot('graphPie', [ data ], {
 				seriesDefaults : {
@@ -507,7 +506,7 @@
 		
 		// =========================== Pie 그래프 클릭 이벤트 ============================
 			$('#graphPie').bind('jqplotDataClick',
-				    function (ev, seriesIndex, pointIndex, data) {                
+				    function (ev, seriesIndex, pointIndex, data) {  
 		        var cate = data[0];	// 카테고리
 		        var inout = $("#inout option:selected").val();		// 현재 선택된 항목 (수입-지출, 수입, 지출)
 				var period = $("#period option:selected").val(); 	// 선택된 기간	(월간, 연간, 기간)
@@ -529,8 +528,6 @@
 	
 // ========================== Div 그래프 데이터 조합  ==========================
 function chartDivData(cate, inout, period, year, time){
-	alert("time : "+time);
-	alert("카테고리 : "+cate);
 	var data = [];			// 조회한 달, 년, 기간 데이터
 	var dataBefore = [];	// 조회한 지난 달, 년, 기간 데이터
 	var maxMoney = 0;		// 최대 금액
@@ -542,10 +539,11 @@ function chartDivData(cate, inout, period, year, time){
 	var xBarTitle =""; 		// div x축 title
 	var cateBefore="";		// 저번 카테고리
 	var cateThis="";		// 이번 카테고리
+	var maxDay=0;			// 이달의 마지막 일
 	
 	if(period == 'month'){		// 월간
 		dateFormat = '%y/%m/%d';
-	
+		
 		<c:forEach var="monthDays" items="${monthDay}">
 		var income = 0;
 		var outcome = 0;
@@ -583,9 +581,10 @@ function chartDivData(cate, inout, period, year, time){
 				date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
 				xBarTitle = "년/월/일";
 			}else if(time == 'beforeTime'){	
-				date = i;
-			//	date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
-				xBarTitle = "월";
+				date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
+			//	date =i;
+				maxDay = i;	// 이달의 마지막날을 저장
+				xBarTitle = "일";
 			}
 			cateThis = "${calendarDTO.month+1}"+"월 "+cate;
 			
@@ -598,11 +597,11 @@ function chartDivData(cate, inout, period, year, time){
 			}
 			
 		</c:forEach>
-		
+	
 		if(time == 'beforeTime'){	// 전월 비교용
-			alert("div2 들어옴");
 		dateFormat = '%e';
 		i = 0;
+		maxDay=0;
 		<c:forEach var="monthDays" items="${monthDayBefore}">
 		var income = 0;
 		var outcome = 0;
@@ -637,8 +636,8 @@ function chartDivData(cate, inout, period, year, time){
 					}
 				}
 			</c:forEach>
-			// date = "${calendarDTO.year}/"+Number("${calendarDTO.month}")+"/"+i;
-			date = i;
+			date = "${calendarDTO.year}/"+Number("${calendarDTO.month+1}")+"/"+i;
+			maxDay=i;
 			if(inout == 'catein'){			// 수입
 				dataBefore.push([ date, Number(income) ]);
 			}else if(inout == 'cateout'){	// 지출
@@ -742,7 +741,6 @@ function chartDivData(cate, inout, period, year, time){
 						maxMoney = dayMaxMoney;
 					}
 				</c:if>
-				/* (year-1)+"/${i}" */
 				if(inout == 'catein'){			// 수입 
 					dataBefore.push([ "${i}" , Number(income) ]);
 				}else if(inout == 'cateout'){	// 지출
@@ -757,6 +755,8 @@ function chartDivData(cate, inout, period, year, time){
 		
 	}else if(period == 'selectPeriod'){	// 기간 
 		dateFormat = '%y/%m/%d';
+		var periodDays = [];	// 조회 기간 date
+		
 		<c:forEach var="periodDay" items="${selectPeriodList}">
 		var income = 0;
 		var outcome = 0;
@@ -789,14 +789,15 @@ function chartDivData(cate, inout, period, year, time){
 					maxMoney = dayMaxMoney;
 				}
 			</c:forEach>
-			if(time = "thisTime"){
+			if(time == "thisTime"){
 				xBarTitle = "년/월/일";
-			}else if(time = "beforeTime"){
+			}else if(time == "beforeTime"){
 				xBarTitle = "년/월/일";
 				
 			}
 			
 			cateThis = "조회기간 "+cate;
+			periodDays.push("${periodDay}");
 			
 			if(inout == 'catein'){			// 수입
 				data.push([ "${periodDay}" , Number(income) ]);
@@ -808,8 +809,9 @@ function chartDivData(cate, inout, period, year, time){
 		</c:forEach>
 		
 		
-		if(time == 'beforeTime'){
+		if(time =='beforeTime'){
 		dateFormat = '%m/%d';
+		var i = 0;
 		<c:forEach var="periodDay" items="${selectPeriodListBefore}">
 		var income = 0;
 		var outcome = 0;
@@ -844,12 +846,13 @@ function chartDivData(cate, inout, period, year, time){
 			</c:forEach>
 			
 			if(inout == 'catein'){			// 수입
-				dataBefore.push([ "${periodDay}" , Number(income) ]);
+				dataBefore.push([ periodDays[i] , Number(income) ]);
 			}else if(inout == 'cateout'){	// 지출
-				dataBefore.push([ "${periodDay}" , Number(outcome) ]);
+				dataBefore.push([ periodDays[i] , Number(outcome) ]);
 			}else if(inout == 'cateinout'){	// 수입-지출
-				dataBefore.push([ "${periodDay}" , Number(inoutcash) ]);
+				dataBefore.push([ periodDays[i] , Number(inoutcash) ]);
 			}
+			i++;
 		</c:forEach>
 		cateBefore="1년전 "+cate;
 		}
@@ -861,7 +864,7 @@ function chartDivData(cate, inout, period, year, time){
 		divColor = '#CE3636';	// 빨간색
 	}
 	
-	if(time== 'thisTime'){
+	if(time == 'thisTime'){
 		makeChartDiv(data, maxMoney, cateThis, dateFormat, divColor, xBarTitle);
 	}else if(time == 'beforeTime'){
 		makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, dateFormat, divColor, xBarTitle);
@@ -885,7 +888,7 @@ function makeChartDiv(data, maxMoney, cateThis, dateFormat, divColor, xBarTitle)
        }
       },
       yaxis: { // y축 옵션
-          label : '사용 금액', // y축 Label
+          label : '사용 금액(원)', // y축 Label
           min : 0, // 최소값
           max : maxMoney+5000,  // 최대값
           numberTicks : 11, // 인위적으로 축을 나누는 개수
@@ -926,8 +929,6 @@ function makeChartDiv(data, maxMoney, cateThis, dateFormat, divColor, xBarTitle)
    
 //========================== Div 그래프 제작 (조회기간 전) ==========================
 function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, dateFormat, divColor, xBarTitle) {
-    alert("data : "+data);
-    alert("dataBefore : "+dataBefore);
 	$('#graphDiv').empty();	// 기존 그래프 삭제
     var plot = $.jqplot('graphDiv', [data,dataBefore],{	// 라인 1, 라인 2
      axes:{
@@ -941,7 +942,7 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
        }
       },
       yaxis: { // y축 옵션
-          label : '사용 금액', // y축 Label
+          label : '사용 금액(원)', // y축 Label
           min : 0, // 최소값
           max : maxMoney+5000,  // 최대값
           numberTicks : 11, // 인위적으로 축을 나누는 개수
@@ -1030,7 +1031,7 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 
 	<!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
-
+<div class="container">
 	<div class="ledger_body">
 
 		<div class="top">
@@ -1083,6 +1084,6 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 			<div class="view_after" onclick="" style="cursor: pointer"></div>
 		</div>
 	</div>
-
+</div>
 </body>
 </html>

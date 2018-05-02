@@ -11,7 +11,7 @@
 
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="ledgercss/reset.css" /> -->
-<link rel="stylesheet" type="text/css" href="ledgercss/calendar.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/calendar.css?ver=3" />
 
 <script type="text/javascript">
 	
@@ -45,15 +45,25 @@
 			$(this).css('background-color','#EFEFEF');
 		});
 		
-		$("#search_btn").click(function(){	// 검색버튼 눌림
+		/* $("#search_btn").click(function(){	// 검색버튼 눌림
 			if($("#search").val()==""){
 				alert("검색어를 입력해주세요");
 				$("#search").focus();
 			}else{
 				location.href="ledgerSearch.do?keyword="+$("#search").val();
 			}
-		});
+		}); */
+		
+		
 	});
+	function search_Check(){
+		if($("#search").val()==""){
+			alert("검색어를 입력해주세요");
+			$("#search").focus();
+		}else{
+			location.href="ledgerSearch.do?keyword="+$("#search").val();
+		}
+	}
 	
 	// 숫자 3번째 자리마다 콤마(,) 찍기
 	function addComma(num) {
@@ -77,8 +87,10 @@
 <body class="total_body">
 <div class="calendar">
 <div class="searchBar">
-	<input type="button" id="search_btn" class="search_btn" value="검색">
+	<div id="search_btn" class="search_btn" onclick="search_Check();"></div>
+	<!-- <input type="button" id="search_btn" class="search_btn" value="검색"> -->
 	<input type="text" id="search" class="search" name="search" onkeyup="enterkey();">
+	
 </div>
 <!-- 날짜 네비게이션 -->
 <div class="navigation">
