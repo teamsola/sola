@@ -174,7 +174,7 @@ pageEncoding="UTF-8"%>
 						</c:if>
 					</div>
 					<div style="float:left;width:100%;height:60px;text-align: center;padding:10px 0;">
-						<c:if test="${recipeDTO.id == memId }">
+						<c:if test="${recipeDTO.id == memId || memId == 'admin'}">
 						<input type="button" id="underBtn" value="수정" onclick="location.href='recipe_modify.do?s=${recipeDTO.recipe_seq}&p=${pg}&k=${keyword}'">&nbsp;
 						<input type="button" id="underBtn" value="삭제" onclick="confirmDel()">&nbsp;
 						</c:if>
