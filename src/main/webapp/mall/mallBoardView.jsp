@@ -7,9 +7,6 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>글보기</title>
 <style>
-body{
-	margin-top:150px;
-}
 
 table{
 	margin:auto;

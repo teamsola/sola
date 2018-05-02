@@ -367,6 +367,9 @@ public class MemberController
 		String filePath = request.getSession().getServletContext().getRealPath("/storage");
 		String fileName = img.getOriginalFilename();
 		String nickname = request.getParameter("nickname");
+		
+		memberDTO = memberService.memberView(id);
+		String profile = memberDTO.getProfile();
 		int result = 0;
 
 		File file = new File(filePath, fileName);
@@ -386,17 +389,19 @@ public class MemberController
 			e.printStackTrace();
 		}
 
-		memberDTO.setProfile(fileName);
+		
 		memberDTO.setNickname(nickname);
 		memberDTO.setId(id);
 		memberDTO.toString();
 
 		if (fileName.equals(""))
 		{
+			memberDTO.setProfile(profile);
 			result = memberService.memberProfileUpdate2(memberDTO);			// 별명만 변경
 		}
 		else
 		{
+			memberDTO.setProfile(fileName);
 			result = memberService.memberProfileUpdate(memberDTO);			// 별명과 profile사진 모두 변경
 		}
 		if (result > 0)
@@ -417,9 +422,14 @@ public class MemberController
 		request.setCharacterEncoding("utf-8");
 		
 		String id = (String) session.getAttribute("memId");
+		String nickname = request.getParameter("nickname");
 
 		int result = memberService.memberProfileDelete(id);
 		System.out.println(result);
+		
+		memberDTO.setNickname(nickname);
+		memberDTO.setProfile("default_profile.jpg");
+		
 		if (result > 0)
 		{
 			modelAndView = new ModelAndView("/mainFrame.jsp");

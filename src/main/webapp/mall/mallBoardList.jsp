@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 
 <style>
-body{
-	padding-top:100px;
-}
-
 a{
 	color:black;
 	text-decoration:none;

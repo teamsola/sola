@@ -36,15 +36,17 @@ h2, h3{color: #6a6763;}
 	font-size: 14px;
 	font-weight: bold;
 	padding: 3px;
-	color: #6a6763;
+	color: white;
 }
 
 .btn{
 		width: 100px;
 		height: 35px;
-		background-color: #eff1f2;
+		background-color: white;
 		color: #6a6763;
-		border: 2px solid #e3e4e5;
+		border: 2px solid #ff8400;
+		border-radius: 20px;
+		outline: none;
 	}
 	
 .container {
@@ -67,7 +69,7 @@ table{
 		margin: auto;
 	}
 th,td { border:1px solid #6a6763; }
-table td:first-child{border-left: none; background-color: #e3e7ed; width: 200px;}
+table td:first-child{border-left: none; background-color: #ff8400; width: 200px;}
 table td:last-child{border-right: none; width: 650px;}
 
 .pwfield.in, .memberinfofield.in{

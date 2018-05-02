@@ -8,7 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewDay.css?ver=2" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewDay.css?ver=3" />
 
 <script type="text/javascript">
 
@@ -21,12 +22,12 @@ $(document).ready(function() {
 		<c:if test="${list.income ne 0 }">	<!-- 수입이 0이 아닐경우 -->
 			totalInSum += Number('${list.income }');
 			numberFormat = addComma('${list.income }');
-			$(".cateinout").append("<div class=\"inner\" onclick=\"location.href='ledgerViewDetail.do?stringDate=${stringDate }&seq=${list.seq}'\"> <div class=\"cate\">${list.category }</div><div class=\"inout\" style=\"color:blue\">"+numberFormat+"</div></div><br>");
+			$(".cateinout").append("<div class=\"inner\" onclick=\"location.href='ledgerViewDetail.do?stringDate=${stringDate }&seq=${list.seq}'\"> <div class=\"cate\">${list.category }</div><div class=\"inout\"> <span style=\"color:blue\">"+numberFormat+"</span></div></div><br>");
 		</c:if>
 		<c:if test="${list.spand ne 0 }">	<!-- 지출이 0이 아닐경우 -->
 			totalOutSum +=Number('${list.spand }');
 			numberFormat = addComma('${list.spand }');
-			$(".cateinout").append("<div class=\"inner\" onclick=\"location.href='ledgerViewDetail.do?stringDate=${stringDate }&seq=${list.seq}'\"> <div class=\"cate\">${list.category }</div><div class=\"inout\" style=\"color:red\">"+numberFormat+"</div></div><br>");
+			$(".cateinout").append("<div class=\"inner\" onclick=\"location.href='ledgerViewDetail.do?stringDate=${stringDate }&seq=${list.seq}'\"> <div class=\"cate\">${list.category }</div><div class=\"inout\"> <span style=\"color:red\">"+numberFormat+"</span></div></div><br>");
 		</c:if>
 		$(".inner").css("cursor","pointer");
 		
@@ -90,7 +91,7 @@ function addComma(num) {
 <body>
 	<!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
-	
+	<div class="container">
 	<div class="ledger_body">
 
 		<div class="top">
@@ -134,6 +135,7 @@ function addComma(num) {
 							style="cursor: pointer;">
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
