@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewAll.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle2.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewAll.css?ver=2" />
 
 <script type="text/javascript">
 
@@ -104,7 +105,7 @@ function addComma(num) {
 	
 	<!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
-	
+	<div class="container">
 	<div class="ledger_body">
 
 		<div class="top">
@@ -137,6 +138,6 @@ function addComma(num) {
 			</div>
 		</div>
 	</div>
-	
+	</div>
 </body>
 </html>
