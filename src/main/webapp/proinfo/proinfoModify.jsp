@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,17 +29,17 @@
 	<div class="container">
       <div id='glayLayer'></div>
       <div id='overLayer'>
-         <div class="ol_top" align="right"><input type="button" id="cancel" value="x"/></div>
+         <div class="ol_top" align="right"><input type="button" id="cancel" onclick="history.back()" value="x"/></div>
          
          <form action="proinfoModify.do" name="proinfoModify" method="post" enctype="multipart/form-data">
          <div class="ol_center">
          	<input type="hidden" name="seq" value="${proinfoDTO.seq }">
          	<div id="select" class="select">		<!-- 카테고리 -->
          		<select name="category" id="category" class="category">
-						<option value="0">항목 선택</option>
-						<option value="live">입주 전</option>
-						<option value="living">입주 중</option>
-						<option value="lived">입주 후</option>
+						<option value="0" <c:out value="${proinfoDTO.category == '0'?'selected':''}"/>>항목 선택</option>
+						<option value="live" <c:out value="${proinfoDTO.category == 'live'?'selected':''}"/>>입주 전</option>
+						<option value="living" <c:out value="${proinfoDTO.category == 'living'?'selected':''}"/>>입주 중</option>
+						<option value="lived" <c:out value="${proinfoDTO.category == 'lived'?'selected':''}"/>>입주 후</option>
 				</select>
          	</div>
          	<div  class="subject">					<!-- 제목 -->

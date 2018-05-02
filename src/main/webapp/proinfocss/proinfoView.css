@@ -201,9 +201,13 @@ div#overLayer {
 
 .contents{
 	width: 98%;
+	min-height: 250px;
 	border: 1px solid black;
 	margin: auto;
 	margin-top: 10px;
+}
+.contents label{
+	min-height: 200px;
 }
 .insert_btn{
 	margin-top: 10px;

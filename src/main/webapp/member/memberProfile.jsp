@@ -30,7 +30,7 @@
 		margin: auto;
 	}
 
-	th { border:1px solid gray; }
+	th,td { border:1px solid gray; }
 	table th{
 		border-left: none;
 		background-color:  #e3e7ed;
@@ -38,6 +38,7 @@
 	}
 	table td{
 		border-right: none;
+		border-left: none;
 	}
 	h2{
 		color: #6a6763;
@@ -69,13 +70,13 @@
 		<tr>
 			<th width="100" rowspan="2"><label>프로필 사진</label></th>
 			<td class="profileImg" align="center" rowspan="2">
-				<img alt="" src="storage/${memberDTO.profile }" width="100" height="100" />
+				<img alt="" src="storage/${memberDTO.profile }" width="100" height="100"/>
 			</td>
-			<td align="left">
+			<td align="left" style="border-bottom: none;">
 				<input type="file" name="img" size="45">
 			</td>
 		</tr>
-		<tr><td align="left"><input type="button" value="삭제" class="btn" onclick="location.href='memberProfileDelete.do'"/></td></tr>
+		<tr><td align="left" style="border-top: none;"><input type="button" value="삭제" class="btn" onclick="location.href='memberProfileDelete.do'"/></td></tr>
 		<tr>
 			<th><label>별명</label></th>
 			<td colspan="2" style="border-top: 1px solid gray;">

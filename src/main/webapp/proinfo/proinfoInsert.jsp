@@ -26,7 +26,7 @@
 	<div class="container">
       <div id='glayLayer'></div>
       <div id='overLayer'>
-         <div class="ol_top" align="right"><input type="button" id="cancel" value="x"/></div>
+         <div class="ol_top" align="right"><input type="button" id="cancel" onclick="location.href='proinfoMain.do'" value="x"/></div>
          
          <form action="proinfoInsert.do" name="proinfoInsert" method="post" enctype="multipart/form-data">
          <div class="ol_center">
