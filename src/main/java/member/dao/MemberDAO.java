@@ -108,6 +108,31 @@ public class MemberDAO
 		return sqlSession.delete("mybatis.memberMapper.memberWd",id);
 	}
 
+	public List<String> findIdByEmail(String email1, String email2)
+	{
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email1", email1);
+		map.put("email2", email2);
+		return sqlSession.selectList("mybatis.memberMapper.findIdByEmail", map);
+	}
+	
+	public List<String> findIdByTel(String tel1, String tel2, String tel3)
+	{
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("tel1", tel1);
+		map.put("tel2", tel2);
+		map.put("tel3", tel3);
+		return sqlSession.selectList("mybatis.memberMapper.findIdByTel", map);
+	}
+	
+	public String findPw(String email1, String email2)
+	{
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("email1", email1);
+		map.put("email2", email2);
+		return sqlSession.selectOne("mybatis.memberMapper.findPw", map);
+	}
+	
 	
 	public MemberDAO()
 	{

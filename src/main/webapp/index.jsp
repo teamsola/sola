@@ -7,6 +7,10 @@
 <title>SOLA</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/sola/js/memberScript.js"></script>
+<script type="text/javascript">
+var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=450, height=450, location, resizable")};
+</script>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
 <style type="text/css">
 html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;}
 #joinLink:link, #joinLink:visited{font-size:12px; color:white;text-decoration: none;}

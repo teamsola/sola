@@ -21,4 +21,7 @@ public interface MemberService
 	public int getTotalA();
 	public int getTotalS(String searchOp,String keyword);
 	public int memberWd(String id);
+	public ArrayList<String> findIdByEmail(String email1, String email2);
+	public ArrayList<String> findIdByTel(String tel1, String tel2, String tel3);
+	public String findPw(String email1, String email2);
 }

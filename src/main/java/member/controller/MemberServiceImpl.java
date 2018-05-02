@@ -84,5 +84,21 @@ public class MemberServiceImpl implements MemberService
 		return memberDAO.memberWd(id);
 	}
 
+	public ArrayList<String> findIdByEmail(String email1, String email2)
+	{
+		return (ArrayList<String>)memberDAO.findIdByEmail(email1, email2);
+	}
+
+	public ArrayList<String> findIdByTel(String tel1, String tel2, String tel3)
+	{
+		return (ArrayList<String>)memberDAO.findIdByTel(tel1, tel2, tel3);
+	}
+
+	public String findPw(String email1, String email2)
+	{
+		return memberDAO.findPw(email1, email2);
+	}
+	
+	
 
 }
