@@ -64,6 +64,8 @@
 		
 		// 유효성 검사
 		$("#modifyButton").click(function(){	// 입력 버튼이 눌렸을때
+			var blank_pattern = /[\s]/g;
+		
 			if($("#inOut").val()=='선택'){
 				alert("입/출금을 선택해주세요.");
 				$("#inOut").focus(); 
@@ -75,6 +77,9 @@
 				$("#money").focus(); 
 			}else if(isNaN($("#money").val())){
 				alert("금액에는 숫자만 입력 가능합니다.");
+				$("#money").focus(); 
+			}else if(blank_pattern.test($("#money").val()) == true){	// 공백 불가
+				alert("금액에 공백을 제거해주세요");
 				$("#money").focus(); 
 			}else if($("#contents").val().length>10){
 				alert("내용은 10자까지만 가능합니다.");
@@ -95,6 +100,8 @@
 		
 		// 금액을 입력할때 이벤트 발생
 		$("#money").keyup(function(){
+			var blank_pattern = /[\s]/g;
+			
 			if($("#money").val()==""){
 				$("#moneyCheck").text("금액을 적어주세요");
 				$("#moneyCheck").css("color", "black");
@@ -104,7 +111,12 @@
 			}else if(!isNaN($("#money").val())){
 				$("#moneyCheck").text("입력 가능합니다");
 				$("#moneyCheck").css("color", "blue");
-			};
+			}
+			if(blank_pattern.test($("#money").val()) == true){	// 공백 불가
+				$("#moneyCheck").text("공백을 제거해주세요");
+				$("#moneyCheck").css("color", "red");
+			}
+			
 		});
 		
 		// content, contentPlus 글자수 제한
@@ -196,10 +208,8 @@
 			</li>
 			<li>
 				<div class="text_subject">추가내용 : </div>
-				<div class="text_desc2">
-					<div class="text_area">
-						<textarea class="text_insert2" id="contentPlus" name="contentPlus" rows="4" cols="33">${ledgerDTO.contentPlus }</textarea>
-					</div>
+				<div class="text_desc">
+					<input type="text" class="text_insert2" id="contentPlus" name="contentPlus" value="${ledgerDTO.contentPlus }">
 					<label class="text_check2" id="contentPlusCheck"></label>
 				</div>
 			</li>

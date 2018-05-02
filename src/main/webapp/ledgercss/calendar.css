@@ -105,18 +105,21 @@ select {
 	float:right;
 }
 
-.searchBar .search_btn{	/* 검색 버튼 */
-	width:50px;
+.searchBar .search_btn{	/* 검색 div */
+	width:25px;
 	height:25px;
 	margin-left:10px;
 	float:right;
-	background-color : #ff8400;
-	color:white;
+	background-image: url('../ledgerimg/search icon2.png');
+	background-repeat: no-repeat;
+	background-position:conter center;
+	background-size:100% 100%;
 }
 
 .searchBar .search_btn:hover{	/* 검색 버튼 hover 이벤트*/
 	background-color : #ff8200;
 	/* color:white; */
+	cursor:pointer;
 }
 
 .navigation {

@@ -62,4 +62,12 @@
 		delete from ledger where seq=#{seq}  and id=#{id}
 	</delete>
 	
+	<!-- 가계부 검색 -->
+	<select id="searchLedger" parameterType="java.util.Map" resultType="ledgerDTO">
+		select * from ledger where 
+			(content like #{keyword} or contentplus like #{keyword} or inout like #{keyword} or 
+			income like #{keyword} or spand like #{keyword} or category like #{keyword})
+			and id=#{id} ORDER BY logdate DESC
+	</select>
+	
 </mapper>

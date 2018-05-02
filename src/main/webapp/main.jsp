@@ -29,7 +29,8 @@
 			<jsp:include page="/common/nav.jsp" />
 		</c:if>
 		<c:if test="${memId.length() < 6}">
-			<jsp:include page="/common/nav_admin.jsp" />
+			<jsp:include page="/common/nav.jsp" />
+			<%-- <jsp:include page="/common/nav_admin.jsp" /> --%>
 		</c:if>
 	</nav>
 	<section class="event_banner">

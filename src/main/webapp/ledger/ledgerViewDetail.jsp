@@ -92,8 +92,8 @@
 			</li>
 			<li>
 				<div class="text_subject">추가내용 : </div>
-				<div class="text_desc2">
-					<textarea class="text_area" readonly="readonly" rows="4" cols="33">${ledgerDTO.contentPlus }</textarea>
+				<div class="text_desc">
+					<label>${ledgerDTO.contentPlus }</label>
 				</div>
 			</li>
 			<li class="button_li">

@@ -37,5 +37,8 @@ public interface LedgerService {
 	
 	// 가계부 삭제
 	public int DeleteLedger(int seq, String id);
+	
+	// 가계부 검색
+	public List<LedgerDTO> searchLedger(String keyword, String id);
 
 }

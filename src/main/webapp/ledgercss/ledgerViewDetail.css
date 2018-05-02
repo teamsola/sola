@@ -97,24 +97,6 @@
 	font-size: 18px;
 }
 
-.ledger_body ul li .text_desc2 {	/* textarea 부분 */
-	
-	height: 70px;
-	width: 50%;
-	float: left;
-	font-size: 18px;
-}
-
-
-.ledger_body ul li .text_desc2 .text_area{	/* textarea 속성 */
-	
-	height: 100%;
-	width: 100%;
-	float: left;
-	font-size: 18px;
-	resize:none;
-}
-
 
 .ledger_body ul .button_li {		/* 버튼의 위치 */
 /* border: 1px solid red; */
