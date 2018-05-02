@@ -12,7 +12,12 @@ var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비�
 </script>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <style type="text/css">
-html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;}
+@font-face {
+	font-family:"NanumGothic";
+	src:url('../font/NanumGothic.eot?#iefix') format('embedded-opentype');
+}
+body{font-family: 'NanumGothic' !important;}
+html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-family: NanumGothic;}
 #joinLink:link, #joinLink:visited{font-size:12px; color:white;text-decoration: none;}
 #joinLink:hover, #joinLink:active{color:#ff8400;}
 #id:focus, #pwd:focus{outline:none;border-bottom:1px solid #ff8400;transition:.3s ease;}
