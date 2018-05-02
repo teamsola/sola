@@ -38,7 +38,8 @@ public class MallController {
 		System.out.println("--------------");
 		System.out.println("인덱스 들어옴");
 		
-		String id="zz";	//임시id
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		ArrayList<MallDTO> list2=mallService.mallList();
 		
@@ -64,7 +65,10 @@ public class MallController {
 		ModelAndView modelAndView=new ModelAndView();
 		
 		System.out.println("--------------");
-		System.out.println("등록하기form 들어옴");
+		System.out.println("신상 게시판 등록 form");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		modelAndView.addObject("content","/mall/mallInsertForm.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
@@ -77,11 +81,10 @@ public class MallController {
 		
 		ModelAndView modelAndView=new ModelAndView();
 		System.out.println("--------------");
-		System.out.println("등록하기 들어옴");
+		System.out.println("신상 게시판 등록 처리");
 		
 		HttpSession session=request.getSession();
-		
-		String id="zz";
+		String id = (String)session.getAttribute("memId");
 		
 		String filePath = session.getServletContext().getRealPath("/sola/storage");
 		//C:/Users/my/Desktop/kgitbank/spring/workspace/sola/src/main/webapp/storage/
@@ -104,6 +107,7 @@ public class MallController {
 		
 		MallDTO mallDTO=new MallDTO();
 		mallDTO.setId(id);
+		
 		mallDTO.setImg(fileName);
 		mallDTO.setSubject(subject);
 		mallDTO.setMallurl(mallurl);
@@ -129,9 +133,10 @@ public class MallController {
 		
 		
 		System.out.println("--------------");
-		System.out.println("더보기 들어옴");
+		System.out.println("신상 게시판 더보기");
 		
-		String id="zz";	//임시id
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		ArrayList<MallDTO> list2=mallService.mallList();
 		
@@ -149,8 +154,10 @@ public class MallController {
 		
 		
 		System.out.println("--------------");
-		System.out.println("(관리자)수정하기form 들어옴");
+		System.out.println("(관리자)수정/삭제 관리");
 		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		ArrayList<MallDTO> list2=mallService.mallList();
 		
@@ -168,15 +175,19 @@ public class MallController {
 		
 		ModelAndView modelAndView=new ModelAndView();
 		
-		
 		System.out.println("--------------");
-		System.out.println("(관리자)수정하기form 들어옴");
+		System.out.println("(관리자)수정하기form");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		int mall_seq=Integer.parseInt(request.getParameter("mall_seq"));
+		String img=request.getParameter("img");
 		
 		MallDTO mallDTO=mallService.mallView(mall_seq);
 		
 		modelAndView.addObject("mall_seq",mall_seq);
+		modelAndView.addObject("img",img);
 		modelAndView.addObject("mallDTO",mallDTO);
 		
 		modelAndView.addObject("content","/mall/mallUpdateForm.jsp");
@@ -193,13 +204,13 @@ public class MallController {
 		ModelAndView modelAndView=new ModelAndView();
 		
 		HttpSession session=request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		System.out.println("--------------");
 		System.out.println("(관리자)수정하기 들어옴");
 		
 		String subject=request.getParameter("subject");
 		String mallurl=request.getParameter("mallurl");
-		String id="zz";
 		int mall_seq=Integer.parseInt(request.getParameter("mall_seq"));
 		
 		String filePath = session.getServletContext().getRealPath("/sola/storage");
@@ -229,7 +240,6 @@ public class MallController {
 		
 		int su=mallService.mallUpdate(mallDTO);
 		
-		
 		modelAndView.addObject("su",su);
 		
 		modelAndView.addObject("content","/mall/mallUpdate.jsp");
@@ -245,7 +255,10 @@ public class MallController {
 		
 		
 		System.out.println("--------------");
-		System.out.println("(관리자)삭제하기 들어옴");
+		System.out.println("(관리자)삭제하기");
+		
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("memId");
 		
 		int mall_seq=Integer.parseInt(request.getParameter("mall_seq"));
 		
