@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css?ver=1"/>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=5"/>
 <link rel="stylesheet" type="text/css" href="css/banner.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/nav.js?ver=4"></script>
 <script src="js/banner.js"></script>
 <script type="text/javascript">
 
@@ -23,14 +23,16 @@
 </head>
 <body>
 <div id="wrapper" class="frame">
-	<header><jsp:include page="/common/header.jsp" /></header>
 	<nav role="gnb">
+		<div onclick="location.href='main.do'"><img class="logo_img" src="img/logo(org).png"></div>
+		<div class="profile_img" onclick="location.href='member.do'"></div>
 		<c:if test="${memId.length() >= 6}">
 			<jsp:include page="/common/nav.jsp" />
 		</c:if>
 		<c:if test="${memId.length() < 6}">
 			<jsp:include page="/common/nav_admin.jsp" />
 		</c:if>
+		
 	</nav>
 	<section class="event_banner">
  		<div id="banners">
