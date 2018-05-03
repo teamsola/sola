@@ -4,6 +4,7 @@ html, body{width:100%; position: absolute; margin:0; padding:0; display:block; /
 
 header, footer,  nav
 {
+	/* overflow:hidden; */
 	margin: 0;
 	background-color: #6a6763;
 	box-sizing: border-box;
@@ -19,15 +20,15 @@ header, footer,  nav
 }
 #wrapper
 {
-	/* overflow-y: scroll; */
+	overflow-y: scroll;
 	width: 100%;
-	text-align: center;
 	min-height: 1000px;
 }
 a
 {
 	color: white;
 	text-decoration:none;
+	
 	
 }
 a:hover
@@ -69,43 +70,62 @@ header
 	min-height: 700px;
 	width: 100%;
 }
+
+
 nav	/* 네비 바 */
 {
+	padding : 0px;
+	margin:0px;
 	height: 60px;
-	border-bottom: 4px white solid;
 	min-height: 50px;
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+	border-bottom: 0px;
+}
+
+
+
+.logo_img{	/* 로고 이미지 */
+	margin-top:10px;
+	height:45px;
+	float:left;
+	cursor:pointer;
 	
 }
 
-.logo_img{
-	height:45px;
-	margin: 15px 0px 0px 10px;
-	float:left;
-	cursor:pointer;
+nav>#lv1>#myLv2{
+	float:right;
+	text-align: right;
 }
 
 .profile_img{	/* 프로필 이미지 */
-	height:50px;
-	width:50px;
+	height:40px;
+	width:40px;
 	margin: 10px 10px 5px 8px;
-	background-image: url('../img/basic_img.png');
+	/* background-image: url('../img/basic_img.png');
 	background-repeat: no-repeat;
 	background-position:conter center;
-	background-size:100% 100%;
-	float:right;
+	background-size:100% 100%; */
+	/* float:right; */
 	cursor:pointer;
 	border-radius: 50%;
 	border: solid white 1px;
+	
 }
 
 nav>ul	/* nav 전체 */
 {
-	margin-left: 120px;
+	/* margin-left: 120px; */
+	margin:0px;
 	padding: 0px;
-	height: 90%;
-	width: 70%;
+	height: 60px;
+	width: 100%;
 	float:left;
 	overflow: hidden;
+	position: fixed;
+	top: 0px;
+	/* border: solid blue 1px; */
 }
 nav>#lv1>li	/* nav 개개인 항목 */
 {
@@ -113,13 +133,22 @@ nav>#lv1>li	/* nav 개개인 항목 */
 	/* margin-top:10px; */
 	float: left;
 	position: relative;
+	
 	list-style: none;
-	height: 60%;
-	width: 15%;
+	height: 60px;
+	width: 12%;
 	text-align: center;
 	vertical-align: middle;
 	color:white;
+	/* border: solid blue 1px; */
 }
+
+nav>#lv1>#logo{
+	padding:0;
+	width:14%;
+}
+
+
 nav>#lv1>li>a
 {
 	margin: 0px;
@@ -142,11 +171,12 @@ nav>#lv2	/* 레벨 2메뉴바 */
 {
 	background-color: transparent;
     z-index: 10;
-    position: absolute;
+    position: fixed;
+    top: 0px;
     padding: 0px;
-    width: 1200px;
-    margin-top: 50px;
-    margin-left: 77px;
+    width: 100%;
+    margin-top:60px;
+   /*  left: 247px; */
     display: block;
     float: left;
     
@@ -155,10 +185,10 @@ nav>#lv2>ul.lv2-list
 {
 	margin-left: 0px;
 	margin-top:0px;
-	padding-top: 17px;
+	/* padding-top: 17px; */
 	padding-left: 0px;
 	float: left;
-	width: 14%;
+	width: 12%;
 	height: 4px;
 	visibility: hidden;
 }
@@ -170,29 +200,23 @@ nav>#lv2>ul.lv2-list>li	/* 레벨 2 메뉴바 메뉴 */
 	height : 39px;
 	list-style: none;
 	text-align: center;
+	/* border: solid red 1px; */
 }
 /* nav>#lv1>li:hover, nav>#lv1>li>a:hover
 {
 	color: #ff8400;
 	background-color: #6a6763;
 } */
-nav.gnb-fixed-top
-{
-	position: fixed;
-	top: 0;
-	z-index: 1000;
-	border-bottom: 0px;
-}
-
 
 nav #progressbar
 {
+	position: fixed;
+	top: 57px;
 	height: 3px;
 	width: 100%;
 	visibility: hidden;
 	background-color: #ff8400;
 	float: left;
-	margin-top:-25px;
 }
 footer
 {
