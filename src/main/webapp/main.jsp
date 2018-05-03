@@ -25,14 +25,8 @@
 <div id="wrapper" class="frame">
 <div class="title">
 	<nav role="gnb">
-		<!-- <div onclick="location.href='main.do'"><img class="logo_img" src="img/logo(org).png"></div> -->
-		<!-- <div class="profile_img" onclick="location.href='member.do'"></div> -->
-		<c:if test="${memId.length() >= 6}">
-			<jsp:include page="/common/nav.jsp" />
-		</c:if>
-		<c:if test="${memId.length() < 6}">
-			<jsp:include page="/common/nav_admin.jsp" />
-		</c:if>
+		
+		<jsp:include page="/common/nav.jsp" />
 	</nav>
 	</div>
 	<section class="event_banner">
