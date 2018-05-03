@@ -40,7 +40,6 @@ $(document).ready(function()
 			 {
 		 		var sc = $(window).scrollTop();
 		 		var scPer = 100 * sc / ($(document).height() - $(window).height());
-		 			$("nav").addClass("gnb-fixed-top");
 		 			$("#progressbar").css("visibility", "visible");
 		 			$("#progressbar").width(parseInt(scPer, 10) + "%");
 		 		
