@@ -8,6 +8,7 @@ pageEncoding="UTF-8"%>
 <script type="text/javascript" src="/sola/js/memberScript.js"></script>
 <script type="text/javascript">
 	alert("아이디 또는 비밀번호가 잘못되었습니다.");
+	var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=500, height=450, location=no, resizable=no")};
 </script>
 <style type="text/css">
 body{
@@ -23,6 +24,16 @@ body{
 #id, #pwd{width: 170px;font-size:18px;background:none;border-style:none;border-bottom:1px solid white; color:white;}
 input[type=button]{border-style:none; border:1px solid #ff8400;outline:none;color:white; border-radius: 2px; width:70px;height:24px;background: orange;text-align: center;}
 input[type=button]:hover{background: #ff8400;outline: none;}
+a
+{
+	color: #ff8400;
+	font-size: 12px;
+	text-decoration: none;
+}
+a:visited
+{
+	color: #ff8400;
+}
 </style>
 </head>
 <body>
@@ -35,6 +46,7 @@ input[type=button]:hover{background: #ff8400;outline: none;}
 		<input type="button" value="로그인" onclick="javascript:checkLogin()"/>
 		<input type="button" value="회원가입" onclick="javascript:location.href='joinForm.do'">
 	</div>
+	<a href="javascript:findAccount()">아이디/비밀번호가 생각이 나지 않으세요?</a>
 </form>
 </body>
 </html>
