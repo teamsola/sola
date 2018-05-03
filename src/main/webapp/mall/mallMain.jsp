@@ -19,7 +19,7 @@
 	background-repeat: no-repeat;
 }
 
-a{
+#title a{
 	color:black;
 	text-decoration:none;
 }
@@ -173,7 +173,7 @@ table{
 
 	
 		<div id="title">
-				<span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">M A L L</span>
+				<a href="mallIndex.do"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">M A L L</span></a>
 			</div>
 		
 	
