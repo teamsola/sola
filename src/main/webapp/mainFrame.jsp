@@ -9,6 +9,9 @@
 <link rel="stylesheet" type="text/css" href="css/main.css" />
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/nav.js"></script>
+<style type="text/css">
+#body{margin:60px auto 0 auto;}
+</style>
 <script>
 	var loginCheck = function()
 	{
