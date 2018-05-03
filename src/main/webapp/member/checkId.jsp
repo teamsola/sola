@@ -10,8 +10,7 @@ pageEncoding="UTF-8"%>
 		<script type="text/javascript">
 			function checkIdClose(){
 				$("#id", opener.document).val("${id}");
-				$("#idAuth", opener.document).val("ok");
-				$("#id", opener.document).attr("readonly", "readonly");
+				$("#idAuth", opener.document).val("${id}");
 //				opener.joinForm.id.value = '${id }';
 //				opener.joinForm.idAuth.value = "ok";
 				window.close();
