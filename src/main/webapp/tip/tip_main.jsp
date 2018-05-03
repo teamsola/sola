@@ -94,6 +94,7 @@ pageEncoding="UTF-8"%>
 			color: white;
 			line-height: 35px;
 			text-shadow: 1px gray;
+			text-align: left;
 		}
 		.detail_left{
 			margin-left: 30px;
@@ -104,6 +105,7 @@ pageEncoding="UTF-8"%>
 			font-size: 14px;
 			color: white;
 			line-height: 20px;
+			text-align: left;
 		}
 		
 		.title_right{
@@ -127,6 +129,7 @@ pageEncoding="UTF-8"%>
 			font-size: 38px;
 			line-height: 35px;
 			text-shadow: 1px gray;
+			text-align:left;
 			color:black;
 		}
 		.detail_left_menu3{
@@ -137,6 +140,7 @@ pageEncoding="UTF-8"%>
 			height: 150px;
 			font-size: 14px;
 			color: black;
+			text-align:left;
 			line-height: 20px;
 		}
 		.detail_right{
