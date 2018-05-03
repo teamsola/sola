@@ -6,17 +6,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
+#title{
+	padding:20px;
+	line-height:150px;
+	float:left; 
+	width:100%;
+	height:150px; 
+	background-image: url('/sola/storage/몰타이틀.JPG'); 
+	background-size:cover; 
+	background-position:center; 
+	background-repeat: no-repeat;
+}
+
 a{
 	color:black;
 	text-decoration:none;
-}
-
-
-#title{
-	text-decoration:bold;
-	margin-top:40px;
-	font-size:40px;
-	text-align:center;
 }
 
 #newtext{
@@ -66,24 +71,19 @@ tr{
 	width:100%;
 	height:600px;
 	box-sizing:border-box;
-	margin-top:100px;
 }
 	
 #old{
-	background-color:#FAE0D4;
-   	
 	width:50%;
 	height:100%;
 	float:left;
 	box-sizing:border-box;
-	border-right-color:#993800;
+	border-right-color:#BDBDBD;
   	border-right-style: solid;
    	border-right-width: 1px;
 }
 
 #new{
-	background-color:#FAE0D4;
-	
 	width:50%;
 	height:100%;
 	float:right;
@@ -124,9 +124,8 @@ tr{
 }
 
 #goback{
-	margin-top:50px;
-	margin-bottom:50px;
-	
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -139,11 +138,11 @@ tr{
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 	
 }
@@ -153,9 +152,11 @@ tr{
 
 
 
-	<p id="title">
-	MALL
-	</p>
+	
+		<div id="title">
+				<span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">M A L L</span>
+			</div>
+		
 	
 	
 	

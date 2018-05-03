@@ -79,4 +79,16 @@
 
 	<delete parameterType="java.lang.String" id="memberWd"> delete from member
 		where id=#{id} </delete>
+		
+	<select resultType="String" parameterType="java.util.Map" id="findIdByEmail">
+		select id from member where email1=#{email1} and email2=#{email2} order by joinDate
+	</select>
+	
+	<select resultType="String" parameterType="java.util.Map" id="findIdByTel">
+		select id from member where tel1=#{tel1} and tel2=#{tel2} and tel3=#{tel3} order by joinDate
+	</select>
+	
+	<select resultType="String" parameterType="java.util.Map" id="findPw">
+		select id from member where email1=#{email1} and email2=#{email2}
+	</select>
 </mapper>

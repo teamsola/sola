@@ -25,10 +25,13 @@ pageEncoding="UTF-8"%>
 		margin: 5px;
 	}
 	.btn{
-		width: 70px;
-		padding: 3px;
-		margin-left: 15px;
-		height: 30px;
+		width: 100px;
+		height: 35px;
+		background-color: white;
+		color: #6a6763;
+		border: 2px solid #ff8400;
+		border-radius: 20px;
+		outline: none;
 	}
 	.denouement{
 		margin: 0;

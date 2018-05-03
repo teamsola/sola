@@ -367,6 +367,9 @@ public class MemberController
 		String filePath = request.getSession().getServletContext().getRealPath("/storage");
 		String fileName = img.getOriginalFilename();
 		String nickname = request.getParameter("nickname");
+		
+		memberDTO = memberService.memberView(id);
+		String profile = memberDTO.getProfile();
 		int result = 0;
 
 		File file = new File(filePath, fileName);
@@ -386,17 +389,19 @@ public class MemberController
 			e.printStackTrace();
 		}
 
-		memberDTO.setProfile(fileName);
+		
 		memberDTO.setNickname(nickname);
 		memberDTO.setId(id);
 		memberDTO.toString();
 
 		if (fileName.equals(""))
 		{
+			memberDTO.setProfile(profile);
 			result = memberService.memberProfileUpdate2(memberDTO);			// 별명만 변경
 		}
 		else
 		{
+			memberDTO.setProfile(fileName);
 			result = memberService.memberProfileUpdate(memberDTO);			// 별명과 profile사진 모두 변경
 		}
 		if (result > 0)
@@ -417,9 +422,14 @@ public class MemberController
 		request.setCharacterEncoding("utf-8");
 		
 		String id = (String) session.getAttribute("memId");
+		String nickname = request.getParameter("nickname");
 
 		int result = memberService.memberProfileDelete(id);
 		System.out.println(result);
+		
+		memberDTO.setNickname(nickname);
+		memberDTO.setProfile("default_profile.jpg");
+		
 		if (result > 0)
 		{
 			modelAndView = new ModelAndView("/mainFrame.jsp");
@@ -649,4 +659,157 @@ public class MemberController
 		return modelAndView;	
 	}
 
+	@RequestMapping(value="findAccount.do")
+	public ModelAndView findAccount(HttpServletRequest request, HttpServletResponse response)
+	{
+		return new ModelAndView("/member/find/findAccount.jsp");
+	}
+	
+	@RequestMapping(value="/member/find/findIdByEmail.do")
+	public ModelAndView findIdByEmail(String email_id, HttpServletResponse response)
+	{
+		String[] array = email_id.split("@");
+		String email1 = array[0];
+		String email2 = array[1];
+
+		ArrayList<String> ids = memberService.findIdByEmail(email1, email2);
+		ModelAndView modelAndView = null;
+		
+		if(ids != null)
+		{
+			modelAndView = new ModelAndView("/member/find/findIdResult.jsp");
+			modelAndView.addObject("ids", ids);
+		}
+		else
+		{
+			try
+			{
+				PrintWriter out;
+				out = response.getWriter();
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<html>");
+				out.println("<script>");
+				out.println("alert('해당 이메일 정보가 없습니다.')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.println("</html>");
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/member/find/findIdByTel.do")
+	public ModelAndView findIdByTel(String tel1, String tel2, String tel3, HttpServletResponse response)
+	{	
+		ArrayList<String> ids = memberService.findIdByTel(tel1, tel2, tel3);
+		ModelAndView modelAndView = null;
+		
+		if(ids != null)
+		{
+			modelAndView = new ModelAndView("/member/find/findIdResult.jsp");
+			modelAndView.addObject("ids", ids);
+		}
+		else
+		{
+			try
+			{
+				PrintWriter out;
+				out = response.getWriter();
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<html>");
+				out.println("<script>");
+				out.println("alert('해당 전화번호 정보가 없습니다.')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.println("</html>");
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/member/find/findPw.do")
+	public ModelAndView findPw(String id, String email_pwd, HttpServletRequest request, HttpServletResponse response)
+	{
+		String[] array = email_pwd.split("@");
+		String email1 = array[0];
+		String email2 = array[1];
+		
+		MemberDTO memberDTO = new MemberDTO();
+	
+		memberDTO.setId(id);
+		memberDTO.setEmail1(email1);
+		memberDTO.setEmail2(email2);
+		
+		// 임시비밀번호 만들기
+		ArrayList<Character> list = new ArrayList<>();
+		
+		for(char i = '0'; i <= '9'; i++)
+		{
+			list.add(i);
+		}
+		for(char i = 'a'; i <= 'z'; i++)
+		{
+			list.add(i);
+		}
+		for(char i = 'A'; i <= 'Z'; i++)
+		{
+			list.add(i);
+		}
+		
+		int max = list.size() - 1;
+		
+		char[] temp = new char[12];
+		
+		for(int i = 0; i < 12; i++)
+		{
+			int rand = (int)(Math.random()*max);
+			temp[i] = list.get(rand);
+		}
+		
+		String tempPw = new String(temp);
+		memberDTO.setPwd(tempPw);
+		
+		ModelAndView modelAndView = null;
+
+		int result = memberService.memberPwUpdate(memberDTO);
+		
+		if (result > 0)
+		{
+			modelAndView = new ModelAndView("/member/find/findPw.jsp");
+			modelAndView.addObject("email", email_pwd);
+			modelAndView.addObject("rand", tempPw);
+		}
+		else
+		{
+			try
+			{
+				PrintWriter out;
+				out = response.getWriter();
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<html>");
+				out.println("<script>");
+				out.println("alert('해당 아이디 정보가 없습니다.')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.println("</html>");
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}	
+		
+		return modelAndView;
+	}
+	
 }

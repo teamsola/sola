@@ -7,11 +7,18 @@ header, footer,  nav
 	width:100%;
 	/* margin: auto; */
 	background-color: #6a6763;
+
+header, footer,  nav
+{
+	margin: 0;
+	background-color: #ff8400;
 	box-sizing: border-box;
 	display: table;
 }
 .frame, section, footer{
-	margin: auto;
+	margin: 0;
+	padding:0;
+	width:100%;
 	box-sizing: border-box;
 	display: table;
 }
@@ -221,22 +228,7 @@ footer
 	width: 652px;
 	border-right: 4px white solid;
 }
-#left 
-{
-	float: left;
-	width: 75%;
-	min-height: 1000px;
-	border-right: 4px white solid;
-	background-color: #ff8400;
-}
-#right 
-{
-	float: left;
-	width: 25%;
-	min-height: 1000px;
-	background-color: #ff8400;
-}
 footer span
 {
-	color: white;
+	color: #6a6763;
 }
