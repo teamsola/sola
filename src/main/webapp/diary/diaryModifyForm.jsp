@@ -25,23 +25,20 @@
 		
 </script>
 <style>
-
-body{
-	padding-top:80px;
-}
-
 #wr{
-	margin-left:150px;
-	margin-right:150px;
+	margin-top: 70px;
+    margin-left: 350px;
+    margin-right: 350px
 }
 
 #diary_content{
 	outline:1px solid #ff8400;
-	margin-top:50px;
 	resize: none;
 }
 		
 #hr-sect {
+	padding-left:100px;
+	padding-right:100px;
 	display: flex;
 	flex-basis: 100%;
 	align-items: center;
@@ -57,25 +54,24 @@ body{
 	height: 1px;
 	font-size: 0px;
 	line-height: 0px;
-	margin: 0px 16px;
+	margin: 30px 40px;
 }
 
-#content{
+#content2{
 	text-align:center;
 }
 
 #btnset{
-	padding-top:30px;
 	text-align:center;
 	float:left;
 	width:100%;
 }
 
-#button{
-	padding-top:10px;
-}
 	
 #btn{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
@@ -85,19 +81,39 @@ body{
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:14px;
+	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
-	outline:none;
-	margin-bottom:20px;
-	margin-left:20px;
-	margin-right:20px;
 }
+
+#btn:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
 </style>
 
 </head>
@@ -114,7 +130,7 @@ body{
 	
 	
 	<form>
-		<div id="content">
+		<div id="content2">
 			<textarea rows="30" cols="55" name="diary_content" id="diary_content">${diaryDTO.diary_content}</textarea>
 		</div>
 		
@@ -122,8 +138,7 @@ body{
 		<br>
 		<div id="btnset">
 			<input type="button" id="btn" value="수정하기" onclick="javascript:modify()">
-			<input type="reset" id="btn" value="다시작성">
-			<div id="button"><input type="button" value="메인으로" id="btn" onclick="location.href='diaryIndex.do'"></div>
+			<input type="button" value="메인으로" id="btn" onclick="location.href='diaryIndex.do'">
 		</div>
 	</form>
 

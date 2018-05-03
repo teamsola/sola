@@ -61,7 +61,7 @@ select::-ms-expand {
 }
 
 #writebtn{
-	margin-left:929px;
+	margin-left:620px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -72,6 +72,24 @@ select::-ms-expand {
 	font-size:15px;
 	background-color:#ffffff;
 	color:#6a6763;
+	height:30px;
+	border-color:#6a6763;
+	border-width:1px;
+	border-style:solid;
+}
+
+#writebtn:hover{
+	margin-left:620px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#6a6763;
+	color:#ffffff;
 	height:30px;
 	border-color:#6a6763;
 	border-width:1px;
@@ -107,17 +125,35 @@ select::-ms-expand {
 	border-style:solid;
 }
 
+#btn:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
 #line{
     border: 0.5px solid #EAEAEA;
 }
-
-#paging,#currentPaging{
-	margin:auto;
-}
-
 #searchset{
 	margin-top:30px;
-	margin-left:650px;
+	margin-left:845px;
 	float:left;
 	text-align:center;
 }
@@ -139,6 +175,7 @@ select::-ms-expand {
 
 #paging,#currentPaging{
 	text-align:center;
+	margin:auto;
 }
 
 

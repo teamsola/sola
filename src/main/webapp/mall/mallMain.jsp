@@ -24,6 +24,20 @@ a{
 	text-decoration:none;
 }
 
+#first{
+	font:#353535;
+	font-size:20px;
+}
+
+#second{
+	font-size:15px;
+	color:#BDBDBD;
+}
+
+#hrline{
+	border-color:#ff8400;
+}
+
 #newtext{
 	margin-top:15px;
 	text-align:center;
@@ -37,12 +51,8 @@ table{
 }
 
 #oldtable{
+	width:500px;
 	margin-top:130px;
-}
-
-tr{
-	width:100%;
-	height:100%;
 }
 
 #newtd{
@@ -50,22 +60,7 @@ tr{
 	height:100%;
 	padding-bottom:10px;
 }
-	
-#oldtd{
-	width:50%;
-	height:100%;
-}	
 
-#oldimg1{
-	width:80%;
-	height:80%;
-}
-
-#oldimg2{
-	width:80%;
-	height:80%;
-}
-	
 #wrapper2{
 	background-color:#ffffff;
 	width:100%;
@@ -146,6 +141,30 @@ tr{
 	border-style:solid;
 	
 }
+
+#goback:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
 </style>
 </head>
 <body>
@@ -170,8 +189,37 @@ tr{
 	
 	<table id="oldtable">
 		<tr>
-			<td id="oldtd"><a href="mallBoardList.do?pg=1"><img src="image/2.JPG" id="oldimg1" width="250" height="300"></a>
-			<td id="oldtd"><a href="mallBoardWriteForm.do"><img src="image/1.JPG" id="oldimg2" width="250" height="300"></a>
+			<td align="left" rowspan="3" width="120"><a href="mallBoardList.do?pg=1"><img src="storage/게시판.png" id="oldimg1" width="120" height="120"></a>
+			<td id="first" align="left"><a href="mallBoardList.do?pg=1">> 게시판</a>
+		</tr>
+		
+		<tr>
+			<td><hr id="hrline">
+		</tr>
+		
+		<tr>
+			<td id="second" align="left">회원들이 올린 중고 물품을 확인해보세요
+		</tr>
+	
+	</table>
+		
+		
+		
+		
+		
+	<table id="oldtable">
+		<tr>
+			<td id="first" align="right" width="380"><a href="mallBoardWriteForm.do"> 글쓰기 <</a>
+			<td align="right" rowspan="3"><a href="mallBoardWriteForm.do"><img src="storage/글쓰기.png" id="oldimg2" width="120" height="120"></a>
+		</tr>
+		
+		<tr>
+			<td><hr id="hrline">
+		</tr>
+
+		<tr>
+			<td id="second" align="right">버리긴 아깝고 쓸일은 없는 물건들을 팔아보세요
+			
 		</tr>
 	</table>
 	
@@ -201,7 +249,7 @@ tr{
 							<td id="newtd">
 							<div id="one">
 								<div id="picture">
-								<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
+								<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }"></a>
 								</div>
 								<div id="subject">
 								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>

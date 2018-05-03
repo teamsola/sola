@@ -7,31 +7,30 @@
 <title>Insert title here</title>
 <style>
 
-body{
-	margin:0;
-	padding-top:80px;
-}
-
 #aa{
+	margin-top:70px;
 	font-weight: bold;
 	text-align:center;
 }
 
-#content{
-	padding-top:60px;
-}
-
 #line1{
 	border-top: 1px solid #ff8400;
-	width:30%;
+	width:200px;
 }
 
-#content{
-	width:70%;
-	margin:0 auto;
+#contentwrapper{
+	text-align:center;
+	float:left;
+	width:100%;
+}
+
+#content2{
+	margin:auto;
 }
 
 #hr-sect {
+	padding-left:500px;
+	padding-right:500px;
 	display: flex;
 	flex-basis: 100%;
 	align-items: center;
@@ -47,18 +46,18 @@ body{
 	height: 1px;
 	font-size: 0px;
 	line-height: 0px;
-	margin: 0px 16px;
+	margin: 30px 40px;
 }
 
 #button{
-	padding-top:70px;
-	padding-bottom:100px;
 	text-align:center;
 	float:left;
 	width:100%;
 }
 
 #btn{
+	margin-top:80px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -71,11 +70,34 @@ body{
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn:hover{
+	margin-top:80px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 }
 
@@ -89,17 +111,18 @@ body{
 
 
 
-	<div align="center" id="content">
-		
-		<c:forEach var="diaryDTO" items="${list }">
-		
-		<div id="hr-sect">${diaryDTO.diary_date }</div>
-		
-		${diaryDTO.diary_content }<br>
-		</c:forEach>
-		
-	</div>	
-
+	<div id="contentwrapper">
+		<div id="content2">
+			
+			<c:forEach var="diaryDTO" items="${list }">
+			
+			<div id="hr-sect">${diaryDTO.diary_date }</div>
+			
+			${diaryDTO.diary_content }<br>
+			</c:forEach>
+			
+		</div>	
+	</div>
 
 
 
