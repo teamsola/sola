@@ -17,7 +17,7 @@ public interface DiaryService {
 	int diaryDelete(Date date);
 	
 	//글 상세조회(수정시)
-	DiaryDTO diaryView(Date date);
+	ArrayList<DiaryDTO> diaryView(Date date);
 	
 	//글 목록 조회
 	ArrayList<DiaryDTO> diaryList(String id);
