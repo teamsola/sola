@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/sola/proinfocss/proinfoView.css" />
+	href="/sola/proinfocss/proinfoView.css?v=1" />
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -79,14 +79,10 @@
 				<div class="ol_top">
 					<div id="category" class="category">
 						<!-- 카테고리 -->
-						<label style="color: white;"> <c:if
-								test="${proinfoDTO.category eq 'live'}">
-         			입주 전
-         		</c:if> <c:if test="${proinfoDTO.category eq 'living'}">
-         			입주 중
-         		</c:if> <c:if test="${proinfoDTO.category eq 'lived'}">
-         			입주 후
-         		</c:if>
+						<label style="color: white;"> 
+				<c:if test="${proinfoDTO.category eq 'live'}">입주 전</c:if>
+				<c:if test="${proinfoDTO.category eq 'living'}">입주 중</c:if>
+				<c:if test="${proinfoDTO.category eq 'lived'}">입주 후</c:if>
 						</label>
 					</div>
 
