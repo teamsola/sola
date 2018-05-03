@@ -687,6 +687,7 @@ public class LedgerController {
 		System.out.println("가계부 검색 처리");
 		
 		String keyword = request.getParameter("keyword");
+		session = request.getSession();
 		String id = (String)session.getAttribute("memId");
 		
 		List<LedgerDTO> ledgerList = new ArrayList<>();

@@ -100,8 +100,34 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	color: #333;
 	font-size: 1.6rem;
-	background-color: #FAFAFA;
+	background-color: #FFFFFF;
 	-webkit-font-smoothing: antialiased;
+}
+
+#title{
+	padding:20px;
+	line-height:150px;
+	float:left; 
+	width:100%;
+	height:150px; 
+	background-image: url('/sola/storage/일기.JPG'); 
+	background-size:cover; 
+	background-position:center; 
+	background-repeat: no-repeat;
+}
+
+#view{
+	margin:auto;
+	width:25%;
+}
+
+#view2{
+	margin:auto;
+	width:50%;
+}
+
+#view3{
+	margin:auto;
 }
 
 .logo {
@@ -125,8 +151,6 @@ h1 {
 
 .container {
 	width: 96%;
-	margin: 1.6rem auto;
-	max-width: 42rem;
 	text-align: center;
 }
 
@@ -147,7 +171,7 @@ h1 {
 	height: 1px;
 	font-size: 0px;
 	line-height: 0px;
-	margin: 0px 16px;
+	margin: 30px 40px;
 }
 
 .demo-picked {
@@ -212,15 +236,13 @@ h1 {
 }
 	
 #btn3{
-	margin-left:50px;
-	margin-right:15px;
 	float:left;
+	margin-right: 15px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
 	-moz-border-radius:100px;
-	
 	-webkit-border-radius:100px;
 	border-radius:100px;
 	text-align:center;
@@ -259,7 +281,7 @@ h1 {
 }
 	
 #ggg{
-	text-align:right;
+	margin-left:250px;
 	margin-bottom:10px;
 }
 	
@@ -319,9 +341,6 @@ h1 {
 }
 
 #btn3:hover{
-	margin-left:50px;
-	margin-right:15px;
-	float:left;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -343,7 +362,6 @@ h1 {
 }
 
 #btn4:hover{
-	float:left;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -371,7 +389,9 @@ h1 {
 	
 	<div class="container">
 
-		<h1>DIARY</h1>
+		<div id="title">
+				<a href="diaryIndex.do"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">DIARY</span></a>
+			</div>
 		
 		
 		<!-- 모아보기 버튼 -->

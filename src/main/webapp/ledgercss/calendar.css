@@ -86,9 +86,17 @@ select {
 	height: 30px;
 }
 
+.frame{
+	margin-top:50px;
+	text-align:center;
+    float:left;
+    width:100%;
+}
+
 .calendar {	/* 캘린더 바디 */
-	width: 97%;
-	margin-top: 0px;
+	display: inline-block;
+	width: 1000px; 
+	margin-top: 10px;
 	margin-left:20px;
 	margin-left:20px;
 	background-color:#FF8400;

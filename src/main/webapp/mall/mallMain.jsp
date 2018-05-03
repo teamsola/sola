@@ -19,13 +19,16 @@
 	background-repeat: no-repeat;
 }
 
-a{
-	color:black;
+#title a{
 	text-decoration:none;
 }
 
+#atag{
+	color:black;
+}
+
 #first{
-	font:#353535;
+	color:#353535;
 	font-size:20px;
 }
 
@@ -102,6 +105,7 @@ table{
 }
 
 #subject{
+	color:blacdk;
 	margin:auto;
 	width:60%;
 	height:30%;
@@ -109,7 +113,8 @@ table{
 }
 
 #more{
-	margin-left:550px;
+	color:black;dd
+	margin-left:750px;
 }
 
 #btn{
@@ -173,7 +178,7 @@ table{
 
 	
 		<div id="title">
-				<span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">M A L L</span>
+				<a href="mallIndex.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">M A L L</span></a>
 			</div>
 		
 	
@@ -189,8 +194,8 @@ table{
 	
 	<table id="oldtable">
 		<tr>
-			<td align="left" rowspan="3" width="120"><a href="mallBoardList.do?pg=1"><img src="storage/게시판.png" id="oldimg1" width="120" height="120"></a>
-			<td id="first" align="left"><a href="mallBoardList.do?pg=1">> 게시판</a>
+			<td align="left" rowspan="3" width="120"><a href="mallBoardList.do?pg=1" id="atag"><img src="storage/게시판.png" id="oldimg1" width="120" height="120"></a>
+			<td id="first" align="left"><a href="mallBoardList.do?pg=1" id="atag">> 게시판</a>
 		</tr>
 		
 		<tr>
@@ -209,8 +214,8 @@ table{
 		
 	<table id="oldtable">
 		<tr>
-			<td id="first" align="right" width="380"><a href="mallBoardWriteForm.do"> 글쓰기 <</a>
-			<td align="right" rowspan="3"><a href="mallBoardWriteForm.do"><img src="storage/글쓰기.png" id="oldimg2" width="120" height="120"></a>
+			<td id="first" align="right" width="380"><a href="mallBoardWriteForm.do" id="atag"> 글쓰기 <</a>
+			<td align="right" rowspan="3"><a href="mallBoardWriteForm.do" id="atag"><img src="storage/글쓰기.png" id="oldimg2" width="120" height="120"></a>
 		</tr>
 		
 		<tr>
@@ -252,7 +257,7 @@ table{
 								<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }"></a>
 								</div>
 								<div id="subject">
-								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+								<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 								</div>
 							</div>
 							</td>
@@ -267,7 +272,7 @@ table{
 								<img src="storage/${mallDTO.img }" width="100" height="120">
 								</div>
 								<div id="subject">
-								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+								<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 								</div>
 							</div>
 							</td>
@@ -283,7 +288,7 @@ table{
 								<img src="storage/${mallDTO.img }" width="100" height="120">
 								</div>
 								<div id="subject">
-								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+								<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 								</div>
 							</div>
 							</td>
@@ -295,7 +300,7 @@ table{
 			</table>		
 
 		<div id="more">
-		<a href="mallDetail.do">더보기...</a>
+		<a href="mallDetail.do" id="atag">더보기...</a>
 		</div>
 	</div>
 	</div>

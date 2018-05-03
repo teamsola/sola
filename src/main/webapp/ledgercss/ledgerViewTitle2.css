@@ -14,8 +14,8 @@
 }
 .ledger_body {/* 메인 화면 */
 	position: fixed;
-	width: 700px;
-	height: 800px;
+	width: 550px;
+	height: 700px;
 	top: 0;
 	bottom: 0;
 	left: 0;
