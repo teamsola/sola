@@ -123,9 +123,19 @@ public class DiaryController {
 		
 		String diary_date=request.getParameter("diary_date");
 		
-		DiaryDTO diaryDTO=diaryService.diaryView(Date.valueOf(diary_date));
+		ArrayList<DiaryDTO> list=new ArrayList<DiaryDTO>();
 		
-		int diary_seq=diaryService.diaryView(Date.valueOf(diary_date)).diary_seq;
+		list=diaryService.diaryView(Date.valueOf(diary_date));
+	
+		DiaryDTO diaryDTO =new DiaryDTO();
+		
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getId().equals(id)) {
+				diaryDTO=list.get(i);
+			}
+		}
+		
+		int diary_seq=diaryDTO.getDiary_seq();
 		
 		modelAndView.addObject("diary_seq",diary_seq);
 		modelAndView.addObject("diaryDTO",diaryDTO);

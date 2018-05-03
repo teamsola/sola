@@ -1,6 +1,7 @@
 package diary.dao;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -26,8 +27,8 @@ public class DiaryDAO {
 	}
 	
 	//글 불러오기(수정시)
-	public DiaryDTO diaryView(Date date) {
-		return sqlSession.selectOne("mybatis.diaryMapper.diaryView",date);
+	public List<DiaryDTO> diaryView(Date date) {
+		return sqlSession.selectList("mybatis.diaryMapper.diaryView",date);
 	}
 	
 	//글 삭제

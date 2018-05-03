@@ -725,7 +725,7 @@ public class TipController {
 		recipeDTO.setRecipe7(rc7);
 		recipeDTO.setRecipe8(rc8);
 		recipeDTO.setRecipe9(rc9);
-		if(!"".equals(request.getParameter("price"))) pr = Integer.parseInt(request.getParameter("price"));
+		if(request.getParameter("price") != null) pr = Integer.parseInt(request.getParameter("price"));
 		recipeDTO.setPrice(pr);
 		
 		displayRecipeAdd(recipeDTO);

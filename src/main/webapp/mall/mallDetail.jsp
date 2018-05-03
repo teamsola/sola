@@ -126,7 +126,7 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="storage/${mallDTO.img }" width="100" height="120">
+						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -141,7 +141,7 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="storage/${mallDTO.img }" width="100" height="120">
+						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -156,7 +156,7 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="storage/${mallDTO.img }" width="100" height="120">
+						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
