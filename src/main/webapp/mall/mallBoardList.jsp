@@ -61,7 +61,7 @@ select::-ms-expand {
 }
 
 #writebtn{
-	margin-left:620px;
+	margin-left:1125px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -79,7 +79,7 @@ select::-ms-expand {
 }
 
 #writebtn:hover{
-	margin-left:620px;
+	margin-left:1125px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -176,6 +176,27 @@ select::-ms-expand {
 #paging,#currentPaging{
 	text-align:center;
 	margin:auto;
+}
+
+#paging{
+    padding:5px;  
+    width:15px;  
+    color:#000;  
+    font:bold 12px tahoma;  
+    border:1px solid #eee;  
+    text-align:center;  
+    text-decoration:none;  
+}
+
+#currentPaging{
+    padding:5px;  
+    width:15px;  
+    background-color:#6a6763;
+    color:#ffffff;  
+    font:bold 12px tahoma;  
+    border:1px solid #6a6763;  
+    text-align:center;  
+    text-decoration:none;  
 }
 
 
