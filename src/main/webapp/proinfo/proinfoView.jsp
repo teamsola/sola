@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/sola/proinfocss/proinfoView.css?v=1" />
+	href="/sola/proinfocss/proinfoView.css" />
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -102,13 +102,13 @@
 							<c:if test="${list_len > 0}">
 								<div class="subject">
 									<!-- 제목 -->
-									<label>제목 : ${proinfoDTO.subject }</label>
+									<label>${proinfoDTO.subject }</label>
 								</div>
 								<div id="imgFile" class="imgFile">
 									<!-- 이미지  -->
 									<img src="/sola/proinfoimg/${proinfoDTO.imgFile }">
 								</div>
-								<div class="contents">	<!-- 내용 -->
+								<div class="contents" align="left">	<!-- 내용 -->
 									<pre><label>${proinfoDTO.contents }</label></pre>
 								</div>
 								<div class="insert_btn" align="right">
@@ -148,7 +148,7 @@
 						<c:if test="${list_len > 0}">
 							<div class="subject">
 								<!-- 제목 -->
-								<label>제목 : ${proinfoDTO.subject }</label>
+								<label>${proinfoDTO.subject }</label>
 							</div>
 							<div id="imgFile" class="imgFile">
 								<!-- 이미지  -->

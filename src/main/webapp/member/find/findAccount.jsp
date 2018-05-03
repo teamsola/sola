@@ -74,7 +74,7 @@ form
 	margin-top: 30px;
 }
 span.upper{color: #ff8400;font-weight: bold;font-size: 16px;}
-span.lower{font-size:12px;}
+span.lower{font-size:12px; color:#6a6763;}
 input[type=text], select
 {
 	border-style: none;

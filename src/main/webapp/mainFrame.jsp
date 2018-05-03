@@ -22,15 +22,7 @@
 <body>
 	<div id="wrapper" class="frame">
 		<nav role="gnb">
-		<div onclick="location.href='main.do'"><img class="logo_img" src="img/logo(org).png"></div>
-		<div class="profile_img" onclick="location.href='member.do'"></div>
-		<c:if test="${memId.length() >= 6}">
 			<jsp:include page="/common/nav.jsp" />
-		</c:if>
-		<c:if test="${memId.length() < 6}">
-			<jsp:include page="/common/nav_admin.jsp" />
-		</c:if>
-		
 	</nav>
 		<div id="body" class="frame">
 			<section id="content">

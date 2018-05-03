@@ -84,6 +84,12 @@ nav	/* 네비 바 */
 	border-bottom: 0px;
 }
 
+#lv1 .memberInfo{	/* 오른쪽 회원정보 */
+	 text-align: right;
+	 vertical-align: middle;
+	 float:right;
+}
+
 
 
 .logo_img{	/* 로고 이미지 */
@@ -103,11 +109,6 @@ nav>#lv1>#myLv2{
 	height:40px;
 	width:40px;
 	margin: 10px 10px 5px 8px;
-	/* background-image: url('../img/basic_img.png');
-	background-repeat: no-repeat;
-	background-position:conter center;
-	background-size:100% 100%; */
-	/* float:right; */
 	cursor:pointer;
 	border-radius: 50%;
 	border: solid white 1px;
@@ -116,7 +117,6 @@ nav>#lv1>#myLv2{
 
 nav>ul	/* nav 전체 */
 {
-	/* margin-left: 120px; */
 	margin:0px;
 	padding: 0px;
 	height: 60px;
@@ -125,12 +125,9 @@ nav>ul	/* nav 전체 */
 	overflow: hidden;
 	position: fixed;
 	top: 0px;
-	/* border: solid blue 1px; */
 }
 nav>#lv1>li	/* nav 개개인 항목 */
 {
-	/* margin-left:10px; */
-	/* margin-top:10px; */
 	float: left;
 	position: relative;
 	
@@ -140,7 +137,6 @@ nav>#lv1>li	/* nav 개개인 항목 */
 	text-align: center;
 	vertical-align: middle;
 	color:white;
-	/* border: solid blue 1px; */
 }
 
 nav>#lv1>#logo{
@@ -192,6 +188,9 @@ nav>#lv2>ul.lv2-list
 	height: 4px;
 	visibility: hidden;
 }
+
+
+
 nav>#lv2>ul.lv2-list>li	/* 레벨 2 메뉴바 메뉴 */
 {
  	background-color: #6a6763;
@@ -200,8 +199,25 @@ nav>#lv2>ul.lv2-list>li	/* 레벨 2 메뉴바 메뉴 */
 	height : 39px;
 	list-style: none;
 	text-align: center;
-	/* border: solid red 1px; */
 }
+
+nav>#lv2>#logoLv2{
+	padding:0;
+	width:14%;
+}
+
+nav>#lv2>#myLv2{
+	padding:0;
+	width:12%;
+	float:right;
+}
+
+nav>#lv2>#manageLv2{
+	padding:0;
+	width:12%;
+	float:right;
+}
+
 /* nav>#lv1>li:hover, nav>#lv1>li>a:hover
 {
 	color: #ff8400;
