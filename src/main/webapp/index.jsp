@@ -11,6 +11,34 @@
 var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=500, height=450, location=no, resizable=no")};
 </script>
 <style type="text/css">
+img.bg
+{
+	/* 브라우저의 크기에 맞게 전체 화면에 맞춘다. */
+	min-height: 100%;
+	min-width: 1024px;
+	
+	/* 크기를 화면전체로 지정해준다. */
+	width: 100%;
+	height: auto;
+	
+	/* 스크롤해도 배경이미지는 고정 */
+	position: fixed;
+	
+	/* absolute로 하면 배경도 스크롤 되지만 부자연스러워 진다. */
+	top: 0;
+	left 0;
+}
+
+@media screen and (max-width: 1024px)
+{
+	/* 그림을 브라우저의 중앙에 맞춘다. -512는 1024의 반값으로 중앙정렬을 위한 것이다. */
+	img.bg
+	{
+		left: 50%;
+		margin-left: -512px;
+	}
+}
+
 @font-face {
 	font-family:"NanumGothic";
 	src:url('../font/NanumGothic.eot?#iefix') format('embedded-opentype');
@@ -46,10 +74,12 @@ html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-fa
 	margin: 0;
 	padding:0;
 	width: 100%;
+	position: relative;
 }
 </style>
 </head>
 <body>
+	<img class="bg" src="img/index.jpg" alt="" />
 	<div id="wrapper">
 		<div id="up" class="frame">
 			<img src="img/logo(org).png" width="auto" height="55px" style="margin: 10px 0 0 30px;">
@@ -72,9 +102,6 @@ html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-fa
 					</table>
 				</form>
 			</div>
-		</div>
-		<div id="down" class="frame">
-			<img src="img/index.jpg" width="100%">
 		</div>
 	</div>
 </body>
