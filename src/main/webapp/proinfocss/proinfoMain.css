@@ -11,14 +11,14 @@
 	left: 0;
 	right: 0;
 	margin: auto;
-	border: 1px solid;
+/* 	border: 1px solid; */
 }
-.in{	/* 전-중-후 div */
+
+.in .in_title{
 	width: 300px;
 	height: 550px;
-	float: left;
-	cursor: pointer;
-	background-color: gray;
+	font-size:25px;
+	background: rgba(255,255,255, 0.7);		
 }
 
 input:focus, select{
@@ -80,3 +80,6 @@ a{
 	height: 30px;
 	margin: 0;
 }
+
+
+
