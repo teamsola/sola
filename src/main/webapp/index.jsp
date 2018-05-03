@@ -10,7 +10,6 @@
 <script type="text/javascript">
 var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=450, height=450, location, resizable")};
 </script>
-<link rel="stylesheet" type="text/css" href="css/main.css" />
 <style type="text/css">
 @font-face {
 	font-family:"NanumGothic";
