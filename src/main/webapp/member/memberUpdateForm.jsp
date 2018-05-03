@@ -40,7 +40,7 @@ h2, h3{color: #6a6763;}
 }
 
 .btn{
-		width: 100px;
+		width: 150px;
 		height: 35px;
 		background-color: white;
 		color: #6a6763;

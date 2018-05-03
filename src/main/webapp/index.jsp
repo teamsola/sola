@@ -33,7 +33,7 @@ html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-fa
 {	
 	padding:5px;
 	width: 100%;
-	height:80px;
+	height:70px;
 	background-color: #6a6763;
 }
 #down
