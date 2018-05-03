@@ -235,7 +235,7 @@ table{
 	
 	<!-- 신상 소개 -->
 	<div id="new">
-	<div id="newtext">NEW</div>
+	<div id="newtext">&nbsp;</div>
 	
 	
 	<!-- dto에 저장된것 불러오기 -->
