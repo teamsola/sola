@@ -35,7 +35,7 @@ tr.inp>td>.inp_text:focus, #id:focus, #authEmailText.inp_text:focus
 tr.inp>td>.inp_text{width: 100%;}
 #duplCheck{outline:none;background:#ff8400;border-style: none;text-align: center;width:100%;height:33px;font-size: 15px;color:white;border-radius: 4px;}
 #id{width:95%;}
-.inp_hid{width:30%;border-style: none;height:30px;font-size: 16px;padding-left:5px;outline:none;}
+.inp_hid{width:30%;border-style: none;height:30px;font-size: 16px;padding-left:5px;outline:none;border-bottom: none;}
 #authEmailBtn, #postButton{outline:none;background:#ff8400;border-style: none;text-align: center;width:25%;height:33px;font-size: 15px;color:white;border-radius: 4px;}
 .inp_div
 {
@@ -183,12 +183,14 @@ function execDaumPostcode()
     								$("#email2").addClass('inp_text');
     								$("#email2").css("width", "30%");
     								$("#email2").attr("readonly", false);
+    								$("#email2").focus();
     							//	$("#email2").show();
     							}
     						else
     							{
     								$("#email2").val($("#emailSel").val());
-    								$("#email2").css("border-bottom", "none");
+    								$("#email2").removeClass();
+    								$("#email2").addClass('inp_hid');
     								$("#email2").attr("readonly", true);
     							//	$("#email2").hide();
     							}
