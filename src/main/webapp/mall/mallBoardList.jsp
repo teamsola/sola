@@ -61,7 +61,7 @@ select::-ms-expand {
 }
 
 #writebtn{
-	margin-left:1120px;
+	margin-left:720px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
