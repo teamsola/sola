@@ -2,23 +2,19 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 	<ul id="lv1">
+		<li id="logo"><a href="main.do"><img class="logo_img" src="img/logo(org).png"></a></li>
 		<li id="mall"><a href="mallIndex.do"><span>Mall</span></a></li>
 		<li id="tip"><a href="tip.do"><span>Tip</span></a></li>
 		<li id="ledger"><a href="calendar.do?cmd=main"><span>가계부</span></a></li>
 		<li id="diary"><a href="diaryIndex.do"><span>일기</span></a></li>
 		<li id="board"><a href="board.do"><span>게시판</span></a></li>
 		<li id="logout"><a href="logout.do"><span>Logout</span></a></li>
+		<li id="myLv2"><a href="member.do"><span>${memName} 님</span> <img class="profile_img" src="img/basic_img.png"></a></li>
 	</ul>
 	<div id="progressbar"></div>
 	<div id="lv2">
-		<!--<ul class="lv2-list" rel="home"></ul>  -->
-		<!--<ul class="lv2-list" id="myLv2" rel="my">
-			<li><a href="member.do">기본정보</a></li>
-			<li><a href="checkPwd.do">회원정보수정</a></li>
-			<li><a href="memberProfile.do">프로필변경</a></li>
-			<li><a href="memberWithdrawalForm.do">회원탈퇴</a></li>
-		</ul>-->
-		
+		<ul class="lv2-list" rel="logo"></ul>
+
 		<ul class="lv2-list" id="mallLv2" rel="mall">		
 			<li><a href="mallIndex.do">쇼핑몰</a></li>
 			<li><a href="proinfoMain.do">전문지식</a></li>
@@ -50,6 +46,13 @@
 		</ul>
 		
 		<ul class="lv2-list" rel="logout"></ul>
+		<ul class="lv2-list" id="myLv2" rel="my">
+			<li><a href="member.do">기본정보</a></li>
+			<li><a href="checkPwd.do">회원정보수정</a></li>
+			<li><a href="memberProfile.do">프로필변경</a></li>
+			<li><a href="memberWithdrawalForm.do">회원탈퇴</a></li>
+		</ul>
+		<ul class="lv2-list" id="clearSpaceLv2" rel="clearSpace">
 	</div>
 
 

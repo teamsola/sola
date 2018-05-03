@@ -61,7 +61,7 @@ select::-ms-expand {
 }
 
 #writebtn{
-	margin-left:929px;
+	margin-left:720px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -110,14 +110,9 @@ select::-ms-expand {
 #line{
     border: 0.5px solid #EAEAEA;
 }
-
-#paging,#currentPaging{
-	margin:auto;
-}
-
 #searchset{
 	margin-top:30px;
-	margin-left:650px;
+	margin-left:845px;
 	float:left;
 	text-align:center;
 }
@@ -139,6 +134,7 @@ select::-ms-expand {
 
 #paging,#currentPaging{
 	text-align:center;
+	margin:auto;
 }
 
 

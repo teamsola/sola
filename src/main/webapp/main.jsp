@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css?ver=1"/>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=3"/>
 <link rel="stylesheet" type="text/css" href="css/banner.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/nav.js?ver=1"></script>
@@ -23,17 +23,18 @@
 </head>
 <body>
 <div id="wrapper" class="frame">
+<div class="title">
 	<nav role="gnb">
-		<div onclick="location.href='main.do'"><img class="logo_img" src="img/logo(org).png"></div>
-		<div class="profile_img" onclick="location.href='member.do'"></div>
+		<!-- <div onclick="location.href='main.do'"><img class="logo_img" src="img/logo(org).png"></div> -->
+		<!-- <div class="profile_img" onclick="location.href='member.do'"></div> -->
 		<c:if test="${memId.length() >= 6}">
 			<jsp:include page="/common/nav.jsp" />
 		</c:if>
 		<c:if test="${memId.length() < 6}">
 			<jsp:include page="/common/nav_admin.jsp" />
 		</c:if>
-		
 	</nav>
+	</div>
 	<section class="event_banner">
  		<div id="banners">
  			<div class="banner current" style="display:block;" id="bn1"><a href="#"><img src="img/1.png" width="1300px" height="500px" alt=""></a></div>
