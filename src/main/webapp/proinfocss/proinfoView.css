@@ -233,3 +233,12 @@ div#overLayer {
 	width: 80%;
 	margin: auto;
 }
+
+.btn{
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	color: #6a6763;
+	border: 2px solid #6a6763;
+	border-radius: 20px;
+}

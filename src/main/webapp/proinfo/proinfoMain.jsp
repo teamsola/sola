@@ -164,7 +164,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 
 				<!-- 전, 중, 후 -->
 				<figure class="snip1200">
-					<img src="/sola/img/w.png" alt="" />
+					<img src="/sola/img/proinfo_live.png" alt="" />
 					<figcaption>
 						<p>정말</p>
 						<div class="heading">
@@ -176,7 +176,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 					<a href="search_c.do?keyword_c=live&list_n=0"></a>
 				</figure>
 				<figure class="snip1200">
-					<img src="/sola/img/w.png" alt="" />
+					<img src="/sola/img/proinfo_living.png" alt="" />
 					<figcaption>
 						<p>너무</p>
 						<div class="heading">
@@ -188,7 +188,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 					<a href="search_c.do?keyword_c=living&list_n=0"></a>
 				</figure>
 				<figure class="snip1200">
-					<img src="/sola/img/w.png" alt="" />
+					<img src="/sola/img/proinfo_lived.png" alt="" />
 					<figcaption>
 						<p>어렵다</p>
 						<div class="heading">
@@ -199,8 +199,11 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 					</figcaption>
 					<a href="search_c.do?keyword_c=lived&list_n=0"></a>
 				</figure>
+				<c:set var="id_len" value="${fn:length(memId) }" />
+				<c:if test="${id_len < 6 }">
 				<input type="button" class="insert_btn" value="전문 지식 입력"
 					onclick="location.href='proinfoInsertForm.do'" />
+				</c:if>
 			</div>
 		</div>
 	</form>
