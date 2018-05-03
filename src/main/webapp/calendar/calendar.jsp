@@ -11,7 +11,7 @@
 
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="ledgercss/reset.css" /> -->
-<link rel="stylesheet" type="text/css" href="ledgercss/calendar.css?ver=3" />
+<link rel="stylesheet" type="text/css" href="ledgercss/calendar.css?ver=1" />
 
 <script type="text/javascript">
 	
@@ -85,6 +85,7 @@
 <title>달력</title>
 </head>
 <body class="total_body">
+<div class="frame">
 <div class="calendar">
 <div class="searchBar">
 	<div id="search_btn" class="search_btn" onclick="search_Check();"></div>
@@ -204,6 +205,7 @@
 	</tbody>
 	</table>
 
+</div>
 </div>
 </body>
 </html>
