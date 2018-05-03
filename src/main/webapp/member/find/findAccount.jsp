@@ -46,9 +46,59 @@ $(document).ready(function(){
 			$("form").attr("action", "findIdByTel.do");
 		}
 	});
+	
+ 	if("${cmd }" == "pw")
+		{
+			$("#findPw").css("display", "block");
+			$("#findId").css("display", "none");
+			$("#span_id").html("▶아이디 찾기");
+			$(this).html("▼비밀번호 찾기");
+			$("form").attr("action", "findPw.do");
+			$("[name=id]").focus();
+		};
 });
 </script>
 <style type="text/css">
+form
+{
+	margin: 20px 0px 0px 80px;
+}
+.box
+{
+	border: 1px #ff8400 solid;
+	width: 80%;
+	height: 170px;
+}
+#box_pw
+{
+	margin-top: 30px;
+}
+span.upper{color: #ff8400;font-weight: bold;font-size: 16px;}
+span.lower{font-size:12px;}
+input[type=text], select
+{
+	border-style: none;
+	border-bottom:1px solid black;
+	height:30px;
+	font-size: 16px;
+	padding-left:5px;
+	outline:none;
+	display: block;
+	margin-left: 30px;
+	width: 75%;
+}
+input[type=text]:focus
+{
+	transition:.5s ease; 
+	border-bottom:2px solid #ff8400;
+	outline:none;
+	box-sizing: content-box;
+	font-size: 14px;
+}
+#findPw
+{
+	margin-top: 23px;
+}
 .fold
 {
 	cursor: pointer;
@@ -57,53 +107,75 @@ $(document).ready(function(){
 {
 	display: none;
 }
+input[type=submit] 
+{
+	outline:none;
+	background:#ff8400;
+	border-style: none;
+	text-align: center;
+	width:25%;
+	height:33px;
+	font-size: 15px;
+	color:white;
+	border-radius: 4px;
+	cursor: pointer;
+	margin: auto;
+	position: absolute;
+	left:50%;
+	transform: translateX(-50%);
+	margin-top: 10px;
+}
 </style>
 </head>
 <body>
 	<form action="#" name="findForm" method="post">
-		<span class="fold" rel="findId" id="span_id">▶아이디 찾기</span><br>
-		<div id="findId">
-			<div>
-				<span class="fold" rel="div_mail" id="span_mail">&nbsp;&nbsp;&nbsp;▶메일주소로 찾기</span>
-				<div id="div_mail">
-					<input type="text" name="email_id" id="email">
+		<div class="box" id="box_id">
+			<span class="fold upper" rel="findId" id="span_id">▶아이디 찾기</span><br>
+			<div id="findId">
+				<div>
+					<span class="fold lower" rel="div_mail" id="span_mail">&nbsp;&nbsp;&nbsp;▶메일주소로 찾기</span>
+					<div id="div_mail">
+						<input type="text" name="email_id" id="email" placeholder="email 전체 입력">
+					</div>
 				</div>
-			</div>
-			<div>
-				<span class="fold" rel="div_tel" id="span_tel">&nbsp;&nbsp;&nbsp;▶전화번호로 찾기</span>
-				<div id="div_tel">
-					<select name="tel1" class="inp_text">
-						<option selected="selected">010
-						<option>011
-						<option>017
-						<option>019
-						<option>02
-						<option>031
-						<option>032
-						<option>033
-						<option>041
-						<option>042
-						<option>043
-						<option>044
-						<option>051
-						<option>052
-						<option>053
-						<option>054
-						<option>055
-						<option>061
-						<option>062
-						<option>063
-						<option>064
-					</select> 
-					<input type="text" name="tel2" class="inp_text" placeholder="전화번호 입력(가운데 3~4자리)" />
-					<input type="text" name="tel3" class="inp_text" placeholder="전화번호 입력(뒷 4자리)">
+				<div>
+					<span class="fold lower" rel="div_tel" id="span_tel">&nbsp;&nbsp;&nbsp;▶전화번호로 찾기</span>
+					<div id="div_tel">
+						<select name="tel1" class="inp_text">
+							<option selected="selected">010
+							<option>011
+							<option>017
+							<option>019
+							<option>02
+							<option>031
+							<option>032
+							<option>033
+							<option>041
+							<option>042
+							<option>043
+							<option>044
+							<option>051
+							<option>052
+							<option>053
+							<option>054
+							<option>055
+							<option>061
+							<option>062
+							<option>063
+							<option>064
+						</select> 
+						<input type="text" name="tel2" class="inp_text" placeholder="전화번호 입력(가운데 3~4자리)" />
+						<input type="text" name="tel3" class="inp_text" placeholder="전화번호 입력(뒷 4자리)">
+					</div>
 				</div>
 			</div>
 		</div>
-		<span class="fold" rel="findPw" id="span_pw">▶비밀번호 찾기</span><br>
-		<div id="findPw">
-	 		<input type="text" name="id" placeholder="ID 입력"><br>
-	 		<input type="text" name="email_pwd" placeholder="email 전체 입력"><br>
+			<div class="box" id="box_pw">
+			<span class="fold upper" rel="findPw" id="span_pw">▶비밀번호 찾기</span><br>
+			<div id="findPw">
+		 		<input type="text" name="id" placeholder="ID 입력"><br>
+		 		<input type="text" name="email_pwd" placeholder="email 전체 입력"><br>
+			</div>
 		</div>
 		<input type="submit" value="제출">
 	</form>
