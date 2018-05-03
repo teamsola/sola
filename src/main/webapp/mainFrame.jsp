@@ -24,9 +24,11 @@
 </head>
 <body>
 	<div id="wrapper" class="frame">
+	<div class="title">
 		<nav role="gnb">
 			<jsp:include page="/common/nav.jsp" />
 	</nav>
+	</div>
 		<div id="body" class="frame">
 			<section id="content">
 				<c:if test="${content != null}">

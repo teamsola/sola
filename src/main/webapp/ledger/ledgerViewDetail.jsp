@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css?ver=1" />
 <link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewDetail.css?ver=1" />
 <script type="text/javascript">
 	

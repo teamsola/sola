@@ -54,21 +54,22 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	</filter-mapping>
 
 	<!-- 오류처리 페이지 설정 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/error404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/error500.jsp</location>
+	</error-page>
 <!-- 	
 	<error-page>
 		<exception-type>org.apache.ibatis.type.TypeException</exception-type>
 		<location>/error/errorSql.jsp</location>
 	</error-page> 
 	
-	<error-page>
-		<error-code>404</error-code>
-		<location>/error/error404.jsp</location>
-	</error-page>
 
-	<error-page>
-		<error-code>500</error-code>
-		<location>/error/error500.jsp</location>
-	</error-page>
 	 -->
 
 </web-app>

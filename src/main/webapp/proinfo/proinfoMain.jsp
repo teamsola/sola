@@ -175,6 +175,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 					</figcaption>
 					<a href="search_c.do?keyword_c=live&list_n=0"></a>
 				</figure>
+				
 				<figure class="snip1200">
 					<img src="/sola/img/proinfo_living.png" alt="" />
 					<figcaption>
@@ -187,6 +188,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 					</figcaption>
 					<a href="search_c.do?keyword_c=living&list_n=0"></a>
 				</figure>
+				
 				<figure class="snip1200">
 					<img src="/sola/img/proinfo_lived.png" alt="" />
 					<figcaption>
@@ -199,6 +201,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 					</figcaption>
 					<a href="search_c.do?keyword_c=lived&list_n=0"></a>
 				</figure>
+				
 				<c:set var="id_len" value="${fn:length(memId) }" />
 				<c:if test="${id_len < 6 }">
 				<input type="button" class="insert_btn" value="전문 지식 입력"

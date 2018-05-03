@@ -29,6 +29,10 @@ function checkJoin()
 	{
 		alert("아이디 중복 확인을 해주세요.");
 	}
+	else if (document.joinForm.idAuth.value != document.joinFrorm.id.value)
+	{
+		alert("아이디 중복 확인을 해주세요.");
+	}
 	else if (document.joinForm.emailAuth.value == "no")
 	{
 		alert("이메일 인증을 해주세요.");
