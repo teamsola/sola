@@ -28,7 +28,7 @@
 		
 		<jsp:include page="/common/nav.jsp" />
 	</nav>
-	</div>
+</div>
 	<section class="event_banner">
  		<div id="banners">
  			<div class="banner current" style="display:block;" id="bn1"><a href="#"><img src="img/1.png" width="1300px" height="500px" alt=""></a></div>
