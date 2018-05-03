@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css?ver=5"/>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=1"/>
 <link rel="stylesheet" type="text/css" href="css/banner.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/nav.js?ver=4"></script>
+<script src="js/nav.js?ver=1"></script>
 <script src="js/banner.js"></script>
 <script type="text/javascript">
 

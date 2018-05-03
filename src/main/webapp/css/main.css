@@ -1,19 +1,14 @@
 @charset "UTF-8";
 
-html, body{width:100%; position: absolute; margin:0; padding:0; display:block;/*  overflow:hidden; */ }
-
-header, footer,  nav
-{
-	width:100%;
-	/* margin: auto; */
-	background-color: #6a6763;
+html, body{width:100%; position: absolute; margin:0; padding:0; display:block; /* overflow:hidden; */ }
 
 header, footer,  nav
 {
 	margin: 0;
-	background-color: #ff8400;
+	background-color: #6a6763;
 	box-sizing: border-box;
 	display: table;
+	width:100%;
 }
 .frame, section, footer{
 	margin: 0;
@@ -24,6 +19,7 @@ header, footer,  nav
 }
 #wrapper
 {
+	/* overflow-y: scroll; */
 	width: 100%;
 	text-align: center;
 	min-height: 1000px;
@@ -102,7 +98,7 @@ nav	/* 네비 바 */
 	border: solid white 1px;
 }
 
-nav>#lv1	/* nav 전체 */
+nav>ul	/* nav 전체 */
 {
 	margin-left: 120px;
 	padding: 0px;
