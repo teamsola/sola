@@ -10,12 +10,12 @@
 <script type="text/javascript">
 var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=450, height=450, location, resizable")};
 </script>
-<link rel="stylesheet" type="text/css" href="css/main.css" />
 <style type="text/css">
 @font-face {
 	font-family:"NanumGothic";
 	src:url('../font/NanumGothic.eot?#iefix') format('embedded-opentype');
 }
+
 body{font-family: 'NanumGothic' !important;}
 html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-family: NanumGothic;}
 #joinLink:link, #joinLink:visited{font-size:12px; color:white;text-decoration: none;}
