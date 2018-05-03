@@ -91,6 +91,29 @@ table{
 	border-style:solid;
 }
 
+#modifyBoard:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
 #btn{
 	margin-top:40px;
 	margin-bottom:30px;
@@ -107,6 +130,29 @@ table{
 	font-size:15px;
 	background-color:#ffffff;
 	color:#ff8400;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
 	width:150px;
 	height:30px;
 	border-color:#ff8400;

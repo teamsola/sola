@@ -662,7 +662,31 @@ public class MemberController
 	@RequestMapping(value="findAccount.do")
 	public ModelAndView findAccount(HttpServletRequest request, HttpServletResponse response)
 	{
-		return new ModelAndView("/member/find/findAccount.jsp");
+		ModelAndView modelAndView = new ModelAndView("/member/find/findAccount.jsp");
+		String cmd = request.getParameter("cmd");
+		
+		if(cmd == null)
+		{
+			cmd = "default";
+		}
+		
+		modelAndView.addObject("cmd", cmd);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/member/find/findAccount.do")
+	public ModelAndView findAccount2(HttpServletRequest request, HttpServletResponse response)
+	{
+		ModelAndView modelAndView = new ModelAndView("/member/find/findAccount.jsp");
+		String cmd = request.getParameter("cmd");
+		
+		if(cmd == null)
+		{
+			cmd = "default";
+		}
+		
+		modelAndView.addObject("cmd", cmd);
+		return modelAndView;
 	}
 	
 	@RequestMapping(value="/member/find/findIdByEmail.do")

@@ -8,7 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="/sola/js/memberScript.js"></script>
 <script type="text/javascript">
-var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=450, height=450, location, resizable")};
+var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=500, height=450, location=no, resizable=no")};
 </script>
 <style type="text/css">
 @font-face {

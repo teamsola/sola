@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
+	
 	#recipe_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto;}
 	.recipe_title{line-height:150px;float:left; width:100%;height:150px; background-size:100% auto; background: url("/sola/img/recipe.jpg") no-repeat center;}
 	.recipe_srch{margin:20px;}
