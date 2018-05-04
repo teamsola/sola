@@ -13,7 +13,7 @@
 	float:left; 
 	width:100%;
 	height:150px; 
-	background-image: url('/sola/storage/몰타이틀.JPG'); 
+	background-image: url('/sola/storage/쇼핑.JPG'); 
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;
@@ -25,6 +25,10 @@
 
 #atag{
 	color:black;
+}
+
+#atag2{
+	color: #ff8400;
 }
 
 #first{
@@ -113,8 +117,8 @@ table{
 }
 
 #more{
-	color:black;dd
-	margin-left:750px;
+	color: #ff8400;
+	margin-left:650px;
 }
 
 #btn{
@@ -300,7 +304,7 @@ table{
 			</table>		
 
 		<div id="more">
-		<a href="mallDetail.do" id="atag">더보기...</a>
+		<a href="mallDetail.do" id="atag2">더보기...</a>
 		</div>
 	</div>
 	</div>
