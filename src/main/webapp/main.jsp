@@ -25,7 +25,6 @@
 <div id="wrapper" class="frame">
 <div class="title">
 	<nav role="gnb">
-		
 		<jsp:include page="/common/nav.jsp" />
 	</nav>
 	</div>
