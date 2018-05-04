@@ -252,7 +252,7 @@ function execDaumPostcode()
 				</tr>
 				<tr><td style="height:30px;"></td></tr>
 				<tr class="sub">
-					<td>*비밀번호<br><span id="span_pwd">8자 이상, 영문과 숫자 혼용</span></td>
+					<td>*비밀번호<br><span id="span_pwd">8자 이상, 영문과 숫자와 특수문자 혼용</span></td>
 				</tr>
 				<tr class="inp">
 					<td><input type="password" name="pwd" id="pwd" required="required" class="inp_text" placeholder="비밀번호 입력"></td>
