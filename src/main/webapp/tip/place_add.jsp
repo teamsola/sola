@@ -48,7 +48,7 @@ pageEncoding="UTF-8"%>
 	<span style="color:#ff8400; margin-left:10px; font-weight: bold; font-size: 25px;">
 		${memName }</span><span> 님이 추천하는 장소
 	</span><div style="float:right; height:40px; vertical-align:bottom; display: table-cell; line-height: 70px;">
-	<!-- 도움말 --><img class="help_icon" width="70px" height="auto" src="/sola/img/help.png"><div class="help_info"></div></div>
+	<!-- 도움말 --><div class="help_info"></div></div>
 	<hr>
 	<div id="map_sb_form">
 		<form action="addPlace.do" method="post" id="map_sb_form" name="map_sb_form">

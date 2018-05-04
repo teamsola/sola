@@ -12,21 +12,21 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 	
-	#recipe_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto;}
-	.recipe_title{line-height:150px;float:left; width:100%;height:150px; background-size:100% auto; background: url("/sola/img/recipe.jpg") no-repeat center;}
-	.recipe_srch{margin:20px;}
+	#recipe_content{float:left;width:100%; overflow:hidden; height:auto;text-align: center;margin:0 auto;}
+	.recipe_title{line-height:200px;float:left; width:100%;height:200px; background-size:100% auto; background-position: center center; background-image: url("/sola/img/recipe_t.jpg");text-align: left;}
+	.recipe_srch{float:left;width:96%;margin:10px 0 20px 0;padding:0 2%; border-bottom: 1px solid #ff8400;}
 	#keyword{border-style:none;font-size:16px; padding:7px; position:relative;bottom:13px;border:1px solid #ff8400;box-sizing: border-box;}
-	#keyword:focus{outline:none;border:2px solid #ff8400;box-sizing: border-box;}
+	#keyword:focus{outline:none;border:2px solid #ff8400;box-sizing: border-box;transition:.3s ease;}
 	#searchimg{cursor: pointer;}
-	.recipe_list{float:left;margin:10px; width:100%;}
-	.recipe_list .list_each{float:left;width:330px;margin:30px 15px 40px 15px;height:380px;}
+	.recipe_list{display:inline-block;width:1500px;margin:10px auto;}
+	.recipe_list .list_each{display:inline-block;text-align:left;width:400px;margin:30px 25px 40px 25px;height:380px;}
 	.recipe_list .list_each a, .recipe_list .list_each a:visited{text-decoration: none;color: #ff8400;}
 	.recipe_list .list_each a:hover{color:red;}
 	.recipe_list .list_each img:hover{cursor:pointer;}
 	#recipe_add_btn{background: url("/sola/img/write_btn.png") no-repeat 6px; color:#ff8400; font-weight:bold; border-style:none; border:1px solid #ff8400; border-radius:20px; background-size:120px 30px; width: 150px; height: 35px;font-size:15px;}
-	#recipe_add_btn:hover, #recipe_add_btn:active{cursor:pointer; outline:none; background:#ff8400 url("/sola/img/write_btn_hover.png") no-repeat 6px; background-size:120px 30px;color:white;}
+	#recipe_add_btn:hover, #recipe_add_btn:active{transition:.3s ease;cursor:pointer; outline:none; background:#ff8400 url("/sola/img/write_btn_hover.png") no-repeat 6px; background-size:120px 30px;color:white;}
 	#pagingBtn{color:#ff8400;font-size:15px;border-style: none; width:160px; height:35px;background: none; border:1px solid #ff8400; border-radius:20px;}
-	#pagingBtn:hover, #pagingBtn:active{background:#ff8400; color:white;outline:none;}
+	#pagingBtn:hover, #pagingBtn:active{background:#ff8400; color:white;outline:none;transition:.3s ease;}
 	</style>
 	<script type="text/javascript">
 		function goToRecipe(){
@@ -54,7 +54,7 @@ pageEncoding="UTF-8"%>
 			<c:forEach begin="1" end="6" var="i" step="1">
 				var width = $('.image'+${i}).width();
 				var height = $('.image'+${i}).height();
-				if(width/height > (33/20)){
+				if(width/height > 2){
 					$('.image'+${i}).css({
 						"display":"block",
 						"margin" : "auto",
@@ -107,11 +107,11 @@ pageEncoding="UTF-8"%>
 			</div>
 			</div>
 			
-			
+			<div style="float:left;width: 100%;text-align: center;margin: 0 auto;">
 			<div class="recipe_list">
 				<c:forEach items="${list }" var="item" varStatus="i">
 					<div class="list_each">
-						<div style="float:left;width:330px;height: 200px;margin: 0 auto;overflow:hidden;text-align: center;border-radius:15px;">
+						<div style="float:left;width:400px;height: 200px;margin: 0 auto;overflow:hidden;text-align: center;border-radius:15px;">
 						<c:choose>
 							<c:when test="${item.foodimage == 'null' }">
 							<img class="image${i.count }" src="/sola/img/recipe_default.png" onclick="location.href='recipe_view.do?p=${pg }&s=${item.recipe_seq }&k=${keyword }'">
@@ -121,7 +121,7 @@ pageEncoding="UTF-8"%>
 							</c:otherwise>
 						</c:choose>
 						</div>
-						<div style="width:310px; margin:40px 10px 2px 10px;padding-top:10px;border-bottom:1px solid #ff8400;font-size:25px;color:#ff8400; overflow: hidden;">
+						<div style="width:380px; margin:40px 10px 2px 10px;padding-top:10px;border-bottom:1px solid #ff8400;font-size:25px;color:#ff8400; overflow: hidden;">
 						<a href="recipe_view.do?p=${pg }&s=${item.recipe_seq }&k=${keyword }">${item.foodname }</a></div>
 						<div style="margin: 5px 10px 5px 10px; font-size: 16px;">
 						 <c:choose>
@@ -133,7 +133,7 @@ pageEncoding="UTF-8"%>
 				           </c:otherwise> 
 				          </c:choose>
 						</div>
-						<div style="width:320px; padding: 0 5px; height:50px;border:1px dashed #BDBDBD; border-radius: 10px;line-height:50px;">
+						<div style="width:390px; padding: 0 5px; height:50px;border:1px dashed #BDBDBD; border-radius: 10px;line-height:50px;">
 						<span style="color:#6a6763; font-size: 13px; padding:5px 8px;">
 						<c:if test="${item.cookingtime <= 60 }">${item.cookingtime }분</c:if>
 						<c:if test="${item.cookingtime > 60 }"><fmt:parseNumber var="hour" integerOnly="true" value="${item.cookingtime/60 }"/>
@@ -169,6 +169,8 @@ pageEncoding="UTF-8"%>
 					</div>
 				</c:forEach>
 			</div>
+			</div>
+			
 			<div style="float:left;text-align:center;font-weight:bold;width: 100%; color:#ff8400; font-size:15px; margin-bottom:5px;">page ${pg }</div>
 			<div style="float:left;text-align:center; margin: 0 2%;width:96%;height:50px;border-top:1px dashed #ff8400;">
 			<c:if test="${pg>1 }">
