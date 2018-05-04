@@ -22,8 +22,8 @@
 
 <!-- ======================================== CSS작업 ========================================= -->
 
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle3.css?ver=2" />
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewStats.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle3.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewStats.css?ver=2" />
 
 <!-- ==================================== 그래프(Pie-Div)용 ==================================== -->
 <!-- JQ-PLOT의 CSS를 설정 -->
@@ -1077,6 +1077,7 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 						
 						<!-- 항목별 버튼 위치 -->
 						<div id="item_title" class="item_title">타이틀</div>
+						<hr class="line">
 						<div id="item_contents" class="item_contents">컨텐츠</div>
 						
 					</div>
