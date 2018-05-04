@@ -17,6 +17,8 @@
     <context:component-scan base-package="ledger"/>
 	<context:component-scan base-package="calendar"/>
 	<context:component-scan base-package="proinfo"/>
+	<context:component-scan base-package="board2"/>
+	
 
 	<context:property-placeholder location="classpath:spring/db.properties" />
 

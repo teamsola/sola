@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/sola/proinfocss/proinfoView.css?v=1" />
+	href="/sola/proinfocss/proinfoView.css" />
 
 <script type="text/javascript">
 	$(document).ready(function(){

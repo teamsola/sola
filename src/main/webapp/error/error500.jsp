@@ -5,6 +5,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+@font-face {
+	font-family:"THE졸리다";
+	src:url('/sola/font/THE_JOLIDA.TTF?#iefix') format('embedded-opentype');
+}
+body{font-family: 'THE졸리다' !important;}
 document
 {
 	background-color: #ff8400;
@@ -50,28 +55,10 @@ span
 	font-size: x-large;
 	margin: 10px;
 }
-/* html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;}
-#up
-{
-	padding: 5px;
-    width: 100%;
-    height: 70px;
-    background-color: #6a6763;
-}
-#img
-{
-	background-image: url(../img/error404.jpg);
-	background-size: width=100% height=100%;
-}
-img
-{
-	width: 100%;
-	height: 100%;
-} */
 </style>
 </head>
 <body>
-<img class="bg" src="../img/error500.jpg" alt="" />
+<img class="bg" src="/sola/img/error500.jpg" alt="" />
 <div id="container">
 <span>500 ERROR<br><br></span>
 <span>문법에러냥..<br></span>

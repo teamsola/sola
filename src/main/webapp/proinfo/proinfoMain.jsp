@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/sola/proinfocss/proinfoMain.css?v=1" />
+	href="/sola/proinfocss/proinfoMain.css" />
 <script type="text/javascript">
 	/* Demo purposes only */
 	$(".hover").mouseleave(function() {
