@@ -200,7 +200,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 			
 				<c:set var="id_len" value="${fn:length(memId) }" />
 				<c:if test="${id_len < 6 }">
-				<input type="button" class="insert_btn" value="전문 지식 입력"
+				<input type="button" class="insert_btn" value="등록"
 					onclick="location.href='proinfoInsertForm.do'" />
 				</c:if>
 				
