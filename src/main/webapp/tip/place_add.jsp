@@ -23,8 +23,15 @@ pageEncoding="UTF-8"%>
 			});
 		});
 	</script>
+	<style type="text/css">
+	.recipe_title{line-height:200px;float:left; width:100%;height:200px; background-size:100% auto; background-position: center center; background-image: url("/sola/img/place.jpg");text-align: left;}
+	</style>
 	</head>
 	<body>
+	<div class="recipe_title">
+				<span style="cursor:pointer;font-size:25px;padding:10px 13px 10px 3px;margin:7px 30px;background: rgba(255,255,255, 0.7);" onclick="javascript:goToRecipe()">TIP > 레시피 </span>
+			</div>
+			<hr style="float: left;width:90%;margin-left:5%;margin-right:5%;margin-top:20px;margin-bottom:20px;">
 		<div id="place_add">	<!-- 장소 등록 div -->
     <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>

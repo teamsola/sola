@@ -31,10 +31,10 @@ body{font-family: 'NanumGothic' !important;} */
 .placeinfo .tel {color:#0f7833; border-bottom: 1px solid gray;}
 .placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
 .placeinfo .placedetail{margin:5px;padding:4px 0;cursor: default;font-size:13px; line-height: 13px;}
-.map_place_view{border-radius:30px ; float:left; position:relative;width:100%;height:500px; padding-right: 10px;}
+.map_place_view{border-radius:30px ; float:left; position:relative;width:100%;height:550px; padding-right: 10px;}
 .map_wrap, .map_wrap * {margin:0;padding:0;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {border-radius:30px ; float:left; position:relative;width:60%;height:500px; padding-right: 10px;}
+.map_wrap {border-radius:30px ; float:left; position:relative;width:60%;height:600px; padding-right: 10px;}
 .map_sb {float:left;width:37%;height:500px; border-left: 1px solid #ff8400; padding-left: 10px; padding-right: 10px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
