@@ -6,8 +6,10 @@
 		<li id="my"><a href="member.do"><span>My Info</span></a></li>
 		<li id="diary"><a href="diaryIndex.do"><span>일기/가계뿌</span></a></li>
 		<li id="mall"><a href="mallIndex.do"><span>Mall</span></a></li>
+		<li id="board"><a href="board.do"><span>게시판</span></a></li>
 		<li id="tip"><a href="tip.do"><span>Tip</span></a></li>
 		<li id="logout"><a href="logout.do"><span>Logout</span></a></li>
+		
 	</ul>
 	<div id="progressbar"></div>
 	<div id="lv2">
@@ -31,6 +33,11 @@
 		<ul class="lv2-list" id="mallLv2" rel="mall">		
 			<li><a href="mallIndex.do">쇼핑몰</a></li>
 			<li><a href="proinfoMain.do">전문지식</a></li>
+		</ul>
+		<ul class="lv2-list" id="boardLv2" rel="board">		
+			<li><a href="FreeBoardList.do">자유게시판</a></li>
+			<li><a href="NoticeBoardList.do">공지사항</a></li>
+			<li><a href="QnABoardList.do">Q&A</a></li>
 		</ul>
 		<ul class="lv2-list" id="tipLv2" rel="tip">
 			<li class="nav-item"><a href="place.do" class="nav-link">혼밥혼술</a></li>

@@ -54,7 +54,7 @@ header
 	height: 100%;
 	width: 20%;
 }
-#content
+#contentF
 {
 	display:table-cell;
 	float: left;
@@ -81,7 +81,7 @@ nav>#lv1>li
 	position: relative;
 	list-style: none;
 	height: 100%;
-	width: 16.6%;
+	width: 14.28%;
 	text-align: center;
 }
 nav>#lv1>li>a
@@ -115,7 +115,7 @@ nav>#lv2>ul.lv2-list
 	margin: 0px;
 	padding: 0px;
 	float: left;
-	width: 16.6%;
+	width: 14.28%;
 	height: 4px;
 	visibility: hidden;
 }
