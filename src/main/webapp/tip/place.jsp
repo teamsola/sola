@@ -68,10 +68,10 @@ pageEncoding="UTF-8"%>
 	<div id="place_title">
 				<span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">TIP > 혼밥혼술 </span>
 			</div>
-	<c:set var="cmd" value="${ cmd }"/>
 	
-	<c:if test="${ cmd == null}">
-	<div id="place_main_left" class="place_main">
+	<div style="width:100%;float:left;text-align: center;">
+	<div style="width:1400px;display: inline-block;">
+		<div id="place_main_left" class="place_main">
 		<a href="place_add.do" class="link001">
 		<img src="/sola/img/place_main001.jpg" alt="장소 등록하기"/>
 		<span class="intro_title_left">장소 등록하기</span>
@@ -86,15 +86,9 @@ pageEncoding="UTF-8"%>
 		<span class="intro_detail_right">오늘은 혼자 술을 마시고 싶은데<br>어디가 좋을지 모르겠다고요?<br>여기, SOLA 회원들이 추천한 혼술&혼밥&혼커 장소를 확인하세요.</span>
 		</a>
 	</div>
-	</c:if>
+	</div>
 	
-	<c:if test="${ cmd eq '001'}">
-	<jsp:include page="place_add.jsp"></jsp:include>
-	</c:if>
-
-	<c:if test="${ cmd eq '002'}">
-	<jsp:include page="place_view.jsp"></jsp:include>
-	</c:if>
-
+	</div>
+	
 	</body>
 </html>
