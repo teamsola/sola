@@ -235,7 +235,7 @@ function execDaumPostcode()
 </script>
 </head>
 <body>
-		<div style="width:100%;background: #ff8400;height:50px;display:block;z-index:100; padding-top:20px;font-size: 26px;color:white;font-weight: bold;position:fixed;min-height: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;회원가입&nbsp;&nbsp;
+		<div style="width:100%;background: #ff8400;height:50px;display:block;z-index:100; padding-top:20px;font-size: 26px;color:white;font-weight: bold;position:fixed;top:0px;min-height: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;회원가입&nbsp;&nbsp;
 		<span style="color: white;font-size:12px;">&nbsp;&nbsp; * 는 필수 입력사항입니다.</span><img src="img/logo(whi).png" height="25px" style="float: right;margin-top: 25px;"></div>
 		
 		

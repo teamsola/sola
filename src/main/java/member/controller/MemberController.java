@@ -99,8 +99,8 @@ public class MemberController
 	@RequestMapping(value = "joinForm.do")
 	public ModelAndView joinForm()
 	{
-		ModelAndView modelAndView = new ModelAndView("/biFrame.jsp");
-		modelAndView.addObject("left", "/member/joinForm.jsp");
+		ModelAndView modelAndView = new ModelAndView("/member/joinForm.jsp");
+	//	modelAndView.addObject("left", "/member/joinForm.jsp");
 		return modelAndView;
 	}
 
