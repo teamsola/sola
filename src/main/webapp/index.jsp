@@ -11,6 +11,7 @@
 var findAccount = function(){open("member/find/findAccount.jsp", "아이디/비밀번호 찾기", "width=500, height=450, location=no, resizable=no")};
 </script>
 <style type="text/css">
+
 img.bg
 {
 	/* 브라우저의 크기에 맞게 전체 화면에 맞춘다. */
