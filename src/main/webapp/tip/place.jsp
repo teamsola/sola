@@ -15,15 +15,14 @@ pageEncoding="UTF-8"%>
 			max-width: 400px;
 		}
 		.place_main{
-			margin:10px;
 			background-color: #6a6763;
-			width: 47%;
+			width: 50%;
 			position:relative;
 			height: 400px;
 			text-align: center;
 		}
-		#place_main_left{float: left;}
-		#place_main_right{float: right;}
+		#place_main_left{float: left; background-image: url("/sola/img/place_main1.jpg");background-size: cover;}
+		#place_main_right{float: right; background-image: url("/sola/img/place_main2.png");background-size: cover;}
 		.place_main .intro_title_left, .place_main .intro_title_right{
 			display:inline-block;
 			margin: 0 auto;
@@ -54,7 +53,8 @@ pageEncoding="UTF-8"%>
 			color: white;
 		}
 		.place_main a:hover, .place_main a:active{
-			background-color: #ff8400;
+			background-color: rgba(0,0,0,0.5);
+			transition:.5s ease;
 		}
 	</style>
 	<script type="text/javascript">
@@ -73,7 +73,7 @@ pageEncoding="UTF-8"%>
 	<div style="width:1400px;display: inline-block;">
 		<div id="place_main_left" class="place_main">
 		<a href="place_add.do" class="link001">
-		<img src="/sola/img/place_main001.jpg" alt="장소 등록하기"/>
+		
 		<span class="intro_title_left">장소 등록하기</span>
 		<span class="intro_detail_left">본인이 자주 가는 혼술집이 있나요? 아니면 혼밥집은요?<br>혹은 혼자 차를 마시기 좋은 분위기 좋은 카페는요?<br>혼자 먹기 좋은 술집 또는 맛집을 지금 SOLA 회원들과 공유해보세요.</span>
 		</a>
@@ -81,7 +81,7 @@ pageEncoding="UTF-8"%>
 	
 	<div id="place_main_right" class="place_main">
 		<a href="place_view.do" class="link002">
-		<img src="/sola/img/place_main002.jpg" alt="추천장소 보기"/>
+		
 		<span class="intro_title_right">추천장소 보기</span>
 		<span class="intro_detail_right">오늘은 혼자 술을 마시고 싶은데<br>어디가 좋을지 모르겠다고요?<br>여기, SOLA 회원들이 추천한 혼술&혼밥&혼커 장소를 확인하세요.</span>
 		</a>
