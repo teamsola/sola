@@ -6,7 +6,7 @@ import member.bean.MemberDTO;
 
 public interface MemberService
 {
-	public String login(String id, String pwd);
+	public MemberDTO login(String id, String pwd);
 	public int memberJoin(MemberDTO memberDTO);
 	public boolean isExistId(String id);
 	public MemberDTO memberView(String id);

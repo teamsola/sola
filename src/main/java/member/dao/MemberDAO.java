@@ -12,7 +12,7 @@ public class MemberDAO
 {
 	private SqlSessionTemplate sqlSession;
 
-	public String login(String id, String pwd)
+	public MemberDTO login(String id, String pwd)
 	{
 		Map<String, String> map = new HashMap<>();
 		map.put("id", id);

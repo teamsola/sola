@@ -29,7 +29,7 @@ h2, h3{color: #6a6763;}
 .addr{
 	width: 400px;
 }
-.title{
+title{
 	display: inline-block;
 	width: 150px;
 	margin: 20px;
