@@ -84,16 +84,30 @@
 </script>
 
 <style>
-#title{
+#title_img{
 	padding:20px;
 	line-height:150px;
 	float:left; 
 	width:100%;
 	height:150px; 
+	
 	background-image: url('/sola/storage/가게부.JPG'); 
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;
+	text-align:left;
+}
+
+#title_atag{
+	color:black;
+	font-size:25px;
+	padding:10px 13px 10px 3px;
+	margin:7px;
+	background: rgba(255,255,255, 0.7);
+}
+
+#title_atag:hover{
+	color:#ff8400;
 }
 </style>
 <title>달력</title>
@@ -101,8 +115,8 @@
 <body class="total_body">
 
 
-<div id="title">
-<a href="지금 페이지 들어오는주소.do"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">CALENDAR > LEDGER</span></a>
+<div id="title_img">
+<a href="calendar.do?cmd=main" id="title_atag"><span>CALENDAR > LEDGER</span></a>
 </div>
 
 
