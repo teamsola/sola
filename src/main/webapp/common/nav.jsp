@@ -10,23 +10,20 @@
 		<li id="board"><a href="board.do"><span>게시판</span></a></li>
 		<li id="ledger"><a href="calendar.do?cmd=main"><span>가계부</span></a></li>
 		<li id="diary"><a href="diaryIndex.do"><span>일기</span></a></li>
-		
-		<!-- <li id="logout"><a href="logout.do"><span>Logout</span></a></li> -->
+
 		<c:if test="${memId.length() >= 6}">
 			<li id="my" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right">${memName} 님</span> <img class="profile_img" src="img/basic_img.png"></a></li>
 		</c:if>
 		<c:if test="${memId.length() < 6}">
 			<li id="manage" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right; padding-right:120px; width:100%;">${memName} 님</span><img class="profile_img" src="img/basic_img.png"></a></li>
 		</c:if>
+
 	</ul>
 	<div id="progressbar"></div>
 	<div id="lv2">
 		<ul class="lv2-list" id="logoLv2" rel="logo"></ul>
 
-		<ul class="lv2-list" id="mallLv2" rel="mall">		
-		<!-- <li><a href="mallIndex.do">쇼핑몰</a></li>
-			 <li><a href="proinfoMain.do">전문지식</a></li> -->
-		</ul>
+		<ul class="lv2-list" id="mallLv2" rel="mall"></ul>
 		
 		<ul class="lv2-list" id="tipLv2" rel="tip">
 			<li class="nav-item"><a href="place.do" class="nav-link">혼밥혼술</a></li>
@@ -52,12 +49,9 @@
 		    <li><a href="ledgerViewClosing.do?cmd=main">결산 보기</a></li>
 		    <li><a href="ledgerViewStats.do?cmd=main">통계 보기</a></li>
 		</ul>
-		<ul class="lv2-list" id="diaryLv2" rel="diary">
-			<!-- <li><a href="diaryIndex.do">일기</a></li> -->
-		</ul>
+		<ul class="lv2-list" id="diaryLv2" rel="diary"></ul>
 		
 		
-			<!-- <ul class="lv2-list" rel="logout"></ul> -->
 			<c:if test="${memId.length() >= 6}">
 				<ul class="lv2-list" id="myLv2" rel="my">
 					<li><a href="member.do">기본정보</a></li>

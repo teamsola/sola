@@ -40,39 +40,51 @@ div#container
 	z-index: 5;
 	margin: 50px;
 }
-span
+#span_content, a
 {
 	color: white;
+	opacity: 70;
 	font-size: xx-large;
 	margin: 10px;
+	font-size: medium;
 }
-/* html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;}
-#up
+h1
 {
-	padding: 5px;
-    width: 100%;
-    height: 70px;
-    background-color: #6a6763;
+	color: white;
+	opacity: 70;
 }
-#img
+a:visiter
 {
-	background-image: url(../img/error404.jpg);
-	background-size: width=100% height=100%;
+	color: white;
 }
-img
-{
-	width: 100%;
-	height: 100%;
-} */
 </style>
 </head>
 <body>
-<img class="bg" src="../img/error404.jpg" alt="" />
+<img class="bg" src="/sola/img/error404.jpg" alt="" />
 <div id="container">
-<span>404 ERROR<br></span>
-<span>Oops.. So many sheep, here.<br></span>
-<span>There is no way to go.<br></span>
-<span>please, go back.</span>
+<h1>404 ERROR<br></h1>
+<span id="span_content">
+<br>
+<br>
+그래요.<br>
+혼자 산다는건 제법 어려운 일이에요.<br>
+<br>
+이정표 없는 길을 혼자 걷는 것과 같아서,<br>
+가끔씩은 막다른 길에 다다를 때도 있고,<br>
+길을 잃어 엉뚱한 곳으로 올 수도 있지요.<br>
+<br>
+잘못된 길에 다다르게 되었다면,<br>
+잠시만 그 자리에 서서<br>
+심호흡을 해보세요.<br>
+<br>
+그리고 뒤돌아서<br>
+다시 당당하게 걸어나가세요.<br>
+<br>
+다른 길에는 훨씬 멋진 일들이 당신을 기다리고 있을거에요.<br>
+.<br>.<br>
+</span>
+<br>
+<a href="javascript:history.go(-1)">뒤돌아가기...</a>
 </div>
 </body>
 </html>
