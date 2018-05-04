@@ -33,7 +33,7 @@
 	th,td { border:1px solid gray; }
 	table th{
 		border-left: none;
-		background-color:  #e3e7ed;
+		background-color:  #ff8400;
 		font-size: 14px;
 	}
 	table td{
@@ -50,12 +50,14 @@
 	.btn{
 		width: 100px;
 		height: 35px;
-		background-color: #eff1f2;
+		background-color: white;
 		color: #6a6763;
-		border: 2px solid #e3e4e5;
+		border: 2px solid #ff8400;
+		border-radius: 20px;
+		outline: none;
 	}
 	label {
-		color: #6a6763;
+		color: white;
 	}
 </style>
 </head>
@@ -76,7 +78,7 @@
 				<input type="file" name="img" size="45">
 			</td>
 		</tr>
-		<tr><td align="left" style="border-top: none;"><input type="button" value="삭제" class="btn" onclick="location.href='memberProfileDelete.do'"/></td></tr>
+		<tr><td align="left" style="border-top: none;"><input type="button" value="삭제" class="btn" onclick="location.href='memberProfileDelete.do?nickname=${memberDTO.nickname }'"/></td></tr>
 		<tr>
 			<th><label>별명</label></th>
 			<td colspan="2" style="border-top: 1px solid gray;">

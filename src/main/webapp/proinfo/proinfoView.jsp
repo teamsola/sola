@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/sola/proinfocss/proinfoView.css" />
+	href="/sola/proinfocss/proinfoView.css?v=1" />
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -79,14 +79,10 @@
 				<div class="ol_top">
 					<div id="category" class="category">
 						<!-- 카테고리 -->
-						<label style="color: white;"> <c:if
-								test="${proinfoDTO.category eq 'live'}">
-         			입주 전
-         		</c:if> <c:if test="${proinfoDTO.category eq 'living'}">
-         			입주 중
-         		</c:if> <c:if test="${proinfoDTO.category eq 'lived'}">
-         			입주 후
-         		</c:if>
+						<label style="color: white;"> 
+				<c:if test="${proinfoDTO.category eq 'live'}">입주 전</c:if>
+				<c:if test="${proinfoDTO.category eq 'living'}">입주 중</c:if>
+				<c:if test="${proinfoDTO.category eq 'lived'}">입주 후</c:if>
 						</label>
 					</div>
 
@@ -102,19 +98,22 @@
 							<c:if test="${list_len > 0}">
 								<div class="subject">
 									<!-- 제목 -->
-									<label>제목 : ${proinfoDTO.subject }</label>
+									<label>${proinfoDTO.subject }</label>
 								</div>
 								<div id="imgFile" class="imgFile">
 									<!-- 이미지  -->
 									<img src="/sola/proinfoimg/${proinfoDTO.imgFile }">
 								</div>
-								<div class="contents">	<!-- 내용 -->
+								<div class="contents" align="left">	<!-- 내용 -->
 									<pre><label>${proinfoDTO.contents }</label></pre>
 								</div>
 								<div class="insert_btn" align="right">
 									<!-- 수정 삭제 버튼 -->
-									<input type="button" id="modify_btn" value="수정"> <input
-										type="button" id="delete_btn" value="삭제">
+									<c:set var="id_len" value="${fn:length(memId) }" />
+									<c:if test="${id_len < 6 }">
+									<input type="button" id="modify_btn" class="btn" value="수정"> <input
+									type="button" id="delete_btn" class="btn" value="삭제">
+									</c:if>
 								</div>
 							</c:if>
 							<c:if test="${list_len == 0}">작성된 글이 없습니다</c:if>
@@ -145,7 +144,7 @@
 						<c:if test="${list_len > 0}">
 							<div class="subject">
 								<!-- 제목 -->
-								<label>제목 : ${proinfoDTO.subject }</label>
+								<label>${proinfoDTO.subject }</label>
 							</div>
 							<div id="imgFile" class="imgFile">
 								<!-- 이미지  -->
@@ -156,8 +155,11 @@
 							</div>
 							<div class="insert_btn" align="right">
 								<!-- 수정 삭제 버튼 -->
-								<input type="button" id="modify_btn" value="수정"> <input
-									type="button" id="delete_btn" value="삭제">
+							<c:set var="id_len" value="${fn:length(memId) }" />
+							<c:if test="${id_len < 6 }">
+								<input type="button" id="modify_btn" class="btn" value="수정"> <input
+									type="button" id="delete_btn" class="btn" value="삭제">
+							</c:if>
 							</div>
 
 						</c:if>

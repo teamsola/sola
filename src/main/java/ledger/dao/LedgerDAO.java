@@ -145,4 +145,14 @@ public class LedgerDAO {
 		System.out.println("===> SpringMVC-myBatis로 DeleteLedger() 기능 처리");
 		return sqlSession.delete("mybatis.ledgerMapper.DeleteLedger",map);
 	}
+	
+	// 가계부 검색
+	public List<LedgerDTO> searchLedger(String keyword, String id){
+		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("keyword", "%"+keyword+"%");
+		map.put("id", id);
+		
+		return sqlSession.selectList("mybatis.ledgerMapper.searchLedger",map);
+	}
 }

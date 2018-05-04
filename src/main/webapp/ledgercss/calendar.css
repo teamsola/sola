@@ -86,15 +86,23 @@ select {
 	height: 30px;
 }
 
+.frame{
+	text-align:center;
+    float:left;
+    width:100%;
+}
+
 .calendar {	/* 캘린더 바디 */
-	width: 97%;
-	margin-top: 0px;
+	display: inline-block;
+	width: 1000px; 
+	margin-top: 10px;
 	margin-left:20px;
 	margin-left:20px;
 	background-color:#FF8400;
 }
 
 .searchBar{	/* 검색을 위한 div */
+	padding-top:10px;
 	width: 97%;
 	float:right;
 }
@@ -105,18 +113,22 @@ select {
 	float:right;
 }
 
-.searchBar .search_btn{	/* 검색 버튼 */
-	width:50px;
+.searchBar .search_btn{	/* 검색 버튼 div */
+	width:25px;
 	height:25px;
 	margin-left:10px;
+	margin-right:10px;
 	float:right;
-	background-color : #ff8400;
-	color:white;
+	background-image: url('../ledgerimg/search icon2.png');
+	background-repeat: no-repeat;
+	background-position:conter center;
+	background-size:100% 100%;
 }
 
 .searchBar .search_btn:hover{	/* 검색 버튼 hover 이벤트*/
 	background-color : #ff8200;
 	/* color:white; */
+	cursor:pointer;
 }
 
 .navigation {

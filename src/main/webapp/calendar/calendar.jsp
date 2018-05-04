@@ -45,15 +45,25 @@
 			$(this).css('background-color','#EFEFEF');
 		});
 		
-		$("#search_btn").click(function(){	// 검색버튼 눌림
+		/* $("#search_btn").click(function(){	// 검색버튼 눌림
 			if($("#search").val()==""){
 				alert("검색어를 입력해주세요");
 				$("#search").focus();
 			}else{
 				location.href="ledgerSearch.do?keyword="+$("#search").val();
 			}
-		});
+		}); */
+		
+		
 	});
+	function search_Check(){
+		if($("#search").val()==""){
+			alert("검색어를 입력해주세요");
+			$("#search").focus();
+		}else{
+			location.href="ledgerSearch.do?keyword="+$("#search").val();
+		}
+	}
 	
 	// 숫자 3번째 자리마다 콤마(,) 찍기
 	function addComma(num) {
@@ -72,13 +82,37 @@
 	    }
 	}
 </script>
+
+<style>
+#title{
+	padding:20px;
+	line-height:150px;
+	float:left; 
+	width:100%;
+	height:150px; 
+	background-image: url('/sola/storage/가게부.JPG'); 
+	background-size:cover; 
+	background-position:center; 
+	background-repeat: no-repeat;
+}
+</style>
 <title>달력</title>
 </head>
 <body class="total_body">
+
+
+<div id="title">
+<a href="지금 페이지 들어오는주소.do"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">CALENDAR > LEDGER</span></a>
+</div>
+
+
+<div class="frame">
 <div class="calendar">
 <div class="searchBar">
-	<input type="button" id="search_btn" class="search_btn" value="검색">
+	<div id="search_btn" class="search_btn" onclick="search_Check();"></div>
+	<!-- <input type="button" id="search_btn" class="search_btn" value="검색"> -->
 	<input type="text" id="search" class="search" name="search" onkeyup="enterkey();">
+	
 </div>
 <!-- 날짜 네비게이션 -->
 <div class="navigation">
@@ -192,6 +226,7 @@
 	</tbody>
 	</table>
 
+</div>
 </div>
 </body>
 </html>

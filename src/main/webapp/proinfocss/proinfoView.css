@@ -15,14 +15,7 @@
 	margin: auto;
 	margin-top: 100px;
 }
-.in{	/* 전-중-후 div */
-	margin: 30px;
-	width: 300px;
-	height: 500px;
-	border: 1px solid;
-	float: left;
-	cursor: pointer;
-}
+
 div#glayLayer {
 	display: none;
 	position: fixed;
@@ -88,7 +81,7 @@ div#overLayer {
 	height: 99%;
 	background-color: white;
 	overflow: auto;
-	border: solid 1px black;
+/* 	border: solid 1px black; */
 	margin: auto;
 }
 
@@ -133,7 +126,7 @@ div#overLayer {
 #imgFile{
 	width: 98%;
 	height: 200px;
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	margin: auto;
 	margin-top: 10px;
 }
@@ -202,13 +195,20 @@ div#overLayer {
 .contents{
 	width: 98%;
 	min-height: 250px;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	margin: auto;
 	margin-top: 10px;
 }
 .contents label{
 	min-height: 200px;
+	font-size: 15px;
+	white-space: pre-wrap;
 }
+
+.subject label{
+	font-size: 25px;
+}
+
 .insert_btn{
 	margin-top: 10px;
 	margin-right: 15px;
@@ -232,4 +232,13 @@ div#overLayer {
 	border: 1px solid;
 	width: 80%;
 	margin: auto;
+}
+
+.btn{
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	color: #6a6763;
+	border: 2px solid #6a6763;
+	border-radius: 20px;
 }

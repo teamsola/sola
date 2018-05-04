@@ -1,30 +1,39 @@
 @charset "UTF-8";
 
+html, body{width:100%; position: absolute; margin:0; padding:0; display:block; /* overflow:hidden; */ }
+
 header, footer,  nav
 {
-	margin: auto;
-	background-color: #ff8400;
+	/* overflow:hidden; */
+	margin: 0;
+	background-color: #6a6763;
 	box-sizing: border-box;
 	display: table;
+	width:100%;
 }
 .frame, section, footer{
-	margin: auto;
+	margin: 0;
+	padding:0;
+	width:100%;
 	box-sizing: border-box;
 	display: table;
 }
 #wrapper
 {
-	margin: auto;
-	width: 1300px;
+	overflow-y: scroll;
+	width: 100%;
 	min-height: 1000px;
 }
 a
 {
 	color: white;
+	text-decoration:none;
+	
+	
 }
 a:hover
 {
-	color: black;
+	color: #ff8400;
 }
 a:after
 {
@@ -61,38 +70,91 @@ header
 	min-height: 700px;
 	width: 100%;
 }
-nav
+
+
+nav	/* 네비 바 */
 {
-	border-bottom: 4px white solid;
-	min-height: 39px;
-	width: 1300px;
+	padding : 0px;
+	margin:0px;
+	height: 60px;
+	min-height: 50px;
+	position: fixed;
+	top: 0;
+	z-index: 1000;
+	border-bottom: 0px;
 }
-nav>ul
+
+#lv1 .memberInfo{	/* 오른쪽 회원정보 */
+	 text-align: right;
+	 vertical-align: middle;
+	 float:right;
+}
+
+
+
+.logo_img{	/* 로고 이미지 */
+	margin-top:10px;
+	height:45px;
+	float:left;
+	cursor:pointer;
+	
+}
+
+nav>#lv1>#myLv2{
+	float:right;
+	text-align: right;
+}
+
+.profile_img{	/* 프로필 이미지 */
+	height:40px;
+	width:40px;
+	margin: 10px 10px 5px 8px;
+	cursor:pointer;
+	border-radius: 50%;
+	border: solid white 1px;
+	
+}
+
+nav>ul	/* nav 전체 */
 {
-	margin: 0px;
+	margin:0px;
 	padding: 0px;
-	height: 39px;
+	height: 60px;
 	width: 100%;
+	float:left;
 	overflow: hidden;
+	position: fixed;
+	top: 0px;
 }
-nav>#lv1>li
+nav>#lv1>li	/* nav 개개인 항목 */
 {
 	float: left;
 	position: relative;
+	
 	list-style: none;
-	height: 100%;
-	width: 14.28%;
+	height: 60px;
+	width: 12%;
 	text-align: center;
+	vertical-align: middle;
+	color:white;
 }
+
+nav>#lv1>#logo{
+	padding:0;
+	width:14%;
+}
+
+
 nav>#lv1>li>a
 {
-	margin: 0;
-	padding : 0;
+	margin: 0px;
+	padding : 0px;
 	text-decoration: none;
-	color: #6a6763;
+	color: white;
 	display: block;
 	height: 100%;
-	width: 100%;	
+	width: 100%;
+	vertical-align: middle	;
 }
 nav span
 {
@@ -101,25 +163,35 @@ nav span
 	left: 50%;
 	transform: translateX(-50%) translateY(-50%);
 }
-nav>#lv2
+nav>#lv2	/* 레벨 2메뉴바 */
 {
 	background-color: transparent;
     z-index: 10;
-    position: absolute;
+    position: fixed;
+    top: 0px;
     padding: 0px;
-    width: 1300px;
+    width: 100%;
+    margin-top:60px;
+   /*  left: 247px; */
     display: block;
+    float: left;
+    
 }
 nav>#lv2>ul.lv2-list
 {
-	margin: 0px;
-	padding: 0px;
+	margin-left: 0px;
+	margin-top:0px;
+	/* padding-top: 17px; */
+	padding-left: 0px;
 	float: left;
-	width: 14.28%;
+	width: 12%;
 	height: 4px;
 	visibility: hidden;
 }
-nav>#lv2>ul.lv2-list>li
+
+
+
+nav>#lv2>ul.lv2-list>li	/* 레벨 2 메뉴바 메뉴 */
 {
  	background-color: #6a6763;
 	z-index: 10;
@@ -128,24 +200,38 @@ nav>#lv2>ul.lv2-list>li
 	list-style: none;
 	text-align: center;
 }
+
+nav>#lv2>#logoLv2{
+	padding:0;
+	width:14%;
+}
+
+nav>#lv2>#myLv2{
+	padding:0;
+	width:12%;
+	float:right;
+}
+
+nav>#lv2>#manageLv2{
+	padding:0;
+	width:12%;
+	float:right;
+}
+
 /* nav>#lv1>li:hover, nav>#lv1>li>a:hover
 {
 	color: #ff8400;
 	background-color: #6a6763;
 } */
-nav.gnb-fixed-top
-{
-	position: fixed;
-	top: 0;
-	z-index: 1000;
-	border-bottom: 0px;
-}
+
 nav #progressbar
 {
+	position: fixed;
+	top: 57px;
 	height: 3px;
 	width: 100%;
 	visibility: hidden;
-	background-color: blue;
+	background-color: #ff8400;
 	float: left;
 }
 footer
@@ -177,21 +263,6 @@ footer
 {
 	width: 652px;
 	border-right: 4px white solid;
-}
-#left 
-{
-	float: left;
-	width: 75%;
-	min-height: 1000px;
-	border-right: 4px white solid;
-	background-color: #ff8400;
-}
-#right 
-{
-	float: left;
-	width: 25%;
-	min-height: 1000px;
-	background-color: #ff8400;
 }
 footer span
 {

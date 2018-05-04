@@ -2,8 +2,8 @@
   --vcal-bg-color: #fff;
   --vcal-border-radius: 0;
   --vcal-border-color: #e7e9ed;
-  --vcal-today-bg-color: #ff8400;
-  --vcal-today-color: #fff;
+  --vcal-today-bg-color: #ffffff;
+  --vcal-today-color: #333;
   --vcal-selected-bg-color: #E7E9ED;
   --vcal-selected-color: #333;
 }
@@ -19,7 +19,7 @@
   box-shadow: 0 4px 22px 0 rgba(0, 0, 0, 0.05);
   margin: 0 auto;
   overflow: hidden;
-  width: 100%;
+  width: 25%;
 }
 
 #v-cal .vcal-btn {

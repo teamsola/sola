@@ -49,10 +49,36 @@ pageEncoding="UTF-8"%>
 		color: #6a6763;
 		border: 2px solid #e3e4e5;
 	}
+	.memberHome_top{
+		width: 1530px;
+		height: 200px;
+		background-image: url(/sola/img/123.png);
+		background-size: 1530px 200px;
+		text-align:left;
+		vertical-align:middle; 
+		display:table-cell;
+	}
+	.top_title{
+		width: 270px;
+		height: 35px;
+		font-size:25px;
+		padding:10px 13px 10px 3px;
+		background: rgba(255,255,255, 0.7);
+		
+	}
+	.top_in{
+		margin-left: 20px;
+		display:inline-block;
+	}
 </style>
 </head>
 <body>
 <div class="container">
+	<div class="memberHome_top">
+		<div class="top_in">
+			<span class="top_title">My Info > 기본정보 </span>
+		</div>
+	</div>
 	<div class="in">
 	<div class="content" align="left">
 		<h3 align="left">프로필</h3><br>

@@ -35,8 +35,8 @@ public class DiaryServiceImpl implements DiaryService{
 	
 	//글 불러오기(수정시)
 	@Override
-	public DiaryDTO diaryView(Date date) {
-		return diaryDAO.diaryView(date);
+	public ArrayList<DiaryDTO> diaryView(Date date) {
+		return (ArrayList<DiaryDTO>) diaryDAO.diaryView(date);
 	}
 
 	//글 목록 조회

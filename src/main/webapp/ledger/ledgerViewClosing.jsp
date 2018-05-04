@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewClosing.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle3.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewClosing.css?ver=2" />
 <script type="text/javascript">
 $(document).ready(function() { 
 	<c:set var="incash" value="0"/>	<!-- 총 수입 -->
@@ -75,7 +76,7 @@ function addComma(num) {
 <body>
 <!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
-	
+	<div class="container">
 	<div class="ledger_body">
 
 		<div class="top">
@@ -125,6 +126,7 @@ function addComma(num) {
 							style="cursor: pointer;">
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

@@ -6,17 +6,17 @@
 	
 }
 .inner{
-	width: 1100px;
-	height: 600px;
+	width: 900px;
+	height: 900px;
 	top: 0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	margin: auto;
 	margin-top: 100px;
+	border: 1px solid;
 }
 .in{	/* 전-중-후 div */
-	margin: 30px;
 	width: 300px;
 	height: 500px;
 	border: 1px solid;

@@ -67,9 +67,8 @@ a{
 	}
 
 #goback{
-	margin-top:50px;
-	margin-bottom:50px;
-	
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -82,14 +81,36 @@ a{
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 }
 
+#goback:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
 	
 </style>
 </head>
@@ -105,7 +126,7 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="storage/${mallDTO.img }" width="100" height="120">
+						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -120,7 +141,7 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="storage/${mallDTO.img }" width="100" height="120">
+						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
@@ -135,7 +156,7 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<img src="storage/${mallDTO.img }" width="100" height="120">
+						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
 						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>

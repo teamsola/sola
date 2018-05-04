@@ -6,17 +6,43 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-a{
-	color:black;
+
+#title{
+	padding:20px;
+	line-height:150px;
+	float:left; 
+	width:100%;
+	height:150px; 
+	background-image: url('/sola/storage/쇼핑.JPG'); 
+	background-size:cover; 
+	background-position:center; 
+	background-repeat: no-repeat;
+}
+
+#title a{
 	text-decoration:none;
 }
 
+#atag{
+	color:black;
+}
 
-#title{
-	text-decoration:bold;
-	margin-top:40px;
-	font-size:40px;
-	text-align:center;
+#atag2{
+	color: #ff8400;
+}
+
+#first{
+	color:#353535;
+	font-size:20px;
+}
+
+#second{
+	font-size:15px;
+	color:#BDBDBD;
+}
+
+#hrline{
+	border-color:#ff8400;
 }
 
 #newtext{
@@ -32,12 +58,8 @@ table{
 }
 
 #oldtable{
+	width:500px;
 	margin-top:130px;
-}
-
-tr{
-	width:100%;
-	height:100%;
 }
 
 #newtd{
@@ -45,45 +67,25 @@ tr{
 	height:100%;
 	padding-bottom:10px;
 }
-	
-#oldtd{
-	width:50%;
-	height:100%;
-}	
 
-#oldimg1{
-	width:80%;
-	height:80%;
-}
-
-#oldimg2{
-	width:80%;
-	height:80%;
-}
-	
 #wrapper2{
 	background-color:#ffffff;
 	width:100%;
 	height:600px;
 	box-sizing:border-box;
-	margin-top:100px;
 }
 	
 #old{
-	background-color:#FAE0D4;
-   	
 	width:50%;
 	height:100%;
 	float:left;
 	box-sizing:border-box;
-	border-right-color:#993800;
+	border-right-color:#BDBDBD;
   	border-right-style: solid;
    	border-right-width: 1px;
 }
 
 #new{
-	background-color:#FAE0D4;
-	
 	width:50%;
 	height:100%;
 	float:right;
@@ -107,6 +109,7 @@ tr{
 }
 
 #subject{
+	color:blacdk;
 	margin:auto;
 	width:60%;
 	height:30%;
@@ -114,7 +117,8 @@ tr{
 }
 
 #more{
-	margin-left:550px;
+	color: #ff8400;
+	margin-left:650px;
 }
 
 #btn{
@@ -124,9 +128,8 @@ tr{
 }
 
 #goback{
-	margin-top:50px;
-	margin-bottom:50px;
-	
+	margin-top:40px;
+	margin-bottom:30px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -139,23 +142,49 @@ tr{
 	display:inline-block;
 	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
 	
 }
+
+#goback:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
 </style>
 </head>
 <body>
 
 
 
-	<p id="title">
-	MALL
-	</p>
+	
+		<div id="title">
+				<a href="mallIndex.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">M A L L</span></a>
+			</div>
+		
 	
 	
 	
@@ -169,8 +198,37 @@ tr{
 	
 	<table id="oldtable">
 		<tr>
-			<td id="oldtd"><a href="mallBoardList.do?pg=1"><img src="image/2.JPG" id="oldimg1" width="250" height="300"></a>
-			<td id="oldtd"><a href="mallBoardWriteForm.do"><img src="image/1.JPG" id="oldimg2" width="250" height="300"></a>
+			<td align="left" rowspan="3" width="120"><a href="mallBoardList.do?pg=1" id="atag"><img src="storage/게시판.png" id="oldimg1" width="120" height="120"></a>
+			<td id="first" align="left"><a href="mallBoardList.do?pg=1" id="atag">> 게시판</a>
+		</tr>
+		
+		<tr>
+			<td><hr id="hrline">
+		</tr>
+		
+		<tr>
+			<td id="second" align="left">회원들이 올린 중고 물품을 확인해보세요
+		</tr>
+	
+	</table>
+		
+		
+		
+		
+		
+	<table id="oldtable">
+		<tr>
+			<td id="first" align="right" width="380"><a href="mallBoardWriteForm.do" id="atag"> 글쓰기 <</a>
+			<td align="right" rowspan="3"><a href="mallBoardWriteForm.do" id="atag"><img src="storage/글쓰기.png" id="oldimg2" width="120" height="120"></a>
+		</tr>
+		
+		<tr>
+			<td><hr id="hrline">
+		</tr>
+
+		<tr>
+			<td id="second" align="right">버리긴 아깝고 쓸일은 없는 물건들을 팔아보세요
+			
 		</tr>
 	</table>
 	
@@ -186,7 +244,7 @@ tr{
 	
 	<!-- 신상 소개 -->
 	<div id="new">
-	<div id="newtext">NEW</div>
+	<div id="newtext">&nbsp;</div>
 	
 	
 	<!-- dto에 저장된것 불러오기 -->
@@ -200,10 +258,10 @@ tr{
 							<td id="newtd">
 							<div id="one">
 								<div id="picture">
-								<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
+								<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }"></a>
 								</div>
 								<div id="subject">
-								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+								<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 								</div>
 							</div>
 							</td>
@@ -218,7 +276,7 @@ tr{
 								<img src="storage/${mallDTO.img }" width="100" height="120">
 								</div>
 								<div id="subject">
-								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+								<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 								</div>
 							</div>
 							</td>
@@ -234,7 +292,7 @@ tr{
 								<img src="storage/${mallDTO.img }" width="100" height="120">
 								</div>
 								<div id="subject">
-								<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+								<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 								</div>
 							</div>
 							</td>
@@ -246,7 +304,7 @@ tr{
 			</table>		
 
 		<div id="more">
-		<a href="mallDetail.do">더보기...</a>
+		<a href="mallDetail.do" id="atag2">더보기...</a>
 		</div>
 	</div>
 	</div>

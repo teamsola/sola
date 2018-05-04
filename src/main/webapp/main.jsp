@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/main.css?ver=1"/>
+<link rel="stylesheet" type="text/css" href="css/main.css?ver=3"/>
 <link rel="stylesheet" type="text/css" href="css/banner.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/nav.js?ver=1"></script>
 <script src="js/banner.js"></script>
 <script type="text/javascript">
 
@@ -23,16 +23,13 @@
 </head>
 <body>
 <div id="wrapper" class="frame">
-	<header><jsp:include page="/common/header.jsp" /></header>
+<div class="title">
 	<nav role="gnb">
-		<c:if test="${memId.length() >= 6}">
-			<jsp:include page="/common/nav.jsp" />
-		</c:if>
-		<c:if test="${memId.length() < 6}">
-			<jsp:include page="/common/nav_admin.jsp" />
-		</c:if>
+		
+		<jsp:include page="/common/nav.jsp" />
 	</nav>
-	<section class="event_banner">
+	</div>
+	<section class="event_banner" style="margin-top:60px;">
  		<div id="banners">
  			<div class="banner current" style="display:block;" id="bn1"><a href="#"><img src="img/1.png" width="1300px" height="500px" alt=""></a></div>
 			<div class="banner wait" style="display:block;" id="bn2"><a href="#"><img src="img/2.png" width="1300px" height="500px" alt=""></a></div>

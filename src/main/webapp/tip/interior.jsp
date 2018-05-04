@@ -11,21 +11,21 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
-	#interior_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto;}
-	.interior_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background: url("/sola/img/interior.jpg") no-repeat center center;}
-	.interior_srch{margin:20px;}
+	#interior_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto; text-align: center;}
+	.interior_title{padding:20px;line-height:200px;float:left; width:100%;height:200px; background-position:center center; background-size:100% auto; background-image: url("/sola/img/interior.jpg");text-align: left;}
+	.interior_srch{float:left;width:96%;margin:10px 0 20px 0;padding:0 2%; border-bottom: 1px solid #6a6763;}
 	#keyword{border-style:none;font-size:16px; padding:7px; position:relative;bottom:13px;border:1px solid #6a6763;box-sizing: border-box;}
-	#keyword:focus{outline:none;border:2px solid #6a6763;box-sizing: border-box;}
+	#keyword:focus{outline:none;border:2px solid #6a6763;box-sizing: border-box;transition:.3s ease;}
 	#searchimg{cursor: pointer;}
 	#interior_add_btn{background: url("/sola/img/interior_btn.png") no-repeat 6px; font-weight:bold; border-style:none; border:1px solid black; border-radius:20px; background-size:120px 30px; width: 162px; height: 35px;font-size:15px;}
-	#interior_add_btn:hover, #interior_add_btn:active{cursor:pointer; outline:none; background:#6a6763 url("/sola/img/interior_btn_hover.png") no-repeat 6px; border:none; background-size:120px 30px;color:white;}
-	.interior_list{float:left;margin:10px; width:100%;}
-	.interior_list .list_each{float:left;width:330px;margin:30px 15px 40px 15px;height:380px;}
+	#interior_add_btn:hover, #interior_add_btn:active{cursor:pointer; outline:none;transition:.3s ease; background:#6a6763 url("/sola/img/interior_btn_hover.png") no-repeat 6px; border:none; background-size:120px 30px;color:white;}
+	.interior_list{display:inline-block;float:left;margin:10px auto; width:1500px;}
+	.interior_list .list_each{ display:inline-block;text-align:left;width:400px;margin:30px 25px 40px 25px;height:380px;}
 	.interior_list .list_each a, .interior_list .interior_list a:visited{text-decoration: none;color: black;}
-	.interior_list .list_each a:hover{color:#ff8400;}
-	.interior_list .list_each img:hover{cursor:pointer;}
+	.interior_list .list_each a:hover{color:#ff8400;transition:.3s ease;}
+	.interior_list .list_each img:hover{cursor:pointer;transition:.3s ease;}
 	#pagingBtn{outline:none;color:#6a6763;font-size:15px;border-style: none; width:160px; height:35px;background: none; border:1px solid #6a6763; border-radius:20px;}
-	#pagingBtn:hover, #pagingBtn:active{background:#6a6763; color:white;outline:none;}
+	#pagingBtn:hover, #pagingBtn:active{background:#6a6763; color:white;outline:none;transition:.3s ease;}
 	</style>
 	<script type="text/javascript">
 	function goToInterior(){
@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
 		<c:forEach begin="1" end="6" var="i" step="1">
 		var width = $('.image'+${i}).width();
 		var height = $('.image'+${i}).height();
-		if(width/height > (33/20)){
+		if(width/height > 2){
 			$('.image'+${i}).css({
 				"display":"block",
 				"margin" : "auto",
@@ -113,10 +113,11 @@ pageEncoding="UTF-8"%>
 			</div>
 			
 			
+			<div style="float:left;width: 100%;text-align: center;margin: 0 auto;">
 			<div class="interior_list">
 				<c:forEach items="${list }" var="item" varStatus="i">
 					<div class="list_each">
-						<div style="float:left;width:330px;height: 200px;margin: 0 auto;overflow:hidden;text-align: center;border-radius:15px;">
+						<div style="float:left;width:400px;height: 200px;margin: 0 auto;overflow:hidden;text-align: center;border-radius:15px;">
 						<c:choose>
 							<c:when test="${item.interior_mainimage == 'null' }">
 							<img class="image${i.count }" src="/sola/img/interior_default.png" onclick="location.href='interior_view.do?p=${pg }&s=${item.interior_seq}&k=${keyword }'">
@@ -126,7 +127,7 @@ pageEncoding="UTF-8"%>
 							</c:otherwise>
 						</c:choose>
 						</div>
-						<div style="width:310px; margin:40px 10px 2px 10px;padding-top:10px;border-bottom:1px solid black;font-size:25px;color:black; overflow: hidden;">
+						<div style="width:380px; margin:40px 10px 2px 10px;padding-top:10px;border-bottom:1px solid black;font-size:25px;color:black; overflow: hidden;">
 						<a href="interior_view.do?p=${pg }&s=${item.interior_seq}&k=${keyword }">${item.name }님의 DIY 인테리어</a></div>
 						<div style="margin: 5px 10px 5px 10px; font-size: 16px;">
 						 <c:choose>
@@ -139,7 +140,7 @@ pageEncoding="UTF-8"%>
 				           </c:otherwise> 
 				          </c:choose>
 						</div>
-						<div style="width:320px; padding: 0 5px; height:50px;border:1px dashed #BDBDBD; border-radius: 10px;line-height:50px;">
+						<div style="width:39	0px; padding: 0 5px; height:50px;border:1px dashed #BDBDBD; border-radius: 10px;line-height:50px;">
 						<span style="color:#6a6763; font-size: 13px; padding:5px 8px;">
 						${item.roomsize }평
 						</span>
@@ -171,6 +172,8 @@ pageEncoding="UTF-8"%>
 					</div>
 				</c:forEach>
 			</div>
+			</div>
+			
 			<div style="float:left;text-align:center;font-weight:bold;width: 100%; color:#6a6763; font-size:15px; margin-bottom:5px;">page ${pg }</div>
 			<div style="float:left;text-align:center; margin: 0 2%;width:96%;height:50px;border-top:1px dashed #6a6763;">
 			<c:if test="${pg>1 }">

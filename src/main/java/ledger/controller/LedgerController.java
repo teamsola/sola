@@ -118,9 +118,10 @@ public class LedgerController {
 		return modelAndView;
 	}
 
-	// 가계부 하루 보기 
+	// 가계부 상세 보기 
 	@RequestMapping(value="ledgerViewDetail.do")
 	public ModelAndView ledgerViewDetail(HttpServletRequest request) {
+		System.out.println("일일 보기 처리");
 		
 		LedgerDTO ledgerDTO = new LedgerDTO();
 		int seq = Integer.parseInt(request.getParameter("seq"));
@@ -142,11 +143,11 @@ public class LedgerController {
 	// 가계부 하루 보기 
 	@RequestMapping(value="ledgerViewDay.do")
 	public ModelAndView ledgerViewDay(HttpServletRequest request) {
-
+		System.out.println("하루 보기 처리");
 		session = request.getSession();
 		String id = (String)session.getAttribute("memId");
 
-		System.out.println("가계부 상세보기 이동");
+		System.out.println("가계부 하루보기 이동");
 		String stringDate = null;	// 	요청 날짜(String)
 		Date sqlDate = null;		//	요청 날짜 (Date(sql))
 
@@ -481,6 +482,7 @@ public class LedgerController {
 			String beforeEndDay = dc.beforeYear(endDay);
 			System.out.println("일년전 조회 시작 날짜 : "+beforeStartDay);
 			System.out.println("일년전 조회 종료 날짜 : "+beforeEndDay);
+			
 			ledgerListBefore = ledgerService.searchList
 					(beforeStartDay, beforeEndDay, id);
 			ledgerListBefore = calendarService.stringDateSet(ledgerListBefore);
@@ -498,7 +500,6 @@ public class LedgerController {
 			calEndDay.setTime(utilEndDay);
 
 			while( calStartDay.compareTo( calEndDay ) !=1 ){
-
 
 				selectPeriodList.add(calendarService.utilDateToString(calStartDay.getTime()));
 
@@ -680,5 +681,27 @@ public class LedgerController {
 		return modelAndView;
 	}
 
-
+	// 가계부 검색
+	@RequestMapping(value="ledgerSearch.do")
+	public ModelAndView ledgerSearch(HttpServletRequest request) {
+		System.out.println("가계부 검색 처리");
+		
+		String keyword = request.getParameter("keyword");
+		session = request.getSession();
+		String id = (String)session.getAttribute("memId");
+		
+		List<LedgerDTO> ledgerList = new ArrayList<>();
+		ledgerList = ledgerService.searchLedger(keyword, id);
+		ledgerList = calendarService.stringDateSet(ledgerList);
+		
+		System.out.println("검색된 리스트의 갯수는 : "+ledgerList.size());
+		
+		
+		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
+		modelAndView.addObject("ledgerList", ledgerList);
+		modelAndView.addObject("keyword", keyword);
+		modelAndView.addObject("content", "/ledger/ledgerViewSearch.jsp");
+		
+		return modelAndView;
+	}
 }

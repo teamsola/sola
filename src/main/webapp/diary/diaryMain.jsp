@@ -100,8 +100,36 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	color: #333;
 	font-size: 1.6rem;
-	background-color: #FAFAFA;
+	background-color: #FFFFFF;
 	-webkit-font-smoothing: antialiased;
+}
+
+#title{
+	padding:20px;
+	line-height:150px;
+	float:left; 
+	width:100%;
+	height:150px; 
+	background-image: url('/sola/storage/일기.JPG'); 
+	background-size:cover; 
+	background-position:center; 
+	background-repeat: no-repeat;
+}
+
+#view{
+	margin:auto;
+	width:25%;
+}
+
+#view2{
+	marign-left:400px;
+	float:left;
+	text-align:center;
+}
+
+#view3{
+	float:left;
+	text-align:center;
 }
 
 .logo {
@@ -109,9 +137,8 @@ body {
 	text-align: center;
 }
 
-a,
-a:visited {
-	color: #0A9297;
+#atag{
+	color:black;
 }
 
 footer {
@@ -123,10 +150,8 @@ h1 {
 	text-align: center;
 }
 
-.container {
+.container2 {
 	width: 96%;
-	margin: 1.6rem auto;
-	max-width: 42rem;
 	text-align: center;
 }
 
@@ -147,7 +172,7 @@ h1 {
 	height: 1px;
 	font-size: 0px;
 	line-height: 0px;
-	margin: 0px 16px;
+	margin: 30px 40px;
 }
 
 .demo-picked {
@@ -166,27 +191,32 @@ h1 {
 }
 	
 #btn{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
 	-moz-border-radius:100px;
 	-webkit-border-radius:100px;
+	border-radius:100px;
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:14px;
+	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
 	border-color:#ff8400;
-	border-width:2px;
+	border-width:1px;
 	border-style:solid;
-	outline:none;
 }
 	
 #btn2{
-	margin-top:20px;
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
@@ -196,19 +226,19 @@ h1 {
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:14px;
+	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
-	outline:none;
 }
 	
 #btn3{
-	margin-top:20px;
+	margin-right: 15px;
+	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
@@ -218,22 +248,19 @@ h1 {
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:14px;
+	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
-	float:left;
-	margin-left:40px;
-	margin-bottom:20px;
-	outline:none;
 }
 	
 #btn4{
-	margin-top:20px;
+	margin:auto;
+	outline:none;
 	text-decoration:none;
 	text-indent:0px;
 	line-height:16px;
@@ -243,20 +270,18 @@ h1 {
 	text-align:center;
 	vertical-align:middle;
 	display:inline-block;
-	font-size:14px;
+	font-size:15px;
 	background-color:#ffffff;
-	color:#5D5D5D;
+	color:#ff8400;
 	width:150px;
 	height:30px;
-	border-color:#4a4949;
-	border-width:2px;
+	border-color:#ff8400;
+	border-width:1px;
 	border-style:solid;
-	margin-bottom:30px;
-	outline:none;
 }
 	
 #ggg{
-	text-align:right;
+	margin-left:850px;
 	margin-bottom:10px;
 }
 	
@@ -268,6 +293,94 @@ h1 {
 	overflow: auto;
 	margin-bottom:20px;
 }
+
+#btn:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn2:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn3:hover{
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn4:hover{
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
 	
 </style>
 </head>
@@ -276,7 +389,9 @@ h1 {
 	
 	<div class="container">
 
-		<h1>DIARY</h1>
+		<div id="title">
+				<a href="diaryIndex.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">DIARY</span></a>
+			</div>
 		
 		
 		<!-- 모아보기 버튼 -->

@@ -66,5 +66,10 @@ public class LedgerServiceImpl implements LedgerService {
 	public List<LedgerDTO> viewAllLedger(CalendarDTO calendarDTO, String id) {
 		return ledgerDAO.viewAllLedger(calendarDTO, id);
 	}
+
+	@Override
+	public List<LedgerDTO> searchLedger(String keyword, String id) {
+		return ledgerDAO.searchLedger(keyword, id);
+	}
 	
 }

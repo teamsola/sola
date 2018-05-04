@@ -197,14 +197,14 @@ public class TipController {
 		} else {
 			list = tipService.recipeViewSearched("%"+keyword+"%",pg);
 			totalN = tipService.getRecipeSearchedTotalNum("%"+keyword+"%");
-			
+
+			if(list.isEmpty()) {
+				listStatus = "empty";
+			}
 		}
 		for(RecipeDTO tmp : list) {
 			if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
 			else tmp.setLogtime(tmp.getLogtime().substring(0,10));
-		}
-		if(list.isEmpty()) {
-			listStatus = "empty";
 		}
 
 		modelAndView.addObject("listStatus", listStatus);
@@ -224,6 +224,7 @@ public class TipController {
 			pg = Integer.parseInt(request.getParameter("pg"));
 		}
 		String keyword = request.getParameter("keyword");
+		String listStatus = "exist";
 		ArrayList<InteriorDTO> list = new ArrayList<InteriorDTO>();
 		int totalN = 0;
 		if(keyword == null) {
@@ -232,6 +233,9 @@ public class TipController {
 		}else {
 			list = tipService.interiorListSearched("%"+keyword+"%", pg);
 			totalN = tipService.getInteriorSearchedTotalNum("%"+keyword+"%");
+			if(list.isEmpty()) {
+				listStatus = "empty";
+			}
 		}
 		
 		for(InteriorDTO tmp : list) {
@@ -247,11 +251,7 @@ public class TipController {
 			if(today.equals(tmp.getLogtime().substring(0,10))) tmp.setLogtime(tmp.getLogtime().substring(11,16));
 			else tmp.setLogtime(tmp.getLogtime().substring(0,10));
 		}
-		String listStatus = "exist";
 		modelAndView = new ModelAndView("/mainFrame.jsp");
-		if(list.isEmpty()) {
-			listStatus = "empty";
-		}
 
 		modelAndView.addObject("listStatus", listStatus);
 		
@@ -725,7 +725,7 @@ public class TipController {
 		recipeDTO.setRecipe7(rc7);
 		recipeDTO.setRecipe8(rc8);
 		recipeDTO.setRecipe9(rc9);
-		if(!"".equals(request.getParameter("price"))) pr = Integer.parseInt(request.getParameter("price"));
+		if(request.getParameter("price") != null) pr = Integer.parseInt(request.getParameter("price"));
 		recipeDTO.setPrice(pr);
 		
 		displayRecipeAdd(recipeDTO);

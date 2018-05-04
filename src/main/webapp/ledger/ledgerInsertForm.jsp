@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerInsert.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerInsert.css?ver=2" />
 
 <script type="text/javascript">
 $(function(){
@@ -36,6 +37,8 @@ $(function(){
 		
 		// 유효성 검사
 		$("#insertButton").click(function(){	// 입력 버튼이 눌렸을때
+			var blank_pattern = /[\s]/g;
+		
 			if($("#inOut").val()=='선택'){
 				alert("입/출금을 선택해주세요.");
 				$("#inOut").focus(); 
@@ -47,6 +50,9 @@ $(function(){
 				$("#money").focus(); 
 			}else if(isNaN($("#money").val())){
 				alert("금액에는 숫자만 입력 가능합니다.");
+				$("#money").focus(); 
+			}else if(blank_pattern.test($("#money").val()) == true){	// 공백 불가
+				alert("금액에 공백을 제거해주세요");
 				$("#money").focus(); 
 			}else if($("#contents").val().length>10){
 				alert("내용은 10자까지만 가능합니다.");
@@ -66,6 +72,8 @@ $(function(){
 		
 		// 금액을 입력할때 이벤트 발생
 		$("#money").keyup(function(){
+			var blank_pattern = /[\s]/g;
+			
 			if($("#money").val()==""){
 				$("#moneyCheck").text("금액을 적어주세요");
 				$("#moneyCheck").css("color", "black");
@@ -73,9 +81,14 @@ $(function(){
 				$("#moneyCheck").text("숫자만 가능합니다");
 				$("#moneyCheck").css("color", "red");
 			}else if(!isNaN($("#money").val())){
-				$("#moneyCheck").text("입력 가능합니다");
+				$("#moneyCheck").text("입력 가능합니다("+addComma($("#money").val())+"원)");
 				$("#moneyCheck").css("color", "blue");
-			};
+			}
+			if(blank_pattern.test($("#money").val()) == true){	// 공백 불가
+				$("#moneyCheck").text("공백을 제거해주세요");
+				$("#moneyCheck").css("color", "red");
+			}
+			
 		});
 		
 		// content, contentPlus 글자수 제한
@@ -104,6 +117,12 @@ $(function(){
 			    }
 		});
 });
+
+//숫자 3번째 자리마다 콤마(,) 찍기
+function addComma(num) {
+	var regexp = /\B(?=(\d{3})+(?!\d))/g;
+	return num.toString().replace(regexp, ',');
+}
 </script>
 
 <title>가계부 입력</title>
@@ -111,7 +130,7 @@ $(function(){
 <body>
 <!-- 흐릿한 뒷 배경 -->
 <div id="ledger_background"></div>
-
+<div class="container">
 <div class="ledger_body">
 
 	<div class="top">
@@ -165,17 +184,17 @@ $(function(){
 			<li>
 				<div class="text_subject">추가내용 : </div>
 				<div class="text_desc">
-					<textarea class="text_insert2" id="contentPlus" name="contentPlus"></textarea>
-					<!-- <input type="text" class="text_insert" id="contentPlus" name="contentPlus"> -->
-					<label class="text_check" id="contentPlusCheck"></label>
+					<input type="text" class="text_insert2" id="contentPlus" name="contentPlus">
+					<label class="text_check2" id="contentPlusCheck"></label>
 				</div>
 			</li>
-			<li class="button_li">
-				<input type="button" class="ledger_btn" id="insertButton" value="저장하기" style="cursor: pointer">
-			</li>
 		</ul>
+		<div class="button_li">
+			<input type="button" class="ledger_btn" id="insertButton" value="저장하기" style="cursor: pointer">
+		</div>
 	</div>
 </form>
+</div>
 </div>
 </body>
 </html>

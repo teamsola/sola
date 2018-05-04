@@ -7,9 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/nav.js"></script>
+<style type="text/css">
+#body{margin:60px auto 0 auto;}
+</style>
 <script>
 	var loginCheck = function()
 	{
@@ -22,15 +24,11 @@
 </head>
 <body>
 	<div id="wrapper" class="frame">
-		<header><jsp:include page="/common/header.jsp" /></header>
+	<div class="title">
 		<nav role="gnb">
-			<c:if test="${memId.length() >= 6}">
-				<jsp:include page="/common/nav.jsp" />
-			</c:if>
-			<c:if test="${memId.length() < 6}">
-				<jsp:include page="/common/nav_admin.jsp" />
-			</c:if>
-		</nav>
+			<jsp:include page="/common/nav.jsp" />
+	</nav>
+	</div>
 		<div id="body" class="frame">
 			<section id="content">
 				<c:if test="${content != null}">
