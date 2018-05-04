@@ -4,8 +4,8 @@
 
 <mapper namespace="mybatis.memberMapper">
 
-	<select id="login" parameterType="java.util.Map" resultType="String">
-		select nickname from member where id=#{id} and pwd=#{pwd}
+	<select id="login" parameterType="java.util.Map" resultType="memberDTO">
+		select * from member where id=#{id} and pwd=#{pwd}
 	</select>
 
 	<insert parameterType="memberDTO" id="memberJoin">

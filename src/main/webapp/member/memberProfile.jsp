@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>프로필</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style type="text/css">
 	.container {
 		width: 818px;
@@ -78,7 +80,13 @@
 				<input type="file" name="img" size="45">
 			</td>
 		</tr>
-		<tr><td align="left" style="border-top: none;"><input type="button" value="삭제" class="btn" onclick="location.href='memberProfileDelete.do?nickname=${memberDTO.nickname }'"/></td></tr>
+		<tr>
+			<td align="left" style="border-top: none;">
+				<c:if test="${memberDTO.profile ne 'default_profile.jpg' }">
+					<input type="button" value="삭제" class="btn" onclick="location.href='memberProfileDelete.do?nickname=${memberDTO.nickname }'"/>
+				</c:if>
+			</td>
+		</tr>
 		<tr>
 			<th><label>별명</label></th>
 			<td colspan="2" style="border-top: 1px solid gray;">
