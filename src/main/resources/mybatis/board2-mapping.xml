@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mybatis.boardMapper2">
+	
+	 <insert id="freeboardWrite" parameterType="boarddDTO">    
+		INSERT INTO FREEBOARD VALUES(SEQ_FREENUM.NEXTVAL,#{category},#{id},#{nickname},#{subject},#{content},0,0,0,0,0,0,sysdate)
+	</insert>
+
+	<update id="freeupdateHit" parameterType="int">
+		UPDATE FREEBOARD
+		SET	hit=hit+1
+		WHERE	seq = #{seq}
+	</update>
+	
+	<delete id="freeboardDelete" parameterType="int">
+		DELETE FROM FREEBOARD WHERE	seq = #{seq}
+	</delete>
+	
+	<select id="freeboardView" parameterType="int" resultType="boarddDTO">
+		SELECT * FROM FREEBOARD WHERE seq = #{seq} AND RE_LEV=0
+	</select>
+
+	<select id="freeboardList" parameterType="java.util.Map"	resultType="boarddDTO">
+		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re ,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
+				 from  (select rownum rn, tt.* 
+				 from (select * from FREEBOARD order by seq asc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
+	</select>
+	
+	<select id="freeboardsearchlist" parameterType="java.util.Map"	resultType="boarddDTO">
+		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re,re_lev,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
+				 from  (select rownum rn, tt.* 
+				 from (select * from FREEBOARD WHERE NICKNAME=#{keyword} OR SUBJECT=#{keyword} OR CONTENT=#{keyword}
+				 order by seq asc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
+	</select>
+	
+	<update id="freeboardModify" parameterType="boarddDTO">
+		UPDATE FREEBOARD set CATEGORY=#{category},SUBJECT=#{subject},CONTENT=#{content} WHERE SEQ=#{seq} and RE_LEV=0
+	</update>
+
+	<select id="freegetTotalA" resultType="int">
+		select count(*) from FREEBOARD 
+	</select>
+	
+	<select id="freeboardajax_commentList" parameterType="int" resultType="boarddDTO">
+		<![CDATA[select id,nickname,content,re_lev,re_ref,re_seq,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime
+			from (select rownum rn, tt.*
+			from (select * from FREEBOARD order by RE_LEV desc, RE_SEQ asc) tt)
+			where RE_REF=#{seq}
+		 ]]>
+	</select>
+	
+	<select id="freereplycount" parameterType="boarddDTO" resultType="int">
+		select MAX(RE_SEQ) from FREEBOARD where RE_REF=#{re_ref}
+	</select>
+	
+	
+	<insert id="freeboardaddreply" parameterType="boarddDTO">
+		INSERT INTO FREEBOARD VALUES(seq_freereplynum.nextval,0,#{id},#{nickname},0,#{content},0,0,#{re_lev},#{re_ref},#{re_seq},0,sysdate)
+	</insert>
+	
+	<delete id="freeboarddeletereply" parameterType="boarddDTO">
+		DELETE FROM FREEBOARD WHERE RE_LEV=#{re_lev} AND RE_REF=#{re_ref} AND RE_SEQ=#{re_seq}
+	</delete>
+	
+	<update id="freeboardmodifyreply" parameterType="boarddDTO">
+		UPDATE FREEBOARD SET CONTENT=#{content} WHERE RE_LEV=#{re_lev} AND RE_REF=#{re_ref} AND RE_SEQ=#{re_seq}
+	</update>
+	
+	
+	
+	<update id="noticeupdateHit" parameterType="int">
+		UPDATE NOTICEBOARD
+		SET	hit=hit+1
+		WHERE	seq = #{seq}
+	</update>
+	
+	<select id="noticeboardView" parameterType="int" resultType="boarddDTO">
+		SELECT * FROM NOTICEBOARD WHERE seq = #{seq} AND RE_LEV=0
+	</select>
+
+	<select id="noticeboardList" parameterType="java.util.Map"	resultType="boarddDTO">
+		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re,re_lev,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
+				 from  (select rownum rn, tt.* 
+				 from (select * from NOTICEBOARD order by seq asc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
+	</select>
+
+	<select id="noticeboardsearchlist" parameterType="java.util.Map"	resultType="boarddDTO">
+		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re,re_lev,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
+				 from  (select rownum rn, tt.* 
+				 from (select * from NOTICEBOARD WHERE NICKNAME=#{keyword} OR SUBJECT=#{keyword} OR CONTENT=#{keyword}
+				 order by seq asc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
+	</select>
+
+	<select id="noticegetTotalA" resultType="int">
+		select count(*) from NOTICEBOARD
+	</select>
+	
+	<delete id="noticeboardDelete" parameterType="int">
+		DELETE FROM NOTICEBOARD WHERE	seq = #{seq}
+	</delete>
+	
+	<update id="noticeboardModify" parameterType="boarddDTO">
+		UPDATE NOTICEBOARD set CATEGORY=#{category},SUBJECT=#{subject},CONTENT=#{content} WHERE SEQ=#{seq}
+	</update>
+	
+	<insert id="noticeboardWrite" parameterType="boarddDTO">    
+		INSERT INTO NOTICEBOARD VALUES(SEQ_NOTICENUM.NEXTVAL,#{category},#{id},#{nickname},#{subject},#{content},0,0,0,0,0,0,sysdate)
+	</insert>
+	<select id="noticeboardajax_commentList" parameterType="int" resultType="boarddDTO">
+		<![CDATA[select id,nickname,content,re_lev,re_ref,re_seq,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime
+			from (select rownum rn, tt.*
+			from (select * from NOTICEBOARD order by RE_LEV desc, RE_SEQ asc) tt)
+			where RE_REF=#{seq}
+		 ]]>
+	</select>
+	
+	<select id="noticereplycount" parameterType="boarddDTO" resultType="int">
+		select MAX(RE_SEQ) from NOTICEBOARD where RE_REF=#{re_ref}
+	</select>
+	
+	
+	<insert id="noticeboardaddreply" parameterType="boarddDTO">
+		INSERT INTO NOTICEBOARD VALUES(seq_freereplynum.nextval,0,#{id},#{nickname},0,#{content},0,0,#{re_lev},#{re_ref},#{re_seq},0,sysdate)
+	</insert>
+	
+	<delete id="noticeboarddeletereply" parameterType="boarddDTO">
+		DELETE FROM NOTICEBOARD WHERE RE_LEV=#{re_lev} AND RE_REF=#{re_ref} AND RE_SEQ=#{re_seq}
+	</delete>
+	
+	<update id="noticeboardmodifyreply" parameterType="boarddDTO">
+		UPDATE NOTICEBOARD SET CONTENT=#{content} WHERE RE_LEV=#{re_lev} AND RE_REF=#{re_ref} AND RE_SEQ=#{re_seq}
+	</update>
+	
+	
+	
+	
+	
+	
+	<update id="qnaupdateHit" parameterType="int">
+		UPDATE QNABOARD
+		SET	hit=hit+1
+		WHERE	seq = #{seq}
+	</update>
+	
+	<select id="qnaboardView" parameterType="int" resultType="boarddDTO">
+		SELECT * FROM QNABOARD WHERE seq = #{seq} AND RE_LEV=0
+	</select>
+
+	<select id="qnaboardList" parameterType="java.util.Map"	resultType="boarddDTO">
+		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re ,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
+				 from  (select rownum rn, tt.* 
+				 from (select * from QNABOARD order by seq asc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum}]]>
+	</select>
+	
+	<select id="qnaboardsearchlist" parameterType="java.util.Map"	resultType="boarddDTO">
+		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re,re_lev,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
+				 from  (select rownum rn, tt.* 
+				 from (select * from QNABOARD WHERE NICKNAME=#{keyword} OR SUBJECT=#{keyword} OR CONTENT=#{keyword}
+				 order by seq asc) tt)   
+				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
+	</select>
+
+	<select id="qnagetTotalA" resultType="int">
+		select count(*) from QNABOARD
+	</select>
+
+	<delete id="qnaboardDelete" parameterType="int">
+		DELETE FROM QNABOARD WHERE	seq = #{seq}
+	</delete>
+	
+	<update id="qnaboardModify" parameterType="boarddDTO">
+		UPDATE QNABOARD set CATEGORY=#{category},SUBJECT=#{subject},CONTENT=#{content} WHERE SEQ=#{seq}
+	</update>
+	
+	<insert id="qnaboardWrite" parameterType="boarddDTO">    
+		INSERT INTO QNABOARD VALUES(SEQ_QNANUM.NEXTVAL,#{category},#{id},#{nickname},#{subject},#{content},0,0,0,0,0,0,sysdate)
+	</insert>
+	
+	
+</mapper>
+
+
+
+
+
+
+

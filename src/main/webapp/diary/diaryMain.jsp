@@ -122,12 +122,14 @@ body {
 }
 
 #view2{
-	margin:auto;
-	width:50%;
+	marign-left:400px;
+	float:left;
+	text-align:center;
 }
 
 #view3{
-	margin:auto;
+	float:left;
+	text-align:center;
 }
 
 .logo {
@@ -135,9 +137,8 @@ body {
 	text-align: center;
 }
 
-a,
-a:visited {
-	color: #0A9297;
+#atag{
+	color:black;
 }
 
 footer {
@@ -149,7 +150,7 @@ h1 {
 	text-align: center;
 }
 
-.container {
+.container2 {
 	width: 96%;
 	text-align: center;
 }
@@ -236,7 +237,6 @@ h1 {
 }
 	
 #btn3{
-	float:left;
 	margin-right: 15px;
 	outline:none;
 	text-decoration:none;
@@ -259,7 +259,7 @@ h1 {
 }
 	
 #btn4{
-	float:left;
+	margin:auto;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -281,7 +281,7 @@ h1 {
 }
 	
 #ggg{
-	margin-left:250px;
+	margin-left:850px;
 	margin-bottom:10px;
 }
 	
@@ -390,7 +390,7 @@ h1 {
 	<div class="container">
 
 		<div id="title">
-				<a href="diaryIndex.do"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">DIARY</span></a>
+				<a href="diaryIndex.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">DIARY</span></a>
 			</div>
 		
 		
