@@ -5,17 +5,20 @@
 	<ul id="lv1">
 		<li id="logo"><a href="main.do"><img class="logo_img" src="img/logo(org).png"></a></li>
 		<li id="mall"><a href="mallIndex.do"><span>Mall</span></a></li>
+		<li id="board"><a href="board.do"><span>게시판</span></a></li>
 		<li id="tip"><a href="tip.do"><span>Tip</span></a></li>
 		<li id="ledger"><a href="calendar.do?cmd=main"><span>가계부</span></a></li>
 		<li id="diary"><a href="diaryIndex.do"><span>일기</span></a></li>
 		<li id="board"><a href="board.do"><span>게시판</span></a></li>
 		<li id="logout"><a href="logout.do"><span>Logout</span></a></li>
+
 		<c:if test="${memId.length() >= 6}">
 			<li id="my" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right">${memName} 님</span> <img class="profile_img" src="img/basic_img.png"></a></li>
 		</c:if>
 		<c:if test="${memId.length() < 6}">
 			<li id="manage" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right; padding-right:120px; width:100%;">${memName} 님</span><img class="profile_img" src="img/basic_img.png"></a></li>
 		</c:if>
+
 	</ul>
 	<div id="progressbar"></div>
 	<div id="lv2">
@@ -45,10 +48,12 @@
 		<ul class="lv2-list" id="diaryLv2" rel="diary">
 			<li><a href="diaryIndex.do">일기</a></li>
 		</ul>
+
 		<ul class="lv2-list" id="boardLv2" rel="board">
-			<li><a href="#">자유게시판</a></li>
-			<li><a href="#">공지사항</a></li>
-			<li><a href="#">QnA</a></li>
+			<li><a href="FreeBoardList.do">자유게시판</a></li>
+			<li><a href="NoticeBoardList.do">공지사항</a></li>
+			<li><a href="QnABoardList.do">QnA</a></li>
+
 		</ul>
 		
 		<ul class="lv2-list" rel="logout"></ul>
