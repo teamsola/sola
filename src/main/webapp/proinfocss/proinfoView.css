@@ -57,11 +57,13 @@ div#overLayer {
 	width: 100%;
 	height: 50px;
 	background-color: black;
+	margin-top: 30px;
 }
 .ol_top_s{
 	width: 650px;
 	height: 50px;
 	background-color: black;
+	margin-top: 30px;
 }
 .ol_center{
 	width: 80%;

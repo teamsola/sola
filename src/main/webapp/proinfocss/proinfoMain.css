@@ -28,6 +28,7 @@ input:focus, select{
 .proinfo_s{
 	height: 100px;
 	text-align:right;
+	margin-top: 30px;
 	vertical-align:middle; 
 	display:block;
 }

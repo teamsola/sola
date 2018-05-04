@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/sola/proinfocss/proinfoList.css" />
+<link rel="stylesheet" type="text/css" href="/sola/proinfocss/proinfoList.css?v=1" />
 <script type="text/javascript">
 	$(document).ready(function(){
 		 
