@@ -40,7 +40,7 @@ div#container
 	z-index: 5;
 	margin: 50px;
 }
-#span_content
+#span_content, a
 {
 	color: white;
 	opacity: 70;
@@ -53,28 +53,14 @@ h1
 	color: white;
 	opacity: 70;
 }
-/* html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;}
-#up
+a:visiter
 {
-	padding: 5px;
-    width: 100%;
-    height: 70px;
-    background-color: #6a6763;
+	color: white;
 }
-#img
-{
-	background-image: url(../img/error404.jpg);
-	background-size: width=100% height=100%;
-}
-img
-{
-	width: 100%;
-	height: 100%;
-} */
 </style>
 </head>
 <body>
-<img class="bg" src="error404.jpg" alt="" />
+<img class="bg" src="/sola/img/error404.jpg" alt="" />
 <div id="container">
 <h1>404 ERROR<br></h1>
 <span id="span_content">
@@ -95,7 +81,10 @@ img
 다시 당당하게 걸어나가세요.<br>
 <br>
 다른 길에는 훨씬 멋진 일들이 당신을 기다리고 있을거에요.<br>
+.<br>.<br>
 </span>
+<br>
+<a href="javascript:history.go(-1)">뒤돌아가기...</a>
 </div>
 </body>
 </html>
