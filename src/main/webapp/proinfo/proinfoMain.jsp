@@ -159,6 +159,10 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 	-webkit-transition-delay: 0.35s;
 	transition-delay: 0.35s;
 }
+
+#atag{
+	color:black;
+}
 </style>
 </head>
 <body>
@@ -223,7 +227,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 							</h2>
 						</div>
 					</figcaption>
-					<a href="search_c.do?keyword_c=live&list_n=0"></a>
+					<a href="search_c.do?keyword_c=live&list_n=0" id="atag"></a>
 				</figure>
 				
 				<figure class="snip1200">
@@ -236,7 +240,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 							</h2>
 						</div>
 					</figcaption>
-					<a href="search_c.do?keyword_c=living&list_n=0"></a>
+					<a href="search_c.do?keyword_c=living&list_n=0" id="atag"></a>
 				</figure>
 				
 				<figure class="snip1200">
@@ -249,7 +253,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 							</h2>
 						</div>
 					</figcaption>
-					<a href="search_c.do?keyword_c=lived&list_n=0"></a>
+					<a href="search_c.do?keyword_c=lived&list_n=0" id="atag"></a>
 				</figure>
 				
 				
