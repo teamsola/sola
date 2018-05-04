@@ -9,9 +9,9 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
-	#recipe_content{float:left;width:1100px; overflow:hidden; height:auto; margin:0 auto;}
-	.recipe_title{padding:20px;line-height:150px;float:left; width:100%;height:150px; background: url("/sola/img/recipe.jpg") no-repeat center center;}
-	#r_add_subtitle{float:left;width:100%;margin:5px 0;}
+	#recipe_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto;}
+	.recipe_title{padding:20px;line-height:200px;float:left; width:100%;height:200px; background-image: url("/sola/img/food.jpg"); background-size: cover;background-position: center center;}
+	#r_add_subtitle{width:1100px;margin:5px 0;display: inline-block; text-align: left;}
 	.subtitle_detail{height: auto;overflow: hidden; box-sizing: border-box;}
 	.subtitle_detail .left{float:left;width:600px;height:400px;padding: 15px;text-align: center;border:1px solid #BDBDBD;box-sizing: border-box;}
 	.subtitle_detail .right{float:right;text-align:center;width:500px;height:400px;padding: 10px;border-top:1px solid #BDBDBD;border-bottom:1px solid #BDBDBD;border-right:1px solid #BDBDBD; box-sizing: border-box;}
@@ -61,7 +61,8 @@ pageEncoding="UTF-8"%>
 			<div class="recipe_title">
 				<span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">TIP > 레시피 </span>
 			</div>
-			<div id="r_add_subtitle">
+			<div style="float:left;width:100%;text-align: center;">
+				<div id="r_add_subtitle">
 				<h2 style="margin-left:20px;">${recipeDTO.name }님이 추천하는 레시피</h2>
 				<div class="subtitle_detail">
 					
@@ -181,6 +182,7 @@ pageEncoding="UTF-8"%>
 						<input type="button" id="underBtn" value="목록으로" onclick="location.href='recipe.do?pg=${pg}&keyword=${keyword }'">
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	</body>
