@@ -131,7 +131,7 @@
 	
 	<form>
 		<div id="content2">
-			<textarea rows="30" cols="55" name="diary_content" id="diary_content">${diaryDTO.diary_content}</textarea>
+			<textarea rows="30" cols="90" name="diary_content" id="diary_content">${diaryDTO.diary_content}</textarea>
 		</div>
 		
 		
