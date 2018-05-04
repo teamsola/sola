@@ -11,10 +11,10 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="/sola/resources_tip/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<style type="text/css">
 		#i_add_title{width:100%; height:170px;background: url("/sola/img/interior_drawing.jpg") repeat left center;}
-		#i_add_content{margin:40px; float:left; width:1200px; overflow:hidden;height:auto;}
-		#i_add_subtitle{margin:20px 0;}
-		#i_add_subtitle .subtitle_detail{border:1px solid #DCDCDC;height:80px; padding: 20px; font-size:17px; line-height: 26px;}
-		#i_add_form{ background-color: #6a6763; padding:40px;overflow:hidden;height:auto;}
+		#i_add_content{margin:40px; width:1200px; overflow:hidden;height:auto;display: inline-block;}
+		#i_add_subtitle{margin:20px 0;text-align: left;}
+		#i_add_subtitle .subtitle_detail{border:1px solid #DCDCDC;height:80px; padding: 20px; font-size:17px; line-height: 26px;text-align: left;}
+		#i_add_form{ background-color: #6a6763;  padding:40px;overflow:hidden;height:auto;text-align: left;}
 		#i_add_form .form_title{border-bottom:1px solid white; color:white; font-size:20px;padding:10px 0;margin-bottom:20px;}
 		#i_add_form .form_detail{height:100%;}
 		#price, #roomsize{font-size: 18px; padding:10px;border-style: none;}
@@ -127,6 +127,7 @@ pageEncoding="UTF-8"%>
 		<div id="i_add_title">
 			<h1 style=" float:left;background: white; font-family:'NanumGothic';font-weight:normal;font-size:40px; margin-top:60px;margin-left: 30px;">인테리어 공유하기</h1>
 		</div>
+		<div style="float: left;width: 100%;text-align: center;">
 		<div id="i_add_content">
 			<div id="i_add_subtitle">
 				<h2>회원님만의 SOLA DIY interior 를 기다립니다</h2>
@@ -179,6 +180,7 @@ pageEncoding="UTF-8"%>
 				<input type="button" value="취소" onclick="javascript:cancelBtn()" class="interior_btn">&nbsp;&nbsp;&nbsp; <input id="formSubmit" type="button" value="등록" class="interior_btn">
 			</div>
 			
+		</div>
 		</div>
 	</body>
 </html>
