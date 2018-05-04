@@ -29,7 +29,7 @@ h2, h3{color: #6a6763;}
 .addr{
 	width: 400px;
 }
-.title{
+title{
 	display: inline-block;
 	width: 150px;
 	margin: 20px;
@@ -92,11 +92,11 @@ table td:last-child{border-right: none; width: 650px;}
 			alert("새 비밀번호를 입력하세요");
 		} else if (document.memberPw.pwd.value != document.memberPw.repwd.value) {
 			alert("비밀번호가 맞지 않습니다");
-		} else if (document.memberPw.pwd.value.length < 8) {
-			alert("비밀번호는 영문(대소문자구분),숫자를 혼용하여 8~16자를 입력해주세요.");
+		} else if (document.memberPw.pwd.value.length < 7) {
+			alert("비밀번호는 영문(대소문자구분),숫자,특수문자를 혼용하여 8~16자를 입력해주세요.");
 			return false;
-		} else if (!document.memberPw.pwd.value.match(/([a-zA-Z0-9])/)) {
-			alert("비밀번호는 영문(대소문자구분),숫자를 혼용하여 8~16자를 입력해주세요.");
+		} else if (!(/\w\W/.test(document.joinForm.pwd.value))) {
+			alert("비밀번호는 영문(대소문자구분),숫자,특수문자를 혼용하여 8~16자를 입력해주세요.");
 			return false;
 		} else {
 			document.memberPw.submit();

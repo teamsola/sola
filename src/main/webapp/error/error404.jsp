@@ -5,6 +5,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+@font-face {
+	font-family:"DX시인과나";
+	src:url('/sola/font/DXPNM-KSCPC-EUC-H.TTF?#iefix') format('embedded-opentype');
+}
+body{font-family: 'DX시인과나' !important;}
 img.bg
 {
 	/* 브라우저의 크기에 맞게 전체 화면에 맞춘다. */
@@ -38,20 +43,19 @@ div#container
 	/* relative가 필수, 안하면 화면이 커지지 않는다. */
 	position: relative;
 	z-index: 5;
-	margin: 50px;
+	margin: 45px;
 }
 #span_content, a
 {
 	color: white;
 	opacity: 70;
-	font-size: xx-large;
-	margin: 10px;
 	font-size: medium;
 }
 h1
 {
 	color: white;
 	opacity: 70;
+	font-family: NanumGothic;
 }
 a:visiter
 {
@@ -64,7 +68,6 @@ a:visiter
 <div id="container">
 <h1>404 ERROR<br></h1>
 <span id="span_content">
-<br>
 <br>
 그래요.<br>
 혼자 산다는건 제법 어려운 일이에요.<br>
@@ -81,7 +84,7 @@ a:visiter
 다시 당당하게 걸어나가세요.<br>
 <br>
 다른 길에는 훨씬 멋진 일들이 당신을 기다리고 있을거에요.<br>
-.<br>.<br>
+.<br>.
 </span>
 <br>
 <a href="javascript:history.go(-1)">뒤돌아가기...</a>

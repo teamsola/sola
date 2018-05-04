@@ -12,10 +12,10 @@
 		<li id="diary"><a href="diaryIndex.do"><span>일기</span></a></li>
 
 		<c:if test="${memId.length() >= 6}">
-			<li id="my" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right">${memName} 님</span> <img class="profile_img" src="img/basic_img.png"></a></li>
+			<li id="my" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right">${memName} 님</span> <img class="profile_img" src="/sola/storage/${memProfile }"></a></li>
 		</c:if>
 		<c:if test="${memId.length() < 6}">
-			<li id="manage" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right; padding-right:120px; width:100%;">${memName} 님</span><img class="profile_img" src="img/basic_img.png"></a></li>
+			<li id="manage" class="memberInfo"><a href="member.do"><span class="nameLable" style="text-align: right; padding-right:120px; width:100%;">${memName} 님</span><img class="profile_img" src="/sola/storage/${memProfile }"></a></li>
 		</c:if>
 
 	</ul>
@@ -65,7 +65,7 @@
 			<c:if test="${memId.length() < 6}">
 				<ul class="lv2-list" id="manageLv2" rel="manage">
 					<li><a href="member.do">기본정보</a></li>
-					<li><a href="memberList.do">회원관리</a></li>
+					<li><a href="memberList.do?pg=1">회원관리</a></li>
 					<li><a href="logout.do">로그아웃</a></li>
 				</ul>
 			</c:if>

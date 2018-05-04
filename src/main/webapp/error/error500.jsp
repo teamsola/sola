@@ -5,6 +5,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+@font-face {
+	font-family:"THE졸리다";
+	src:url('/sola/font/THE_JOLIDA.TTF?#iefix') format('embedded-opentype');
+}
+body{font-family: 'THE졸리다' !important;}
 document
 {
 	background-color: #ff8400;

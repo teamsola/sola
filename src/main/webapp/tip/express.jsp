@@ -73,7 +73,7 @@ pageEncoding="UTF-8"%>
 			padding:15px 0;
 			font-weight: bold;
 		}
-		.express_main .intro_title_down{
+		.express_main .intro_title_down{	
 			text-align:left;
 			float:left;
 			width:300px;

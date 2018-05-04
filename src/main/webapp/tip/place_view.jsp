@@ -9,6 +9,9 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f80aacb55527fc9a78de91374d1d0c3&libraries=services,clusterer,drawing"></script>
+	<style type="text/css">
+		#body{min-height: 550px; overflow:hidden;}
+	</style>
 	</head>
 	<body>
 		<div id="place_view">	<!-- 장소 보여주기 div -->
