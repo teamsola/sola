@@ -34,33 +34,38 @@ public class MemberController
 	public ModelAndView login(HttpSession session, String id, String pwd)
 	{
 		ModelAndView modelAndView = new ModelAndView();
-		MemberDTO memberDTO = memberService.login(id, pwd);
-		String nickname = memberDTO.getNickname();
-		String profile = memberDTO.getProfile();
-		System.out.println("닉네임: "+nickname);
-		if(nickname != null)
+		try
 		{
-			session.setAttribute("memId", id);
-			session.setAttribute("memName", nickname);
-			session.setAttribute("memProfile", profile);
-			System.out.println("아이디: "+id);
-			if(id.equals("hong"))
+			MemberDTO memberDTO = memberService.login(id, pwd);
+			String nickname = memberDTO.getNickname();
+			String profile = memberDTO.getProfile();
+	
+			if(nickname != null)
 			{
-				session.setAttribute("home1", "/home/test3.jsp");
-				session.setAttribute("home2", "/home/test4.jsp");
+				session.setAttribute("memId", id);
+				session.setAttribute("memName", nickname);
+				session.setAttribute("memProfile", profile);
+				System.out.println("아이디: "+id);
+				if(id.equals("hong"))
+				{
+					session.setAttribute("home1", "/home/test3.jsp");
+					session.setAttribute("home2", "/home/test4.jsp");
+				}
+				else if(id.equals("hong3"))
+				{
+					session.setAttribute("home1", "/home/test2.jsp");
+					session.setAttribute("home2", "/home/test4.jsp");
+				}
+				else
+				{
+					session.setAttribute("home1", "/home/test1.jsp");
+					session.setAttribute("home2", "/home/test2.jsp");
+				}
+				modelAndView = main(session);
 			}
-			else if(id.equals("hong3"))
-			{
-				session.setAttribute("home1", "/home/test2.jsp");
-				session.setAttribute("home2", "/home/test4.jsp");
-			}
-			else
-			{
-				session.setAttribute("home1", "/home/test1.jsp");
-				session.setAttribute("home2", "/home/test2.jsp");
-			}
-			modelAndView = main(session);
-		}else {
+		}
+		catch(Exception e)
+		{
 			modelAndView.setViewName("/member/loginFail.jsp");
 		}
 		return modelAndView;
@@ -72,7 +77,7 @@ public class MemberController
 		return new ModelAndView("/member/loginForm.jsp");
 	}
 
-	@RequestMapping(value = "main.do")
+	@RequestMapping(value="main.do")
 	public ModelAndView main(HttpSession session)
 	{
 		if(session.getAttribute("memId") == null)
@@ -94,8 +99,8 @@ public class MemberController
 	@RequestMapping(value = "joinForm.do")
 	public ModelAndView joinForm()
 	{
-		ModelAndView modelAndView = new ModelAndView("/biFrame.jsp");
-		modelAndView.addObject("left", "/member/joinForm.jsp");
+		ModelAndView modelAndView = new ModelAndView("/member/joinForm.jsp");
+	//	modelAndView.addObject("left", "/member/joinForm.jsp");
 		return modelAndView;
 	}
 

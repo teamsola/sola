@@ -9,10 +9,10 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 		#r_add_title{width:100%; height:170px;background: url("/sola/img/recipe001.jpg") repeat center center;}
-		#r_add_content{margin:40px; float:left; width:1200px; overflow:hidden;height:auto;}
-		#r_add_subtitle{margin:20px 0;}
+		#r_add_content{margin:40px; width:1200px; overflow:hidden;height:auto;display: inline-block;}
+		#r_add_subtitle{margin:20px 0;text-align: left;}
 		#r_add_subtitle .subtitle_detail{border:1px solid #DCDCDC;height:80px; padding: 20px; font-size:17px; line-height: 26px;}
-		#r_add_form{ background-color: #FFE08C; padding:40px;overflow:hidden;height:auto;}
+		#r_add_form{ background-color: #FFE08C; padding:40px;overflow:hidden;height:auto;text-align: left;}
 		#r_add_form .form_title{border-bottom:1px solid #5D5D5D; font-size:20px;padding:10px 0;}
 		#r_add_form .form_detail{height:100%;}
 		.form_input{float:left;width:100%;border-bottom: 1px solid white; padding:40px 0 20px 0;}
@@ -142,6 +142,7 @@ pageEncoding="UTF-8"%>
 		<div id="r_add_title">
 			<h1 style=" float:left;background: white; font-family:'NanumGothic';font-weight:normal;font-size:40px; margin-top:60px;margin-left: 30px;">레시피 공유하기</h1>
 		</div>
+		<div style="float: left;width: 100%;text-align: center;">
 		<div id="r_add_content">
 			<div id="r_add_subtitle">
 				<h2>회원님만의 SOLA récipe 를 기다립니다</h2>
@@ -250,6 +251,7 @@ pageEncoding="UTF-8"%>
 				</form>
 				</div>
 			</div>
+		</div>
 		</div>
 	</body>
 </html>

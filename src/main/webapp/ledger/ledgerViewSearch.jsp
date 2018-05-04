@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle2.css?ver=2" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle2.css?ver=1" />
 <link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewSearch.css?ver=2" />
 
 <script type="text/javascript">
@@ -101,6 +101,12 @@ function contentBold(keyword, content){
 	
 	<!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
+		
+	<!-- 흐린창 뒤의 배경 이미지 -->
+	<div id="title_img">
+		<a href="calendar.do?cmd=main" id="title_atag"><span>LEDGER</span></a>
+	</div>
+
 	
 	<div class="ledger_body">
 

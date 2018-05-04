@@ -98,19 +98,23 @@ select {
 	margin-top: 10px;
 	margin-left:20px;
 	margin-left:20px;
-	background-color:#FF8400;
+	background-color:white;
 }
 
 .searchBar{	/* 검색을 위한 div */
 	padding-top:10px;
 	width: 97%;
 	float:right;
+	
 }
 
 .searchBar .search{	/* 검색 text */
 	width:200px;
 	height:20px;
 	float:right;
+	border-style: none;
+    border-bottom: 1px solid;
+    outline:none; 
 }
 
 .searchBar .search_btn{	/* 검색 버튼 div */
@@ -119,14 +123,14 @@ select {
 	margin-left:10px;
 	margin-right:10px;
 	float:right;
-	background-image: url('../ledgerimg/search icon2.png');
+	background-image: url('../ledgerimg/search_icon (black).png');
 	background-repeat: no-repeat;
 	background-position:conter center;
 	background-size:100% 100%;
 }
 
 .searchBar .search_btn:hover{	/* 검색 버튼 hover 이벤트*/
-	background-color : #ff8200;
+	/* background-color : #ff8200; */
 	/* color:white; */
 	cursor:pointer;
 }
