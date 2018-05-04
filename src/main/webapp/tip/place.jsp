@@ -25,14 +25,14 @@ pageEncoding="UTF-8"%>
 			height: 500px;
 			text-align: center;
 		}
-		#place_main_left{float: left; background-image: url("/sola/img/place_main1.jpg");background-size: cover;background-position-x: -100px;}
-		#place_main_right{float: right; background-image: url("/sola/img/place_main2.png");background-size: cover;}
+		#place_main_left{float: left; background-image: url("/sola/img/place_main2.jpg");background-size: cover;}
+		#place_main_right{float: right; background-image: url("/sola/img/place_main1.jpg");background-size: cover;}
 		.place_main .intro_title_left, .place_main .intro_title_right{
 			display:inline-block;
 			margin: 0 auto;
 			width:100%;
 			padding:20px 0;
-			 margin-top:200px;
+			 margin-top:150px;
 			font-weight: bold;
 			text-align: center;
 		}

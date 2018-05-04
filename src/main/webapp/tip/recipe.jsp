@@ -12,13 +12,13 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 	
-	#recipe_content{float:left;width:100%; overflow:hidden; height:auto;text-align: center;margin:0 auto;}
+	#recipe_content{float:left;width:100%; overflow:hidden; height:auto;margin:0 auto;}
 	.recipe_title{line-height:200px;float:left; width:100%;height:200px; background-size:100% auto; background-position: center center; background-image: url("/sola/img/recipe_t.jpg");text-align: left;}
 	.recipe_srch{float:left;width:96%;margin:10px 0 20px 0;padding:0 2%; border-bottom: 1px solid #ff8400;}
 	#keyword{border-style:none;font-size:16px; padding:7px; position:relative;bottom:13px;border:1px solid #ff8400;box-sizing: border-box;}
 	#keyword:focus{outline:none;border:2px solid #ff8400;box-sizing: border-box;transition:.3s ease;}
 	#searchimg{cursor: pointer;}
-	.recipe_list{display:inline-block;width:1500px;margin:10px auto;}
+	.recipe_list{display:inline-block;width:1500px;margin:10px auto;text-align: left;}
 	.recipe_list .list_each{display:inline-block;text-align:left;width:400px;margin:30px 25px 40px 25px;height:380px;}
 	.recipe_list .list_each a, .recipe_list .list_each a:visited{text-decoration: none;color: #ff8400;}
 	.recipe_list .list_each a:hover{color:red;}
