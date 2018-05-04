@@ -34,12 +34,15 @@ public class MemberController
 	public ModelAndView login(HttpSession session, String id, String pwd)
 	{
 		ModelAndView modelAndView = new ModelAndView();
-		String nickname = memberService.login(id, pwd);
+		MemberDTO memberDTO = memberService.login(id, pwd);
+		String nickname = memberDTO.getNickname();
+		String profile = memberDTO.getProfile();
 		System.out.println("닉네임: "+nickname);
 		if(nickname != null)
 		{
 			session.setAttribute("memId", id);
 			session.setAttribute("memName", nickname);
+			session.setAttribute("memProfile", profile);
 			System.out.println("아이디: "+id);
 			if(id.equals("hong"))
 			{
@@ -166,6 +169,7 @@ public class MemberController
 
 		session.removeAttribute("memName");
 		session.removeAttribute("memId");
+		session.removeAttribute("memProfile");
 		
 		ModelAndView modelAndView = new ModelAndView("redirect:index.jsp");
 		modelAndView.addObject("lgout", 1);
@@ -407,6 +411,7 @@ public class MemberController
 		if (result > 0)
 		{
 			session.setAttribute("memName", nickname);
+			session.setAttribute("memProfile", profile);
 			modelAndView.addObject("memberDTO", memberDTO);
 			modelAndView.addObject("content", "/member/memberProfile.jsp");
 			
