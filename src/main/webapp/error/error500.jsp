@@ -71,7 +71,7 @@ img
 </style>
 </head>
 <body>
-<img class="bg" src="../img/error500.jpg" alt="" />
+<img class="bg" src="error500.jpg" alt="" />
 <div id="container">
 <span>500 ERROR<br><br></span>
 <span>문법에러냥..<br></span>
