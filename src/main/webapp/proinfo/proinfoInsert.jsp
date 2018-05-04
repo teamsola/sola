@@ -33,12 +33,7 @@
 	width:200px;
 }
 
-.select{
-	float:left;
-}
-
 select { 
-	margin-left:50px;
 	background: url(이미지 경로) no-repeat 95% 50%; /* 화살표 모양의 이미지 */ 
 	width: 150px; /* 원하는 너비설정 */ 
 	padding: .4em .9em; /* 여백으로 높이 설정 */ 
@@ -57,15 +52,14 @@ select::-ms-expand {
 }
 
 #titleset{
-	margin-left:17px;
 	margin-top:30px;
+	margin-left:146px;
 	text-align:center;
 	float:left;
 	width:100%;
 }
 
 #subject{
-	float:left;
 	margin-left:7px;
 	border-style: none;
     font-size: 15px;
@@ -74,6 +68,16 @@ select::-ms-expand {
     border: 1px solid #ff8400;
     box-sizing: border-box;
 }
+
+.select{
+	text-align:center;
+	float:left;
+}
+
+.subject{
+	float:left;
+}
+
 
 #contents{
 	margin-bottom:10px;
