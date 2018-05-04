@@ -23,7 +23,6 @@
 </script>
 </head>
 <body>
-	<div id="wrapper" class="frame">
 	<div class="title">
 		<nav role="gnb">
 			<jsp:include page="/common/nav.jsp" />
@@ -37,6 +36,5 @@
 			</section>
 		</div>
 		<footer><jsp:include page="/common/footer.jsp" /></footer>
-	</div>
 </body>
 </html>
