@@ -1,34 +1,12 @@
 /* 가계부 결산 Body CSS */
 
-.ledger_body .bottom .view_before{		/* 이전으로 갈 탭 */
 
-	width: 10%;
-	height: 100%;
-	float: left;
-	
-	background-image: url('../ledgerimg/arrowleft_hover.png');
-	background-repeat: no-repeat;
-	background-position:conter center;
-/* 	background-size:100% 100%; */
-
-}
 
 .ledger_body .bottom .view_center{		/* 중앙에 들어갈 내용 */
 
 	width: 78%;
 	height: 100%;
 	float: left;
-}
-
-.ledger_body .bottom .view_after{		/* 다음으로 갈 탭 */
-
-	width: 10%;
-	height: 100%;
-	float: right;
-	
-	background-image: url('../ledgerimg/arrowright_hover.png');
-	background-position:conter center;
-	background-repeat: no-repeat;
 }
 
 

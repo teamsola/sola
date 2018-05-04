@@ -6,11 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-body{
-	padding-top:100px;
-}
-
-a{
+#atag{
 	color:black;
 	text-decoration:none;
 }
@@ -126,10 +122,10 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
+						<a href="${mallDTO.mallurl }" id="atag"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
-						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+						<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 					</div>
 					</div>
 					</td>
@@ -141,10 +137,10 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
+						<a href="${mallDTO.mallurl }" id="atag"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
-						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+						<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 					</div>
 					</div>
 					</td>
@@ -156,10 +152,10 @@ a{
 					<td>
 					<div id="one">
 					<div id="picture">
-						<a href="${mallDTO.mallurl }"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
+						<a href="${mallDTO.mallurl }" id="atag"><img src="storage/${mallDTO.img }" width="100" height="120"></a>
 					</div>
 					<div id="subject">
-						<a href="${mallDTO.mallurl}">${mallDTO.subject }</a>
+						<a href="${mallDTO.mallurl}" id="atag">${mallDTO.subject }</a>
 					</div>
 					</div>
 					</td>
