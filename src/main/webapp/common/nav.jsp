@@ -57,7 +57,6 @@
 					<li><a href="member.do">기본정보</a></li>
 					<li><a href="checkPwd.do">회원정보수정</a></li>
 					<li><a href="memberProfile.do">프로필변경</a></li>
-					<li><a href="memberProfile.do">프로필변경</a></li>
 					<li><a href="logout.do">로그아웃</a></li>
 					<li><a href="memberWithdrawalForm.do">회원탈퇴</a></li>
 				</ul>
@@ -66,10 +65,8 @@
 			<c:if test="${memId.length() < 6}">
 				<ul class="lv2-list" id="manageLv2" rel="manage">
 					<li><a href="member.do">기본정보</a></li>
-					<li><a href="checkPwd.do">회원정보수정</a></li>
-					<li><a href="memberProfile.do">프로필변경</a></li>
+					<li><a href="memberList.do">회원관리</a></li>
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="memberWithdrawalForm.do">회원탈퇴</a></li>
 				</ul>
 			</c:if>
 			

@@ -49,7 +49,7 @@ html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-fa
 #joinLink:link, #joinLink:visited{font-size:12px; color:white;text-decoration: none;}
 #joinLink:hover, #joinLink:active{color:#ff8400;}
 #id:focus, #pwd:focus{outline:none;border-bottom:1px solid #ff8400;transition:.3s ease;}
-#id, #pwd{width: 170px;height:20px;padding:5px 0;background:none;border-style:none;color:white;border-bottom:1px solid white;}
+#id, #pwd{width: 170px;height:17px;padding:3px 0;background:none;border-style:none;color:white;border-bottom:1px solid white;}
 #loginBtn{border-style:none; border:1px solid #ff8400;outline:none;color:white; border-radius: 2px; width:55px;height:24px;background: orange;text-align: center;}
 #loginBtn:hover{background: #ff8400;outline: none;}
 #login {
@@ -68,7 +68,7 @@ html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-fa
 {
 	width: 100%;
 }
-#loginForm{border-spacing: 15px 0;position: absolute;top:10px;left:850px;}
+#loginForm{border-spacing: 15px 0;position: absolute;top:5px;left:850px;}
 #wrapper
 {
 	margin: 0;
