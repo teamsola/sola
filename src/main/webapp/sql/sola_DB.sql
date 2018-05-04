@@ -26,6 +26,42 @@ create table tip_place(
 );
 
 
+REM INSERTING into TIP_PLACE
+SET DEFINE OFF;
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (2,'jaesuk0731','서재석',37.57052951736436,126.98973571886324,'원조일산비빔국수 본점','서울 종로구 종로3가 5','서울 종로구 종로 111','02-742-1004',1,'종로 근처에 학원 다니는 분들!
+여기 모르면 간첩.',to_date('18/04/18','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (3,'jaesuk0731','서재석',37.5114276679358,127.04536147234634,'청춘포차','서울 강남구 삼성동 38','서울 강남구 봉은사로57길 8','02-3416-0887',2,'처음 혼술해봤는데 여기만한 데가 없더라구요',to_date('18/04/18','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (4,'jaesuk0731','서재석',37.61175363804342,127.06363666529965,'혼술식당','서울 성북구 석관동 127-56','서울 성북구 한천로78길 21','070-5104-5945',1,'존맛탱',to_date('18/04/18','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (5,'jaesuk0731','서재석',37.589896376132025,127.01927975320419,'혼술주점 혜화동','서울 성북구 동선동2가 67','서울 성북구 보문로30라길 5-2','02-978-9488',1,'존맛ㅁ존맛',to_date('18/04/18','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (6,'jaesuk0731','서재석',37.405112199699225,127.12668376365173,'카페그레이','경기 성남시 분당구 이매동 97-5','경기 성남시 분당구 판교로 476','031-704-0448',3,'여기 진짜 조용하고 좋습니다!',to_date('18/04/19','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (7,'jaesuk0731','서재석',37.589368706514435,126.99157608223776,'할매 국밥','서울 종로구 명륜3가 53-21','서울특별시 종로구 성균관로 25-2',null,1,'개존맛탱',to_date('18/04/19','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (8,'jaesuk0731','서재석',37.5705800196194,126.99021565912854,'스타벅스 종로3가점','서울 종로구 종로3가 9-3','서울 종로구 종로 113-1','02-758-8339',3,'커피 존맛',to_date('18/04/19','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (9,'jaesuk0731','서재석',37.572043324174174,126.99131571817267,'큰맘할매순대국 낙원동점','서울 종로구 돈의동 111','서울 종로구 돈화문로9길 6','02-745-9298',1,'순대국 먹고싶은 날엔
+혼자 여기 옵니다,,,',to_date('18/04/19','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (11,'jaesuk0731','서재석',37.5705800196194,126.99021565912852,'스타벅스 종로3가점','서울 종로구 종로3가 9-3','서울 종로구 종로 113-1','02-758-8339',3,'여기
+분위기 좋아요',to_date('18/04/19','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (12,'hyori','이효리',33.33314561082264,126.2308570015827,'제주돗','제주특별자치도 제주시 한경면 조수리 254-1','제주특별자치도 제주시 한경면 조수2길 34','064-772-0505',1,'여기 진짜 분위기 미쳐요
+혼자 먹으러 왔다고 하면
+알바생이 말동무도 해줘요!',to_date('18/04/20','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (13,'user03','김지호',37.50350079281367,127.02643395068056,'호랑이식당 강남본점','서울 강남구 역삼동 810-14','서울 강남구 봉은사로4길 20','02-508-6655',1,'혼자 먹는 사람들 정말 많이 찾아오는
+숨은 명소!',to_date('18/04/20','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (14,'user03','김지호',37.55068602270585,126.9232836918942,'삼거리포차','서울 마포구 서교동 361-12','서울 마포구 와우산로 70','02-3144-6748',2,'여기 모르는 사람 있나요? ㅋ',to_date('18/04/20','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (15,'teacher','박강사',37.572725146646434,126.96094218256633,'대성집','서울 종로구 행촌동 209-35','서울 종로구 사직로 5','02-735-4259',1,'숨은 명소입니더',to_date('18/04/20','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (16,'yoojaesuk','유재석',37.530682878855025,126.92162113959311,'정인면옥','서울 영등포구 여의도동 13-1','서울 영등포구 국회대로76길 10','02-2683-2615',1,'여기 냉면 쥑입니다.
+혼밥 명소!
+혼자 오지말고
+꼭 나중에 커플이랑 오세요',to_date('18/04/20','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (17,'yoojaesuk','유재석',37.54840717918816,126.92158412053477,'켄비멘리키','서울 마포구 상수동 313-3','서울 마포구 독막로15길 3-12','02-324-0822',1,'상수 맛집입니다.
+혼밥하기 좋아요',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (18,'yoojaesuk','유재석',37.56394633831961,127.01620260656844,'빛나는 바다','서울 중구 신당동 102-1','서울특별시 중구 다산로 236','02-1829-2394',2,'술마시기 좋은 분위기!
+분위기 깡패입니다.',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (19,'yoojaesuk','유재석',37.55831588588856,127.01139515131754,'동동등갈비&혼밥돼지','서울 중구 신당동 375-31','서울 중구 청구로17길 67','02-6498-1882',1,'가게 이름부터 혼자먹기 좋아보이는곳!',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (20,'jaesuk','서재석',37.57102509177565,126.97791797759294,'김밥천국','서울 종로구 세종로 119','서울 종로구 종로 1',null,1,'혼밥하면 김밥천국 아니겠습니까',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (21,'jaesuk','서재석',37.39493160877016,127.12238902185256,'스타벅스 분당이매점','경기 성남시 분당구 이매동 146-2','경기 성남시 분당구 이매로 15','031-8017-3439',3,'여기 조용해요',to_date('18/04/28','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (1,'jaesuk0731','서재석',37.57435614410793,127.01942095955775,'혼술혼밥','서울 종로구 숭인동 169','서울 종로구 종로 379','02-742-4333',2,'혼자 술먹었는데 존맛탱',to_date('18/04/18','RR/MM/DD'));
+Insert into TIP_PLACE (PLACE_SEQ,ID,NAME,PLACE_LAT,PLACE_LNG,PLACE_NAME,PLACE_ADDRESSNAME,PLACE_ROADADDRESSNAME,PLACE_PHONE,PLACE_TYPE,PLACE_DETAIL,LOGTIME) values (10,'user1','기성용',37.54151249236552,127.06937508059765,'건대맛집','서울 종로구 숭인동 169','서울 종로구 종로 379','02-742-4333',2,'혼자 술먹었는데 존맛탱',to_date('18/04/19','RR/MM/DD'));
+
+
 ------------------------------------------------------------------------------
 무인택배
 ------------------------------------------------------------------------------
@@ -53,6 +89,23 @@ create table tip_express(
   logtime date default sysdate
 );
 
+
+
+REM INSERTING into TIP_EXPRESS
+SET DEFINE OFF;
+Insert into TIP_EXPRESS (EXPRESS_SEQ,ID,NAME,EXPRESS_LAT,EXPRESS_LNG,EXPRESS_NAME,EPXRESS_ADDRESSNAME,EXPRESS_ROADADDRESSNAME,EXPRESS_REGION_DEPTH_NAME,EXPRESS_ADDRESSDETAIL,EXPRESS_DETAIL,LOGTIME) values (1,'yoojaesuk','유재석',37.571049890037784,126.97875293003646,'광화문 핫스팟','서울 종로구 청진동 246','서울특별시 종로구 종로3길 17','서울:종로구','D타워 1층 로비','로비에 맡기면
+무료로 알아서 다 보관해주세요!',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_EXPRESS (EXPRESS_SEQ,ID,NAME,EXPRESS_LAT,EXPRESS_LNG,EXPRESS_NAME,EPXRESS_ADDRESSNAME,EXPRESS_ROADADDRESSNAME,EXPRESS_REGION_DEPTH_NAME,EXPRESS_ADDRESSDETAIL,EXPRESS_DETAIL,LOGTIME) values (6,'yoojaesuk','유재석',37.57062720735151,126.98368840976751,'종각역 안심센터','서울 종로구 공평동 70','서울특별시 종로구 종로 51','서울:종로구','종로타워 1층 로비','여기 아저씨가 다 받아줘요',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_EXPRESS (EXPRESS_SEQ,ID,NAME,EXPRESS_LAT,EXPRESS_LNG,EXPRESS_NAME,EPXRESS_ADDRESSNAME,EXPRESS_ROADADDRESSNAME,EXPRESS_REGION_DEPTH_NAME,EXPRESS_ADDRESSDETAIL,EXPRESS_DETAIL,LOGTIME) values (7,'yoojaesuk','유재석',37.56856229277221,126.97446361451186,'종각 사시는 분들 모여라!!!!!!!!!!!!!!!!!!!!','서울 중구 정동 1-76','서울특별시 중구 덕수궁길 140','서울:중구','서울덕수초등학교 경비실','여기 정문 옆에 무인택배 보관함 있어요
+아무도 안건드려요 장담해요',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_EXPRESS (EXPRESS_SEQ,ID,NAME,EXPRESS_LAT,EXPRESS_LNG,EXPRESS_NAME,EPXRESS_ADDRESSNAME,EXPRESS_ROADADDRESSNAME,EXPRESS_REGION_DEPTH_NAME,EXPRESS_ADDRESSDETAIL,EXPRESS_DETAIL,LOGTIME) values (8,'yoojaesuk','유재석',37.56851842361331,126.98067793234802,'중구 사는분','서울 중구 다동 33','서울특별시 중구 청계천로 30','서울:중구','예금보험공사','공식 안심택배 등록 기관입니다.',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_EXPRESS (EXPRESS_SEQ,ID,NAME,EXPRESS_LAT,EXPRESS_LNG,EXPRESS_NAME,EPXRESS_ADDRESSNAME,EXPRESS_ROADADDRESSNAME,EXPRESS_REGION_DEPTH_NAME,EXPRESS_ADDRESSDETAIL,EXPRESS_DETAIL,LOGTIME) values (9,'yoojaesuk','유재석',37.571986769114574,126.97790367603717,'광화문에 회사가 있는 분들!','서울 종로구 세종로 100','서울특별시 종로구 세종대로 178','서울:종로구','KT광화문지사 3층','3층에 고객센터에 맡기시면 됩니다.
+이름이랑 연락처만 적으시면
+편하게 맡기실 수 있어요!',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_EXPRESS (EXPRESS_SEQ,ID,NAME,EXPRESS_LAT,EXPRESS_LNG,EXPRESS_NAME,EPXRESS_ADDRESSNAME,EXPRESS_ROADADDRESSNAME,EXPRESS_REGION_DEPTH_NAME,EXPRESS_ADDRESSDETAIL,EXPRESS_DETAIL,LOGTIME) values (10,'yoojaesuk','유재석',37.57463516840781,126.97525395765904,'경복궁역 회사원분들!!','서울 종로구 세종로 77-6','서울특별시 종로구 세종대로 209','서울:종로구','정부서울청사 1층','정부서울청사에서는
+시민들을 위해 무료로 무인택배 서비스를 합니다.',to_date('18/04/24','RR/MM/DD'));
+Insert into TIP_EXPRESS (EXPRESS_SEQ,ID,NAME,EXPRESS_LAT,EXPRESS_LNG,EXPRESS_NAME,EPXRESS_ADDRESSNAME,EXPRESS_ROADADDRESSNAME,EXPRESS_REGION_DEPTH_NAME,EXPRESS_ADDRESSDETAIL,EXPRESS_DETAIL,LOGTIME) values (5,'yoojaesuk','유재석',37.57061317815443,126.9803151630476,'종각역 사람이라면 여기!!!!','서울 종로구 청진동 128','서울특별시 종로구 종로5길 7','서울:종로구','타워8 지하주차장','여기 지하주차장이 CCTV로 둘러싸여서
+정말 안전하고 안심할 수 있어요!',to_date('18/04/24','RR/MM/DD'));
 
 ------------------------------------------------------------------------------
 레시피
@@ -93,6 +146,27 @@ create table tip_recipe(
   );
 
 
+REM INSERTING into TIP_RECIPE
+SET DEFINE OFF;
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (1,'jaesuk','서재석','tomato-pasta1.jpg','토마토 파스타','이것만 있으면 하루 요리 뚝딱',15,1,'마늘 3개, 올리브 오일, 스파게티면, 토마토 소스','null','ㅁㄴㅇㄹ22','ㅁㄴㅇㄹ12','ㅁㄴㅇㄹㄹㄷ32ㄱㄻㄹ','ㄴㅌㅋ','ㅁㄹ','null','null','null','null','null',0,2,to_date('18/04/26','RR/MM/DD'));
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (2,'jaesuk','서재석','740_SAM_0792.JPG','고추장불고기','막걸리 안주로 좋은 것!',25,2,'돼지고기 목살 1kg, 고추장 6큰술, 간장 3큰술, 다진마늘 1과 1/2큰술, 고춧가루 1과 1/2작은술, 올리고당 1큰술, 설탕 1큰술, 참기름 1큰술','양파 1개, 당근 반쪽, 대파 1쪽, 해물(쭈꾸미), 후추 약간, 상추','먹기좋게 썬 돼지고기를 준비한 후
+위 레시피에 적혀있는 모든 재료들을 넣어주세요.','고추장 불고기 양념이 잘 밸 수 있도록 골고루 섞어준 후 뚜껑을 덮어 냉장고에 넣습니다.','두 세시간 정도 숙성시간을 주면 됩니다.
+(그 이상 반나절 정도 더 두어도 상관없어요.)','당근, 양파, 대파 등을 먹기 좋게 썰어 같이 볶습니다
+(경우에 따라 쭈꾸미 등을 넣어도 좋습니다)','다 볶으면 깨를 살살 뿌려 상추에 싸먹습니다.','null','null','null','null','null',15000,58,to_date('18/04/27','RR/MM/DD'));
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (3,'jaesuk','서재석','참치주먹밥.jpg','참치주먹밥','저렴하고 쉽게 구할 수 있는 참치캔을 이용한 주먹밥',20,1,'참치캔 1/2개(50g), 밥 1공기(200g)','null','참치는 체에 밭쳐 기름기를 뺀다. 부추는 송송 썬다.','볼에 밥, 소금, 참기름을 넣고 섞는다.(참치에 간이 되어 있기 때문에 소금간은 약하게 한다.)','밥에 참치, 부추, 검은깨, 후춧가루를 넣고 주걱으로 가르듯이 섞는다.','손에 비닐장갑을 끼고 밥을 한입크기로 동그랗게 만든다.','먹는다','null','null','null','null','null',3000,4,to_date('18/04/27','RR/MM/DD'));
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (4,'user2','김또깡','계란볶음밥.jpg','계란볶음밥','반찬이 없을 때 손쉽게 만드는 볶음밥',15,1,'달걀 2개(100g), 밥 1공기(200g)','null','볼에 달걀, 소금을 넣고 잘 푼다.',' 달군 팬에 식용유 1큰술을 두르고 달걀을 넣고 젓가락으로 저어가며 익혀 스크램블 에그를 만들어 접시에 덜어둔다.','달군 팬에 식용유 1큰술을 두르고 밥을 넣고 고슬고슬하게 볶다가 간장을 넣고 골고루 섞어가며 볶는다.','밥이 다 볶아지면 달걀을 넣고 잘 섞는다.','불을 끄고 참기름, 깨를 넣고 다시 한번 골고루 섞는다.','null','null','null','null','null',3500,52,to_date('18/04/27','RR/MM/DD'));
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (5,'user2','김또깡','null','떡볶이','김또깡님의 추천레시피',20,2,'불린떡 2줌, 어묵 2장, 대파, 멸치 다시마 육수 3.5컵, 고춧가루 2스푼, 설탕 2스푼, 카레가루 2스푼, 진간장 2스푼, 고추장 3스푼','후추,  모짜렐라 치즈','고춧가루, 설탕, 카레가루, 진간장, 고추장을 섞는다.','어묵, 대파, 양파, 깻잎 등을 썬다.','멸치육수를 끓인 후 양념장을 넣어 풀어준다.','밀떡을 넣고, 보글보글 끓기 시작하면 어묵을 넣는다.','떡이 익고 양념이 배기 시작하면 대파를 넣는다.','후추를 기호에 따라 넣는다.
+플레이팅한다.','기호에 따라 치즈를 전자레인지에 넣고 돌린다.','null','null','null',0,5,to_date('18/04/27','RR/MM/DD'));
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (8,'hello','박안녕','IMG_2574.jpg','소갈비찜','부드럽고 씹는 식감이 매력적인 소갈비찜',200,3,'소갈비 1.2kg, 당근 1개, 무 1/3, 버섯한줄, 대파 1대, 홍고추 1개, 간장 6스푼, 맛술 4스푼, 설탕 3스푼, 올리고당 3스푼, 다진마늘 1큰술, 참기름, 후추','null','소갈비는 3시간 이상 핏물을 빼주세요.
+그 사이 당근과 무는 모서리를 둥글게 만들어 썰어놓으세요.','양념장을 만들어놓으세요. 위 재료에서 간장 6스푼 부터가 모두 양념재료입니다.','핏물 뺀 소고기를 살짝 데쳐서 준비해주세요.
+데친후에 찬물에 행궈 준비 ! 데친 갈비는 다시 채소들과 함께 오랫동안 끓여줄거랍니다.','물8컵을 넣고 데친 소갈비와 양파, 대파를 넣고 센불에서 1시간정도 삶아주세요 .','1시간 이상 삶은 소갈비는 건져 칼집을 내거나 크기가 큰 경우는 잘라서 준비하고 삶은물은 버리지 마시고 체에 걸러 3컵정도 분량을 남겨주세요','1시간 이상 삶은 갈비는 건져 만들어둔 소갈비찜 양념장에 30분정도 재워주세요 . ','이후 삶은 국물 3컵을 넣고 센불에서 20분정도 팔팔 끓여주세요. 센불에 보글보글 20분 ! 채소 넣고 15분 !','무와 당근이 푹 - 익어야 하며 소갈비찜에 고루고루 양념이 쏙쏙 베어들어 부드러운 소갈비찜이 완성 되었습니다.','null','null',35000,0,to_date('18/04/27','RR/MM/DD'));
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (9,'hello','박안녕','DSC07345.JPG','소고기미역국','해장용으로 딱이에요!',30,2,'불린 미역, 소고기, 참기름, 국간장, 다진 마늘','소금(국간장 대신)','미역을 먹을 만큼의 양을 불에 불려주고
+소고기는 키친타월을 이용해 핏기를 닦아줍니다.','잘 불린 미역과, 핏기 제거된 소고기를 달군 냄비에 넣고
+참기름 2수저 넣어 달달 볶아주세요. 소고기 겉면이 익을 때까지 볶아 주세요.','물은 1리터 정도 붓고 보글보글 끓여줍니다.','국간장 또는 소금으로 간을 맞춰줍니다.다진 마늘도 넣어주고 소고기 미역국을 끓이면서 불순물을 제거해 줍니다.','보글보글 끓이다가 중불로 줄여 푹~ 끓여주세요','드세요','null','null','null','null',6000,55,to_date('18/04/27','RR/MM/DD'));
+Insert into TIP_RECIPE (RECIPE_SEQ,ID,NAME,FOODIMAGE,FOODNAME,FOODNAME_DETAIL,COOKINGTIME,DIFFICULTY,JAERYO_NECESSARY,JAERYO_NONECESSARY,RECIPE0,RECIPE1,RECIPE2,RECIPE3,RECIPE4,RECIPE5,RECIPE6,RECIPE7,RECIPE8,RECIPE9,PRICE,HIT,LOGTIME) values (13,'hong','홍홍','tip_계란볶음밥_20180501-21-41-35.jpg','sdfas','sadfas',11,1,'asdfas','sdfasf','asfasfasd','fasdf','fasf','fasfsa','fasfas','null','null','null','null','null',11000,5,to_date('18/05/01','RR/MM/DD'));
+
+
+
 ------------------------------------------------------------------------------
 인테리어
 ------------------------------------------------------------------------------
@@ -119,6 +193,13 @@ like_user varchar2(4000),
 logtime date default sysdate
 );
 
+REM INSERTING into TIP_INTERIOR
+SET DEFINE OFF;
+Insert into TIP_INTERIOR (INTERIOR_SEQ,ID,NAME,PRICE,ROOMSIZE,INTERIOR_TITLE,INTERIOR_MAINIMAGE,INTERIOR_CONTENT,HIT,LIKE_USER,LOGTIME) values (5,'hong','홍홍',20,4,'방 꾸미는 데 하루면 충분!','tip_interior_drawing_20180502-16-29-26.jpg','tip_20180502-16-29-26_hong.txt',4,'|',to_date('18/05/02','RR/MM/DD'));
+Insert into TIP_INTERIOR (INTERIOR_SEQ,ID,NAME,PRICE,ROOMSIZE,INTERIOR_TITLE,INTERIOR_MAINIMAGE,INTERIOR_CONTENT,HIT,LIKE_USER,LOGTIME) values (4,'hong','홍홍',20,5,'방 꾸미는 데 하루면 충분!','tip_20160703031330h3DMYXUQHd_20180501-19-47-27.png','tip_20180502-16-29-46_hong.txt',2,'|',to_date('18/05/01','RR/MM/DD'));
+Insert into TIP_INTERIOR (INTERIOR_SEQ,ID,NAME,PRICE,ROOMSIZE,INTERIOR_TITLE,INTERIOR_MAINIMAGE,INTERIOR_CONTENT,HIT,LIKE_USER,LOGTIME) values (3,'hong','홍홍',50,14,'이게 바로 인테리어','tip_img_20150813105653_e6e733e2_20180501-19-17-52.jpg','tip_20180502-16-20-44_hong.txt',8,'|hong2|',to_date('18/05/01','RR/MM/DD'));
+
+
 
 ------------------------------------------------------------------------------
 일기
@@ -136,6 +217,15 @@ create table diary(
 );
 
 
+REM INSERTING into DIARY
+SET DEFINE OFF;
+Insert into DIARY (DIARY_SEQ,ID,DIARY_DATE,DIARY_CONTENT) values (10,'hong',to_date('18/05/24','RR/MM/DD'),'내용 입력');
+Insert into DIARY (DIARY_SEQ,ID,DIARY_DATE,DIARY_CONTENT) values (2,'hong2',to_date('18/05/03','RR/MM/DD'),'서블리 만세');
+Insert into DIARY (DIARY_SEQ,ID,DIARY_DATE,DIARY_CONTENT) values (7,'hong',to_date('18/05/09','RR/MM/DD'),'수정화면시 버튼 수정');
+Insert into DIARY (DIARY_SEQ,ID,DIARY_DATE,DIARY_CONTENT) values (4,'hong',to_date('18/05/03','RR/MM/DD'),'서블리 만세');
+Insert into DIARY (DIARY_SEQ,ID,DIARY_DATE,DIARY_CONTENT) values (9,'hong',to_date('18/05/10','RR/MM/DD'),'왜 줄이 두껍게sdfsdf');
+
+
 ------------------------------------------------------------------------------
 쇼핑몰(신상)
 ------------------------------------------------------------------------------
@@ -151,6 +241,25 @@ create table mall(
   img varchar2(200),
   mallurl varchar2(4000)
 );
+
+
+REM INSERTING into MALL
+SET DEFINE OFF;
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (7,'hong','이렇게이쁜데 아직도없어~?','아직도.JPG','http://chuu.co.kr/?cafe_mkt=ntbox_b01&utm_source=naver&utm_medium=castbox&utm_term=&utm_content=middle&utm_campaign=2016%2Balways-on&cafe_prdNo=24442#anchorBoxName_24442&NaPm=ct%3Djgom40b4%7Cci%3D2b2de78a524c0156d4cd02f9f55a7a5d4249d8ec%7Ctr%3Dsbtp%7Csn%3D155831%7Chk%3D9c2a1818575a871a9d39425a1f287c56ba2c9648');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (6,'hong','명품신상나왔대 얼른사','명품.JPG','http://www.mirage.co.kr/?cafe_mkt=ntbox_a01&NaPm=ct%3Djgom3g8w%7Cci%3D09f13429bf64f0a88bd093e27f0e0d38f03d2ee0%7Ctr%3Dsbtp%7Csn%3D117934%7Chk%3D8bd4852bb3ab0c911869424649db0e94ac8a849e');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (8,'hong','한번먹으면 멈출수없는맛','이거뭔데.JPG','http://itempage3.auction.co.kr/DetailView.aspx?ItemNo=B467158775&BCODE=BN00245557&ck=&sn=&igaw_eng=&airbridge_referrer=');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (9,'hong','전상품 만원대 세일!','세일.JPG','http://k-club.co.kr/?cafe_mkt=ntbox_a01&NaPm=ct%3Djgom8nqw%7Cci%3D66739af780ec1fdaa52085962982b8b2b3d1ea69%7Ctr%3Dsbtp%7Csn%3D203198%7Chk%3Dc630762f88ca85d126140c2ac9b58c9eaedaab06');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (10,'hong','쫀쫀하니 엄청 편할걸','이렇게.JPG','http://adcr.shopping.naver.com/adcr.nhn?x=FZuWQ2mHdZT5dUWR3p6ffv%2F%2F%2Fw%3D%3Dscea4cp4hKFkDJqMN9sdScCaN%2Bw77vx9gRnmEMVWfYydvnpMS9jhr0DdpZV2kZqeGrHOHKtNhMzIHibml6QlTTSVlGRUW2LrY3JzWqmOZ%2Bk%2B2mxiU1yPtj4OdEEV90IjEGrSqB9Vpeyh3oNVrV91zKXmpA7drIdHQF1rL9ujyrXFAEGJIBw76EKfWOpnuP7I34gfutUGSJJTa69xmfvSGV1XGiizYG7lArXDrMo9VCAWx28JOJSv35hnerFiKxpzKZNmAIslyBvYjFeJzknSR%2Fm2MKwjiLXiKZxsPV42Fh3VZokzhNUKiMrmmivzkmweuG6DW2BAxsiKuX8xWau3BTKEV8DRL25DjO2Ilk%2BrVWmMasESTZ6WutUhtAt7xPuS5hoRFaUtYeYfjRUV1W72aABexVsxPPLs47j5iPL2w8tGoxl6dsTqXMptCFVP8R%2FRneptgXs%2Bygo1tO91YX42kEXx9ZGEy5IDBQcOcY0IPfASM6qc7ak8RiqJOl3SGf6FsX8RSzzMFnDrcO0yGStkAP7LGgPcId8aZ5oe%2FknguMvww9%2F3dvkkvR9GkwZpT59iMgqSlEar1qr477y0Vx1CSJBuxBQgsUgeXeGlszERvJBw%3D&y=sNeFZxAbSFxoyQM5Z3rY7f%2F%2F%2Fw%3D%3Ds1vuOkaGneZPr03AXe0hKRZU%2Fp6rSL4LMLfbOTsSECcZbwGQAS32krnTz6RclAKfHWIj2Vzqq%2FW2i4KxCP6OZ6IgIxBKBdmYCwL7aYxPJOChCa8MEOG%2BmuVDHr8I%2BFXJgtDBdRM6jxuDUFDX63amAvRW8mMbquRb7L4XpItaCeOfs8XESv1U5RIzOBh%2Fstuxq%2BrEnm5EBNqxaQ3MJmD4w2OOmmae96sxkhwKu8CdRzlGvfFhuhoBRcOBKBjQao1nwL%2B44FBEBmEo9Gg6e%2FJqmBfhRr4RxAmXManBkgyqzhyJGzvmg1GQ5Tw4lvtmb0iDpM4rkzK8kEAdw6Fylfzl5Oh27ZTfwPeiB40QfnKMth3iFR%2BNX%2FxwJuQUWpK4fpsrtvtVTcvJAMXUC2kKQ1Rtf%2FEBr%2F0dZAmuDyVpLQUKIDffXeInkIfVHLE4Yn4KicMR%2FDNwCbH1YU5NORinDfbUwm3HxqNvTOy0sR3HnXgPSQUrQOeZQWUuFdJrNGsIvVmSMAvt60km5iQN8Ylobtk7HVU8WYmo1OXNaDufosNXieMgEoEllC9wCKL6jEfg7%2F204vTP0Iys%2Biqjm65oevCESD04lM999%2F6oDgKg0two9%2FqMeAedlORTzH%2BxNs228QIq53kbtaJonsh6gG6JZ4Z6ApCaAeWKfMDDYS%2B%2B56ySXByaaEzCbgQNDSxOdlbpWTnI8oiWPIYYLD7WGkrMkVFpbG5tWS1sPhecfFh%2FgAGr0FqY%3D');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (11,'hong','피부좋아졌다고 느낄거야','피부.JPG','https://www.sinbiang.kr/product/detail.html?product_no=6&cate_no=1&display_group=2&cafe_mkt=ntbox_c05&NaPm=ct%3Djgomkync%7Cci%3D3cfa269f0ec50998182bd88258eeddd51169fbfd%7Ctr%3Dsbtp%7Csn%3D89113%7Chk%3D8a2e401a471310b7288cfe6e75ea453d90cc54f2');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (12,'hong','배에 11자 복근 봤어?','한글로.JPG','http://www.andar.co.kr/?cafe_mkt=ntbox_a03&NaPm=ct%3Djgomm2rs%7Cci%3Ded7da9ac92f3b8d206d5bc0bc9519a9662e58d7e%7Ctr%3Dsbtp%7Csn%3D302753%7Chk%3De11dcf8ba7243f551d36423e9754bf75dae81e91');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (13,'hong','달걀형 얼굴되고싶지?','해야되나.JPG','http://www.elandmall.com/shop/initPlanShop.action?disp_ctg_no=1804345713&utm_source=SAA1&utm_medium=banner&utm_campaign=P1804345713&chnl_no=SAA1&chnl_dtl_no=1804854474&utm_referrer=http%3A%2F%2Fwww.elandmall.com%2Fgate%2Fgate.action%3Fchnl_no%3DSAA1%26chnl_dtl_no%3D1804854474&cafe_mkt=ntbox_b02&NaPm=ct%3Djgomn29k%7Cci%3Da089f71b7f0f517027b21a6f75f6adaf8a33d04f%7Ctr%3Dsbtp%7Csn%3D393273%7Chk%3D6d3313a25a3cfa551333ac6cadeeb2afc5cbc7eb');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (14,'hong','인기있는이유가 있어','파일이름.JPG','http://www.minsshop.com/?cafe_mkt=ntbox_c01&cafe_prdNo=12374#anchorBoxName_12374&NaPm=ct%3Djgomnon4%7Cci%3D9bd03c36ca18be86d1049746444d5b1637ee5760%7Ctr%3Dsbtp%7Csn%3D151893%7Chk%3D80e79d16f844b586edf2c0a7fe0e46b31a72ef03');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (15,'hong','너빼고 다있어~ 제작제품','퀄리티의완성.JPG','http://www.sappun.co.kr/index.html?ref=naversb&NaPm=ct%3Djgomond4%7Cci%3D5e4b1b65fa69d5ed80ed0522a52aaf38ee4ed34e%7Ctr%3Dsbtp%7Csn%3D223828%7Chk%3Db406fd141360eba344cebaa2ff05b453cfe195cf');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (16,'hong','단아하게 예뻐','테스트.JPG','http://www.mayblue.co.kr/?da_ref=Yz01aHo1VTI=&NaPm=ct%3Djgomq2ag%7Cci%3D9d1533c874b4aa61ddd8f10bad8edcf6aa8003a2%7Ctr%3Dsbtp%7Csn%3D108407%7Chk%3D0dd198fa04cd51c17d176cad7377ad561bbc2e99');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (17,'hong','발의피로가 쏴악 풀린대','발마사지.JPG','http://www.mcnplaza.com/shop/shopdetail.html?src=image&kw=000645&branduid=40717&cafe_mkt=ntbox_c04&NaPm=ct%3Djgomt7ps%7Cci%3D28286513a5c573c18a1da7ca96f46c564e6d8ed1%7Ctr%3Dsbtp%7Csn%3D223624%7Chk%3Db1483e8293a575c760e34710c9eedc4ad950be78');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (18,'hong','퀄리티 자부심 끝장나','퀄리티.JPG','https://www.kgcshop.co.kr/event/goodsPromotion?dispId=816&utm_source=navershoppingbox_may&utm_campaign=Naver_shoppingbox&utm_medium=display&utm_content=banner&utm_term=coupon&_CAD=naversp&NaPm=ct%3Djgomw1kg%7Cci%3D33c6ef4223d932e81ccd52930edeb73fddd26eee%7Ctr%3Dsbtp%7Csn%3D563884%7Chk%3Dca9e0f03b5fdda8b5caf63bd9b387e2985776088');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (19,'hong','이뻐죽겠지 ? 사고싶지 ?','ㅋ.JPG','http://www.andar.co.kr/?cafe_mkt=ntbox_a01&NaPm=ct%3Djgomxxgw%7Cci%3Dac972b2d5ef0ba47589ab16bf53ce372abc0d266%7Ctr%3Dsbtp%7Csn%3D302753%7Chk%3Db5350970d4cfc0dc8664aa9cca341ffd040c54a3');
+Insert into MALL (MALL_SEQ,ID,SUBJECT,IMG,MALLURL) values (20,'hong','벽에걸어두면 인테리어효과','카네.JPG','http://www.ariafurniture.co.kr/?cafe_mkt=ntbox_b06&NaPm=ct%3Djgon0cns%7Cci%3D12930d4482549b256f0be9508f41c05141012876%7Ctr%3Dsbtp%7Csn%3D278235%7Chk%3Df615edd357325acaebf5208f07249bc639a2f878');
 
 
 ------------------------------------------------------------------------------
@@ -172,6 +281,15 @@ create table mallboard(
   hit number not null
 );
 
+REM INSERTING into MALLBOARD
+SET DEFINE OFF;
+Insert into MALLBOARD (BOARD_SEQ,CATEGORY,ID,NICKNAME,SUBJECT,LOGTIME,HIT) values (1,'구매','hong','홍홍','크롭',to_date('18/05/02','RR/MM/DD'),40);
+Insert into MALLBOARD (BOARD_SEQ,CATEGORY,ID,NICKNAME,SUBJECT,LOGTIME,HIT) values (2,'판매','hong','홍홍','아놔~',to_date('18/05/02','RR/MM/DD'),16);
+Insert into MALLBOARD (BOARD_SEQ,CATEGORY,ID,NICKNAME,SUBJECT,LOGTIME,HIT) values (3,'구매','hong','홍홍','ㄴㅇㄷㄹㄷㄹㄷ',to_date('18/05/03','RR/MM/DD'),0);
+Insert into MALLBOARD (BOARD_SEQ,CATEGORY,ID,NICKNAME,SUBJECT,LOGTIME,HIT) values (4,'판매','hong','홍홍','키킼',to_date('18/05/03','RR/MM/DD'),0);
+Insert into MALLBOARD (BOARD_SEQ,CATEGORY,ID,NICKNAME,SUBJECT,LOGTIME,HIT) values (5,'판매','hong','홍홍','ㄴㅇㄹㄴㅇㄹ',to_date('18/05/03','RR/MM/DD'),0);
+Insert into MALLBOARD (BOARD_SEQ,CATEGORY,ID,NICKNAME,SUBJECT,LOGTIME,HIT) values (6,'구매','hong','홍홍','ㄴㅇㄹㄴㅇㄹ',to_date('18/05/03','RR/MM/DD'),0);
+Insert into MALLBOARD (BOARD_SEQ,CATEGORY,ID,NICKNAME,SUBJECT,LOGTIME,HIT) values (7,'구매','hong','홍홍','ㄴㅇㄹㅇㄹ',to_date('18/05/03','RR/MM/DD'),0);
 
 ------------------------------------------------------------------------------
 가계부
