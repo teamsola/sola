@@ -35,11 +35,9 @@ function comment_mf_cf(){
 
 
 function modifyFunc(){
-	 var result = confirm("게시글을 수정하시겠습니까?");
-	 
-	 if(result){	/* yes */
+	 	/* yes */
 		 location.href='FreeBoardModifyForm.do?seq=${boardDTO.seq }&&pg=${pg}';
-	 }
+	 	
 } 
 
 function deleteFunc(){
@@ -117,7 +115,6 @@ function fn_comment(code){
 	} 
 }
 
-
   
  function comment_mff(re_lev,re_ref,re_seq,content){
 	
@@ -189,24 +186,24 @@ function getCommentList(){
                 	
                 
                     
-                    html += "<div><table class='table'><h6><strong>"+data[i].nickname+data[i].logtime+"</strong></h6>";
-                    html += data[i].content + "<tr><td></td></tr>";
+                    html += "<div><table><h6><strong>"+data[i].nickname+"</strong>&nbsp;&nbsp;&nbsp;"+data[i].logtime+"</h6>";
+                    
+                    html += data[i].content + "<tr><td>";
                     html +=	"<input type='hidden' id='re_lev' name='re_lev' value="+data[i].re_lev+"/>";
                     html +=	"<input type='hidden' id='re_ref' name='re_ref' value="+data[i].re_ref+"/>";
                     html +=	"<input type='hidden' id='re_seq' name='re_seq' value="+data[i].re_seq+"/>";
-       
+       				html += "</td></tr>";
                    	if(data[i].id=='${memId}'){
-                    html += "<input type='button' id='btn_replydt' value='삭제' onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")'/>";
-            
-                    html += "<input type='button' id='btn_replymf' value='수정' onClick='comment_mff("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+",\""+data[i].content+"\")'/>";
-              	}
+                    html += "<input type='button' id='btn_reply' value='삭제' onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")'/>";
+                    html += "<input type='button' id='btn_reply' value='수정' onClick='comment_mff("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+",\""+data[i].content+"\")'/>";
+              		}
               		html += "</table></div>";
                 }
                 
             } else {
              
                 html += "<div>";
-                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
+                html += "<div><table><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
                 html += "</table></div>";
                 html += "</div>";
                 
@@ -227,6 +224,15 @@ function getCommentList(){
  
 </script>
 <style type="text/css">
+table{
+	padding-top: 70px;
+	margin:auto;
+	width: 700px;
+}
+
+#line{
+    border: 0.5px solid #EAEAEA;
+}
 a{
 	text-decoration:none;
 }
@@ -242,114 +248,166 @@ a{
 }
 
 #body{	/* 전체 글+댓글 */
-width:500px;
-height:100%;
-
+width:800px;
+height:50%;
 }
 
-#freeboardview{	/* 글 본문 */
-width:100%;
-height:90%;
-}
-
-#bottom{		/* 버튼들 div */
-	width:100%;
-height:10%;
-
-}
-
-#top{	/* 상단 */
-	width:100%;
-	height:10%;
-}
-
-
-#content_no{	/* 글 번호 */
-	width:33%;
-	height:100%;
+#btnset{
+	text-align:center;
 	float:left;
-}
-
-#category{	/* 글 카테고리 */
-	width:33%;
-	height:100%;
-	float:left;
-}
-
-#n_name{	/* 닉네임 */
-	width:33%;
-	height:100%;
-	float:left;
-}
-
-#title{
 	width:100%;
-	height:10%;
-}
-
-#subject{	/* 제목 */
-	width:100%;
-	height:100%;
-}
-
-#center{
-	width:100%;
-	height: 80%;
 }
 
 
-#btn_delete{	/* 삭제버튼 */
-	width: 70px;
+#btn{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ffffff;
+	color:#ff8400;
+	width:150px;
 	height:30px;
-	float:left;
-}
-#btn_modify{	/* 수정버튼 */
-	width: 70px;
-	height:30px;
-	float:left;
-}
-#btn_list{	/* 목록버튼 */
-	width: 70px;
-	height:30px;
-	float:left;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
 }
 
-button{
-	widht:60px;
+#btn2{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ffffff;
+	color:#ff8400;
+	width:150px;
 	height:30px;
-	
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
 }
 
-button:hover{
-background-color:gray;
+#btn:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
 }
 
+#btn2:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+#subject{
+	text-align:left;
+	padding: 0 20px 0 0;
+}
+.freecontent{
+	vertical-align:baseline;
+}
+#cont{
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 10px;
+}
+.container{
+	width:800px;
+	height:30%;
+}
 </style>
 </head>
 <body>
-<h1 class="title">자유게시판 글상세보기</h1>
 <div id="body">
-	<div id="freeboardview">
-		<div id="top">
-			<div id="content_no">No.${boardDTO.seq }</div>
-			<div id="category">자유게시판 > ${boardDTO.category }</div>
-			<div id="n_name">닉네임 ${boardDTO.nickname }</div>
-		</div>
-		<div id="title">
-			<div id="subject">제목${boardDTO.subject } </div>	
-		</div>
-		<div id="center">
-			<div id="articlecontent">${boardDTO.content }</div>
-		</div>
+	<table>
+		<tr>
+			<td colspan="3" style="font-size:20px;" id="subject"><span style="color:white;font-weight:bold;border-radius:5px;background: #ff8400;float:left;text-align:center;width:100px;">${boardDTO.category }</span>&nbsp;&nbsp;&nbsp;${boardDTO.subject }
+		</tr>
+		
+		<tr>
+			<td colspan="3"><hr id="line">
+		</tr>
+		
+		<tr>
+			<td width="250" style="color:#8C8C8C;"><img src="/sola/img/write_icon.png" width="17px" height="17px">${boardDTO.nickname }
+			<td width="350" style="color:#8C8C8C;"><img src="/sola/img/timer.png" width="17px" height="17px"><c:out value="${fn:substring(boardDTO.logtime, 0,16) }"/>
+			<td width="100" style="color:#8C8C8C;"><img src="/sola/img/hit.png" width="17px" height="17px">&nbsp;${boardDTO.hit }
+		</tr>
+		
+		<tr>
+			<td colspan="3"><hr id="line">
+		</tr>
+		
+		<tr>
+			<td colspan="3" class="freecontent" style="width: 600px; height: 400px;"> <div id="cont">${boardDTO.content }</div>
+		</tr>
+	</table>
+
+	<div id="btnset">
+		<c:if test="${memId.equals(boardDTO.id) }">
+		<input type=button id="btn" value=수정 onclick="javascript:modifyFunc();">
+		<input type=button id="btn" value=삭제 onclick="javascript:deleteFunc();">
+		</c:if>
+		
+		<c:if test="${memId.equals('admin') }">
+		<input type=button id="btn" value=삭제 onclick="javascript:deleteFunc();">
+		</c:if>
+		
+		<input type="button" id="btn2" value=목록 onclick="location.href='FreeBoardList.do'"/>
 	</div>
 	
-	<div id="bottom">
-		<c:if test="${boardDTO.id eq memId }">
-			<div id="btn_delete"><input type="button" class="btn_delete" value="글삭제" onclick="javascript:deleteFunc();"/></div>
-			<div id="btn_modify"><input type="button" class="btn_modify" value="글수정" onclick="javascript:modifyFunc();"/></div>
-		</c:if>
-		<div id="btn_list"><a href="FreeBoardList.do"><input type="button" value="글목록"/></a></div>
-	</div>
+	
 </div>
 <div class="container">
     <form id="commentForm" name="commentForm" method="post">
@@ -359,13 +417,13 @@ background-color:gray;
                 <span><strong>댓글</strong></span> <span id="cCnt"></span>
             </div>
             <div>
-                <table class="table">                    
+                <table>                    
                     <tr>
                         <td>
-                            <textarea style="width: 1100px" rows="3" cols="30" id="comment_content" name="content" placeholder="댓글을 입력하세요"></textarea>
+                            <textarea style="width: 700px" rows="3" cols="30" id="comment_content" name="content" placeholder="댓글을 입력하세요"></textarea>
                             <br>
                             <div>
-                                <a href='#' onclick="javascript:check_comment('${boardDTO.seq }')" class="btn pull-right btn-success" id="comment_btn">등록</a>
+                                <a href='#' onclick="javascript:check_comment('${boardDTO.seq }')" id="comment_btn">등록</a>
                             </div>
                         </td>
                     </tr>
@@ -386,9 +444,7 @@ background-color:gray;
     </form>
 </div>
  <div class="container">
- 	
  	<div id="replymodifydiv">
- 	
  	</div>
  </div>
 
