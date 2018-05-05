@@ -19,7 +19,7 @@ pageEncoding="UTF-8"%>
 	#searchimg{cursor: pointer;}
 	#interior_add_btn{background: url("/sola/img/interior_btn.png") no-repeat 6px; font-weight:bold; border-style:none; border:1px solid black; border-radius:20px; background-size:120px 30px; width: 162px; height: 35px;font-size:15px;}
 	#interior_add_btn:hover, #interior_add_btn:active{cursor:pointer; outline:none;transition:.3s ease; background:#6a6763 url("/sola/img/interior_btn_hover.png") no-repeat 6px; border:none; background-size:120px 30px;color:white;}
-	.interior_list{display:inline-block;float:left;margin:10px auto; width:1500px;}
+	.interior_list{display:inline-block;margin:10px auto; width:1500px;text-align: left;}
 	.interior_list .list_each{ display:inline-block;text-align:left;width:400px;margin:30px 25px 40px 25px;height:380px;}
 	.interior_list .list_each a, .interior_list .interior_list a:visited{text-decoration: none;color: black;}
 	.interior_list .list_each a:hover{color:#ff8400;transition:.3s ease;}

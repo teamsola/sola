@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css?v=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css?ver=2" />
 <link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewDay.css?ver=3" />
 
 <script type="text/javascript">
@@ -39,38 +39,6 @@ $(document).ready(function() {
 	if(totalInSum!=0 || totalOutSum!=0){
 		$(".info").html("수입 : <span style=\"color:blue\">"+addComma(totalInSum)+"</span> &nbsp;&nbsp;&nbsp; 지출 : <span style=\"color:red\">"+addComma(totalOutSum)+"</span>");
 	}
-	
-	// 이전 마우스 올릴때
-	$(".view_before").hover(function(){
-		$(this).css("background","url('ledgerimg/arrowleft_hover.png') no-repeat");
-	}, function(){
-		$(this).css("background","url('ledgerimg/arrowleft.png') no-repeat");
-	});
-	
-	/* // 이전 클릭되었을때
-	$(".view_before").action(function(){
-		$(this).html("<img src=\"ledgerimg/arrowleft_active.png\"/>");
-	}); */
-	
-	// 다음 마우스 올릴때
-	$(".view_after").hover(function(){
-		$(this).css("background","url('ledgerimg/arrowright_hover.png') no-repeat");
-	}, function(){
-		$(this).css("background","url('ledgerimg/arrowright.png') no-repeat");
-	});
-	
-	
-	/* // 다음 클릭되었을때
-	$(".view_after").action(function(){
-		$(this).html("<img src=\"ledgerimg/arrowright_active.png\"/>");
-	}); */
-	
-	// 등록 버튼 색
-	$(".ledger_insertform_btn").hover(function(){
-		$(this).css('color','#ff8400');
-	}, function(){
-		$(this).css('color','white');
-	})
 	
 	// 불투명 바탕화면 누르면 달력으로
 	$("#ledger_background").click(function(){
