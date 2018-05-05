@@ -195,7 +195,7 @@ input[type=submit]
 			<span class="fold upper" rel="findPw" id="span_pw">▶비밀번호 찾기</span><br>
 			<div id="findPw">
 		 		<input type="text" name="id" placeholder="ID 입력"><br>
-		 		<input type="text" name="email_pwd" class="email" placeholder="email 전체 입력"><br>
+		 		<input type="text" name="email_pwd" class="email" placeholder="email 전체 입력">
 				<span id="email_pwd_check" class="span_check"></span>
 			</div>
 		</div>

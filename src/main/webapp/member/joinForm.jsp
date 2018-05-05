@@ -219,6 +219,58 @@ function execDaumPostcode()
     						$("#label_" + otherId).css("background", 'none');
     						$("#label_" + otherId).css("color", '#ff8400');
     					});
+    			$("#name").focusout(function()
+    					{
+    				 		var isHan = /[ㄱ-ㅎ가-힣]/g;
+    				 		var name = $(this).val();
+    				 		
+    						if(!isHan.test(name))
+    							{
+    								alert("이름은 한글로만 입력해주세요.");
+    								$(this).val("");
+    							}
+    						else if(name.length > 5)
+    							{
+    								alert("이름은 5자 이하로 입력해주세요.");
+    								$(this).val("");
+    							}
+    					});
+    			$("#nickname").focusout(function()
+    					{
+    				 		var nickname = $(this).val();
+    				 		
+    						if(nickname.length > 10)
+    							{
+    								alert("이름은 10자 이하로 입력해주세요.");
+    								$(this).val("");
+    							}
+    					});
+    			$(".tel").focusout(function()
+    					{
+    				 		var isNum = /[0-9]/g;
+    				 		var tel = $(this).val();
+    				 		
+    						if(!isNum.test(tel))
+    							{
+    								alert("전화번호는 숫자로만 입력해주세요.");
+    								$(this).val("");
+    							}
+    						else if(tel.length > 4)
+    							{
+    								alert("4자 이하로 입력해주세요.");
+    								$(this).val("");
+    							}
+    					});
+    			$(".addr").focusout(function()
+    					{
+    				 		var addr = $(this).val();
+    				 		
+    						if(addr.length > 75)
+    							{
+    								alert("주소는 75자 이하로 입력해주세요.");
+    								$(this).val("");
+    							}
+    					});
 /*  				$("#pwd").keyup(function()
 						{
 							var pwd = $("#pwd").val();
@@ -269,7 +321,7 @@ function execDaumPostcode()
 					<td>*이름</td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="name" required="required" class="inp_text" placeholder="이름 입력"></td>
+					<td><input type="text" name="name" id="name" required="required" class="inp_text" placeholder="이름 입력"></td>
 				</tr>
 				<tr><td style="height:30px;"></td></tr>
 				<tr class="sub">
@@ -286,7 +338,7 @@ function execDaumPostcode()
 					<td>*별명<br><span id="span_nickname"></span></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="nickname" required="required" class="inp_text" placeholder="별명 입력"></td>
+					<td><input type="text" name="nickname" id="nickname" required="required" class="inp_text" placeholder="별명 입력"></td>
 				</tr>
 				<tr><td style="height:30px;"></td></tr>
 				<tr class="sub">
@@ -294,7 +346,7 @@ function execDaumPostcode()
 				</tr>
 				<tr class="inp">
 					<td>
-						<select name="tel1" class="inp_text" style="width:20%">
+						<select name="tel1" class="inp_text tel" style="width:20%">
 							<option selected="selected">010</option>
 							<option>011</option>
 							<option>017</option>
@@ -317,8 +369,8 @@ function execDaumPostcode()
 							<option>063</option>
 							<option>064</option>
 						</select>&nbsp;&nbsp;-
-						<input type="text" name="tel2" style="width:34%" required="required" class="inp_text" placeholder="전화번호(가운데 3~4자리)">&nbsp;&nbsp;-
-						<input type="text" name="tel3" style="width:34%" required="required" class="inp_text" placeholder="전화번호(뒷 4자리)">
+						<input type="text" name="tel2" style="width:34%" required="required" class="inp_text tel" placeholder="전화번호(가운데 3~4자리)">&nbsp;&nbsp;-
+						<input type="text" name="tel3" style="width:34%" required="required" class="inp_text tel" placeholder="전화번호(뒷 4자리)">
 					</td>
 				</tr>
 				<tr><td style="height:30px;"></td></tr>
@@ -362,13 +414,13 @@ function execDaumPostcode()
 					<td>주소</td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="addr1" id="addr1" readonly="readonly" class="inp_text" placeholder="주소"></td>
+					<td><input type="text" name="addr1" id="addr1" readonly="readonly" class="inp_text addr" placeholder="주소"></td>
 				<tr>
 				<tr class="sub">
 					<td class="sub"></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="text" name="addr2" class="inp_text" placeholder="상세주소 입력"></td>
+					<td><input type="text" name="addr2" class="inp_text addr" placeholder="상세주소 입력"></td>
 				<tr>
 				<tr class="sub">
 					<td align="center">

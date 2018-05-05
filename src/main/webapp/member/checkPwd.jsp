@@ -32,6 +32,7 @@ pageEncoding="UTF-8"%>
 		border: 2px solid #ff8400;
 		border-radius: 20px;
 		outline: none;
+		cursor: pointer;
 	}
 	.denouement{
 		margin: 0;
@@ -42,7 +43,9 @@ pageEncoding="UTF-8"%>
 		padding: 5%;
 	}
 	h2, h3{color: #6a6763;}
-	
+	input{
+		outline: none;
+	}
 </style>
 </head>
 <body>

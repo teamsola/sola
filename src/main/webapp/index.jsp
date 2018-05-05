@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +69,7 @@ html, body{width:100%;margin:0;padding:0;display: block;overflow: hidden;font-fa
 {
 	width: 100%;
 }
-#loginForm{border-spacing: 15px 0;position: absolute;top:5px;left:850px;}
+#loginForm{border-spacing: 15px 0;position: absolute;top:5px;left:65%;}
 #wrapper
 {
 	margin: 0;

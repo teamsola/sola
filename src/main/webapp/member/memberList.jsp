@@ -83,9 +83,18 @@ h2 {
 	width: 150px;
 	height: 20px;
 }
+
 .searchR{
 	margin-bottom: 15px;
 	margin-left: 150px;
+}
+
+#paging{
+	color: black;
+}
+
+#currentPaging{
+	color: black;
 }
 </style>
 </head>
