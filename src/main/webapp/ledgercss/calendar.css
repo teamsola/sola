@@ -115,6 +115,12 @@ select {
 	border-style: none;
     border-bottom: 1px solid;
     outline:none; 
+    
+}
+
+.searchBar .search:focus{	/* 검색 text focus 이벤트 */
+	transition:0.3s ease;
+	border-bottom:1px solid #ff8400;
 }
 
 .searchBar .search_btn{	/* 검색 버튼 div */

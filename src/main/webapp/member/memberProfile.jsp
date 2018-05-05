@@ -74,7 +74,7 @@
 		<tr>
 			<th width="100" rowspan="2"><label>프로필 사진</label></th>
 			<td class="profileImg" align="center" rowspan="2">
-				<img alt="" src="storage/${memberDTO.profile }" width="100" height="100"/>
+				<img alt="" src="/sola/storage/${memberDTO.profile }" width="100" height="100"/>
 			</td>
 			<td align="left" style="border-bottom: none;">
 				<input type="file" name="img" size="45">
