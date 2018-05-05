@@ -166,23 +166,16 @@ h1 {
 
 /* dto내용 div를 감싸는 부분 */
 #view{
-	padding-left:35%;
-	padding-right:35%;
 	text-align:center;
-   	float:left;
    	width:100%;
+   	float:left;
 }
 
+/* 버튼 2개 위치 */
 #view2{
 	text-align:center;
-   	float:left;
    	width:100%;
-}
-
-#view3{
-	text-align:center;
    	float:left;
-   	width:100%;
 }
 
 /* dto내용 나타나는 div */
@@ -206,7 +199,7 @@ h1 {
 
 /* 모아보기 둘러싸는 div */
 #ggg{
-	margin-left:950px;
+	margin-left:980px;
 	margin-bottom:10px;
 }
 
@@ -260,6 +253,7 @@ h1 {
 	
 /* 삭제 */
 #btn3{
+	float:left;
 	margin-right: 15px;
 	outline:none;
 	text-decoration:none;
@@ -477,7 +471,6 @@ h1 {
 		<div id="view"></div>	<!-- db에 저장된 내용 -->
 		<div id="view2"></div>	<!-- 삭제/저장 -->
 		<div id="view3"></div>	<!-- 수정 -->
-		
 		<div id="ttt"></div>
 	</div>
 	
