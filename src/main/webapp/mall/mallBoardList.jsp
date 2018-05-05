@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -7,7 +8,18 @@
 <title>Insert title here</title>
 
 <style>
-a{
+
+#atag{
+	color:black;
+	text-decoration:none;
+}
+
+#subjectA{
+	color:black;
+	text-decoration:none;
+}
+
+#mm{
 	color:black;
 	text-decoration:none;
 }
@@ -151,6 +163,12 @@ select::-ms-expand {
 #line{
     border: 0.5px solid #EAEAEA;
 }
+
+#none{
+	padding-top:100px;
+	padding-bottom:60px;
+}
+
 #searchset{
 	margin-top:30px;
 	margin-left:845px;
@@ -174,6 +192,8 @@ select::-ms-expand {
 }
 
 #paging,#currentPaging{
+	color:black;
+	text-decoration:none;
 	text-align:center;
 	margin:auto;
 }
@@ -250,7 +270,7 @@ select::-ms-expand {
 					<tr>
 						<td align=center>${boardDTO.board_seq }
 						<td align=center>${boardDTO.category }
-						<td><a id = subjectA href="#" onclick="isLogin(${boardDTO.board_seq})">
+						<td id="mm"><a id = subjectA href="#" onclick="isLogin(${boardDTO.board_seq})">
 							${boardDTO.subject }</a>
 							
 						<td align = center>${boardDTO.nickname }
@@ -261,7 +281,22 @@ select::-ms-expand {
 					<tr>
 						<td colspan="6"><hr id="line">
 					</tr>
+					
 			</c:forEach>
+			
+			
+			<!-- 게시판 내용이없을시 -->
+			<c:if test="${fn:length(list) == 0}">
+			
+				<tr>
+					<td>
+				</tr>
+				
+				<tr>
+					<td colspan="6" align="center" id="none">등록된 글이 없습니다.
+				</tr>
+				
+			</c:if>
 				
 				<!-- 페이징 -->
 				<tr>
