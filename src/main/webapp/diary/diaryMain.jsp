@@ -199,8 +199,7 @@ h1 {
 
 /* 모아보기 둘러싸는 div */
 #ggg{
-	margin-left:980px;
-	margin-bottom:10px;
+	margin-left:1030px;
 }
 
 /* 모아보기 */

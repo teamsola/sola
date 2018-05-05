@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -119,13 +120,21 @@
 	<div id="contentwrapper">
 		<div id="content2">
 			
+			
+			<c:if test="${fn:length(list) > 0}">
 			<c:forEach var="diaryDTO" items="${list }">
 			
 			<div id="hr-sect">${diaryDTO.diary_date }</div>
 			
 			<div id="dtocon">${diaryDTO.diary_content }</div>
-			</c:forEach>
 			
+			</c:forEach> 
+			</c:if>
+			
+			<c:if test="${fn:length(list) == 0}">
+				<br>
+				<div id="dtocon">등록된 일기가 없습니다.</div>
+			</c:if>
 		</div>	
 	</div>
 
