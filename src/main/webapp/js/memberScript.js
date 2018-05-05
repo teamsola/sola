@@ -16,26 +16,38 @@ function checkJoin()
 	else if(document.joinForm.pwd.value.length < 7)
 	{
 		alert("비밀번호는 최소 8자 입니다.");
+		document.joinForm.pwd.value = "";
+		document.joinForm.pwd2.value = "";
+		document.joinForm.pwd.focus();
 	}
 	else if(!((/\w/.test(document.joinForm.pwd.value) ) && (/\W/.test(document.joinForm.pwd.value))))
 	{
 		alert("비밀번호는 숫자/영어/특수문자 혼용 입니다.");
+		document.joinForm.pwd.value = "";
+		document.joinForm.pwd2.value = "";
+		document.joinForm.pwd.focus();
 	}
 	else if (document.joinForm.pwd.value != document.joinForm.pwd2.value)
 	{
 		alert("비밀번호가 맞지 않습니다");
+		document.joinForm.pwd.value = "";
+		document.joinForm.pwd2.value = "";
+		document.joinForm.pwd.focus();
 	}
 	else if (document.joinForm.idAuth.value == "no")
 	{
 		alert("아이디 중복 확인을 해주세요.");
+		$("#duplCheck").focus();
 	}
 	else if (document.joinForm.idAuth.value != document.joinForm.id.value)
 	{
 		alert("아이디 중복 확인을 해주세요.");
+		$("#duplCheck").focus();
 	}
 	else if (document.joinForm.emailAuth.value == "no")
 	{
 		alert("이메일 인증을 해주세요.");
+		$("#authEmailBtn").focus();
 	}
 	else
 	{
@@ -69,9 +81,9 @@ function checkId()
 	{
 		alert("먼저 아이디를 입력하세요.");
 	}
-	else if(sId.length < 6)
+	else if(sId.length < 6 || sId.length > 14)
 	{
-		alert("아이디는 6자 이상으로 입력해주세요.")
+		alert("아이디는 6자 이상 14자 이하로 입력해주세요.")
 	}
 	else if(disable.test(sId))
 	{

@@ -176,7 +176,7 @@ nav>#lv2	/* 레벨 2메뉴바 */
    /*  left: 247px; */
     display: block;
     float: left;
-    
+    height: 3px;
 }
 nav>#lv2>ul.lv2-list
 {
