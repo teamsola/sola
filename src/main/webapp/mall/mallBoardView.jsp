@@ -150,7 +150,7 @@ table{
 	
 	
 	<div id="btnset">
-		<c:if test="${memId.equals(boardDTO.id) && fn:length(memId)=>6 }">
+		<c:if test="${memId.equals(boardDTO.id) && fn:length(memId)>6 }">
 		<input type=button id="btn" value=수정 onclick="location.href='mallBoardModifyForm.do?board_seq=${board_seq}&pg=${pg }&'">
 		<input type=button id="btn" value=삭제 onclick="location.href='mallBoardDelete.do?board_seq=${board_seq}'">
 		</c:if>
