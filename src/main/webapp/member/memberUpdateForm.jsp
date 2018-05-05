@@ -95,7 +95,7 @@ table td:last-child{border-right: none; width: 650px;}
 		} else if (document.memberPw.pwd.value.length < 7) {
 			alert("비밀번호는 영문(대소문자구분),숫자,특수문자를 혼용하여 8~16자를 입력해주세요.");
 			return false;
-		} else if (!(/\w\W/.test(document.memberPw.pwd.value))) {
+		} else if (!((/\w/.test(document.memberPw.pwd.value))&&(/\W/.test(document.memberPw.pwd.value)))) {
 			alert("비밀번호는 영문(대소문자구분),숫자,특수문자를 혼용하여 8~16자를 입력해주세요.");
 			return false;
 		} else {

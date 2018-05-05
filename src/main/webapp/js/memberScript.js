@@ -17,7 +17,7 @@ function checkJoin()
 	{
 		alert("비밀번호는 최소 8자 입니다.");
 	}
-	else if(!(/\w\W/.test(document.joinForm.pwd.value)))
+	else if(!((/\w/.test(document.joinForm.pwd.value) ) && (/\W/.test(document.joinForm.pwd.value))))
 	{
 		alert("비밀번호는 숫자/영어/특수문자 혼용 입니다.");
 	}

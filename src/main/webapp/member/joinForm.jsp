@@ -195,7 +195,7 @@ function execDaumPostcode()
     							//	$("#email2").hide();
     							}
     					});
-    			$("#pwd2").keyup(function()
+    			$(".pwd").keyup(function()
     					{
     						var pwd = $("#pwd").val();
     						var pwd2 = $("#pwd2").val();
@@ -219,10 +219,10 @@ function execDaumPostcode()
     						$("#label_" + otherId).css("background", 'none');
     						$("#label_" + otherId).css("color", '#ff8400');
     					});
-/* 				$("#pwd").keyup(function()
+/*  				$("#pwd").keyup(function()
 						{
 							var pwd = $("#pwd").val();
-							if(/\w\W/.test(pwd))
+							if(/\w/.test(pwd) && /\W/.test(pwd))
 								{
 								$("#span_pwd").html("<font color=blue>perfect</font>");
 								}
@@ -255,14 +255,14 @@ function execDaumPostcode()
 					<td>*비밀번호<br><span id="span_pwd">8자 이상, 영문과 숫자와 특수문자 혼용</span></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="password" name="pwd" id="pwd" required="required" class="inp_text" placeholder="비밀번호 입력"></td>
+					<td><input type="password" name="pwd" id="pwd" required="required" class="inp_text pwd" placeholder="비밀번호 입력"></td>
 				</tr>
 				<tr><td style="height:30px;"></td></tr>
 				<tr class="sub">
 					<td>*비밀번호 확인<br><span id="span_pwd2"></span></td>
 				</tr>
 				<tr class="inp">
-					<td><input type="password" id="pwd2" class="inp_text" placeholder="비밀번호 다시 입력"></td>
+					<td><input type="password" id="pwd2" class="inp_text pwd" placeholder="비밀번호 다시 입력"></td>
 				</tr>
 				<tr><td style="height:30px;"></td></tr>
 				<tr class="sub">
