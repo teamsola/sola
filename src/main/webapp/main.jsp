@@ -117,7 +117,7 @@
 					</div>
 					<div class="list_each" style="text-align: right;">
 						<div style="float:left;width:400px;height: 200px;margin: 0 auto;overflow:hidden;text-align: center;border-radius:15px;">
-							<img class="image6" src="/sola/img/main_list6.jpg" onclick="location.href='diaryIndex.do'">
+							<img class="image6" src="/sola/img/main_list6.jpg" width="100%" height="auto" onclick="location.href='diaryIndex.do'">
 						</div>
 						<div style="width:380px; margin:40px 10px 2px 10px;padding-top:10px;border-bottom:1px solid #ff8400;font-size:25px;color:#ff8400; overflow: hidden;">
 							<a href="diaryIndex.do">DIARY</a></div>
