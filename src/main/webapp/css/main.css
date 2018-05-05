@@ -167,6 +167,7 @@ nav span
 nav>#lv2	/* 레벨 2메뉴바 */
 {
 	background-color: transparent;
+	height:3px;
     z-index: 10;
     position: fixed;
     top: 0px;
