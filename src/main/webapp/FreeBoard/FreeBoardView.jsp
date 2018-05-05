@@ -115,7 +115,6 @@ function fn_comment(code){
 	} 
 }
 
-
   
  function comment_mff(re_lev,re_ref,re_seq,content){
 	
