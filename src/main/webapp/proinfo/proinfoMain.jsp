@@ -168,7 +168,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 		width: 1530px;
 		height: 200px;
 		background-image: url(/sola/img/proinfo_m3.PNG);
-		background-size: 1530px 200px;
+		background-size: 1530px auto;
 		text-align:left;
 		vertical-align:middle; 
 		display:table-cell;
