@@ -6,7 +6,7 @@
 		<li id="logo"><a href="main.do"><img class="logo_img" src="img/logo(org).png"></a></li>
 		<li id="mall"><a href="mallIndex.do"><span>Mall</span></a></li>
 		<li id="tip"><a href="tip.do"><span>Tip</span></a></li>
-		<li id="proinfo"><a href="proinfoMain.do"><span>전문지식</span></li>
+		<li id="proinfo"><a href="proinfoMain.do"><span>전문지식</span></a></li>
 		<li id="board"><a href="NoticeBoardList.do"><span>게시판</span></a></li>
 		<li id="ledger"><a href="calendar.do?cmd=main"><span>가계부</span></a></li>
 		<li id="diary"><a href="diaryIndex.do"><span>일기</span></a></li>
