@@ -160,7 +160,7 @@ public class QnABoardController implements BoarddController{
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("cmd", "delete");
 		modelAndView.addObject("su", su);
-		modelAndView.addObject("content", "/QnABoardMessage.jsp");
+		modelAndView.addObject("content", "/QnABoard/QnABoardMessage.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 		return modelAndView;
 	}
@@ -175,7 +175,7 @@ public class QnABoardController implements BoarddController{
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("su", su);
 		modelAndView.addObject("cmd", "modify");
-		modelAndView.addObject("content", "/QnABoardMessage.jsp");
+		modelAndView.addObject("content", "/QnABoard/QnABoardMessage.jsp");
 		modelAndView.setViewName("/mainFrame.jsp");
 //		modelAndView.setViewName("redirect:../QnABoard/QnABoardView.do");
 		return modelAndView;

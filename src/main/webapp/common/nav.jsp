@@ -5,7 +5,6 @@
 	<ul id="lv1">
 		<li id="logo"><a href="main.do"><img class="logo_img" src="img/logo(org).png"></a></li>
 		<li id="mall"><a href="mallIndex.do"><span>Mall</span></a></li>
-		<li id="board"><a href="board.do"><span>게시판</span></a></li>
 		<li id="tip"><a href="tip.do"><span>Tip</span></a></li>
 		<li id="ledger"><a href="calendar.do?cmd=main"><span>가계부</span></a></li>
 		<li id="diary"><a href="diaryIndex.do"><span>일기</span></a></li>

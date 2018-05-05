@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -234,119 +234,175 @@ function comment_mf(){
  
 </script>
 <style type="text/css">
+table{
+	padding-top: 70px;
+	margin:auto;
+	width: 700px;
+}
+
+#line{
+    border: 0.5px solid #EAEAEA;
+}
+a{
+	text-decoration:none;
+}
+#a:link{
+	color:black;
+}
+
+#a:visited{
+	color:orange;
+}
+#a:hover{
+	color:red;
+}
+
 #body{	/* 전체 글+댓글 */
-width:500px;
-height:100%;
-
+width:800px;
+height:50%;
 }
 
-#noticeboardview{	/* 글 본문 */
-width:100%;
-height:90%;
-}
-
-#bottom{		/* 버튼들 div */
-	width:100%;
-height:10%;
-
-}
-
-#top{	/* 상단 */
-	width:100%;
-	height:10%;
-}
-
-
-#content_no{	/* 글 번호 */
-	width:33%;
-	height:100%;
+#btnset{
+	text-align:center;
 	float:left;
-}
-
-#category{	/* 글 카테고리 */
-	width:33%;
-	height:100%;
-	float:left;
-}
-
-#n_name{	/* 닉네임 */
-	width:33%;
-	height:100%;
-	float:left;
-}
-
-#title{
 	width:100%;
-	height:10%;
 }
 
+
+#btn{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ffffff;
+	color:#ff8400;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn2{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ffffff;
+	color:#ff8400;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn2:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
 #subject{	/* 제목 */
-	width:100%;
-	height:100%;
+	text-align:center;
+	padding: 0 20px 0 0;
 }
-
-#center{
-	width:100%;
-	height: 80%;
-}
-
-#content{	/* 글 내용 */
-	
-}
-
-
-#btn_delete{	/* 삭제버튼 */
-	width: 70px;
-	height:30px;
-	float:left;
-}
-#btn_modify{	/* 수정버튼 */
-	width: 70px;
-	height:30px;
-	float:left;
-}
-#btn_list{	/* 목록버튼 */
-	width: 70px;
-	height:30px;
-	float:left;
-}
-
-button{
-	widht:60px;
-	height:30px;
-	
-}
-
-button:hover{
-background-color:gray;
-}
-
 </style>
 </head>
 <body>
-<h1>공지사항 글상세보기</h1>
 <div id="body">
-	<div id="noticeboardview">
-		<div id="top">
-			<div id="content_no">No.${boardDTO.seq }</div>
-			<div id="category">공지사항 > ${boardDTO.category }</div>
-			<div id="n_name">닉네임 ${boardDTO.nickname }</div>
-		</div>
-		<div id="title">
-			<div id="subject">제목 ${boardDTO.subject}</div>
-		</div>
-		<div id="center">
-			<div id="content">${boardDTO.content }</div>
-		</div>
+	<table>
+		<tr>
+			<td colspan="3" style="font-size:20px;" id="subject">${boardDTO.subject }
+		</tr>
+		
+		<tr>
+			<td colspan="3"><hr id="line">
+		</tr>
+		
+		<tr>
+			<td width="250" style="color:#8C8C8C;">${boardDTO.nickname }
+			<td width="350" style="color:#8C8C8C;">${boardDTO.logtime }
+			<td width="100" style="color:#8C8C8C;">조회수&nbsp;${boardDTO.hit }
+		</tr>
+		
+		<tr>
+			<td colspan="3"><hr id="line">
+		</tr>
+		
+		<tr>
+			<td colspan="3" class="noticecontent" style="width: 600px; height: 400px;"> ${boardDTO.content }
+		</tr>
+	</table>
+
+	<div id="btnset">
+		<c:if test="${fn:length(memId) < 6}">
+		<input type=button id="btn" value=수정 onclick="javascript:modifyFunc();">
+		<input type=button id="btn" value=삭제 onclick="javascript:deleteFunc();">
+		</c:if>
+		
+		
+		<input type="button" id="btn2" value=목록 onclick="location.href='NoticeBoardList.do'"/>
 	</div>
 	
-	<div id="bottom">
-	<c:if test="${fn:length(memId) < 6 }">
-		<div id="btn_delete"><input type="button" class="btn_delete" value="글삭제" onclick="javascript:deleteFunc();"/></div>
-		<div id="btn_modify"><input type="button" class="btn_modify" value="글수정" onclick="javascript:modifyFunc();"/></div>
-	</c:if>
-		<div id="btn_list"><a href="NoticeBoardList.do"><input type="button" value="글목록"/></a></div>
-	</div>
+	
 </div>
 <div class="container">
     <form id="commentForm" name="commentForm" method="post">
