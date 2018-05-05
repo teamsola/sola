@@ -32,10 +32,10 @@
    			</ul>
   		</div>
 	</section>
-	<section id="home" align="center">
+	<%-- <section id="home" align="center">
 		<div id="home1" class="frame"><jsp:include page="${home1 }" /></div>
 		<div id="home2" class="frame"><jsp:include page="${home2 }" /></div>
-	</section>
+	</section> --%>
 	<footer><jsp:include page="/common/footer.jsp" /></footer>
 </div>
 </body>

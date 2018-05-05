@@ -204,8 +204,12 @@ pageEncoding="UTF-8"%>
 						</div>
 					</div>
 					<div style="float:left;width:100%;height:60px;text-align: center;padding:10px 0;">
-						<c:if test="${memId == interiorDTO.id }"><input type="button" id="underBtn" value="수정" onclick="location.href='interior_modify.do?s=${interiorDTO.interior_seq }&p=${pg}&k=${keyword}'">&nbsp;</c:if>
-						<c:if test="${interiorDTO.id == memId || memId == 'admin' }">
+						
+
+					<c:if test="${interiorDTO.id == memId }">
+					<input type="button" id="underBtn" value="수정" onclick="location.href='interior_modify.do?s=${interiorDTO.interior_seq }&p=${pg}&k=${keyword}'">&nbsp;
+					</c:if>
+						<c:if test="${interiorDTO.id == memId ||fn:length(memId) < 6 }">
 						<input type="button" id="underBtn" value="삭제" onclick="confirmDel()">&nbsp;
 						</c:if>
 						<input type="button" id="underBtn" value="목록으로" onclick="location.href='interior.do?pg=${pg}&keyword=${keyword}'">
