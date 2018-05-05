@@ -264,6 +264,7 @@ public class MemberController
 	public ModelAndView memberInfoUpdate(HttpServletRequest request, HttpServletResponse response, MemberDTO memberDTO) throws UnsupportedEncodingException
 	{
 		request.setCharacterEncoding("utf-8");
+		MemberDTO bean = memberDTO;
 
 		HttpSession session = request.getSession();
 		ModelAndView modelAndView = null;
@@ -275,7 +276,8 @@ public class MemberController
 		System.out.println(pwd2);
 
 		if(pwd.equals(pwd2)) {
-
+			memberDTO = bean;
+			memberDTO.setId(id);
 			int result = memberService.memberInfoUpdate(memberDTO);
 			System.out.println(result);
 			if (result > 0)
