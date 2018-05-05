@@ -4,15 +4,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-editor{
-width: 800px;
-height: 400px;
-}
-</style>
+
 <script src="https://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript" src="sola/resources_board/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="/sola/resources_board/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+</head>
 <script type="text/javascript">
+function goBack(){
+	location.href="QnABoardView.do?seq="+${seq}+"&pg="+${pg};
+}
+
+</script>
+<script type="text/javascript">
+
+
+
 /*제목 입력칸 글자수 제한  */
 function chkword(obj, maxByte) {
 
@@ -36,14 +42,14 @@ function chkword(obj, maxByte) {
         }
     }
     if (totalByte > maxByte) {
-		alert("최대입력 글자수를 초과하셨습니다:최대"+maxByte+"byte");
+
+    	alert("최대입력 글자수를 초과하셨습니다:최대"+maxByte+"byte");
         str2 = strValue.substr(0, len);
         obj.value = str2;
         chkword(obj, 4000);
     }
 }
-/* textarea 글자수 제한 */
- 
+
 </script>
 <script type="text/javascript">
 	$(function(){
@@ -60,7 +66,7 @@ function chkword(obj, maxByte) {
 	    });
 	    $("#modifyBoard").click(function(){
 	         obj.getById["qnamodifycontent"].exec("UPDATE_CONTENTS_FIELD", []);
-	        
+	       
 	         if($("#subject").val()==""){
 	        	 alert("제목을 입력하세요");
 	        	 $("#subject").focus();
@@ -70,36 +76,203 @@ function chkword(obj, maxByte) {
 	       	}else{
 	       		var result = confirm("선택하신 카테고리가 "+$("#category").val()+"(이)가 맞습니까?");
 	       		if(result){
-	         $("#modifyBoardForm").submit();
-	       		}
+	        	 $("#modifyBoardFrm").submit();
+	         }
 	       	}
+	         
 	    });
+	    
+	   
+	    
 	});
+	
 </script>
+<style>
+
+table{
+	width:100%;
+	
+	margin:auto;
+}
+
+#aa{
+	margin-top:70px;
+	font-weight: bold;
+	text-align:center;
+}
+
+#line1{
+	border-top: 1px solid #ff8400;
+	width:200px;
+}
+
+#btnset{
+	text-align:center;
+	float:left;
+	width:100%;
+}
+
+#modifyBoard{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ffffff;
+	color:#ff8400;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#modifyBoard:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#btn{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ffffff;
+	color:#ff8400;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+
+#btn:hover{
+	margin-top:40px;
+	margin-bottom:30px;
+	outline:none;
+	text-decoration:none;
+	text-indent:0px;
+	line-height:16px;
+	-moz-border-radius:100px;
+	-webkit-border-radius:100px;
+	border-radius:100px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	background-color:#ff8400;
+	color:#ffffff;
+	width:150px;
+	height:30px;
+	border-color:#ff8400;
+	border-width:1px;
+	border-style:solid;
+}
+
+#line{
+    border: 0.5px solid #EAEAEA;
+}
+#category,#subject
+{
+	border-style: none;border-bottom:1px solid black;height:30px;font-size: 16px;padding-left:5px;outline:none;width:98%;margin:0 1%;
+}
+#category{
+	border:1px solid #6A6763;
+}
+
+#category:focus,#subject:focus
+{
+	transition:.5s ease; border-bottom:2px solid #ff8400;outline:none;box-sizing: content-box;font-size: 14px;
+}
+</style>
 </head>
 <body>
-<div id="title">
-	<label for="page">QnA 글수정</label>
-</div>
-<div id="body">
-	<form action="QnABoardModify.do" method="post" id="modifyBoardForm" name="modifyBoardForm">
-		<div>글번호:${boardDTO.seq }</div>
-		<div>제목:<input type="text" id="subject" name="subject" value="${boardDTO.subject }" onkeyup="chkword(this,20)"/></div>
-		<div id="categorylist">카테고리:
-			<select name="category" id="category">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
+
+	<div id="aa">Q&A 글수정</div>
+	<hr id="line1">
+
+	<form action="QnABoardModify.do" method="post" id="modifyBoardFrm" name="modifyBoardForm" enctype="multipart/form-data">
+	
+	<div style="float:left; width:100%; text-align: center;">
+		<div style="width:800px; display:inline-block;">
+		<table>
+		<tr>
+			<td colspan="2"><hr id="line">
+		</tr>
+					
+		<tr>		
+			
+			<td><select name="category" id="category" name="category">
+				<option value="카1">카1</option>
+				<option value="카2">카2</option>
+				<option value="카3">카3</option>
+				<option value="카4">카4</option>
 			</select>
-		</div>
-		<div><textarea name="content" id="qnamodifycontent" >${boardDTO.content }</textarea></div>
-		<input type="hidden" id="seq" name="seq" value="${seq}"/>
+			<td><input type="text" id="subject" name="subject" onkeyup="chkword(this,20)" value="${boardDTO.subject }">
+		</tr>
+		
+		<tr>
+			<td colspan="2"><hr id="line">
+		</tr>
+		
+		
+		
+	
+		<tr>	
+        	<td id="contents" colspan="2"><textarea name="content" class="editor" id="qnamodifycontent" style="width: 100%; height: 400px;">${boardDTO.content }</textarea>
+        </tr>
+        
+     </table>
+	</div>
+	</div>
+      	<input type="hidden" id="seq" name="seq" value="${seq}"/>
 		<input type="hidden" id="pg" name="pg" value="${pg}"/>
-		<div id="btn_submit"><input type="button" id="modifyBoard" value="수정"/></div>	 
-		<!-- 엔터키막기 -->
-		<input style="VISIBILITY: hidden; WIDTH: 0px">
-	</form>
-</div>
+      	
+        <div id="btnset">
+        	<input type="button" id="modifyBoard" value="수정" />
+      		<input type="button" id="btn" value="취소" onclick="javascript:goBack();">
+      		
+      		<!-- 엔터키막기 -->
+			<input style="VISIBILITY: hidden; WIDTH: 0px">
+      	</div>
+    </form>
+    
+	
 </body>
 </html>
