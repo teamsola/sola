@@ -56,6 +56,25 @@ $(document).ready(function(){
 			$("form").attr("action", "findPw.do");
 			$("[name=id]").focus();
 		};
+		
+		$(".email").focusout(function()
+				{
+					var email = $(".email").val();						
+					var isEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				    var isHan = /[ㄱ-ㅎ가-힣]/g;
+				    if (!isEmail.test(email) || isHan.test(email)) 
+				    {
+				    	var name = $(this).attr("name");
+				    	$(this).css("border-bottom", "1px solid red");
+				    	$("#" + name + "_check").html("<font color=red>이메일 형식이 올바르지 않습니다.</font>");
+				    }
+				    else
+				    {
+				    	var name = $(this).attr("name");
+				    	$(this).css("border-bottom", "1px solid black");
+				    	$("#" + name + "_check").html("<font color=blue>올바른 형식의 이메일 입니다.</font>");
+				    }
+				});
 });
 </script>
 <style type="text/css">
@@ -75,6 +94,7 @@ form
 }
 span.upper{color: #ff8400;font-weight: bold;font-size: 16px;}
 span.lower{font-size:12px; color:#6a6763;}
+span.span_check{font-size:8px; margin-left: 30px;}
 input[type=text], select
 {
 	border-style: none;
@@ -135,7 +155,8 @@ input[type=submit]
 				<div>
 					<span class="fold lower" rel="div_mail" id="span_mail">&nbsp;&nbsp;&nbsp;▶메일주소로 찾기</span>
 					<div id="div_mail">
-						<input type="text" name="email_id" id="email" placeholder="email 전체 입력">
+						<input type="text" name="email_id" class="email" placeholder="email 전체 입력">
+						<span id="email_id_check" class="span_check"></span>
 					</div>
 				</div>
 				<div>
@@ -174,7 +195,8 @@ input[type=submit]
 			<span class="fold upper" rel="findPw" id="span_pw">▶비밀번호 찾기</span><br>
 			<div id="findPw">
 		 		<input type="text" name="id" placeholder="ID 입력"><br>
-		 		<input type="text" name="email_pwd" placeholder="email 전체 입력"><br>
+		 		<input type="text" name="email_pwd" class="email" placeholder="email 전체 입력"><br>
+				<span id="email_pwd_check" class="span_check"></span>
 			</div>
 		</div>
 		<input type="submit" value="제출">

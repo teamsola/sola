@@ -5,16 +5,18 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>SOLA > 장소 등록</title>
+	<style type="text/css">
+	.recipe_title{line-height:200px;float:left; width:100%;height:200px; background-size:100% auto; background-position: center center; background-image: url("/sola/img/delivery.jpg");text-align: left;}
+	</style>
 	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5f80aacb55527fc9a78de91374d1d0c3&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			
-		});
-	</script>
 	</head>
 	<body>
+	<div class="recipe_title">
+				<span style="cursor:pointer;font-size:25px;padding:10px 13px 10px 3px;margin:7px 30px;background: rgba(255,255,255, 0.7);" onclick="location.href='express.do'">TIP > 무인택배 </span>
+			</div>
+			<hr style="float: left;width:90%;margin-left:5%;margin-right:5%;margin-top:20px;margin-bottom:20px;">
 		<div id="place_add">	<!-- 장소 등록 div -->
     <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -31,7 +33,7 @@ pageEncoding="UTF-8"%>
 	<span style="color:#ff8400; margin-left:10px; font-weight: bold; font-size: 25px;">
 		${memName }</span><span> 님이 추천하는 장소
 	</span><div style="float:right; height:40px; vertical-align:bottom; display: table-cell; line-height: 70px;">
-	<!-- 도움말 --><img class="help_icon" width="70px" height="auto" src="/sola/img/help.png"><div class="help_info"></div></div>
+	</div>
 	<hr>
 	<div id="map_sb_form">
 		<form action="/sola/tip/addExpress.do" method="post" id="map_sb_form" name="map_sb_form">

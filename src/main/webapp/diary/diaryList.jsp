@@ -24,6 +24,11 @@
 	width:100%;
 }
 
+#dtocon{
+	margin-left:32%;
+	margin-right:32%;
+}
+
 #content2{
 	margin:auto;
 }
@@ -118,7 +123,7 @@
 			
 			<div id="hr-sect">${diaryDTO.diary_date }</div>
 			
-			${diaryDTO.diary_content }<br>
+			<div id="dtocon">${diaryDTO.diary_content }</div>
 			</c:forEach>
 			
 		</div>	

@@ -1,36 +1,12 @@
 /* 가계부 하루보기 Body CSS */
 
-.ledger_body .bottom .view_before{		/* 이전으로 갈 탭 */
-	width: 10%;
-	height: 100%;
-	float: left;
-	/* padding-left: 10px; */
-	background-image: url('../ledgerimg/arrowleft_hover.png');
-	background-repeat: no-repeat;
-	background-position:conter center;
-	background-size:100% 100%;
-	
-}
 
-.ledger_body .bottom .view_center{		/* 중앙에 들어갈 내용 */
-/* border: 1px solid red; */
+.ledger_body .bottom .view_center{		/* 다음으로 갈 탭 */
+
 	width: 80%;
-	height: 98%;
-	float: left;
-	
-}
-
-.ledger_body .bottom .view_after{		/* 다음으로 갈 탭 */
-
-	width: 10%;
 	height: 100%;
-	float: right;
-	background-image: url('../ledgerimg/arrowright_hover.png');
-	background-repeat: no-repeat;
-	background-position:conter center;
-	background-size:100% 100%;
+	float: left;
 }
-
 
 .ledger_body .bottom .view_center .info {	/* 당일 수입 지출 들어갈 곳 */
 	width: 100%;
@@ -135,12 +111,17 @@
 
 .ledger_body .bottom .view_center .contents .contents_bottom .ledger_insertform_btn{	/* 버튼 설정 */
 	width: 100%;
-	height: 100%;
+	height: 45px;
 	margin-top:-40px;
 	font-size: 18px;
 	background-color: gray;
 	color: white;
 	border-radius: 12px; 
+}
+
+.ledger_body .bottom .view_center .contents .contents_bottom .ledger_insertform_btn:hover{	/* 버튼 hover 이벤트 */
+	
+	color:#ff8400;
 }
 
 .income{	/* 수입 */

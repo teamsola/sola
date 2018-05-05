@@ -10,10 +10,10 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 		#r_add_title{width:100%; height:170px;background: url("/sola/img/recipe001.jpg") repeat center center;}
-		#r_add_content{margin:40px; float:left; width:1200px; overflow:hidden;height:auto;}
+		#r_add_content{ width:100%; overflow:hidden;height:auto;text-align: center;float: left;margin-top:50px;}
 		#r_add_subtitle{margin:20px 0;}
 		#r_add_subtitle .subtitle_detail{border:1px solid #DCDCDC;height:80px; padding: 20px; font-size:17px; line-height: 26px;}
-		#r_add_form{ background-color: #FFE08C; padding:40px;overflow:hidden;height:auto;}
+		#r_add_form{ background-color: #FFE08C; padding:40px;overflow:hidden;height:auto;display: inline-block;width: 1100px;text-align: left;}
 		#r_add_form .form_title{border-bottom:1px solid #5D5D5D; font-size:20px;padding:10px 0;}
 		#r_add_form .form_detail{height:100%;}
 		.form_input{float:left;width:100%;border-bottom: 1px solid white; padding:40px 0 20px 0;}

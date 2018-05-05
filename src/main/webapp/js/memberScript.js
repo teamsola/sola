@@ -29,7 +29,7 @@ function checkJoin()
 	{
 		alert("아이디 중복 확인을 해주세요.");
 	}
-	else if (document.joinForm.idAuth.value != document.joinFrorm.id.value)
+	else if (document.joinForm.idAuth.value != document.joinForm.id.value)
 	{
 		alert("아이디 중복 확인을 해주세요.");
 	}

@@ -48,9 +48,7 @@ div#overLayer {		/* 실질적 배치 div */
 }
 
 .ol_center{		/* 중간 */
-   width: 80%;
    height: 550px;
-   margin: auto;
    background-color: white;
 }
 

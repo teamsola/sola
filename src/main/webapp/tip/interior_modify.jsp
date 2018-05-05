@@ -11,10 +11,10 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="/sola/resources_tip/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<style type="text/css">
 		#i_add_title{width:100%; height:170px;background: url("/sola/img/interior_drawing.jpg") repeat left center;}
-		#i_add_content{margin:40px; float:left; width:1200px; overflow:hidden;height:auto;}
+		#i_add_content{ width:100%; overflow:hidden;height:auto;text-align: center;float: left;margin-top:50px;}
 		#i_add_subtitle{margin:20px 0;}
 		#i_add_subtitle .subtitle_detail{border:1px solid #DCDCDC;height:80px; padding: 20px; font-size:17px; line-height: 26px;}
-		#i_add_form{ background-color: #6a6763; padding:40px;overflow:hidden;height:auto;}
+		#i_add_form{ background-color: #6a6763;  padding:40px;overflow:hidden;height:auto;display: inline-block;width: 1100px;text-align: left;}
 		#i_add_form .form_title{border-bottom:1px solid white; color:white; font-size:20px;padding:10px 0;margin-bottom:20px;}
 		#i_add_form .form_detail{height:100%;}
 		#price, #roomsize{font-size: 18px; padding:10px;border-style: none;}
@@ -201,10 +201,14 @@ pageEncoding="UTF-8"%>
 				</div> 
 				</form>
 			</div>
-			<div style="float:right;text-align:right;width:80%;padding:20px 0;">
+			<div style="overflow:hidden;height:auto;display: inline-block;width: 1100px;text-align: left;">
+			
+			<div style="float:right;text-align:right;width:100%;padding:10px 0;">
 				<input type="button" value="취소" onclick="javascript:cancelBtn()" class="interior_btn">&nbsp;&nbsp;&nbsp; <input id="formSubmit" type="button" value="수정" class="interior_btn">
 			</div>
 			
+			
+			</div>
 		</div>
 	</body>
 </html>

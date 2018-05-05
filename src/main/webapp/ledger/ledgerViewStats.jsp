@@ -23,7 +23,7 @@
 <!-- ======================================== CSS작업 ========================================= -->
 
 <link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle3.css?ver=1" />
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewStats.css?ver=3" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewStats.css?ver=2" />
 
 <!-- ==================================== 그래프(Pie-Div)용 ==================================== -->
 <!-- JQ-PLOT의 CSS를 설정 -->
@@ -281,13 +281,13 @@
 					data.push([ "지출", Number("${outsum}") ]);
 					if(keyword == 'month'){
 						$("#item_title").text("지난달과 항목별 비교");
-						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('수입','cateinout','month','${year}','beforeTime');\" value=\"수입\" />");
-						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('지출','cateinout','month','${year}','beforeTime');\" value=\"지출\" />");
+						$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('수입','cateinout','month','${year}','beforeTime');\" value=\"수입\" />");
+						$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('지출','cateinout','month','${year}','beforeTime');\" value=\"지출\" />");
 						
 					}else if(keyword == 'selectPeriod'){
 						$("#item_title").text("일년전과 항목별 비교");
-						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('수입','cateinout','selectPeriod','${year}','beforeTime');\" value=\"수입\" />");
-						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('지출','cateinout','selectPeriod','${year}','beforeTime');\" value=\"지출\" />");
+						$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('수입','cateinout','selectPeriod','${year}','beforeTime');\" value=\"수입\" />");
+						$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('지출','cateinout','selectPeriod','${year}','beforeTime');\" value=\"지출\" />");
 					}
 					
 				</c:if>
@@ -322,8 +322,8 @@
 					data.push([ "수입", Number("${totalin}") ]);
 					data.push([ "지출", Number("${totalout}") ]);
 					$("#item_title").text("1년전과 항목별 비교");
-					$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('수입','cateinout','year','${year}','beforeTime');\" value=\"수입\" />");
-					$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('지출','cateinout','year','${year}','beforeTime');\" value=\"지출\" />");
+					$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('수입','cateinout','year','${year}','beforeTime');\" value=\"수입\" />");
+					$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('지출','cateinout','year','${year}','beforeTime');\" value=\"지출\" />");
 				</c:if>
 				<c:if test="${totalin eq 0 || totalout eq 0}">	// 리스트 X
 					data.push(["등록된 가계부가 없습니다.", 0]);
@@ -352,10 +352,10 @@
 					
 					if(keyword == 'month'){
 						$("#item_title").text("지난달과 항목별 비교");
-						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','catein','month','${year}','beforeTime');\" value=\"${cate}\" />");
+						$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('${cate}','catein','month','${year}','beforeTime');\" value=\"${cate}\" />");
 					}else if(keyword == 'selectPeriod'){
 						$("#item_title").text("1년전과 항목별 비교");
-						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','catein','selectPeriod','${year}','beforeTime');\" value=\"${cate}\" />");
+						$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('${cate}','catein','selectPeriod','${year}','beforeTime');\" value=\"${cate}\" />");
 					}
 					</c:forEach> 
 				</c:if>
@@ -388,7 +388,7 @@
 							</c:if>
 						</c:forEach>
 					
-					$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','catein','year','${year}','beforeTime');\" value=\"${cate}\" />");
+					$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('${cate}','catein','year','${year}','beforeTime');\" value=\"${cate}\" />");
 					data.push([ "${cate }", Number("${cash }") ]);
 				
 					</c:forEach>
@@ -424,9 +424,9 @@
 					</c:forEach>
 				data.push([ "${cate }", Number("${cash }") ]);
 				if(keyword == 'month'){
-					$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','cateout','month','${year}','beforeTime');\" value=\"${cate}\" />");
+					$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('${cate}','cateout','month','${year}','beforeTime');\" value=\"${cate}\" />");
 				}else if(keyword == 'selectPeriod'){
-					$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','cateout','selectPeriod','${year}','beforeTime');\" value=\"${cate}\" />");
+					$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('${cate}','cateout','selectPeriod','${year}','beforeTime');\" value=\"${cate}\" />");
 				}
 					</c:forEach> 
 				</c:if>
@@ -456,7 +456,7 @@
 								</c:forEach>
 							</c:if>
 						</c:forEach>	
-						$("#item_contents").append("<input type=\"button\" onclick=\"chartDivData('${cate}','cateout','year','${year}','beforeTime');\" value=\"${cate}\" />");
+						$("#item_contents").append("<input type=\"button\" class=\"compare_btn\" onclick=\"chartDivData('${cate}','cateout','year','${year}','beforeTime');\" value=\"${cate}\" />");
 					data.push([ "${cate }", Number("${cash }") ]);
 					</c:forEach> 
 				</c:if>
@@ -1032,6 +1032,13 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 	<!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
 <div class="container">
+	
+	<!-- 흐린창 뒤의 배경 이미지 -->
+	<div id="title_img">
+		<a href="calendar.do?cmd=main" id="title_atag"><span>LEDGER</span></a>
+	</div>
+
+
 	<div class="ledger_body">
 
 		<div class="top">
@@ -1070,6 +1077,7 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 						
 						<!-- 항목별 버튼 위치 -->
 						<div id="item_title" class="item_title">타이틀</div>
+						<hr class="line">
 						<div id="item_contents" class="item_contents">컨텐츠</div>
 						
 					</div>

@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/sola/proinfocss/proinfoMain.css?v=1" />
+	href="/sola/proinfocss/proinfoMain.css" />
 <script type="text/javascript">
 	/* Demo purposes only */
 	$(".hover").mouseleave(function() {
@@ -17,6 +17,29 @@
 	});
 </script>
 <style type="text/css">
+
+select { 
+	background: url(이미지 경로) no-repeat 95% 50%; /* 화살표 모양의 이미지 */ 
+	width: 100px; /* 원하는 너비설정 */ 
+	padding: .4em .9em; /* 여백으로 높이 설정 */ 
+	font-family: inherit; /* 폰트 상속 */ 
+	background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */ 
+	border: 1px solid #999; 
+	border-radius: 0px; /* iOS 둥근모서리 제거 */ 
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */ 
+	-moz-appearance: none; 
+	appearance: none;
+	
+} /* IE 10, 11의 네이티브 화살표 숨기기 */ 
+
+select::-ms-expand { 
+	display: none; 
+}
+
+#search{
+	float:left;
+}
+
 figure.snip1200 {
 	font-family: 'Raleway', Arial, sans-serif;
 	position: relative;
@@ -136,6 +159,10 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 	-webkit-transition-delay: 0.35s;
 	transition-delay: 0.35s;
 }
+
+#atag{
+	color:black;
+}
 </style>
 </head>
 <body>
@@ -144,24 +171,51 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 		<div class="container">
 			<!-- 메인 div -->
 			<div class="inner">
+				
+				
+				
+				
+				
 				<!-- 검색 오른쪽 상단 -->
 				<div class="proinfo_s">
-					<select name="searchOp" id="searchOp">
-						<option value="subject"
-							<c:out value="${searchOp == 'subject'?'selected':''}"/>>제목</option>
-						<option value="contents"
-							<c:out value="${searchOp == 'contents'?'selected':''}"/>>내용</option>
-					</select> <input type="hidden" name="keyword_c" value="${keyword_c }" /> <input
-						type="hidden" name="list_n" value="${list_n }" />
+					<div id="search">
+						<select name="searchOp" id="searchOp">
+							<option value="subject"
+								<c:out value="${searchOp == 'subject'?'selected':''}"/>>제목</option>
+							<option value="contents"
+								<c:out value="${searchOp == 'contents'?'selected':''}"/>>내용</option>
+						</select>
+					</div>
+					
+					 <input type="hidden" name="keyword_c" value="${keyword_c }" /> 
+					 <input type="hidden" name="list_n" value="${list_n }" />
+					
+					
 					<c:set var="text" value="${keyword }" />
 					<c:set var="len" value="${fn:length(text) }" />
+					
 					<input name="keyword" class="keyword" type="text"
 						value="${fn:substring(text,1,len-1)}" />
+					
+					
 					<button class="searchbt" type="submit">
-						<img class="btn_image" src="/sola/img/searchBtn.png">
+						<img class="btn_image" src="/sola/img/searchBtn.png" width="34px" height="32px">
 					</button>
+			
+				<c:set var="id_len" value="${fn:length(memId) }" />
+				<c:if test="${id_len < 6 }">
+				<input type="button" class="insert_btn" value="등록"
+					onclick="location.href='proinfoInsertForm.do'" />
+				</c:if>
+				
+			
 				</div>
 
+				
+				
+				
+				
+				
 				<!-- 전, 중, 후 -->
 				<figure class="snip1200">
 					<img src="/sola/img/proinfo_live.png" alt="" />
@@ -173,7 +227,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 							</h2>
 						</div>
 					</figcaption>
-					<a href="search_c.do?keyword_c=live&list_n=0"></a>
+					<a href="search_c.do?keyword_c=live&list_n=0" id="atag"></a>
 				</figure>
 				
 				<figure class="snip1200">
@@ -186,7 +240,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 							</h2>
 						</div>
 					</figcaption>
-					<a href="search_c.do?keyword_c=living&list_n=0"></a>
+					<a href="search_c.do?keyword_c=living&list_n=0" id="atag"></a>
 				</figure>
 				
 				<figure class="snip1200">
@@ -199,14 +253,10 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 							</h2>
 						</div>
 					</figcaption>
-					<a href="search_c.do?keyword_c=lived&list_n=0"></a>
+					<a href="search_c.do?keyword_c=lived&list_n=0" id="atag"></a>
 				</figure>
 				
-				<c:set var="id_len" value="${fn:length(memId) }" />
-				<c:if test="${id_len < 6 }">
-				<input type="button" class="insert_btn" value="전문 지식 입력"
-					onclick="location.href='proinfoInsertForm.do'" />
-				</c:if>
+				
 			</div>
 		</div>
 	</form>

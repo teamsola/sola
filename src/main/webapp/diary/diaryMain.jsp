@@ -97,7 +97,6 @@ html {
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	color: #333;
 	font-size: 1.6rem;
 	background-color: #FFFFFF;
@@ -114,22 +113,6 @@ body {
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;
-}
-
-#view{
-	margin:auto;
-	width:25%;
-}
-
-#view2{
-	marign-left:400px;
-	float:left;
-	text-align:center;
-}
-
-#view3{
-	float:left;
-	text-align:center;
 }
 
 .logo {
@@ -150,12 +133,9 @@ h1 {
 	text-align: center;
 }
 
-.container2 {
-	width: 96%;
-	text-align: center;
-}
-
 #hr-sect {
+	padding-left:30%;
+	padding-right:30%;
 	display: flex;
 	flex-basis: 100%;
 	align-items: center;
@@ -183,13 +163,47 @@ h1 {
 .demo-picked span {
 	font-weight: bold;
 }
-	
+
+/* dto내용 div를 감싸는 부분 */
+#view{
+	text-align:center;
+   	width:100%;
+   	float:left;
+}
+
+/* 버튼 2개 위치 */
+#view2{
+	text-align:center;
+   	width:100%;
+   	float:left;
+}
+
+/* dto내용 나타나는 div */
+#dtoContent{
+	border:1px solid #BDBDBD;
+	padding: 10px; 
+	height: auto; 
+	min-height: 120px; 
+	overflow: auto;
+	margin-bottom:20px;
+}
+
+/* 글쓰는 textarea */
 #write{
-	outline:1px solid #ff8400;
+	border:1px solid #BDBDBD;
+	outline:none;
 	margin-bottom:20px;
 	resize: none;
 }
-	
+
+
+/* 모아보기 둘러싸는 div */
+#ggg{
+	margin-left:980px;
+	margin-bottom:10px;
+}
+
+/* 모아보기 */
 #btn{
 	margin-top:40px;
 	margin-bottom:30px;
@@ -213,6 +227,7 @@ h1 {
 	border-style:solid;
 }
 	
+/* 저장 */
 #btn2{
 	margin-top:40px;
 	margin-bottom:30px;
@@ -236,7 +251,9 @@ h1 {
 	border-style:solid;
 }
 	
+/* 삭제 */
 #btn3{
+	float:left;
 	margin-right: 15px;
 	outline:none;
 	text-decoration:none;
@@ -257,9 +274,9 @@ h1 {
 	border-width:1px;
 	border-style:solid;
 }
-	
+
+/* 수정 */
 #btn4{
-	margin:auto;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -279,21 +296,8 @@ h1 {
 	border-width:1px;
 	border-style:solid;
 }
-	
-#ggg{
-	margin-left:850px;
-	margin-bottom:10px;
-}
-	
-#dtoContent{
-	border: 1px solid #BDBDBD; 
-	padding: 10px; 
-	height: auto; 
-	min-height: 120px; 
-	overflow: auto;
-	margin-bottom:20px;
-}
 
+/* 모아보기 */
 #btn:hover{
 	margin-top:40px;
 	margin-bottom:30px;
@@ -317,6 +321,7 @@ h1 {
 	border-style:solid;
 }
 
+/* 저장 */
 #btn2:hover{
 	margin-top:40px;
 	margin-bottom:30px;
@@ -340,6 +345,7 @@ h1 {
 	border-style:solid;
 }
 
+/* 삭제 */
 #btn3:hover{
 	outline:none;
 	text-decoration:none;
@@ -361,6 +367,7 @@ h1 {
 	border-style:solid;
 }
 
+/* 수정 */
 #btn4:hover{
 	outline:none;
 	text-decoration:none;
@@ -464,7 +471,6 @@ h1 {
 		<div id="view"></div>	<!-- db에 저장된 내용 -->
 		<div id="view2"></div>	<!-- 삭제/저장 -->
 		<div id="view3"></div>	<!-- 수정 -->
-		
 		<div id="ttt"></div>
 	</div>
 	
@@ -666,8 +672,8 @@ h1 {
 			    	//dto에 저장된 내용이 없을때
 			    	if(flag==false){
 			    		//텍스트박스 생성
-			    		$("#view").html("<textarea rows='10' cols='55' id='write' placeholder='내용을 입력하세요'></textarea>");
-			    		$("#view2").html("<input id='btn2' type='button' value='저장' onclick='javascript:btn2()' >");
+			    		$("#view").html("<textarea rows='10' cols='93' id='write' placeholder='내용을 입력하세요'></textarea>");
+			    		$("#view2").html("<input id='btn2' type='button' value='저장' onclick='javascript:btn2()'>");
 			    		$("#view3").html("<div></div>");
 			    		
 			    		}

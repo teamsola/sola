@@ -62,6 +62,13 @@ $(document).ready(function() {
 <!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
 	<div class="container">
+		
+	<!-- 흐린창 뒤의 배경 이미지 -->
+	<div id="title_img">
+		<a href="calendar.do?cmd=main" id="title_atag"><span>LEDGER</span></a>
+	</div>
+
+	
 	<div class="ledger_body">
 
 		<div class="top">

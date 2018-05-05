@@ -9,7 +9,7 @@ public class MemberServiceImpl implements MemberService
 {
 	private MemberDAO memberDAO;
 
-	public String login(String id, String pwd)
+	public MemberDTO login(String id, String pwd)
 	{
 		return memberDAO.login(id, pwd);
 	}

@@ -50,51 +50,55 @@ pageEncoding="UTF-8"%>
 	</script>
 	<style type="text/css">
 		#express_main_up{
-			background: black url("/sola/img/express_up.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_up.jpg") no-repeat center -400px;
 			background-size: cover;
 		}
 		#express_main_down{
-			background: black url("/sola/img/express_down.jpg") no-repeat center -300px;
+			background: black url("/sola/img/express_down.jpg") no-repeat center -400px;
 			background-size: cover;
 		}
 		.express_main{
 			margin:10px;
 			background-color: #6a6763;
-			width: 1100px;
-			height: 250px;
+			width: 100%;
+			height: 300px;
 		}
 		.express_main .intro_title_up{
 			text-align:right;
 			float:right;
 			width:300px;
 			font-size:35px;
-			margin:30px 30px 30px 10px;
+			margin:60px 30px 30px 10px;
 			border-bottom: 1px solid #ff8400;
+			padding:15px 0;
 			font-weight: bold;
 		}
-		.express_main .intro_title_down{
+		.express_main .intro_title_down{	
 			text-align:left;
 			float:left;
 			width:300px;
 			font-size:35px;
-			margin:30px 10px 30px 30px;
+			padding:15px 0;
+			margin:60px 10px 30px 30px;
 			border-bottom: 1px solid #ff8400;
 			font-weight: bold;
 		}
 		
 		.express_main .intro_detail_up{
-			width:1000px;
+			width:100%;
 			margin:0 30px 30px 10px;
 			float:right;
 			text-align: right;
+			line-height:25px;
 			font-size: 15px;
 		}
 		.express_main .intro_detail_down{
-			width:1000px;
+			width:100%;
 			margin:0 10px 30px 30px;
 			float:left;
 			text-align: left;
 			font-size: 15px;
+			line-height:25px;
 		}
 		.express_main a{
 			width:100%;
@@ -124,9 +128,9 @@ pageEncoding="UTF-8"%>
 	</head>
 	<body>
 <!-- 	<div style="font-size:30px;font-weight: bold;">무인택배</div> -->
-	<c:set var="cmd" value="${ cmd }"/>
 	
-	<c:if test="${ cmd == null}">
+	<div style="float: left;width:100%; text-align: center;">
+	<div style="width:1400px; display: inline-block;">
 	<div id="express_main_up" class="express_main">
 		<a href="express_add.do" class="link001">
 			<span class="intro_title_up">장소 등록하기</span>
@@ -141,15 +145,8 @@ pageEncoding="UTF-8"%>
 			<span class="intro_detail_down">택배를 집까지 가져다놓는 게 부담스러우신가요?<br>혼자 살면 충분히 그럴 수 있어요. 이해합니다.<br>SOLA는 그런 분들을 위해 무인택배 HOT SPOT 을 공유합니다.</span>
 		</a>
 	</div>
-	</c:if>
-	
-	<c:if test="${ cmd eq '001'}">
-	<jsp:include page="express_add.jsp"></jsp:include>
-	</c:if>
-
-	<c:if test="${ cmd eq '002'}">
-	<jsp:include page="express_view.jsp"></jsp:include>
-	</c:if>
+	</div>
+	</div>
 
 	</body>
 </html>
