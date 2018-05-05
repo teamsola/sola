@@ -68,9 +68,14 @@
 
 .ledger_body .bottom .view_center .contents .contents_center_top .item_title {		/* 버튼 타이틀 */
 	width: 49%;
-	height: 20%;
+	height: 12%;
 	float: left;
 	vertical-align: middle;
+}
+
+.line {
+	border-top:1px solid #C6C6C6;
+	width: 180px;
 }
 
 .ledger_body .bottom .view_center .contents .contents_center_top .item_contents {		/* 버튼 */

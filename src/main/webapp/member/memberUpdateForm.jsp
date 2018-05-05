@@ -95,7 +95,7 @@ table td:last-child{border-right: none; width: 650px;}
 		} else if (document.memberPw.pwd.value.length < 7) {
 			alert("비밀번호는 영문(대소문자구분),숫자,특수문자를 혼용하여 8~16자를 입력해주세요.");
 			return false;
-		} else if (!(/\w\W/.test(document.joinForm.pwd.value))) {
+		} else if (!(/\w\W/.test(document.memberPw.pwd.value))) {
 			alert("비밀번호는 영문(대소문자구분),숫자,특수문자를 혼용하여 8~16자를 입력해주세요.");
 			return false;
 		} else {
@@ -247,7 +247,7 @@ table td:last-child{border-right: none; width: 650px;}
 			</table>
 				<br>
 				<div align="center">
-					<input class="btn" type="button" value="나의정보 수정" onclick="checkPwInfo()"/>
+					<input class="btn" type="button" value="나의정보 수정" onclick="checkPwInfo()" style="cursor: pointer;"/>
 				</div>
 			</div>
 		</form>
@@ -271,7 +271,7 @@ table td:last-child{border-right: none; width: 650px;}
 							<input class="in" name="pwd" type="password" />
 						</div>
 						<label id="command">
-							비밀번호는 영문(대소문자구분),숫자를 혼용하여 8~16자를 입력해주세요.</label>
+							비밀번호는 영문(대소문자구분),숫자,특수문자를 혼용하여 8~16자를 입력해주세요.</label>
 					</td>
 				</tr>
 				<tr>
@@ -287,7 +287,7 @@ table td:last-child{border-right: none; width: 650px;}
 			</table>
 				<br>	
 				<div align="center">
-					<input type="button" class="btn" value="비밀번호 수정" onclick="javascript:checkPw()" />
+					<input type="button" class="btn" value="비밀번호 수정" onclick="javascript:checkPw()" style="cursor: pointer;"/>
 				</div>
 			</div>
 		</form>
