@@ -35,7 +35,7 @@ body{font-family: 'NanumGothic' !important;} */
 .map_wrap, .map_wrap * {margin:0;padding:0;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {border-radius:30px ; float:left; position:relative;width:60%;height:600px; padding-right: 10px;}
-.map_sb {float:left;width:37%;height:500px; border-left: 1px solid #ff8400; padding-left: 10px; padding-right: 10px;}
+.map_sb {float:left;width:37%;height:600px; border-left: 1px solid #ff8400; padding-left: 10px; padding-right: 10px;}
 #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
@@ -79,17 +79,19 @@ body{font-family: 'NanumGothic' !important;} */
 #pagination a {display:inline-block;margin-right:4px; text-decoration: none;color:black;}
 #pagination .on {font-weight: bold; color:white; cursor: default; background-color: rgba(255,132,0,0.8);}
 .sb_t{float: left; width: 100%;vertical-align: bottom;}
-.sb_t .sb_title{ float:left;  font-weight:bold; font-size: 20px; width:100%; height: 40px; }
+.sb_t .sb_title{ float:left;  font-weight:bold; font-size: 20px; width:100%; height: 50px; }
 #map_sb_tb {width: 100%; margin-top: 10px;}
 #map_sb_tb .map_sb_auto {font-size: 15px;}
-#map_sb_tb .left{ width:25%; text-align: left; font-size: 13px; height: 35px;}
-#map_sb_tb .right{  width:75%; text-align: left; height: 35px; }
+#map_sb_tb .left{ width:25%; text-align: left; font-size: 13px; height: 50px;}
+#map_sb_tb .right{  width:75%; text-align: left; height: 40px; }
 #map_sb_tb input[type='text']{outline:none;border-style: none; border-bottom: 1px solid #6a6763; padding: 10px; width:95%;}
+#map_sb_tb input[type='text']:focus{outline:none; transition:.3s ease; border-bottom:2px solid #ff8400;}
 #map_sb_tb textarea{border-style: none; border-bottom: 1px solid #6a6763; padding: 10px; width:95%;}
+#map_sb_tb textarea:focus{transition:.3s ease; border-bottom:2px solid #ff8400;}
 #map_sb_tb .right select{width: 100%; height:30px; padding-left: 5px; font-size: 15px; border: 1px solid #6a6763; border-radius: 3px;}
 #place_detail{resize: none;}
 #btn_area{ text-align: center;}
-#btn_area * {width:47%; height:35px; font-size:15px; font-weight:bold; color:#6a6763; border-style: none; border:1px solid gray; background-color:white; border-radius: 20px; padding: 3px;}
+#btn_area * {width:47%; height:40px; font-size:15px; font-weight:bold; color:#6a6763; border-style: none; border:1px solid gray; background-color:white; border-radius: 20px; padding: 3px;}
 #btn_area .place_btn:hover{color:#ff8400; border: 1px solid #ff8400;}
 #btn_area .place_btn:active{color:white; border:0; background-color: #ff8400;}
 #btn_area .place_btn:focus{outline:none;}
