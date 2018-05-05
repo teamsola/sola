@@ -243,7 +243,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 				<figure class="snip1200">
 					<img src="/sola/img/proinfo_live.jpg" alt="" />
 					<figcaption>
-						<p>정말</p>
+						<p>자취방 구하기<br>.<br>.<br>.</p>
 						<div class="heading">
 							<h2>
 								<span>입주 전</span>
@@ -256,7 +256,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 				<figure class="snip1200">
 					<img src="/sola/img/proinfo_living.jpg" alt="" />
 					<figcaption>
-						<p>너무</p>
+						<p>이사할때 주의할 점<br>.<br>.<br>.</p>
 						<div class="heading">
 							<h2>
 								<span>입주 중</span>
@@ -269,7 +269,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 				<figure class="snip1200">
 					<img src="/sola/img/proinfo_lived.jpg" alt="" />
 					<figcaption>
-						<p>어렵다</p>
+						<p>전입신고<br>.<br>.<br>.</p>
 						<div class="heading">
 							<h2>
 								<span>입주 후</span>

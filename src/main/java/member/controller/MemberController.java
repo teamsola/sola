@@ -267,8 +267,13 @@ public class MemberController
 
 		HttpSession session = request.getSession();
 		ModelAndView modelAndView = null;
+		String pwd = request.getParameter("pwd");
 		String id = (String) session.getAttribute("memId");
-		memberDTO.setId(id);
+		memberDTO = memberService.memberView(id);
+		String pwd2 = memberDTO.getPwd();
+		
+		if(pwd.equals(pwd2)) {
+		
 		int result = memberService.memberInfoUpdate(memberDTO);
 		System.out.println(result);
 		if (result > 0)
@@ -296,7 +301,26 @@ public class MemberController
 				e.printStackTrace();
 			}
 		}
-
+		}else {
+			PrintWriter out;
+			try
+			{
+				out = response.getWriter();
+				response.setContentType("text/html; charset=utf-8");
+				out.println("<html>");
+				out.println("<script>");
+				out.println("alert('비밀번호가 일치하지 않습니다.')");
+				out.println("history.back()");
+				out.println("</script>");
+				out.println("</html>");
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			modelAndView = new ModelAndView("/mainFrame.jsp");
+			modelAndView.addObject("content", "history.back();");
+		}
 		return modelAndView;
 	}
 
