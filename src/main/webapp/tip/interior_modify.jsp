@@ -28,6 +28,11 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript">
 	
 		$(function(){
+			
+			if(${interiorDTO.roomsize != 0}){
+				$('#roomsize').val('${interiorDTO.roomsize}');
+			}
+			
 			var widthBefore = $('#imgBefore').width();
 			var heightBefore = $('#imgBefore').height();
 			if(widthBefore/heightBefore > 2){
@@ -71,7 +76,7 @@ pageEncoding="UTF-8"%>
 					return false;
 		    	}
 		    	if($('#interior_mainimage').val() == ''){
-		    		if(confirm("대표 이미지가 없습니다.\n그래도 수정하시겠습니까?")){
+		    		if(confirm("대표 이미지가 없습니다.\n이전 상태를 유지하시겠습니까?")){
 		    			sub();
 		    		}
 		    	} else{
@@ -162,7 +167,7 @@ pageEncoding="UTF-8"%>
 					</div>
 					<div style="color:white; margin-bottom:50px;">
 					<div class="form_title">평수<span style="font-size:14px;color:white;margin:10px 10px;">| 방의 크기를 대략적으로 적어주세요</span></div>
-					<input type="text" id="roomsize" name="roomsize" value="${interiorDTO.roomsize }" style="width:100px;text-align: right;">&nbsp;평
+					<input type="text" id="roomsize" name="roomsize" style="width:100px;text-align: right;">&nbsp;평
 					</div>
 				<div class="form_title">대표사진 등록<span style="font-size:14px;color:white;margin:10px 10px;">| 본문의 첨부사진과는 무관하게 메인에 보일 대표사진입니다.</span></div>
 					<div style="width:100%;">
@@ -174,16 +179,16 @@ pageEncoding="UTF-8"%>
 							<div style="float:left;width:50%;height:100px;">
 							<div style="float:left;font-size:12px; color:white;">현재사진 &gt;&nbsp;</div>
 							<c:if test="${interiorDTO.interior_mainimage != 'null'}">
-								<div style="float:left;width:200px;height:100px;overflow:hidden;border-radius: 10px; border:1px solid #6a6763;"><img src="/sola/storage/${interiorDTO.interior_mainimage}" id="imgBefore" width="" height=""></div>
+								<div style="float:left;width:200px;height:100px;overflow:hidden;border-radius: 10px; border:1px solid white;"><img src="/sola/storage/${interiorDTO.interior_mainimage}" id="imgBefore" width="" height=""></div>
 							</c:if>
 							<c:if test="${interiorDTO.interior_mainimage == 'null'}">
-							없음
+							<span style="color:white;font-weight: bold;">없음</span>
 							</c:if>
 							
 							</div>
 							<div style="float:left;width:50%;height:100px;">
 							<div style="float:left;font-size:12px; font-weight:bold; color:#ff8400;">수정 사진 &gt;&nbsp;</div>
-								<div id="afterImg" style="float:left;width:200px;height:100px;overflow:hidden;border-radius: 10px; border:1px solid #6a6763;"></div>
+								<div id="afterImg" style="float:left;width:200px;height:100px;overflow:hidden;border-radius: 10px; border:1px solid #ff8400;"></div>
 							</div>
 						
 						</div>
