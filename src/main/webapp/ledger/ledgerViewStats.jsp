@@ -59,6 +59,10 @@
 
 	$(document).ready(function() {
 		
+		
+		 /* console.log('로딩 활성화');
+		    $('.loading').show();
+		 */
 		setting();
 
 		// ---------------- 월간-지출에 사용할 리스트 
@@ -95,14 +99,11 @@
 		$("#inout").change(function() {
 			
 			if ($("#inout option:selected").val() == '수입') {
-			//	changeCSS();
 				inFunc('${period}');
 				
 			} else if ($("#inout option:selected").val() == '지출') {
-			//	changeCSS();
 				outFunc('${period}');
 			} else if ($("#inout option:selected").val() == '수입-지출') {
-			//	restoreCSS();
 				inoutFunc('${period}');
 			}
 		});
@@ -112,6 +113,15 @@
 			var inout = $("#inout option:selected").val();		// 현재 선택된 항목
 			var period = $("#period option:selected").val();	// 현재 선택된 기간
 			
+			
+			
+			// Select 클릭시에 그래프 비활성화-불투명
+			$("#graphPie, #graphDiv, #item_title, #item_contents, #inout, #view_before,  #view_after ").css('opacity', '0.5' ).css('pointer-events', 'none');
+			
+			$(".view_before, .view_after").removeAttr("onclick");
+			$(".view_before, .view_after").removeAttr("style");
+			$(".view_before, .view_after").css("background-image", "url('')");
+			
 			if($("#period option:selected").val() == 'month'){			// 월간, 기본
 				if('${period}' == 'year' || '${period}' == 'selectPeriod'){	// 연간 -> 월별  또는 기간 -> 월간 
 					location.href="ledgerViewStats.do?year=${year }&cmd=stats&period=month&inout="+inout;
@@ -119,6 +129,7 @@
 					location.href="ledgerViewStats.do?year=${calendarDTO.year }&month=${calendarDTO.month }&cmd=stats&period=month&inout="+inout;
 				}
 			}else if($("#period option:selected").val() == 'year'){		// 연간
+				
 				if('${period}' == 'year'){	// 연간 -> 기간 -> 연간 일경우
 					location.href="ledgerViewStats.do?year=${year }&cmd=stats&period=year&inout="+inout;
 				}else{
@@ -126,8 +137,7 @@
 				}
 				
 			}else if($("#period option:selected").val() == 'selectPeriod'){	// 기간
-				// 기간 클릭시에 그래프 비활성화-불투명
-				$("#graphPie, #graphDiv, #item_title, #item_contents, #inout ").css('opacity', '0.5' ).css('pointer-events', 'none');
+				
 			//	$("#startDatePic").focus();
 				periodFunc();
 			}
@@ -155,6 +165,7 @@
 				startDay="클릭하세요";
 				endDay = "클릭하세요";
 			}
+			
 			var beforeText = "조회 기간 : ";
 			var startDay = "<input type=\"text\" id=\"startDatePic\" name=\"startDatePic\" value=\""+startDay+"\" readonly>";
 			var centerText = " - ";
@@ -226,26 +237,6 @@
 			$('#inout option[value='+inout+']').attr('selected', 'selected');
 			$('#period option[value='+period+']').attr('selected', 'selected');
 		}
-		
-		
-		
-		
-		
-	//	========================== 수입, 지출 CSS 변경 ==========================
-		/* function changeCSS(){
-			$(".graphPie").css("width","50%");
-			$(".graphPie").css("float","left");
-			$(".item_title, .item_contents").css("display","block");
-		}
-	
-		function restoreCSS(){
-			$(".graphPie").css("width","100%");
-			$(".graphPie").css("float","");
-			$(".item_title, .item_contents").css("display","none");
-		} */
-		
-		
-	
 		
 		// 불투명 바탕화면 누르면 달력으로
 		$("#ledger_background").click(function(){
@@ -524,6 +515,7 @@
 				}
 			);
 	});
+	
 
 	
 // ========================== Div 그래프 데이터 조합  ==========================
@@ -995,6 +987,12 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 	// ========================== 이동 페이지 조합 (월간 / 년간 / 기간) ==========================
 			
 	function sendPage(keyword){	// 페이지 전송
+		
+		$("#graphPie, #graphDiv, #item_title, #item_contents, #inout, #view_before,  #view_after ,#period").css('opacity', '0.5' ).css('pointer-events', 'none');
+		
+		$(".view_before, .view_after").removeAttr("onclick");
+		$(".view_before, .view_after").removeAttr("style");
+		$(".view_before, .view_after").css("background-image", "url('')");
 				
 		var inout = $("#inout option:selected").val();	// 현재 선택된 항목
 		var period = $("#period option:selected").val();	// 현재 선택된 기간
@@ -1022,7 +1020,46 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 		var regexp = /\B(?=(\d{3})+(?!\d))/g;
 		return num.toString().replace(regexp, ',');
 	}
+	
+	/* $(window).on('load', function() {
+	    console.log('로딩 비활성화');
+	    $('.loading').hide();
+	}); */
 </script>
+
+ <style type="text/css">
+        .loading {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: -4px;
+            left: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+        }
+        .loading p {
+            position: relative;
+            top: 50%;
+            margin: -75px auto 0 auto;
+            width: 200px;
+            height: 50px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background: #fff;
+            box-sizing: border-box;
+            padding: 0 30px;
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+        }
+        .loading p strong {
+            display: block;
+            padding-top: 15px;
+            font-style: italic;
+        }
+    </style>
 
 
 <title>통계 보기</title>
@@ -1032,6 +1069,12 @@ function makeChartDivBefore(data, dataBefore, maxMoney, cateThis, cateBefore, da
 	<!-- 흐릿한 뒷 배경 -->
 	<div id="ledger_background"></div>
 <div class="container">
+
+	<section class="loading">
+        <p>
+            <strong>로딩중..</strong>
+        </p>
+    </section>
 	
 	<!-- 흐린창 뒤의 배경 이미지 -->
 	<div id="title_img">
