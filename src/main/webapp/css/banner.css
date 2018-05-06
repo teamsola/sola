@@ -87,6 +87,7 @@
 {
 	color: #FFF;
 }
+#bn1, #bn2, #bn3{height: 500px;overflow: hidden;}
 #before
 {
 	position: absolute;

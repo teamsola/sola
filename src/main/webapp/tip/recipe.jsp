@@ -125,8 +125,8 @@ pageEncoding="UTF-8"%>
 						<a href="recipe_view.do?p=${pg }&s=${item.recipe_seq }&k=${keyword }">${item.foodname }</a></div>
 						<div style="margin: 5px 10px 5px 10px; font-size: 16px;">
 						 <c:choose>
-				           <c:when test="${fn:length(item.foodname_detail) > 23}">
-				            <c:out value="${fn:substring(item.foodname_detail,0,22)}"/>...
+				           <c:when test="${fn:length(item.foodname_detail) > 28}">
+				            <c:out value="${fn:substring(item.foodname_detail,0,27)}"/>...
 				           </c:when>
 				           <c:otherwise>
 				            <c:out value="${item.foodname_detail}"/>

@@ -163,18 +163,41 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 #atag{
 	color:black;
 }
+
+	.proinfo_top{
+		width: 1530px;
+		height: 200px;
+		background-image: url(/sola/img/proinfo_m3.PNG);
+		background-size: 1530px auto;
+		text-align:left;
+		vertical-align:middle; 
+		display:table-cell;
+	}
+	.top_title{
+		width: 270px;
+		height: 35px;
+		font-size:25px;
+		padding:10px 13px 10px 3px;
+		background: rgba(255,255,255, 0.7);
+		
+	}
+	.top_in{
+		margin-left: 20px;
+		display:inline-block;
+	}
 </style>
 </head>
 <body>
 	<form name="proinfoMain" method="post" action="search.do?pg=1">
 		<input type="hidden" name="list_t" value="${list_t }" />
 		<div class="container">
+		<div class="proinfo_top">
+		<div class="top_in">
+			<span class="top_title">전문지식</span>
+		</div>
+		</div>
 			<!-- 메인 div -->
 			<div class="inner">
-				
-				
-				
-				
 				
 				<!-- 검색 오른쪽 상단 -->
 				<div class="proinfo_s">
@@ -218,9 +241,9 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 				
 				<!-- 전, 중, 후 -->
 				<figure class="snip1200">
-					<img src="/sola/img/proinfo_live.png" alt="" />
+					<img src="/sola/img/proinfo_live.jpg" alt="" />
 					<figcaption>
-						<p>정말</p>
+						<p>자취방 구하기<br>.<br>.<br>.</p>
 						<div class="heading">
 							<h2>
 								<span>입주 전</span>
@@ -231,9 +254,9 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 				</figure>
 				
 				<figure class="snip1200">
-					<img src="/sola/img/proinfo_living.png" alt="" />
+					<img src="/sola/img/proinfo_living.jpg" alt="" />
 					<figcaption>
-						<p>너무</p>
+						<p>이사할때 주의할 점<br>.<br>.<br>.</p>
 						<div class="heading">
 							<h2>
 								<span>입주 중</span>
@@ -244,9 +267,9 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 				</figure>
 				
 				<figure class="snip1200">
-					<img src="/sola/img/proinfo_lived.png" alt="" />
+					<img src="/sola/img/proinfo_lived.jpg" alt="" />
 					<figcaption>
-						<p>어렵다</p>
+						<p>전입신고<br>.<br>.<br>.</p>
 						<div class="heading">
 							<h2>
 								<span>입주 후</span>

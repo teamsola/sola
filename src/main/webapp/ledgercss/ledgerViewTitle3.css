@@ -5,7 +5,6 @@
 	position: fixed; left: 0; top: 0;
 	height: 100%; width: 100%; background: black;
 	filter: alpha(opacity=60); opacity: 0.60;
-
 }
 
 #title_img{	/* 뒷 배경 이미지 */
@@ -39,7 +38,7 @@
 	position: fixed;
 	width: 900px;
 	height: 700px;
-	top: 60px;
+	top: 65px;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -99,7 +98,7 @@
 	height: 100%;
 	float: left;
 	
-/* 	background-image: url('../ledgerimg/sidebar_ver3_left (default).png'); */
+	background-image: url('../ledgerimg/sidebar_ver3_left (default).png');
 	background-repeat: no-repeat;
 	background-position:conter center;
 

@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -16,6 +16,11 @@ table{
 
 #line{
     border: 0.5px solid #EAEAEA;
+}
+
+#dtocon{
+	margin-left:32%;
+	margin-right:32%;
 }
 
 #btnset{
@@ -139,18 +144,18 @@ table{
 		</tr>
 		
 		<tr>
-			<td colspan="3" style="width: 600px; height: 400px;"> ${boardDTO.content }
+			<td id="dtocon" colspan="3" style="width: 600px; height: 400px;"> ${boardDTO.content }
 		</tr>
 	</table>
 	
 	
 	<div id="btnset">
-		<c:if test="${memId.equals(boardDTO.id) }">
+		<c:if test="${memId.equals(boardDTO.id) && fn:length(memId)>6 }">
 		<input type=button id="btn" value=수정 onclick="location.href='mallBoardModifyForm.do?board_seq=${board_seq}&pg=${pg }&'">
 		<input type=button id="btn" value=삭제 onclick="location.href='mallBoardDelete.do?board_seq=${board_seq}'">
 		</c:if>
 		
-		<c:if test="${memId.equals('admin') }">
+		<c:if test="${fn:length(memId) < 6 }">
 		<input type=button id="btn" value=삭제 onclick="location.href='mallBoardDelete.do?board_seq=${board_seq}'">
 		</c:if>
 		

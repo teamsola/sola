@@ -27,7 +27,7 @@ public class MemberController
 {
 	@Autowired
 	private MemberService memberService;
-	
+
 	private ArrayList<MemberDTO> list = null;
 
 	@RequestMapping(value = "login.do")
@@ -39,7 +39,7 @@ public class MemberController
 			MemberDTO memberDTO = memberService.login(id, pwd);
 			String nickname = memberDTO.getNickname();
 			String profile = memberDTO.getProfile();
-	
+
 			if(nickname != null)
 			{
 				session.setAttribute("memId", id);
@@ -100,7 +100,7 @@ public class MemberController
 	public ModelAndView joinForm()
 	{
 		ModelAndView modelAndView = new ModelAndView("/member/joinForm.jsp");
-	//	modelAndView.addObject("left", "/member/joinForm.jsp");
+		//	modelAndView.addObject("left", "/member/joinForm.jsp");
 		return modelAndView;
 	}
 
@@ -147,24 +147,24 @@ public class MemberController
 
 		return modelAndView;
 	}
-	
-    @RequestMapping(value="authEmail.do")
-    public ModelAndView authEmail(HttpServletRequest request)
-    {
-    	HttpSession session = request.getSession();
-    	String email = request.getParameter("email");
-    	ModelAndView modelAndView = new ModelAndView("/member/authEmail.jsp");
-    	    	
-    	int min = 100000;
-    	int MAX = 999999;
-    	int rand = (int)(Math.random()*(MAX-min+1)+min);
-    	session.setAttribute("rand", rand);
-    	modelAndView.addObject("email", email);
 
-    	System.out.println(session.getAttribute("rand"));
-    	
-    	return modelAndView;
-    }
+	@RequestMapping(value="authEmail.do")
+	public ModelAndView authEmail(HttpServletRequest request)
+	{
+		HttpSession session = request.getSession();
+		String email = request.getParameter("email");
+		ModelAndView modelAndView = new ModelAndView("/member/authEmail.jsp");
+
+		int min = 100000;
+		int MAX = 999999;
+		int rand = (int)(Math.random()*(MAX-min+1)+min);
+		session.setAttribute("rand", rand);
+		modelAndView.addObject("email", email);
+
+		System.out.println(session.getAttribute("rand"));
+
+		return modelAndView;
+	}
 
 
 	@RequestMapping(value = "logout.do")
@@ -175,10 +175,10 @@ public class MemberController
 		session.removeAttribute("memName");
 		session.removeAttribute("memId");
 		session.removeAttribute("memProfile");
-		
+
 		ModelAndView modelAndView = new ModelAndView("redirect:index.jsp");
 		modelAndView.addObject("lgout", 1);
-		
+
 		return index();
 	}
 
@@ -192,7 +192,7 @@ public class MemberController
 		MemberDTO memberDTO = memberService.memberView(id);
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("content", "/member/memberHome.jsp");
-		
+
 		modelAndView.addObject("id", id);
 		modelAndView.addObject("memberDTO", memberDTO);
 
@@ -253,7 +253,7 @@ public class MemberController
 
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("content", "/member/memberProfile.jsp");
-		
+
 		modelAndView.addObject("id", id);
 		modelAndView.addObject("memberDTO", memberDTO);
 
@@ -264,21 +264,48 @@ public class MemberController
 	public ModelAndView memberInfoUpdate(HttpServletRequest request, HttpServletResponse response, MemberDTO memberDTO) throws UnsupportedEncodingException
 	{
 		request.setCharacterEncoding("utf-8");
+		MemberDTO bean = memberDTO;
 
 		HttpSession session = request.getSession();
 		ModelAndView modelAndView = null;
+		String pwd = request.getParameter("pwd");
 		String id = (String) session.getAttribute("memId");
-		memberDTO.setId(id);
-		int result = memberService.memberInfoUpdate(memberDTO);
-		System.out.println(result);
-		if (result > 0)
-		{
-			modelAndView = new ModelAndView("/mainFrame.jsp");
-			modelAndView.addObject("content", "/member/memberUpdateForm.jsp");
-			modelAndView.addObject("memberDTO", memberDTO);
-		}
-		else
-		{
+		memberDTO = memberService.memberView(id);
+		String pwd2 = memberDTO.getPwd();
+		System.out.println(pwd);
+		System.out.println(pwd2);
+
+		if(pwd.equals(pwd2)) {
+			memberDTO = bean;
+			memberDTO.setId(id);
+			int result = memberService.memberInfoUpdate(memberDTO);
+			System.out.println(result);
+			if (result > 0)
+			{
+				modelAndView = new ModelAndView("/mainFrame.jsp");
+				modelAndView.addObject("content", "/member/memberUpdateForm.jsp");
+				modelAndView.addObject("memberDTO", memberDTO);
+			}
+			else
+			{
+				PrintWriter out;
+				try
+				{
+					out = response.getWriter();
+					response.setContentType("text/html; charset=utf-8");
+					out.println("<html>");
+					out.println("<script>");
+					out.println("alert('수정 실패')");
+					out.println("history.back()");
+					out.println("</script>");
+					out.println("</html>");
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}else {
 			PrintWriter out;
 			try
 			{
@@ -286,8 +313,8 @@ public class MemberController
 				response.setContentType("text/html; charset=utf-8");
 				out.println("<html>");
 				out.println("<script>");
-				out.println("alert('수정 실패')");
-				out.println("history.back()");
+				out.println("alert('비밀번호가 일치하지 않습니다.')");
+				out.println("javascript:history.back()");
 				out.println("</script>");
 				out.println("</html>");
 			}
@@ -296,7 +323,6 @@ public class MemberController
 				e.printStackTrace();
 			}
 		}
-
 		return modelAndView;
 	}
 
@@ -324,7 +350,7 @@ public class MemberController
 			{
 				modelAndView = new ModelAndView("/mainFrame.jsp");
 				modelAndView.addObject("content", "/member/memberHome.jsp");
-				
+
 				modelAndView.addObject("memberDTO", memberDTO);
 			}
 			else
@@ -376,7 +402,7 @@ public class MemberController
 		String filePath = request.getSession().getServletContext().getRealPath("/storage");
 		String fileName = img.getOriginalFilename();
 		String nickname = request.getParameter("nickname");
-		
+
 		memberDTO = memberService.memberView(id);
 		String profile = memberDTO.getProfile();
 		int result = 0;
@@ -398,7 +424,7 @@ public class MemberController
 			e.printStackTrace();
 		}
 
-		
+
 		memberDTO.setNickname(nickname);
 		memberDTO.setId(id);
 		memberDTO.toString();
@@ -419,34 +445,34 @@ public class MemberController
 			session.setAttribute("memProfile", profile);
 			modelAndView.addObject("memberDTO", memberDTO);
 			modelAndView.addObject("content", "/member/memberProfile.jsp");
-			
+
 		}
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "memberProfileDelete.do")
 	public ModelAndView memberProfileDelete(HttpServletRequest request, MemberDTO memberDTO) throws UnsupportedEncodingException
 	{
 		ModelAndView modelAndView = null;
 		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
-		
+
 		String id = (String) session.getAttribute("memId");
 		String nickname = request.getParameter("nickname");
 
 		int result = memberService.memberProfileDelete(id);
 		System.out.println(result);
-		
+
 		memberDTO.setNickname(nickname);
 		memberDTO.setProfile("default_profile.jpg");
-		
+
 		if (result > 0)
 		{
 			modelAndView = new ModelAndView("/mainFrame.jsp");
 			modelAndView.addObject("id", id);
 			modelAndView.addObject("memberDTO", memberDTO);
 			modelAndView.addObject("content", "/member/memberProfile.jsp");
-			
+
 		}
 		return modelAndView;
 	}
@@ -456,7 +482,7 @@ public class MemberController
 	{
 		ModelAndView modelAndView = new ModelAndView("/mainFrame.jsp");
 		modelAndView.addObject("content", "/member/checkPwd.jsp");
-		
+
 		return modelAndView;
 	}
 
@@ -516,7 +542,7 @@ public class MemberController
 		}
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value="memberList.do")
 	public ModelAndView memberList(HttpServletRequest request) {
 		try {
@@ -548,10 +574,10 @@ public class MemberController
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("content", "/member/memberList.jsp");
-		
+
 		return modelAndView;	
 	}
-	
+
 	public ModelAndView memberList(HttpServletRequest request, int pg) {
 		try {
 			request.setCharacterEncoding("utf-8");
@@ -580,7 +606,7 @@ public class MemberController
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("content", "/member/memberList.jsp");
-		
+
 		return modelAndView;	
 	}
 
@@ -621,7 +647,7 @@ public class MemberController
 		modelAndView.addObject("totalP", totalP);
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("content", "/member/memberList.jsp");
-		
+
 		return modelAndView;	
 	}
 
@@ -651,7 +677,7 @@ public class MemberController
 		result = memberService.memberWd(id);
 		if(result > 0) {
 			modelAndView = memberList(request, 1);
-		//	modelAndView.setViewName("memberList.do?pg=1");
+			//	modelAndView.setViewName("memberList.do?pg=1");
 		}else {
 			try {
 				out = response.getWriter();
@@ -674,31 +700,31 @@ public class MemberController
 	{
 		ModelAndView modelAndView = new ModelAndView("/member/find/findAccount.jsp");
 		String cmd = request.getParameter("cmd");
-		
+
 		if(cmd == null)
 		{
 			cmd = "default";
 		}
-		
+
 		modelAndView.addObject("cmd", cmd);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value="/member/find/findAccount.do")
 	public ModelAndView findAccount2(HttpServletRequest request, HttpServletResponse response)
 	{
 		ModelAndView modelAndView = new ModelAndView("/member/find/findAccount.jsp");
 		String cmd = request.getParameter("cmd");
-		
+
 		if(cmd == null)
 		{
 			cmd = "default";
 		}
-		
+
 		modelAndView.addObject("cmd", cmd);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value="/member/find/findIdByEmail.do")
 	public ModelAndView findIdByEmail(String email_id, HttpServletResponse response)
 	{
@@ -708,7 +734,7 @@ public class MemberController
 
 		ArrayList<String> ids = memberService.findIdByEmail(email1, email2);
 		ModelAndView modelAndView = null;
-		
+
 		if(ids != null)
 		{
 			modelAndView = new ModelAndView("/member/find/findIdResult.jsp");
@@ -733,16 +759,16 @@ public class MemberController
 				e.printStackTrace();
 			}
 		}
-		
+
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value="/member/find/findIdByTel.do")
 	public ModelAndView findIdByTel(String tel1, String tel2, String tel3, HttpServletResponse response)
 	{	
 		ArrayList<String> ids = memberService.findIdByTel(tel1, tel2, tel3);
 		ModelAndView modelAndView = null;
-		
+
 		if(ids != null)
 		{
 			modelAndView = new ModelAndView("/member/find/findIdResult.jsp");
@@ -767,26 +793,26 @@ public class MemberController
 				e.printStackTrace();
 			}
 		}
-		
+
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value="/member/find/findPw.do")
 	public ModelAndView findPw(String id, String email_pwd, HttpServletRequest request, HttpServletResponse response)
 	{
 		String[] array = email_pwd.split("@");
 		String email1 = array[0];
 		String email2 = array[1];
-		
+
 		MemberDTO memberDTO = new MemberDTO();
-	
+
 		memberDTO.setId(id);
 		memberDTO.setEmail1(email1);
 		memberDTO.setEmail2(email2);
-		
+
 		// 임시비밀번호 만들기
 		ArrayList<Character> list = new ArrayList<>();
-		
+
 		for(char i = '0'; i <= '9'; i++)
 		{
 			list.add(i);
@@ -799,24 +825,24 @@ public class MemberController
 		{
 			list.add(i);
 		}
-		
+
 		int max = list.size() - 1;
-		
+
 		char[] temp = new char[12];
-		
+
 		for(int i = 0; i < 12; i++)
 		{
 			int rand = (int)(Math.random()*max);
 			temp[i] = list.get(rand);
 		}
-		
+
 		String tempPw = new String(temp);
 		memberDTO.setPwd(tempPw);
-		
+
 		ModelAndView modelAndView = null;
 
 		int result = memberService.memberPwUpdate(memberDTO);
-		
+
 		if (result > 0)
 		{
 			modelAndView = new ModelAndView("/member/find/findPw.jsp");
@@ -842,8 +868,8 @@ public class MemberController
 				e.printStackTrace();
 			}
 		}	
-		
+
 		return modelAndView;
 	}
-	
+
 }
