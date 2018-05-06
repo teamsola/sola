@@ -24,7 +24,7 @@
 		
 		//작성내용
 		var write=document.getElementById("write");
-		var content=write.value;
+		var content=write.value.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 		
 		if(!content){
 			alert("내용을 입력하세요");
@@ -178,6 +178,12 @@ h1 {
    	float:left;
 }
 
+#view3{
+	text-align:center;
+   	width:100%;
+   	float:left;
+}
+
 /* dto내용 나타나는 div */
 #dtoContent{
 	margin-left:30%;
@@ -254,7 +260,6 @@ h1 {
 	
 /* 삭제 */
 #btn3{
-	float:left;
 	margin-right: 15px;
 	outline:none;
 	text-decoration:none;
