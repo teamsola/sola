@@ -13,11 +13,9 @@
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 function modifyFunc(){
-	 var result = confirm("게시글을 수정하시겠습니까?");
 	 
-	 if(result){	/* yes */
 		 location.href='QnABoardModifyForm.do?seq=${boardDTO.seq }&&pg=${pg}';
-	 }
+	 
 } 
 
 function deleteFunc(){
@@ -56,7 +54,13 @@ a{
 width:800px;
 height:50%;
 }
-
+#cont{
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 10px;
+	margin:left;
+	
+}
 #btnset{
 	text-align:center;
 	float:left;
@@ -163,9 +167,9 @@ height:50%;
 <body>
 	
 <div id="body">
-	<table>
+		<table>
 		<tr>
-			<td colspan="3" style="font-size:20px;" id="subject">${boardDTO.subject }
+			<td colspan="3" style="font-size:20px;" id="subject"><span style="color:white;font-weight:bold;border-radius:5px;background: #ff8400;float:left;text-align:center;width:100px;">${boardDTO.category }</span>&nbsp;&nbsp;&nbsp;${boardDTO.subject }
 		</tr>
 		
 		<tr>
@@ -173,9 +177,9 @@ height:50%;
 		</tr>
 		
 		<tr>
-			<td width="250" style="color:#8C8C8C;">${boardDTO.nickname }
-			<td width="350" style="color:#8C8C8C;">${boardDTO.logtime }
-			<td width="100" style="color:#8C8C8C;">조회수&nbsp;${boardDTO.hit }
+			<td width="250" style="color:#8C8C8C;"><img src="/sola/img/write_icon.png" width="17px" height="17px">${boardDTO.nickname }
+			<td width="350" style="color:#8C8C8C;"><img src="/sola/img/timer.png" width="17px" height="17px"><c:out value="${fn:substring(boardDTO.logtime, 0,16) }"/>
+			<td width="100" style="color:#8C8C8C;"><img src="/sola/img/hit.png" width="17px" height="17px">&nbsp;${boardDTO.hit }
 		</tr>
 		
 		<tr>
@@ -183,7 +187,7 @@ height:50%;
 		</tr>
 		
 		<tr>
-			<td colspan="3" class="qnacontent" style="width: 600px; height: 400px;"> ${boardDTO.content }
+			<td colspan="3" class="noticecontent" style="width: 600px; height: 400px;"><div id="cont">${boardDTO.content }</div>
 		</tr>
 	</table>
 
