@@ -19,6 +19,7 @@
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;
+	margin-bottom:20px;
 }
 
 #title a{
@@ -56,7 +57,7 @@ th{
 
 
 #top{
-	margin-top:50px;
+	margin-top:25px;
 	margin-bottom:10px;
 	float:left;
 	text-align:center;
