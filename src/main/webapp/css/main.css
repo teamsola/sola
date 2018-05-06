@@ -95,7 +95,8 @@ nav	/* 네비 바 */
 
 .logo_img{	/* 로고 이미지 */
 	margin-top:10px;
-	height:45px;
+	height:38px;
+	margin-left:20px;
 	float:left;
 	cursor:pointer;
 	
@@ -201,6 +202,8 @@ nav>#lv2>ul.lv2-list>li	/* 레벨 2 메뉴바 메뉴 */
 	height : 39px;
 	list-style: none;
 	text-align: center;
+	font-size: 13px;
+	line-height: 33px;
 }
 
 nav>#lv2>#logoLv2{
