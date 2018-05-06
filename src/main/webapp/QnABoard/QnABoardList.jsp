@@ -19,6 +19,7 @@
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;
+	margin-bottom:20px;
 }
 
 #title a{
@@ -56,8 +57,11 @@ th{
 
 
 #top{
-	margin-top:50px;
+	margin-top:25px;
 	margin-bottom:10px;
+	float:left;
+	text-align:center;
+	width: 100%;
 }
 
 select { 
@@ -83,7 +87,6 @@ select::-ms-expand {
 }
 
 #writebtn{
-	margin-left:1125px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -166,7 +169,7 @@ select::-ms-expand {
 }
 #searchset{
 	margin-top:30px;
-	margin-left:845px;
+	margin-left:1100px;
 	float:left;
 	text-align:center;
 }
@@ -174,6 +177,7 @@ select::-ms-expand {
 #search{
 	float:left;
 }
+
 
 #keyword{
 	margin-left:7px;
@@ -211,7 +215,9 @@ select::-ms-expand {
     text-align:center;  
     text-decoration:none;  
 }
-
+#keywordbtn{
+	margin-bottom:3px;
+}
 
 </style>
 
@@ -331,7 +337,7 @@ select::-ms-expand {
 			<div id="search">
 				<form action="QnABoardList.do" method="post" name="qnasearch" id="qnasearch">
 					<input type="text" name="keyword" id ="keyword" placeholder="검색어를 입력하세요"/>
-					<img id="keywordbtn" src="/sola/img/searchBtn.png" name="keywordbtn" onclick="check()" width="36px" height="34px">
+					<img id="keywordbtn" src="/sola/img/searchBtn.png" name="keywordbtn" onclick="check()" width="36px" height="32px">
 				</form>
 			</div>
 		</div>

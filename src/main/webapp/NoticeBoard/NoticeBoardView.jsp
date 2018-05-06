@@ -78,37 +78,32 @@ function getCommentList(){
             var html = "";
             var cCnt = data.length;
             
-            if(data.length > 0){
+   if(data.length > 0){
                 
                 for(i=0; i<data.length; i++){
                 	
-                	
-                	/*  alert("data["+i+"].re_lev : "+data[i].re_lev);
-               	  alert("data["+i+"].re_ref : "+data[i].re_ref);
-               	  alert("data["+i+"].re_seq : "+data[i].re_seq); */
+                
                     
-                    html += "<div><table class='table'><h6><strong>"+data[i].nickname+data[i].logtime+"</strong></h6>";
-                    html += data[i].content + "<tr><td></td></tr>";
+                    html += "<div class=\"comment_box\"><div class=\"comment_title\"><strong>"+data[i].nickname+"</strong>&nbsp;&nbsp;&nbsp;"+data[i].logtime+"</div>";
+                    
+                    html += "<div class=\"commentList_line"+i+"\">"+data[i].content+"</div>";
                     html +=	"<input type='hidden' id='re_lev' name='re_lev' value="+data[i].re_lev+"/>";
                     html +=	"<input type='hidden' id='re_ref' name='re_ref' value="+data[i].re_ref+"/>";
                     html +=	"<input type='hidden' id='re_seq' name='re_seq' value="+data[i].re_seq+"/>";
+     
                    	if(data[i].id=='${memId}'){
-                    html += "<input type='button' id='btn_replydt' value='삭제' onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")'/>";
-                    html += "<input type='button' id='btn_replymf' value='수정' onClick='comment_mff("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+",\""+data[i].content+"\")'/>";
-                   	}
+                    html += "<div class='btn_listline'><div class=\"btn_line"+i+"\" style=\"float:right;\"><img class='modify_btn' src=\"/sola/img/modify_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_mff("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+",\""+data[i].content+"\","+i+")'  style='cursor:pointer; padding-top:10px;'>";
+                    html += "<img src=\"/sola/img/delete_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")' style='cursor:pointer;'></div></div>";
+              		}
                    	else if(${fn:length(memId) < 6}){
-                   		html += "<input type='button' id='btn_reply' value='삭제' onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")'/>";
+                   		html += "<div class='btn_listline'><div class=\"btn_line"+i+"\" style=\"float:right;\"> <img src=\"/sola/img/delete_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")' style='cursor:pointer;'>  </div></div>";
                    	}
-              		html += "</table></div>";
-              		
-                    
+              		html += "<hr class=\"bottom_line\"></div>";
                 }
                 
             } else {
-              /*  alert("댓글없음"); */
-                html += "<div>";
-                html += "<div><table class='table'><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
-                html += "</table></div>";
+             
+                html += "<div><h6><strong>등록된 댓글이 없습니다.</strong></h6>";
                 html += "</div>";
                 
             }
@@ -191,22 +186,29 @@ function fn_comment(code){
 /*
 * 댓글 수정폼
 */
-function comment_mff(re_lev,re_ref,re_seq,content){
-	var result = confirm("댓글을 수정하시겠습니까?");
-	if(result){
-/* 	alert("comment_mff의 content값:"+content);
-	alert("re_lev값:"+re_lev); */
-			var html = "";	
-			html+="<form id='replymodify' name='replymodify' method='post'><div>";
-			html+="<textarea style='width: 800px' rows='1' cols='10' id='modifycontent' name='content'>"+content+"</textarea>";
-			html+="<input type='button' href='#' onClick='comment_mf_cf()' value='댓글수정'/>";
-			html+="<input type='hidden' id='re_lev' name='re_lev' value='"+re_lev+"'/>";
-			html+="<input type='hidden' id='re_ref' name='re_ref' value='"+re_ref+"'/>";
-			html+="<input type='hidden' id='re_seq' name='re_seq' value='"+re_seq+"'/>";
-			html+="</div></form>";
-			$("#replymodifydiv").html(html);
-	}
-}
+function comment_mff(re_lev,re_ref,re_seq,content,index){
+	
+  	
+		var html = "";	
+		html+="<div><form id='replymodify' name='replymodify' method='post'>";
+		html+="<input type=\"text\" style='width: 100%; height:25px; font-size:15px;' id='modifycontent' name='content' value='"+content+"'>";
+		html+="<input type='hidden' id='re_lev' name='re_lev' value='"+re_lev+"'/>";
+		html+="<input type='hidden' id='re_ref' name='re_ref' value='"+re_ref+"'/>";
+		html+="<input type='hidden' id='re_seq' name='re_seq' value='"+re_seq+"'/>";
+		html+="</form></div>";
+		
+		$(".commentList_line"+index).html(html);	
+		
+		html_btn = "";
+		/* <img src=\"/sola/img/delete_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")' style='cursor:pointer;'> */
+		html_btn += "<div class=\"btn_line\" style=\"float:right;\" ><img class='modify_btn' src=\"/sola/img/modify_icon.png\" width=\"17px\" height=\"17px\"  class='modify_btn'  href='#' onClick='comment_mf_cf()' style='cursor:pointer; padding-top:10px;' />";
+		html_btn += "<img src=\"/sola/img/delete_icon.png\" width=\"17px\" height=\"17px\"  class='btn'  onClick='comment_dt("+re_lev+","+re_ref+","+re_seq+")'  style='cursor:pointer; padding-top:10px;'></div>";
+		
+		
+		$(".btn_line"+index).html(html_btn);	
+		
+
+} 
 /*
 * 댓글수정
 */
@@ -273,6 +275,7 @@ height:50%;
 	border-radius: 10px;
 	padding: 10px;
 	margin:left;
+	min-height:400px;
 }
 
 #btn{
@@ -367,8 +370,34 @@ height:50%;
 	border-style:solid;
 }
 #subject{	/* 제목 */
-	text-align:center;
+	text-align:left;
 	padding: 0 20px 0 0;
+}
+.noticecontent{
+	vertical-align:baseline;
+}
+#cont{
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 10px;
+	margin:left;
+	min-height:400px;
+}
+.container{
+	width:800px;
+	height:30%;
+}
+
+.comment_box{	/* 댓글 박스 */
+	margin-top:30px;
+}
+.btn_listline .modify_btn{
+	margin-right:5px;
+}
+
+.btn_listline{		/* 버튼 묶음  */
+	width:100%;
+	height: 30px;
 }
 </style>
 </head>
@@ -399,11 +428,10 @@ height:50%;
 	</table>
 
 	<div id="btnset">
-		<c:if test="${fn:length(memId) < 6}">
-		<input type=button id="btn" value=수정 onclick="javascript:modifyFunc();">
-		<input type=button id="btn" value=삭제 onclick="javascript:deleteFunc();">
-		</c:if>
-		
+			<c:if test="${fn:length(memId) < 6 }">
+				<input type=button id="btn" value=수정 onclick="javascript:modifyFunc();">
+				<input type=button id="btn" value=삭제 onclick="javascript:deleteFunc();">
+			</c:if>
 		
 		<input type="button" id="btn2" value=목록 onclick="location.href='NoticeBoardList.do'"/>
 	</div>
@@ -412,25 +440,18 @@ height:50%;
 </div>
 <div class="container">
     <form id="commentForm" name="commentForm" method="post">
-    <br><br>
         <div>
             <div>
                 <span><strong>댓글</strong></span> <span id="cCnt"></span>
             </div>
-            <div>
-                <table class="table">                    
-                    <tr>
-                        <td>
-                            <textarea style="width: 1100px" rows="3" cols="30" id="comment_content" name="content" placeholder="댓글을 입력하세요"></textarea>
-                            <br>
-                            <div>
-                                <a href='#' onClick="javascript:check_comment('${boardDTO.seq }')" class="btn pull-right btn-success">등록</a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <div> 
+            	<textarea style="width:100%; resize: none; font-size:17px;" rows="3" cols="50" id="comment_content" name="content" placeholder="댓글을 입력하세요"></textarea>
             </div>
-        </div>
+            <div>
+            	<img src="/sola/img/insert_icon.png" width="19px" height="19px" style="cursor:pointer; float:right" onclick="javascript:check_comment('${boardDTO.seq }')">
+               <%--  <input type="button" onclick="javascript:check_comment('${boardDTO.seq }')" id="comment_btn"  class="btn" value="등록" style="float:right;"> --%>
+            </div>
+           </div>
         <input type="hidden" id="seq" name="seq" value="${boardDTO.seq}" />
         <input type="hidden" id="re_ref" name="re_ref" value="${boardDTO.seq}" />
         <input type="hidden" id="re_lev" name="re_lev" value="${boardDTO.re_lev+1}" />
@@ -439,16 +460,10 @@ height:50%;
     </form>
 </div>
 <div class="container">
-    <form id="commentListForm" name="commentListForm" method="post">
         <div id="commentList">
         </div>
-    </form>
 </div>
- <div class="container">
- 	<div id="replymodifydiv">
- 	</div>
- </div>
-
+ 
 
 </body>
 </html>

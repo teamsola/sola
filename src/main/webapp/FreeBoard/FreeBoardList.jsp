@@ -18,6 +18,7 @@
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;
+	margin-bottom:20px;
 }
 
 #title a{
@@ -55,7 +56,7 @@ th{
 
 
 #top{
-	margin-top:50px;
+	margin-top:25px;
 	margin-bottom:10px;
 	float:left;
 	text-align:center;
@@ -167,7 +168,7 @@ select::-ms-expand {
 }
 #searchset{
 	margin-top:30px;
-	margin-left:845px;
+	margin-left:1100px;
 	float:left;
 	text-align:center;
 }
@@ -212,7 +213,9 @@ select::-ms-expand {
     text-align:center;  
     text-decoration:none;  
 }
-
+#keywordbtn{
+	margin-bottom:3px;
+}
 
 </style>
 
@@ -328,12 +331,12 @@ select::-ms-expand {
 		
 		
 		
-		
+
 		<div id="searchset">
 			<div id="search">
 				<form action="FreeBoardList.do" method="post" name="freesearch" id="freesearch">
 					<input type="text" name="keyword" id ="keyword" placeholder="검색어를 입력하세요"/>
-					<img id="keywordbtn" src="/sola/img/searchBtn.png" name="keywordbtn" onclick="check()" width="36px" height="34px">
+					<img id="keywordbtn" src="/sola/img/searchBtn.png" name="keywordbtn" onclick="check()" width="36px" height="32px">
 				</form>
 			</div>
 		</div>
