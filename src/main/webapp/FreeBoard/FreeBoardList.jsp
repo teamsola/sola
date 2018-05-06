@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -7,11 +8,13 @@
 <title>Insert title here</title>
 
 <style>
-a{
+#subjectA{
 	color:black;
-	text-decoration:none;
 }
-
+#none{
+	padding-top:100px;
+	padding-bottom:60px;
+}
 #aa{
 	margin-top: 70px;
 	font-weight: bold;
@@ -82,20 +85,11 @@ select::-ms-expand {
 }
 
 #writebtn:hover{
-	margin-left:1125px;
+	
 	outline:none;
-	text-decoration:none;
-	text-indent:0px;
-	line-height:16px;
-	text-align:center;
-	vertical-align:middle;
-	display:inline-block;
-	font-size:15px;
 	background-color:#6a6763;
 	color:#ffffff;
-	height:30px;
 	border-color:#6a6763;
-	border-width:1px;
 	border-style:solid;
 }
 /* 
@@ -273,7 +267,15 @@ select::-ms-expand {
 						<td colspan="6"><hr id="line">
 					</tr>
 			</c:forEach>
+			<c:if test="${fn:length(list) == 0 }">
+				<tr>
+					<td>
+				</tr>
 				
+				<tr>
+					<td colspan="6" align="center" id="none"> 등록된 글이 없습니다.
+				</tr>
+			</c:if>	
 				<!-- 페이징 -->
 				<tr>
 					<td colspan=5 align=center>
@@ -317,9 +319,7 @@ select::-ms-expand {
 	
 	
 	
-	<!-- <div id="btnset">
-		<input type="button" id="btn" value="메인" onclick="location.href='mallIndex.do'">
-	</div> -->
+	
 
 </body>
 </html>
