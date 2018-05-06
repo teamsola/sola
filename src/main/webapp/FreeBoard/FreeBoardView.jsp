@@ -118,8 +118,7 @@ function fn_comment(code){
   
  function comment_mff(re_lev,re_ref,re_seq,content,index){
 	
-  	var result = confirm("댓글을 수정하시겠습니까?");
-  	if(result){
+  	
   			var html = "";	
   			html+="<div><form id='replymodify' name='replymodify' method='post'>";
   			html+="<input type=\"text\" style='width: 100%; height:25px; font-size:15px;' id='modifycontent' name='content' value='"+content+"'>";
@@ -127,7 +126,7 @@ function fn_comment(code){
   			html+="<input type='hidden' id='re_ref' name='re_ref' value='"+re_ref+"'/>";
   			html+="<input type='hidden' id='re_seq' name='re_seq' value='"+re_seq+"'/>";
   			html+="</form></div>";
-  			alert("html : "+html);
+  			
   			$(".commentList_line"+index).html(html);	
   			
   			html_btn = "";
@@ -138,7 +137,7 @@ function fn_comment(code){
   			
   			$(".btn_line"+index).html(html_btn);	
   			
-  	}
+  	
    }  
    
 
@@ -202,11 +201,11 @@ function getCommentList(){
                     html +=	"<input type='hidden' id='re_seq' name='re_seq' value="+data[i].re_seq+"/>";
      
                    	if(data[i].id=='${memId}'){
-                    html += "<div class='btn_line2'><div class=\"btn_line"+i+"\" style=\"float:right;\"><img class='modify_btn' src=\"/sola/img/modify_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_mff("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+",\""+data[i].content+"\","+i+")'  style='cursor:pointer; padding-top:10px;'>";
+                    html += "<div class='btn_listline'><div class=\"btn_line"+i+"\" style=\"float:right;\"><img class='modify_btn' src=\"/sola/img/modify_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_mff("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+",\""+data[i].content+"\","+i+")'  style='cursor:pointer; padding-top:10px;'>";
                     html += "<img src=\"/sola/img/delete_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")' style='cursor:pointer;'></div></div>";
               		}
                    	else if(${fn:length(memId) < 6}){
-                   		html += "<div class='btn_line2'><div class=\"btn_line"+i+"\" style=\"float:right;\"> <img src=\"/sola/img/delete_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")' style='cursor:pointer;'>  </div></div>";
+                   		html += "<div class='btn_listline'><div class=\"btn_line"+i+"\" style=\"float:right;\"> <img src=\"/sola/img/delete_icon.png\" width=\"17px\" height=\"17px\" onClick='comment_dt("+data[i].re_lev+","+data[i].re_ref+","+data[i].re_seq+")' style='cursor:pointer;'>  </div></div>";
                    	}
               		html += "<hr class=\"bottom_line\"></div>";
                 }
@@ -360,7 +359,7 @@ height:50%;
 	border-style:solid;
 }
 
-.btn_line2 .modify_btn{
+.btn_listline .modify_btn{
 	margin-right:5px;
 }
 
@@ -376,6 +375,7 @@ height:50%;
 	border-radius: 10px;
 	padding: 10px;
 	margin:left;
+	min-height:400px;
 }
 .container{
 	width:800px;
@@ -386,7 +386,7 @@ height:50%;
 	margin-top:30px;
 }
 
-.btn_line2{		/* 버튼 묶음  */
+.btn_listline{		/* 버튼 묶음  */
 	width:100%;
 	height: 30px;
 }
@@ -441,7 +441,7 @@ height:50%;
                 <span><strong>댓글</strong></span> <span id="cCnt"></span>
             </div>
             <div> 
-            	<textarea style="width:100%; resize: none;" rows="3" cols="50" id="comment_content" name="content" placeholder="댓글을 입력하세요"></textarea>
+            	<textarea style="width:100%; resize: none; font-size:17px;" rows="3" cols="50" id="comment_content" name="content" placeholder="댓글을 입력하세요"></textarea>
             </div>
             <div>
             	<img src="/sola/img/insert_icon.png" width="19px" height="19px" style="cursor:pointer; float:right" onclick="javascript:check_comment('${boardDTO.seq }')">

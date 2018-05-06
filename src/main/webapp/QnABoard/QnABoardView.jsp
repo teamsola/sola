@@ -59,7 +59,7 @@ height:50%;
 	border-radius: 10px;
 	padding: 10px;
 	margin:left;
-	
+	min-height:400px;
 }
 #btnset{
 	text-align:center;
