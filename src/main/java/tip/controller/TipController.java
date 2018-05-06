@@ -518,8 +518,8 @@ public class TipController {
 		if(interior_title == null) interior_title = "null";
 		int price = 0;
 		int roomsize = 0;
-		if(request.getParameter("price") != null) price = Integer.parseInt(request.getParameter("price"));
-		if(request.getParameter("roomsize") != null) roomsize = Integer.parseInt(request.getParameter("roomsize"));
+		if(request.getParameter("price").length()>0) price = Integer.parseInt(request.getParameter("price"));
+		if(request.getParameter("roomsize").length()>0) roomsize = Integer.parseInt(request.getParameter("roomsize"));
 		
 		//넘어온 데이터 중 이전에 있던 파일명 - 1. 메인이미지
 		String mainimage_before = request.getParameter("interior_mainimage_before");
@@ -725,7 +725,7 @@ public class TipController {
 		recipeDTO.setRecipe7(rc7);
 		recipeDTO.setRecipe8(rc8);
 		recipeDTO.setRecipe9(rc9);
-		if(request.getParameter("price") != null) pr = Integer.parseInt(request.getParameter("price"));
+		if(request.getParameter("price").length()>0) pr = Integer.parseInt(request.getParameter("price"));
 		recipeDTO.setPrice(pr);
 		
 		displayRecipeAdd(recipeDTO);

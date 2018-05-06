@@ -8,7 +8,6 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert_title_here</title>
-	<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 	#interior_content{float:left;width:100%; overflow:hidden; height:auto; margin:0 auto; text-align: center;}
@@ -78,6 +77,13 @@ pageEncoding="UTF-8"%>
 		document.interiorSearchForm.submit();
 	};
 	
+	
+	if('${listStatus}' =='empty'){
+		alert("검색 결과가 없습니다.");
+		document.getElementById("keyword").value = "";
+		document.interiorSearchForm.submit();
+	}
+	
 	});
 	function pagingBtn_p(){
 		document.getElementById("pg").value = '${pg-1}';
@@ -89,6 +95,7 @@ pageEncoding="UTF-8"%>
 		document.getElementById("keyword").value = '${keyword}';
 		document.interiorSearchForm.submit();
 	};
+	
 	</script>
 	</head>
 	<body>

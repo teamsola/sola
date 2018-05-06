@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -7,11 +8,32 @@
 <title>Insert title here</title>
 
 <style>
-a{
+
+#title{
+	padding:20px;
+	line-height:150px;
+	float:left; 
+	width:100%;
+	height:150px; 
+	background-image: url('/sola/storage/몰라.jpg'); 
+	background-size:cover; 
+	background-position:center; 
+	background-repeat: no-repeat;
+	margin-bottom:20px;
+}
+
+#title a{
 	color:black;
 	text-decoration:none;
 }
 
+#subjectA{
+	color:black;
+}
+#none{
+	padding-top:100px;
+	padding-bottom:60px;
+}
 #aa{
 	margin-top: 70px;
 	font-weight: bold;
@@ -25,6 +47,7 @@ a{
 
 table{
 	margin:auto;
+	width:1000px;
 }
 
 th{
@@ -34,8 +57,11 @@ th{
 
 
 #top{
-	margin-top:50px;
+	margin-top:25px;
 	margin-bottom:10px;
+	float:left;
+	text-align:center;
+	width: 100%;
 }
 
 select { 
@@ -61,7 +87,6 @@ select::-ms-expand {
 }
 
 #writebtn{
-	margin-left:1125px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -79,20 +104,11 @@ select::-ms-expand {
 }
 
 #writebtn:hover{
-	margin-left:1125px;
+	
 	outline:none;
-	text-decoration:none;
-	text-indent:0px;
-	line-height:16px;
-	text-align:center;
-	vertical-align:middle;
-	display:inline-block;
-	font-size:15px;
 	background-color:#6a6763;
 	color:#ffffff;
-	height:30px;
 	border-color:#6a6763;
-	border-width:1px;
 	border-style:solid;
 }
 /* 
@@ -153,7 +169,7 @@ select::-ms-expand {
 }
 #searchset{
 	margin-top:30px;
-	margin-left:845px;
+	margin-left:1100px;
 	float:left;
 	text-align:center;
 }
@@ -161,6 +177,7 @@ select::-ms-expand {
 #search{
 	float:left;
 }
+
 
 #keyword{
 	margin-left:7px;
@@ -198,7 +215,9 @@ select::-ms-expand {
     text-align:center;  
     text-decoration:none;  
 }
-
+#keywordbtn{
+	margin-bottom:3px;
+}
 
 </style>
 
@@ -226,15 +245,21 @@ select::-ms-expand {
 </head>
 <body>
 
+
+			<div id="title">
+				<a href="QnABoardList.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">FREEBOARD</span></a>
+			</div>
+
 <div id="aa">Q&A</div>
 	<hr id="line1">
 	
 	
 	
 	<div id="top">
-
+		<div style="width:1000px;display: inline-block;text-align: right;">
 	<!-- 글쓰기 버튼 -->
 	<input type="button" id="writebtn" value="글쓰기" onclick="location.href='QnABoardWriteForm.do'">
+	</div>
 	</div>
 	
 	
@@ -268,7 +293,15 @@ select::-ms-expand {
 						<td colspan="6"><hr id="line">
 					</tr>
 			</c:forEach>
+			<c:if test="${fn:length(list) == 0 }">
+				<tr>
+					<td>
+				</tr>
 				
+				<tr>
+					<td colspan="6" align="center" id="none"> 등록된 글이 없습니다.
+				</tr>
+			</c:if>		
 				<!-- 페이징 -->
 				<tr>
 					<td colspan=5 align=center>
@@ -304,17 +337,13 @@ select::-ms-expand {
 			<div id="search">
 				<form action="QnABoardList.do" method="post" name="qnasearch" id="qnasearch">
 					<input type="text" name="keyword" id ="keyword" placeholder="검색어를 입력하세요"/>
-					<img id="keywordbtn" src="/sola/img/searchBtn.png" name="keywordbtn" onclick="check()" width="36px" height="34px">
+					<img id="keywordbtn" src="/sola/img/searchBtn.png" name="keywordbtn" onclick="check()" width="36px" height="32px">
 				</form>
 			</div>
 		</div>
 	
 	
-	
-	
-	<!-- <div id="btnset">
-		<input type="button" id="btn" value="메인" onclick="location.href='mallIndex.do'">
-	</div> -->
+
 
 </body>
 </html>
