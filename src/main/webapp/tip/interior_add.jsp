@@ -51,6 +51,14 @@ pageEncoding="UTF-8"%>
 					$('#price').focus();
 					return false;
 		    	}
+		        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
+		        var ir1 = $("#editor").val();
+
+		        if( ir1 == ""  || ir1 == null || ir1 == '&nbsp;' || ir1 == '<p>&nbsp;</p>')  {
+		             alert("내용을 입력하세요.");
+		             obj.getById["editor"].exec("FOCUS"); //포커싱
+		             return false;
+		        }
 		    	if($('#interior_mainimage').val() == ''){
 		    		if(confirm("대표 이미지가 없습니다.\n그래도 등록하시겠습니까?")){
 		    			sub();
@@ -159,7 +167,7 @@ pageEncoding="UTF-8"%>
 						<input type="file" id="interior_mainimage" name="interior_mainimage" onchange="loadFile(event)" style="display:none;" multiple>
 						<input type="button" id="fileAdd" value="사진 첨부하기"><span class="filename">현재 첨부된 사진이 없습니다.</span>
 						</div>
-						<div class="imgDisplay" id="imgDisplay" style="width:400px;height:300px; margin-bottom:50px;overflow: hidden;border-radius: 10px;">
+						<div class="imgDisplay" id="imgDisplay" style="width:400px;height:300px; margin-bottom:50px;overflow: hidden;border-radius: 10px; border:1px solid white;">
 						<img id="imageUpload" src="#" width="auto" height="auto">
 						</div>
 					</div>

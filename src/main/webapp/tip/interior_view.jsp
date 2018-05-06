@@ -7,11 +7,10 @@ pageEncoding="UTF-8"%>
 	<head>
 	<meta charset="UTF-8">
 	<title>Insert_title_here</title>
-<link rel="stylesheet" type="text/css" href="/sola/css/tip.css">
 	<script type="text/javascript" src="/sola/js/jquery-3.3.1.min.js"></script>
 	<style type="text/css">
 	#interior_content{text-align:center;width:100%; overflow:hidden; height:auto; margin:0 auto;}
-	.interior_title{padding:20px;line-height:200px;float:left; width:100%;height:200px; background-image: url("/sola/img/interior.jpg"); background-size: cover;background-position: center center;}
+	.interior_title{padding:20px;float:left; width:100%;height:200px; background-image: url('/sola/img/interior.jpg'); background-size: cover;background-position: center center;}
 	#r_add_subtitle{width:1100px;margin:5px 0;display: inline-block; text-align: left;}
 	.subtitle_detail{height: auto;overflow: hidden; box-sizing: border-box;}
 	.subtitle_detail .left{float:left;width:600px;height:400px;padding: 15px;text-align: center;border:1px solid #BDBDBD;box-sizing: border-box;}
@@ -93,14 +92,18 @@ pageEncoding="UTF-8"%>
 				"display":"block",
 				"margin" : "auto",
 				"max-height" : "100%",
-				"width" : "auto"
+				"width" : "auto",
+				"position" : "relative",
+				"left" : (500-width)/2
 			});
 		}else{
 			$('.image').css({
 				"display":"block",
 				"margin" : "auto",
 				"max-width" : "100%",
-				"height" : "auto"
+				"height" : "auto",
+				"position" : "relative",
+				"top" : (300-height)/2
 			});
 		}
 });
@@ -109,7 +112,7 @@ pageEncoding="UTF-8"%>
 	<body>
 		<div id="interior_content">
 			<div class="interior_title">
-				<span style="float:left;width:200px;height:30px;font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);line-height:30px;">TIP > 인테리어 </span>
+				<span style="float:left;height:30px;font-size:25px;padding:10px 13px 10px 3px;margin:75px auto auto 7px;background: rgba(255,255,255, 0.7);line-height: 30px;">TIP > 인테리어</span>
 			</div>
 			<div id="r_add_subtitle">
 				<h2 style="margin-left:20px;text-align: left;">${interiorDTO.name }님의 DIY 인테리어<span style="font-size:14px;color:#6a6763;">
@@ -120,7 +123,7 @@ pageEncoding="UTF-8"%>
 						<div id="img_hov" style="width:500px;height: 300px;margin: 30px auto;overflow:hidden;text-align: center;border-radius:10px;position: relative;">
 							<c:choose>
 								<c:when test="${interiorDTO.interior_mainimage == 'null'}">
-								<img class="image" src="/sola/img/interior_default.png" width="100%" height="auto">
+								<img class="image" src="/sola/img/interior_default.png" width="100%" height="auto" style="left: -50px;position: relative;">
 								</c:when>
 								<c:otherwise>
 								<img class="image" src="/sola/storage/${interiorDTO.interior_mainimage }" id="newImageWindow" width="100%" height="auto">

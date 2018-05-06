@@ -91,7 +91,7 @@
 	width:100%;
 	height:150px; 
 	
-	background-image: url('/sola/storage/가게부.JPG'); 
+	background-image: url('/sola/storage/가게부사진.jpg'); 
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;

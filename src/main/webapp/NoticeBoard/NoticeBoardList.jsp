@@ -8,6 +8,24 @@
 <title>Insert title here</title>
 
 <style>
+
+#title{
+	padding:20px;
+	line-height:150px;
+	float:left; 
+	width:100%;
+	height:150px; 
+	background-image: url('/sola/storage/게시판ㅋ.JPG'); 
+	background-size:cover; 
+	background-position:center; 
+	background-repeat: no-repeat;
+}
+
+#title a{
+	color:black;
+	text-decoration:none;
+}
+
 #subjectA{
 	color:black;
 }
@@ -223,6 +241,10 @@ select::-ms-expand {
 </script>
 </head>
 <body>
+
+			<div id="title">
+				<a href="NoticeBoardList.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">NOTICE</span></a>
+			</div>
 
 <div id="aa">공지사항</div>
 	<hr id="line1">

@@ -109,7 +109,7 @@ body {
 	float:left; 
 	width:100%;
 	height:150px; 
-	background-image: url('/sola/storage/일기.JPG'); 
+	background-image: url('/sola/storage/자유게시판.jpg'); 
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;
@@ -180,6 +180,8 @@ h1 {
 
 /* dto내용 나타나는 div */
 #dtoContent{
+	margin-left:30%;
+	margin-right:30%;
 	border:1px solid #BDBDBD;
 	padding: 10px; 
 	height: auto; 

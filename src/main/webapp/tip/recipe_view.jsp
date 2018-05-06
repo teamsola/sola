@@ -71,7 +71,7 @@ pageEncoding="UTF-8"%>
 						<div id="img_hov" style="width:500px;height: 300px;margin: 30px auto;overflow:hidden;text-align: center;border-radius:10px;position: relative;">
 							<c:choose>
 								<c:when test="${recipeDTO.foodimage == 'null'}">
-								<img class="image" src="/sola/img/recipe_default.png" width="100%" height="auto">
+								<img class="image" src="/sola/img/recipe_default.png" width="100%" height="auto" style="left: -50px;position: relative;">
 								</c:when>
 								<c:otherwise>
 								<img class="image" src="/sola/storage/${recipeDTO.foodimage }" id="newImageWindow" width="100%" height="auto">
