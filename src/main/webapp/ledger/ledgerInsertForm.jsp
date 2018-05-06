@@ -181,14 +181,6 @@ function addComma(num) {
 </head>
 <body>
 
-<section class="loading">
-        <p>
-            <strong>로딩중..</strong>
-        </p>
-</section>
-
-
-
 
 <!-- 흐릿한 뒷 배경 -->
 <div id="ledger_background"></div>

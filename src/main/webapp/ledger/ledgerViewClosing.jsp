@@ -76,7 +76,6 @@ $(document).ready(function() {
 	});
 	
 	$("#save_btn").click(function(){
-		alert("excelHTML : "+excelHTML);
 	    window.open('data:application/vnd.ms-excel,' + excelHTML);
 	    e.preventDefault();
 	});
@@ -87,21 +86,23 @@ function addComma(num) {
 	var regexp = /\B(?=(\d{3})+(?!\d))/g;
 	return num.toString().replace(regexp, ',');
 }
+
+
+
 </script>
 
 <style>
-#save_btn{	/* 버튼 설정 */
-	border:0;
-	outline:0;
-	background-color:#ff8400;
-	color:white;
-	border-radius: 12px;
+
+.save_btn{	/* 버튼 + 문자 설정 */
+	margin-right:20px;
 }
 
-#save_btn:hover{	/* 버튼 이벤트 */
-	color:black;
+.save_btn:hover{	 /* 버튼 이벤트 */
 	cursor:pointer;	
+	content: url('/sola/ledgerimg/excel_btn_icon2(hover2).png');
 }
+
+
 </style>
 
 <title>결산 보기</title>
@@ -134,8 +135,9 @@ function addComma(num) {
 			<div class="view_center">
 				<div class="info">${calendarDTO.year }년 &nbsp; ${calendarDTO.month+1 }월</div><!-- 해당년 월 -->
 				<div class="contents">
-				<div class="fileSave_btn" style="width: 100%; height:5%; text-align: right;">
-					<input type="button" class="save_btn" id="save_btn" value="엑셀저장"></div>
+				<div class="fileSave" style="width: 100%; height:5%; text-align: right; ">
+					<img src="/sola/ledgerimg/excel_btn_icon2.png" width="30px" height="30px" class="save_btn" id="save_btn">
+				</div>
 				<div class="contents_left">
 					<ul>
 						<li class="income_closing" id="income_closing">
