@@ -50,7 +50,7 @@ pageEncoding="UTF-8"%>
 		border: 2px solid #e3e4e5;
 	}
 	.memberHome_top{
-		width: 1530px;
+		width: 1800px;
 		height: 200px;
 		background-image: url(/sola/img/123.png);
 		background-size: 1530px 200px;

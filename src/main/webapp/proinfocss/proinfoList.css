@@ -56,7 +56,10 @@ div#overLayer {
 }
 .sr label{
 	color: white;
-	margin-left: 20px;
+	font-size: 25px;
+	display: inline-block;
+    float: left;
+    margin-left: 10px;
 }
 .sr{
 	width: 400px;
@@ -107,7 +110,7 @@ div#overLayer {
 	height: 10%;
 }
 .proinfo_top{
-		width: 1530px;
+		width: 1800px;
 		height: 200px;
 		background-image: url(/sola/img/proinfo_m3.PNG);
 		background-size: 1530px auto;
