@@ -32,7 +32,7 @@
 	<select id="freeboardsearchlist" parameterType="java.util.Map"	resultType="boarddDTO">
 		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re,re_lev,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
 				 from  (select rownum rn, tt.* 
-				 from (select * from FREEBOARD WHERE NICKNAME=#{keyword} OR SUBJECT=#{keyword} OR CONTENT=#{keyword}
+				 from (select * from FREEBOARD WHERE NICKNAME like '%${keyword}%' OR SUBJECT like '%${keyword}%' OR CONTENT like '%${keyword}%'
 				 order by seq desc) tt)   
 				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
 	</select>
@@ -92,7 +92,7 @@
 	<select id="noticeboardsearchlist" parameterType="java.util.Map"	resultType="boarddDTO">
 		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re,re_lev,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
 				 from  (select rownum rn, tt.* 
-				 from (select * from NOTICEBOARD WHERE NICKNAME=#{keyword} OR SUBJECT=#{keyword} OR CONTENT=#{keyword}
+				 from (select * from NOTICEBOARD WHERE NICKNAME like '%${keyword}%' OR SUBJECT like '%${keyword}%' OR CONTENT like '%${keyword}%'
 				 order by seq desc) tt)   
 				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
 	</select>
@@ -162,7 +162,7 @@
 	<select id="qnaboardsearchlist" parameterType="java.util.Map"	resultType="boarddDTO">
 		<![CDATA[select seq, category, id, nickname, subject, content ,file1 ,re,re_lev,re_ref ,re_seq ,hit ,to_char(logtime, 'YYYY.MM.DD hh:mm') as logtime 
 				 from  (select rownum rn, tt.* 
-				 from (select * from QNABOARD WHERE NICKNAME=#{keyword} OR SUBJECT=#{keyword} OR CONTENT=#{keyword}
+				 from (select * from QNABOARD WHERE NICKNAME like '%${keyword}%' OR SUBJECT like '%${keyword}%' OR CONTENT like '%${keyword}%'
 				 order by seq desc) tt)   
 				 where rn>=#{startNum} and rn<=#{endNum} and re_lev=0]]>
 	</select>
