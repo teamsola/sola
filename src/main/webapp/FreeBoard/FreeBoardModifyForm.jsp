@@ -241,7 +241,7 @@ table{
 			<td><select name="category" id="category" name="category">
 				<option value="자유수다방">자유수다방</option>
 				<option value="오늘하루는">오늘하루는</option>
-				<option value="혼족의즐거움">혼족의즐거움</option>
+				<option value="즐거운혼족">즐거운혼족</option>
 				<option value="혼족모임">혼족모임</option>
 			</select>
 			<td><input type="text" id="subject" name="subject" onkeyup="chkword(this,20)" value="${boardDTO.subject }">
