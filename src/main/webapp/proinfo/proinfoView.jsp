@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css"
-	href="/sola/proinfocss/proinfoView.css" />
+	href="/sola/proinfocss/proinfoView.css?v=1" />
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -62,6 +62,8 @@
 </head>
 <body>
 	<div class="container">
+		<div class="proinfo_top">
+		</div>
 		<c:set var="text" value="${keyword }" />
 		<c:set var="len" value="${fn:length(text) }" />
 		<input type="hidden" name="keyword_c" value="${keyword_c }" /> <input
