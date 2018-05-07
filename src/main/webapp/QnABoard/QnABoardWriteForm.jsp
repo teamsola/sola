@@ -235,7 +235,6 @@ table{
 			<td><select name="category" id="category" name="category">
 				<option value="솔라사용법">솔라사용법</option>
 				<option value="건의사항">건의사항</option>
-				
 			</select>
 			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" onkeyup="chkword(this,20)">
 		</tr>
