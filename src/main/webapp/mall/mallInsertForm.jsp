@@ -153,6 +153,7 @@ table{
  	<div id="btnset">
  		<input type="button" id="btn" value="등록" onclick="javascript:insert()">
 		<input type="reset" id="btn" value="메인" onclick="location.href='mallIndex.do'">
+		<input style="VISIBILITY: hidden; WIDTH: 0px">
  	</div>
 </form>
 
