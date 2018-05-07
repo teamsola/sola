@@ -18,23 +18,6 @@
 </script>
 <style type="text/css">
 
-#title{
-	padding:20px;
-	line-height:150px;
-	float:left; 
-	width:100%;
-	height:150px; 
-	background-image: url(/sola/img/proinfo_m3.PNG);
-	background-size:cover; 
-	background-position:center; 
-	background-repeat: no-repeat;
-	margin-bottom:20px;
-}
-
-#title a{
-	text-decoration:none;
-}
-
 select { 
 	background: url(이미지 경로) no-repeat 95% 50%; /* 화살표 모양의 이미지 */ 
 	width: 100px; /* 원하는 너비설정 */ 
@@ -181,25 +164,38 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 	color:black;
 }
 
-	
+	.proinfo_top{
+		width: 1530px;
+		height: 200px;
+		background-image: url(/sola/img/proinfo_m3.PNG);
+		background-size: 1530px auto;
+		text-align:left;
+		vertical-align:middle; 
+		display:table-cell;
+	}
+	.top_title{
+		width: 270px;
+		height: 35px;
+		font-size:25px;
+		padding:10px 13px 10px 3px;
+		background: rgba(255,255,255, 0.7);
+		
+	}
+	.top_in{
+		margin-left: 20px;
+		display:inline-block;
+	}
 </style>
 </head>
 <body>
-
-			<div id="title">
-				<a href="proinfoMain.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">전문지식</span></a>
-			</div>
-			
-			
-			
 	<form name="proinfoMain" method="post" action="search.do?pg=1">
 		<input type="hidden" name="list_t" value="${list_t }" />
-		
-		
-		
-		
-		<div class="container">								
-															
+		<div class="container">
+		<div class="proinfo_top">
+		<div class="top_in">
+			<span class="top_title">전문지식</span>
+		</div>
+		</div>
 			<!-- 메인 div -->
 			<div class="inner">
 				
