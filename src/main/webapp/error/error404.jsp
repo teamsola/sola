@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>404ERROR</title>
 <style type="text/css">
 @font-face {
 	font-family:"DX시인과나";
