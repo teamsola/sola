@@ -59,12 +59,15 @@ div#overLayer {
 	background-color: black;
 	margin-top: 30px;
 }
+
+
 .ol_top_s{
 	width: 650px;
 	height: 50px;
 	background-color: black;
 	margin-top: 30px;
 }
+
 .ol_center{
 	width: 80%;
 	height: 550px;
@@ -244,3 +247,12 @@ div#overLayer {
 	border: 2px solid #6a6763;
 	border-radius: 20px;
 }
+.proinfo_top{
+		width: 1800px;
+		height: 200px;
+		background-image: url(/sola/img/proinfo_m3.PNG);
+		background-size: 1530px auto;
+		text-align:left;
+		vertical-align:middle; 
+		display:table-cell;
+	}

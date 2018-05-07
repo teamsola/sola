@@ -10,6 +10,23 @@
 <link rel="stylesheet" type="text/css" href="ledgercss/ledgerInsert.css?ver=2" />
 
 <script type="text/javascript">
+
+$(document).ready(function() {
+	alert("온로드 들어옴");
+    console.log('로딩 활성화');
+    $('.loading').show();
+});
+ 
+$(window).on('load', function() {
+    console.log('로딩 비활성화');
+    $('.loading').hide();
+});
+
+
+
+
+
+
 $(function(){
 		$("#inOut").change(function(){	// 입-출금이 눌렸을 때 
 			var categoryList = new Array();
@@ -125,9 +142,46 @@ function addComma(num) {
 }
 </script>
 
+<style type="text/css">
+.loading {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: -4px;
+            left: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+        .loading p {
+            position: relative;
+            top: 50%;
+            margin: -75px auto 0 auto;
+            width: 200px;
+            height: 50px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background: #fff;
+            box-sizing: border-box;
+            padding: 0 30px;
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+        }
+        .loading p strong {
+            display: block;
+            padding-top: 15px;
+            font-style: italic;
+        }
+
+</style>
+
 <title>가계부 입력</title>
 </head>
 <body>
+
+
 <!-- 흐릿한 뒷 배경 -->
 <div id="ledger_background"></div>
 <div class="container">

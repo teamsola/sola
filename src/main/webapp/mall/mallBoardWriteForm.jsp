@@ -7,6 +7,40 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="resources/editor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
+
+<script>
+/*제목 입력칸 글자수 제한  */
+function chkword(obj, maxByte) {
+
+    var strValue = obj.value;
+    var strLen = strValue.length;
+    var totalByte = 0;
+    var len = 0;
+    var oneChar = "";
+    var str2 = "";
+
+
+    for (var i = 0; i < strLen; i++) {
+        oneChar = strValue.charAt(i);
+        if (escape(oneChar).length > 4) {
+            totalByte += 2;
+        } else {
+            totalByte++;
+        }
+        if (totalByte <= maxByte) {
+            len = i + 1;
+        }
+    }
+    if (totalByte > maxByte) {
+
+    	alert("최대입력 글자수를 초과하셨습니다:최대"+maxByte+"byte");
+        str2 = strValue.substr(0, len);
+        obj.value = str2;
+        chkword(obj, 8000);
+    }
+}
+</script>
+
 <script type="text/javascript">
     $(function(){
         //전역변수
@@ -190,7 +224,7 @@ table{
 		</tr>
 					
 		<tr>		
-			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" size="95">
+			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" size="95" onkeyup="chkword(this,20)">
 		</tr>
 		
 		<tr>

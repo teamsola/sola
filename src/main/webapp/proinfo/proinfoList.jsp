@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/sola/proinfocss/proinfoList.css?v=1" />
+<link rel="stylesheet" type="text/css" href="/sola/proinfocss/proinfoList.css" />
 <script type="text/javascript">
 	$(document).ready(function(){
 		 
@@ -30,10 +30,13 @@ pageEncoding="UTF-8"%>
 </head>
 <body>
 <div class="container">
+<div class="proinfo_top"></div>
 <input type="hidden" name="list_t" value="${list_t }"/>
       <div id='glayLayer'></div>
       <div id='overLayer'>
-         <div class="ol_top" align="right"><input type="button" id="cancel" onclick="location.href='proinfoMain.do'" value="x"/></div>
+         <div class="ol_top" align="right">
+         	<div class="sr" align="left"><label>검색 결과 ${fn:length(list) }건</label></div>
+         <input type="button" id="cancel" onclick="location.href='proinfoMain.do'" value="x"/></div>
          
          <div class="ol_center">
          	<c:if test="${list_t eq 's'}">
@@ -42,13 +45,14 @@ pageEncoding="UTF-8"%>
 				<c:forEach var="proinfoDTO" items="${list }">
 					<c:set var="text" value="${keyword }" />
 					<c:set var="len" value="${fn:length(text) }" />
-					<div class="searchList" onclick="location.href='proinfoView.do?seq=${proinfoDTO.seq }&list_n=0&searchOp=${searchOp}&keyword=${fn:substring(text,1,len-1)}'">${proinfoDTO.subject }</div>
+					<div align="center" class="searchList" onclick="location.href='proinfoView.do?seq=${proinfoDTO.seq }&list_n=0&searchOp=${searchOp}&keyword=${fn:substring(text,1,len-1)}'">${proinfoDTO.subject }</div>
 				</c:forEach>
 				</div>
 			</c:if>
 				
 			<!-- 검색 리스트가 없을때 div 에 감싸주어야 한다.  -->
-			<c:if test="${empty list}">검색 결과가 없습니다.</c:if>
+			<c:if test="${empty list}">
+			<div style="margin: auto;"><label>검색 결과가 없습니다.</label></div></c:if>
 			</c:if>
          </div>
       </div>

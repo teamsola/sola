@@ -313,6 +313,12 @@ public class FreeBoardController implements BoarddController{
 	  
 	  @RequestMapping(value="FreeBoardModifyComment.do")
 		 public String replymodify(BoarddDTO boarddDTO,HttpServletRequest request) {
+		  System.out.println("lev : "+boarddDTO.getRe_lev());
+		  System.out.println("ref : "+boarddDTO.getRe_ref());
+		  System.out.println("seq : "+boarddDTO.getRe_seq());
+		  
+		  System.out.println("re-content : "+request.getParameter("modifycontent"));
+		  System.out.println("content : "+boarddDTO.getContent());
 			 System.out.println("ModifyComment 들어옴");
 			 System.out.println("modifycomment boardDTO.getRe_lev값:"+boarddDTO.getRe_lev());
 			freeBoardServiceImpl.replymodify(boarddDTO);

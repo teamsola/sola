@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<jsp:scriptlet>
+    pageContext.setAttribute("cr", "\r");
+    pageContext.setAttribute("lf", "\n");
+    pageContext.setAttribute("crlf", "\r\n");
+</jsp:scriptlet>
 <!DOCTYPE>
 <html>
 <head>
@@ -8,7 +14,7 @@
 <script>
 	function modify(){
 		
-		var content=document.getElementById("diary_content").value;
+		var content=document.getElementById("diary_content").value.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 		
 		if(!content){
 			alert("내용을 입력하세요");
@@ -22,8 +28,10 @@
 		location.href="diaryModify.do?diary_date="+date2+"&diary_content="+content+"&diary_seq="+diary_seq2;		
 		}
 	}
-		
+	
+
 </script>
+
 <style>
 #wr{
 	margin-top: 70px;
@@ -131,7 +139,7 @@
 	
 	<form>
 		<div id="content2">
-			<textarea rows="30" cols="90" name="diary_content" id="diary_content">${diaryDTO.diary_content}</textarea>
+			<textarea rows="30" cols="90" name="diary_content" id="diary_content">${fn:replace(diaryDTO.diary_content,"<br/>",crlf) }</textarea>
 		</div>
 		
 		
@@ -142,9 +150,8 @@
 		</div>
 	</form>
 
-
-
 </body>
+
 </html>
 
 

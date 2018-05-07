@@ -233,10 +233,9 @@ table{
 		<tr>		
 			
 			<td><select name="category" id="category" name="category">
-				<option value="카1">카1</option>
-				<option value="카2">카2</option>
-				<option value="카3">카3</option>
-				<option value="카4">카4</option>
+				<option value="안내">안내</option>
+				<option value="규칙">규칙</option>
+				<option value="소식">소식</option>			
 			</select>
 			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" onkeyup="chkword(this,20)">
 		</tr>
