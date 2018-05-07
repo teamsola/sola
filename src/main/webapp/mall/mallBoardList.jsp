@@ -52,7 +52,7 @@ th{
 
 select { 
 	background: url(이미지 경로) no-repeat 95% 50%; /* 화살표 모양의 이미지 */ 
-	width: 100px; /* 원하는 너비설정 */ 
+	width: 110px; /* 원하는 너비설정 */ 
 	padding: .4em .9em; /* 여백으로 높이 설정 */ 
 	font-family: inherit; /* 폰트 상속 */ 
 	background: url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%; /* 네이티브 화살표 대체 */ 

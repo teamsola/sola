@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
 	</div>
 	<hr>
 	<div id="map_sb_form">
-		<form action="/sola/tip/addExpress.do" method="post" id="map_sb_form" name="map_sb_form">
+		<form action="addExpress.do" method="post" id="map_sb_form" name="map_sb_form">
 		<input type="hidden" value="" id="auto_express_lat" name="auto_express_lat" class="auto_input">
 		<input type="hidden" value="" id="auto_express_lng" name="auto_express_lng" class="auto_input">
 		<input type="hidden" value="" id="auto_express_region_1depth_name" name="auto_express_region_1depth_name" class="auto_input">

@@ -119,12 +119,6 @@ pageEncoding="UTF-8"%>
 			background-size: cover;
 		}
 	</style>
-	<script type="text/javascript">
-	var msg = '${result}';
-	if(msg == "success"){
-		alert("성공적으로 등록했습니다.");
-	}
-	</script>
 	</head>
 	<body>
 <!-- 	<div style="font-size:30px;font-weight: bold;">무인택배</div> -->
