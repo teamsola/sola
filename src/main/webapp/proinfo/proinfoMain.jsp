@@ -165,11 +165,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 }
 
 	.proinfo_top{
-<<<<<<< HEAD
-		width: 1530px;
-=======
 		width: 1800px;
->>>>>>> 4cfa75cfeccc77f13fa6e85ef5da493e820d8ffa
 		height: 200px;
 		background-image: url(/sola/img/proinfo_m3.PNG);
 		background-size: 1530px auto;
