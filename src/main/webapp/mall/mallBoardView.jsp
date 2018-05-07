@@ -169,7 +169,7 @@ function del(){
 	
 	
 	<div id="btnset">
-		<c:if test="${memId.equals(boardDTO.id) && fn:length(memId)>7 }">
+		<c:if test="${memId.equals(boardDTO.id) && fn:length(memId)>5 }">
 		<input type=button id="btn" value=수정 onclick="location.href='mallBoardModifyForm.do?board_seq=${board_seq}&pg=${pg }&'">
 		<input type=button id="btn" value=삭제 onclick="del()">
 		</c:if>
