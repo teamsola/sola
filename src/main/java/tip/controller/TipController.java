@@ -60,7 +60,8 @@ public class TipController {
         if(request.getParameter("price").length() > 0) price = Integer.parseInt(request.getParameter("price"));
         if(request.getParameter("roomsize").length() > 0) roomsize = Integer.parseInt(request.getParameter("roomsize"));
         String img = "null";
-        if(request.getParameter("interior_title") != null) interior_title = request.getParameter("interior_title");
+        String interior_title_flag = request.getParameter("interior_title");
+        if(interior_title_flag != null) interior_title = request.getParameter("interior_title");
         String fileName = "tip_"+getCurrentDayTime()+"_"+id+".txt";
         interiorDTO = new InteriorDTO();
         interiorDTO.setInterior_title(interior_title);
@@ -165,7 +166,6 @@ public class TipController {
 	@RequestMapping(value="place.do")
 	public ModelAndView tip_place(HttpServletRequest request) {
 		modelAndView = new ModelAndView("/mainFrame.jsp");
-		if(request.getParameter("result") != null) modelAndView.addObject("result", request.getParameter("result"));
 		modelAndView.addObject("content", "/tip/place.jsp");
 		return modelAndView;
 	}
@@ -184,7 +184,8 @@ public class TipController {
 		modelAndView = new ModelAndView("/mainFrame.jsp");
 		
 		int pg = 1;
-		if(request.getParameter("pg") != null) {
+		String pg_flag = request.getParameter("pg");
+		if(pg_flag != null) {
 			pg = Integer.parseInt(request.getParameter("pg"));
 		}
 		
@@ -220,7 +221,8 @@ public class TipController {
 	@RequestMapping(value="interior.do")
 	public ModelAndView tip_interior(HttpServletRequest request) {
 		int pg = 1;
-		if(request.getParameter("pg") != null) {
+		String pg_flag = request.getParameter("pg");
+		if(pg_flag != null) {
 			pg = Integer.parseInt(request.getParameter("pg"));
 		}
 		String keyword = request.getParameter("keyword");
@@ -265,7 +267,6 @@ public class TipController {
 	@RequestMapping(value="express.do")
 	public ModelAndView tip_express(HttpServletRequest request) {
 		modelAndView = new ModelAndView("/mainFrame.jsp");
-		if(request.getParameter("result") != null) modelAndView.addObject("result", request.getParameter("result"));
 		modelAndView.addObject("content", "/tip/express.jsp");
 		return modelAndView;
 	}
@@ -295,6 +296,16 @@ public class TipController {
 		recipeDTO.setRecipe7(recipeDTO.getRecipe7().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe8(recipeDTO.getRecipe8().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe9(recipeDTO.getRecipe9().replaceAll("\r\n", "<br>"));
+		recipeDTO.setRecipe0(recipeDTO.getRecipe0().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe1(recipeDTO.getRecipe1().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe2(recipeDTO.getRecipe2().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe3(recipeDTO.getRecipe3().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe4(recipeDTO.getRecipe4().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe5(recipeDTO.getRecipe5().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe6(recipeDTO.getRecipe6().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe7(recipeDTO.getRecipe7().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe8(recipeDTO.getRecipe8().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe9(recipeDTO.getRecipe9().replaceAll("\n", "<br>"));
 		
 		modelAndView.addObject("recipeDTO", recipeDTO);
 		modelAndView.addObject("pg", pg);
@@ -363,13 +374,15 @@ public class TipController {
 		if(flag != null) {
 			viewtype = Integer.parseInt(request.getParameter("viewtype"));
 		}
-		if(request.getParameter("pg") != null) {
+		String pg_flag = request.getParameter("pg");
+		if(pg_flag != null) {
 			pg = Integer.parseInt(request.getParameter("pg"));
 		}
 		ArrayList<PlaceDTO> list = new ArrayList<>();
 		list = tipService.placeView(viewtype, pg);
 		for(int i = 0; i < list.size(); i++) {
 			list.get(i).setPlace_detail(list.get(i).getPlace_detail().replaceAll("\r\n", "<br>"));
+			list.get(i).setPlace_detail(list.get(i).getPlace_detail().replaceAll("\n", "<br>"));
 		};
 		int totalN = tipService.getPlaceTotalNum(viewtype);
 		displayInfo(list, viewtype, pg);
@@ -386,17 +399,19 @@ public class TipController {
 	@RequestMapping(value="express_view.do")
 	public ModelAndView express_view(HttpServletRequest request) {
 		String keyword = "종로";
-		int pg = 1;
-		if(request.getParameter("pg") != null) {
-			pg = Integer.parseInt(request.getParameter("pg"));
+		String pg = request.getParameter("pg");
+		if(pg == null) {
+			pg = "1";
 		}
-		if(request.getParameter("keyword") != null) {
+		String k_flag = request.getParameter("keyword");
+		if(k_flag != null) {
 			keyword = request.getParameter("keyword");
 		}
 		ArrayList<ExpressDTO> list = new ArrayList<>();
-		list = tipService.expressView("%"+keyword+"%", pg);
+		list = tipService.expressView("%"+keyword+"%", Integer.parseInt(pg));
 		for(int i = 0; i < list.size(); i++) {
 			list.get(i).setExpress_detail(list.get(i).getExpress_detail().replaceAll("\r\n", "<br>"));
+			list.get(i).setExpress_detail(list.get(i).getExpress_detail().replaceAll("\n", "<br>"));
 		};
 		int totalN = tipService.getExpressTotalNum("%"+keyword+"%");
 		
@@ -643,17 +658,23 @@ public class TipController {
 		recipeDTO.setRecipe2(request.getParameter("recipe2"));
 		recipeDTO.setRecipe3(request.getParameter("recipe3"));
 		recipeDTO.setRecipe4(request.getParameter("recipe4"));
-		if(request.getParameter("recipe5") != null) rc5 = request.getParameter("recipe5");
-		if(request.getParameter("recipe6") != null) rc6 = request.getParameter("recipe6");
-		if(request.getParameter("recipe7") != null) rc7 = request.getParameter("recipe7");
-		if(request.getParameter("recipe8") != null) rc8 = request.getParameter("recipe8");
-		if(request.getParameter("recipe9") != null) rc9 = request.getParameter("recipe9");
+		String r5 = request.getParameter("recipe5");
+		String r6 = request.getParameter("recipe6");
+		String r7 = request.getParameter("recipe7");
+		String r8 = request.getParameter("recipe8");
+		String r9 = request.getParameter("recipe9");
+		if(r5 != null) rc5 = request.getParameter("recipe5");
+		if(r6 != null) rc6 = request.getParameter("recipe6");
+		if(r7 != null) rc7 = request.getParameter("recipe7");
+		if(r8 != null) rc8 = request.getParameter("recipe8");
+		if(r9 != null) rc9 = request.getParameter("recipe9");
 		recipeDTO.setRecipe5(rc5);
 		recipeDTO.setRecipe6(rc6);
 		recipeDTO.setRecipe7(rc7);
 		recipeDTO.setRecipe8(rc8);
 		recipeDTO.setRecipe9(rc9);
-		if(!"".equals(request.getParameter("price"))) pr = Integer.parseInt(request.getParameter("price"));
+		String p_flag = request.getParameter("price");
+		if(p_flag != null) pr = Integer.parseInt(request.getParameter("price"));
 		recipeDTO.setPrice(pr);
 		recipeDTO.setRecipe_seq(Integer.parseInt(request.getParameter("recipe_seq")));
 		displayRecipeAdd(recipeDTO);
@@ -715,11 +736,16 @@ public class TipController {
 		recipeDTO.setRecipe2(request.getParameter("recipe2"));
 		recipeDTO.setRecipe3(request.getParameter("recipe3"));
 		recipeDTO.setRecipe4(request.getParameter("recipe4"));
-		if(request.getParameter("recipe5") != null) rc5 = request.getParameter("recipe5");
-		if(request.getParameter("recipe6") != null) rc6 = request.getParameter("recipe6");
-		if(request.getParameter("recipe7") != null) rc7 = request.getParameter("recipe7");
-		if(request.getParameter("recipe8") != null) rc8 = request.getParameter("recipe8");
-		if(request.getParameter("recipe9") != null) rc9 = request.getParameter("recipe9");
+		String r5 = request.getParameter("recipe5");
+		String r6 = request.getParameter("recipe6");
+		String r7 = request.getParameter("recipe7");
+		String r8 = request.getParameter("recipe8");
+		String r9 = request.getParameter("recipe9");
+		if(r5 != null) rc5 = request.getParameter("recipe5");
+		if(r6 != null) rc6 = request.getParameter("recipe6");
+		if(r7 != null) rc7 = request.getParameter("recipe7");
+		if(r8 != null) rc8 = request.getParameter("recipe8");
+		if(r9 != null) rc9 = request.getParameter("recipe9");
 		recipeDTO.setRecipe5(rc5);
 		recipeDTO.setRecipe6(rc6);
 		recipeDTO.setRecipe7(rc7);
@@ -872,6 +898,16 @@ public class TipController {
 		recipeDTO.setRecipe7(recipeDTO.getRecipe7().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe8(recipeDTO.getRecipe8().replaceAll("\r\n", "<br>"));
 		recipeDTO.setRecipe9(recipeDTO.getRecipe9().replaceAll("\r\n", "<br>"));
+		recipeDTO.setRecipe0(recipeDTO.getRecipe0().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe1(recipeDTO.getRecipe1().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe2(recipeDTO.getRecipe2().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe3(recipeDTO.getRecipe3().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe4(recipeDTO.getRecipe4().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe5(recipeDTO.getRecipe5().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe6(recipeDTO.getRecipe6().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe7(recipeDTO.getRecipe7().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe8(recipeDTO.getRecipe8().replaceAll("\n", "<br>"));
+		recipeDTO.setRecipe9(recipeDTO.getRecipe9().replaceAll("\n", "<br>"));
 		
 		modelAndView.addObject("pg", pg);
 		modelAndView.addObject("keyword", keyword);
