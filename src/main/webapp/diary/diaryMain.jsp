@@ -186,6 +186,7 @@ h1 {
 
 /* dto내용 나타나는 div */
 #dtoContent{
+    text-align: left;
 	margin-left:30%;
 	margin-right:30%;
 	border:1px solid #BDBDBD;
@@ -260,7 +261,7 @@ h1 {
 	
 /* 삭제 */
 #btn3{
-	margin-right: 15px;
+	margin-bottom:5px;
 	outline:none;
 	text-decoration:none;
 	text-indent:0px;
@@ -274,7 +275,7 @@ h1 {
 	font-size:15px;
 	background-color:#ffffff;
 	color:#ff8400;
-	width:150px;
+	width:200px;
 	height:30px;
 	border-color:#ff8400;
 	border-width:1px;
@@ -296,7 +297,7 @@ h1 {
 	font-size:15px;
 	background-color:#ffffff;
 	color:#ff8400;
-	width:150px;
+	width:200px;
 	height:30px;
 	border-color:#ff8400;
 	border-width:1px;
@@ -366,7 +367,7 @@ h1 {
 	font-size:15px;
 	background-color:#ff8400;
 	color:#ffffff;
-	width:150px;
+	width:200px;
 	height:30px;
 	border-color:#ff8400;
 	border-width:1px;
@@ -388,7 +389,7 @@ h1 {
 	font-size:15px;
 	background-color:#ff8400;
 	color:#ffffff;
-	width:150px;
+	width:200px;
 	height:30px;
 	border-color:#ff8400;
 	border-width:1px;
