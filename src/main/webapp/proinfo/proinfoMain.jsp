@@ -165,7 +165,11 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 }
 
 	.proinfo_top{
+<<<<<<< HEAD
 		width: 1530px;
+=======
+		width: 1800px;
+>>>>>>> 4cfa75cfeccc77f13fa6e85ef5da493e820d8ffa
 		height: 200px;
 		background-image: url(/sola/img/proinfo_m3.PNG);
 		background-size: 1530px auto;
@@ -254,7 +258,7 @@ figure.snip1200:hover p, figure.snip1200.hover p {
 				</figure>
 				
 				<figure class="snip1200">
-					<img src="/sola/img/proinfo_living.jpg" alt="" />
+					<img src="/sola/img/proinfo_living_2.jpg" alt="" />
 					<figcaption>
 						<p>이사할때 주의할 점<br>.<br>.<br>.</p>
 						<div class="heading">
