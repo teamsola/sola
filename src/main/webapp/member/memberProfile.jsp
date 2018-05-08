@@ -77,7 +77,7 @@
 				<img alt="" src="/sola/storage/${memberDTO.profile }" width="100" height="100"/>
 			</td>
 			<td align="left" style="border-bottom: none;">
-				<input type="file" name="img" size="45">
+				<input type="file" name="img" size="45" accept="image/*">
 			</td>
 		</tr>
 		<tr>
