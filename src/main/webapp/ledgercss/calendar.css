@@ -231,14 +231,14 @@ select {
 .before_after_month:hover {
 	font-size: 20pt;
 /* 	font-family: "돋움"; */
-	color: red;
+	color: #ff8400;
 	text-decoration: none;
 }
 
 .before_after_year:hover {
 	font-size: 20pt;
 /* 	font-family: "돋움"; */
-	color: red;
+	color: #ff8400;
 	text-decoration: none;
 }
 

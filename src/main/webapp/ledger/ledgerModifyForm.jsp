@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css?ver=1" />
+<link rel="stylesheet" type="text/css" href="ledgercss/ledgerViewTitle.css?ver=5" />
 <link rel="stylesheet" type="text/css" href="ledgercss/ledgerModify.css?ver=2" />
 <script type="text/javascript">
 	
@@ -107,15 +107,15 @@
 				$("#moneyCheck").text("금액을 적어주세요");
 				$("#moneyCheck").css("color", "black");
 			}else if(isNaN($("#money").val())){
-				$("#moneyCheck").text("숫자만 가능합니다");
+				$("#moneyCheck").text("숫자만 가능");
 				$("#moneyCheck").css("color", "red");
 			}else if(!isNaN($("#money").val())){
-				$("#moneyCheck").text("입력 가능합니다("+addComma($("#money").val())+"원)");
+				$("#moneyCheck").text("입력 가능("+addComma($("#money").val())+"원)");
 				$("#moneyCheck").css("color", "blue");
 				
 			}
 			if(blank_pattern.test($("#money").val()) == true){	// 공백 불가
-				$("#moneyCheck").text("공백을 제거해주세요");
+				$("#moneyCheck").text("공백 제거해주세요");
 				$("#moneyCheck").css("color", "red");
 			}
 			
@@ -136,10 +136,10 @@
 			 	}
 			 	
 			    if($(this).val()==""){	// 입력값이 없을경우 (입력하지 않아도 됨)
-			    	/* $(checkId).text("내용을 입력해주세요");
-			    	$(checkId).css("color", "black"); */
+			    	$(checkId).text("");
+			    	/* $(checkId).css("color", "black"); */
 			    }else if(numChar>maxNum){	// 10자가 넘을 경우
-			    	$(checkId).text(maxNum+"자까지만 가능합니다.");
+			    	$(checkId).text(maxNum+"자까지만 가능");
 			    	$(checkId).css("color", "red");
 			    }else if(numChar<maxNum && numChar>0){
 			    	$(checkId).text(numChar+"/"+maxNum);
