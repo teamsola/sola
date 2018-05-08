@@ -64,10 +64,6 @@ pageEncoding="UTF-8"%>
 		}
 	</style>
 	<script type="text/javascript">
-	var msg = '${result}';
-	if(msg == "success"){
-		alert("성공적으로 등록했습니다.");
-	}
 	$(function(){
 		var content_l = '<span class="intro_title_left">장소 등록하기</span>' +
 			'<span class="intro_detail_left">본인이 자주 가는 혼술집이 있나요? 아니면 혼밥집은요?<br>혹은 혼자 차를 마시기 좋은 분위기 좋은 카페는요?<br>혼자 먹기 좋은 술집 또는 맛집을 지금 SOLA 회원들과 공유해보세요.</span>';

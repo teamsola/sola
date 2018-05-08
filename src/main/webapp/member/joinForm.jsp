@@ -241,7 +241,7 @@ function execDaumPostcode()
     				 		
     						if(nickname.length > 10)
     							{
-    								alert("이름은 10자 이하로 입력해주세요.");
+    								alert("별명은 10자 이하로 입력해주세요.");
     								$(this).val("");
     							}
     					});
@@ -257,7 +257,7 @@ function execDaumPostcode()
     							}
     						else if(tel.length > 4)
     							{
-    								alert("4자 이하로 입력해주세요.");
+    								alert("전화번호는 4자 이하로 입력해주세요.");
     								$(this).val("");
     							}
     					});

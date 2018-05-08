@@ -14,7 +14,7 @@
 	float:left; 
 	width:100%;
 	height:150px; 
-	background-image: url('/sola/storage/쇼핑.JPG'); 
+	background-image: url('/sola/storage/몰3.jpg'); 
 	background-size:cover; 
 	background-position:center; 
 	background-repeat: no-repeat;

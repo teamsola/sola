@@ -240,6 +240,7 @@ table{
         <div id="btnset">
         	<input type="button" id="insertBoard" value="등록" />
       		<input type="button" id="btn" value="취소" onclick="location.href='mallBoardList.do?pg=1'">
+      		<input style="VISIBILITY: hidden; WIDTH: 0px">
       	</div>
     </form>
     

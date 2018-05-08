@@ -247,7 +247,7 @@ select::-ms-expand {
 
 
 			<div id="title">
-				<a href="QnABoardList.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">FREEBOARD</span></a>
+				<a href="QnABoardList.do" id="atag"><span style="font-size:25px;padding:10px 13px 10px 3px;margin:7px;background: rgba(255,255,255, 0.7);">Q&A</span></a>
 			</div>
 
 <div id="aa">Q&A</div>

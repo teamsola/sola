@@ -22,7 +22,7 @@ function deleteFunc(){
 	 var result = confirm("정말로 삭제하시겠습니까?");
 	 
 	 if(result){	/* yes */
-		 location.href='QnABoard/QnABoardDelete.do?seq=${boardDTO.seq }&&${pg}';
+		 location.href='QnABoardDelete.do?seq=${boardDTO.seq }&&${pg}';
 	 }
 }
 </script>

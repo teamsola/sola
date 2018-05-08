@@ -211,6 +211,7 @@ table{
         <div id="btnset">
         	<input type="button" id="modifyBoard" value="수정" />
         	<input type=button id="btn" value="취소" onclick="location.href='mallBoardView.do?board_seq=${board_seq}&pg=${pg}'">
+        	<input style="VISIBILITY: hidden; WIDTH: 0px">
     	</div>
     </form>
 

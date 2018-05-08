@@ -146,6 +146,7 @@ table{
  	<div id="btnset">
  		<input type="button" id="btn" value="수정" onclick="javascript:modify()">
 		<input type="reset" id="btn" value="이전" onclick="location.href='mallUpdateBefore.do'">
+		<input style="VISIBILITY: hidden; WIDTH: 0px">
  	</div>
 </form>
 
