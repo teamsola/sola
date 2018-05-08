@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css?ver=3"/>
 <link rel="stylesheet" type="text/css" href="css/banner.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/nav.js?ver=1"></script>
+<script src="js/nav.js?ver=2"></script>
 <script src="js/banner.js"></script>
 <style type="text/css">
 .main_list{display:inline-block;width:1500px;margin:10px auto;text-align: left;}

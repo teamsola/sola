@@ -11,8 +11,6 @@
 
 <script type="text/javascript">
 
-
-
 $(function(){
 		$("#inOut").change(function(){	// 입-출금이 눌렸을 때 
 			var categoryList = new Array();
@@ -81,14 +79,14 @@ $(function(){
 				$("#moneyCheck").text("금액을 적어주세요");
 				$("#moneyCheck").css("color", "black");
 			}else if(isNaN($("#money").val())){
-				$("#moneyCheck").text("숫자만 가능합니다");
+				$("#moneyCheck").text("숫자만 가능");
 				$("#moneyCheck").css("color", "red");
 			}else if(!isNaN($("#money").val())){
-				$("#moneyCheck").text("입력 가능합니다("+addComma($("#money").val())+"원)");
+				$("#moneyCheck").text("입력 가능("+addComma($("#money").val())+"원)");
 				$("#moneyCheck").css("color", "blue");
 			}
 			if(blank_pattern.test($("#money").val()) == true){	// 공백 불가
-				$("#moneyCheck").text("공백을 제거해주세요");
+				$("#moneyCheck").text("공백 제거해주세요");
 				$("#moneyCheck").css("color", "red");
 			}
 			
@@ -109,10 +107,10 @@ $(function(){
 			 	}
 			 	
 			    if($(this).val()==""){	// 입력값이 없을경우 (입력하지 않아도 됨)
-			    	/* $(checkId).text("내용을 입력해주세요");
-			    	$(checkId).css("color", "black"); */
+			    	$(checkId).text("");
+			    	/* $(checkId).css("color", "black"); */
 			    }else if(numChar>maxNum){	// 10자가 넘을 경우
-			    	$(checkId).text(maxNum+"자까지만 가능합니다.");
+			    	$(checkId).text(maxNum+"자까지만 가능");
 			    	$(checkId).css("color", "red");
 			    }else if(numChar<maxNum && numChar>0){
 			    	$(checkId).text(numChar+"/"+maxNum);
@@ -128,40 +126,7 @@ function addComma(num) {
 }
 </script>
 
-<style type="text/css">
-.loading {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: -4px;
-            left: 0;
-            z-index: 99999;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-        }
-        .loading p {
-            position: relative;
-            top: 50%;
-            margin: -75px auto 0 auto;
-            width: 200px;
-            height: 50px;
-            -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
-            border-radius: 10px;
-            background: #fff;
-            box-sizing: border-box;
-            padding: 0 30px;
-            text-align: center;
-            font-size: 16px;
-            color: #555;
-        }
-        .loading p strong {
-            display: block;
-            padding-top: 15px;
-            font-style: italic;
-        }
 
-</style>
 
 <title>가계부 입력</title>
 </head>
