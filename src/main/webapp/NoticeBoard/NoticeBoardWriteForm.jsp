@@ -237,7 +237,7 @@ table{
 				<option value="규칙">규칙</option>
 				<option value="소식">소식</option>			
 			</select>
-			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" onkeyup="chkword(this,20)">
+			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" onkeyup="chkword(this,100)">
 		</tr>
 		
 		<tr>

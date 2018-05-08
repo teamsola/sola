@@ -46,21 +46,6 @@ public class MemberController
 				session.setAttribute("memName", nickname);
 				session.setAttribute("memProfile", profile);
 				System.out.println("아이디: "+id);
-				if(id.equals("hong"))
-				{
-					session.setAttribute("home1", "/home/test3.jsp");
-					session.setAttribute("home2", "/home/test4.jsp");
-				}
-				else if(id.equals("hong3"))
-				{
-					session.setAttribute("home1", "/home/test2.jsp");
-					session.setAttribute("home2", "/home/test4.jsp");
-				}
-				else
-				{
-					session.setAttribute("home1", "/home/test1.jsp");
-					session.setAttribute("home2", "/home/test2.jsp");
-				}
 				modelAndView = main(session);
 			}
 		}

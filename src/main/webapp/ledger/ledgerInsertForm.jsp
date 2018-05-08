@@ -11,20 +11,6 @@
 
 <script type="text/javascript">
 
-$(document).ready(function() {
-	alert("온로드 들어옴");
-    console.log('로딩 활성화');
-    $('.loading').show();
-});
- 
-$(window).on('load', function() {
-    console.log('로딩 비활성화');
-    $('.loading').hide();
-});
-
-
-
-
 
 
 $(function(){

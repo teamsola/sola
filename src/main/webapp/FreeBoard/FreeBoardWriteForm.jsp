@@ -238,7 +238,7 @@ table{
 				<option value="즐거운혼족">즐거운혼족</option>
 				<option value="혼족모임">혼족모임</option>
 			</select>
-			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" onkeyup="chkword(this,20)">
+			<td><input type="text" placeholder="제목을 입력하세요" id="subject" name="subject" onkeyup="chkword(this,100)">
 		</tr>
 		
 		<tr>
